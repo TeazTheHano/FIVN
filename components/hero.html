@@ -1,0 +1,155 @@
+<section class="hero-section" id="hero">
+    <!-- Logic Radio -->
+    <input type="radio" name="hero" id="slide1" checked>
+    <input type="radio" name="hero" id="slide2">
+    <input type="radio" name="hero" id="slide3">
+
+    <!-- 1. Slider Backgrounds -->
+    <div class="bg-slides">
+        <div class="bg-slide">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80"
+                alt="Tech 1">
+            <div class="overlay-carbon"></div>
+            <div class="overlay-gradient"></div>
+        </div>
+        <div class="bg-slide">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=80"
+                alt="Tech 2">
+            <div class="overlay-carbon"></div>
+            <div class="overlay-gradient"></div>
+        </div>
+        <div class="bg-slide">
+            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1920&q=80"
+                alt="Tech 3">
+            <div class="overlay-carbon"></div>
+            <div class="overlay-gradient"></div>
+        </div>
+    </div>
+
+    <!-- 2. Spotlight -->
+    <div class="spotlight"></div>
+
+    <!-- 3. Circuit Overlay (SVG) -->
+    <div class="circuit-overlay">
+        <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <defs>
+                <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#7BC440" stop-opacity="0.8" />
+                    <stop offset="100%" stop-color="#216320" stop-opacity="0.2" />
+                </linearGradient>
+            </defs>
+            <g class="animate-float">
+                <path d="M5,10 L8,8 L11,10 L11,14 L8,16 L5,14 Z" fill="none" stroke="#7BC440" strokeWidth="0.2" />
+                <circle cx="8" cy="12" r="0.5" fill="#7BC440" />
+                <path d="M15,20 L18,18 L21,20 L21,24 L18,26 L15,24 Z" fill="none" stroke="#7BC440" strokeWidth="0.2"
+                    opacity="0.7" />
+                <circle cx="18" cy="22" r="0.5" fill="#7BC440" />
+                <path d="M8,16 L8,18 L12,22 L15,22" fill="none" stroke="url(#circuit-gradient)" strokeWidth="0.15" />
+                <path d="M11,12 L15,12 L18,15 L18,18" fill="none" stroke="url(#circuit-gradient)" strokeWidth="0.15" />
+                <path d="M5,12 L2,12" fill="none" stroke="url(#circuit-gradient)" strokeWidth="0.15" />
+                <circle cx="12" cy="22" r="0.3" fill="#fff" className="animate-pulse" />
+            </g>
+
+            <circle r="0.3" fill="#fff">
+                <animateMotion dur="5s" repeatCount="indefinite" path="M11,12 L20,12 L25,20" />
+            </circle>
+        </svg>
+    </div>
+
+    <!-- 4. Content Container -->
+    <div class="content-container">
+        <div class="hero-content" id="content1">
+            <div class="system-tag">
+                <div class="dot"></div> SYSTEM: GLOBAL NETWORK<span></span>
+            </div>
+            <h1>XÂY DỰNG TƯƠNG LAI SỐ</h1>
+            <p class="description">Kết nối với mạng lưới tăng tốc khởi nghiệp lớn nhất thế giới.</p>
+            <div class="btn-group">
+                <button class="btn-group-primary">
+                    Đăng ký ngay
+                    <span class="material-symbols-outlined">
+                        arrow_forward
+                    </span>
+                </button>
+                <button class="btn-group-secondary">
+                    <span class="material-symbols-outlined">
+                        play_arrow
+                    </span>
+                    Xem Video giới thiệu
+                </button>
+            </div>
+        </div>
+
+        <div class="hero-content" id="content2">
+            <div class="system-tag">
+                <div class="dot"></div> SYSTEM: SILICON VALLEY DNA<span></span>
+            </div>
+            <h1>CHUẨN HÓA QUY TRÌNH</h1>
+            <p class="description">Giáo trình Hard-core từ Thung lũng Silicon ngay tại Việt Nam.</p>
+            <div class="btn-group">
+                <button class="btn-group-primary">
+                    Đăng ký ngay
+                    <span class="material-symbols-outlined">
+                        arrow_forward
+                    </span>
+                </button>
+                <button class="btn-group-secondary">
+                    <span class="material-symbols-outlined">
+                        play_arrow
+                    </span>
+                    Xem Video giới thiệu
+                </button>
+            </div>
+        </div>
+
+        <div class="hero-content" id="content3">
+            <div class="system-tag">
+                <div class="dot"></div> SYSTEM: VENTURE CAPITAL<span></span>
+            </div>
+            <h1>TIẾP CẬN VỐN ĐẦU TƯ</h1>
+            <p class="description">Cơ hội gọi vốn từ mạng lưới thiên thần và quỹ đầu tư đối tác.</p>
+            <div class="btn-group">
+                <button class="btn-group-primary">
+                    Đăng ký ngay
+                    <span class="material-symbols-outlined">
+                        arrow_forward
+                    </span>
+                </button>
+                <button class="btn-group-secondary">
+                    <span class="material-symbols-outlined">
+                        play_arrow
+                    </span>
+                    Xem Video giới thiệu
+                </button>
+            </div>
+        </div>
+
+
+        <!-- 5. Navigation Side -->
+        <div class="side-nav">
+            <label for="slide1" class="nav-item">
+                <span>01</span>
+                <div class="line"></div>
+            </label>
+            <label for="slide2" class="nav-item">
+                <span>02</span>
+                <div class="line"></div>
+            </label>
+            <label for="slide3" class="nav-item">
+                <span>03</span>
+                <div class="line"></div>
+            </label>
+        </div>
+    </div>
+
+
+    <!-- 6. Coords & Progress -->
+    <div class="tech-coords">
+        <div>COORDS: 10.7626° N, 106.6602° E</div>
+        <div>STATUS: OPERATIONAL</div>
+        <div class="tech-coords-value"></div>
+    </div>
+    <div class="bottom-progress">
+        <div class="progress-fill animate-bar"></div>
+    </div>
+</section>

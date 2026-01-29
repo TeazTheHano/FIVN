@@ -1,0 +1,99 @@
+:root {
+    /* FONT */
+    --font-main: "Be Vietnam Pro", "Arial", sans-serif;
+    --font-mono: 'Space Mono', monospace;
+
+    /* --- Brand Colors --- */
+    /* Màu xanh chủ đạo (Primary Green) - Dùng cho nút, border, icon, highlight */
+    --color-primary: #7bc440;
+    --color-primary-raw: 123 196 64;
+
+    /* Màu xanh đậm (Secondary/Dark Green) - Dùng cho tiêu đề, nền đậm, text nhấn mạnh */
+    --color-secondary: #216320;
+
+    /* --- Interactive States --- */
+    /* Màu hover của Primary Green */
+    --color-primary-hover: #6ab335;
+
+    /* Màu hover/gradient của Secondary Green */
+    --color-secondary-hover: #2d7a2c;
+
+    /* --- Accents & Gradients --- */
+    /* Màu xanh nõn chuối (Lime Accent) - Dùng cho gradient chữ, hiệu ứng đặc biệt */
+    --color-accent-lime: #a3e635;
+
+    /* Màu xanh rất đậm (gần như đen) - Dùng cho text trên nền Lime */
+    --color-dark-contrast: #0F2910;
+
+    /* Màu tối dùng cho gradient overlay ảnh */
+    --color-overlay-dark: #0a1f0a;
+
+    /* --- Backgrounds --- */
+    /* Màu trắng ngà (Off-white) - Dùng cho nền các section phụ */
+    --color-bg-light: #f8f9fa;
+
+    /* Màu xanh bạc hà nhạt (Mint) - Dùng cho nền FAQ đang mở */
+    --color-bg-mint: #f0f9eb;
+
+    /* --- UI Elements --- */
+    /* Màu xám dùng cho các họa tiết chấm (Dot pattern) */
+    --color-pattern-dot: #94a3b8;
+
+    /* Màu xanh LinkedIn */
+    --color-social-linkedin: #0077b5;
+
+    --color-text-muted: #ccc;
+    --color-black: #000;
+    --color-white: #fff;
+
+    /* Font Sizes */
+    --text-h1: 3.5rem;
+    /* 56px - Tiêu đề chính Hero */
+    --text-h2: 2.5rem;
+    /* 40px - Tiêu đề Section */
+    --text-h3: 1.75rem;
+    /* 28px - Tiêu đề phụ/Card */
+    --text-base: 1rem;
+    /* 16px - Văn bản nội dung */
+    --text-sm: 0.875rem;
+    /* 14px - Chú thích/Meta */
+    --text-btn: 1.125rem;
+    /* 18px - Chữ trong nút bấm */
+
+    /* Font Weights */
+    --weight-regular: 400;
+    --weight-medium: 500;
+    --weight-semibold: 600;
+    --weight-bold: 700;
+
+    /* Line Heights */
+    --lh-tight: 1.2;
+    --lh-base: 1.6;
+
+    /* SPACING */
+    --spacing-xxs: 8px;
+    --spacing-xs: 12px;
+    --spacing-s: 16px;
+    --spacing-m: 24px;
+    --spacing-l: 32px;
+    --spacing-xl: 48px;
+    --spacing-xxl: 84px;
+
+    /* --- Elevation & Shadows --- */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-primary: 0 10px 15px -3px rgb(var(--color-primary) / 0.3);
+    /* --shadow-primary: 0 10px 15px -3px rgba(123, 196, 64, 0.3); */
+
+    /* --- Effects & Transitions --- */
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 700ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* --- Border Radius --- */
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 1rem;
+    --radius-full: 9999px;
+}

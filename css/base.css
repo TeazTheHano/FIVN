@@ -1,0 +1,181 @@
+/*++++++++++++++ FONT IMPORT ++++++++++++++*/
+/*  */
+@font-face {
+    font-family: "NeueMontreal";
+    src: url("../assets/fonts/NeueMontreal-Bold.otf") format("opentype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "NeueMontreal";
+    src: url("../assets/fonts/NeueMontreal-Regular.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "NeueMontreal";
+    src: url("../assets/fonts/NeueMontreal-Light.otf") format("opentype");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "NeueMontreal";
+    src: url("../assets/fonts/NeueMontreal-Medium.otf") format("opentype");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "NeueMontreal";
+    src: url("../assets/fonts/NeueMontreal-BoldItalic.otf") format("opentype");
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "NeueMontreal";
+    src: url("../assets/fonts/NeueMontreal-Italic.otf") format("opentype");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "NeueMontreal";
+    src: url("../assets/fonts/NeueMontreal-LightItalic.otf") format("opentype");
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "NeueMontreal";
+    src: url("../assets/fonts/NeueMontreal-MediumItalic.otf") format("opentype");
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+/*++++++++++++++ BASE ++++++++++++++*/
+body {
+    font-family: var(--font-main);
+}
+
+/* Custom Scrollbar Hide for Carousel */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Modern Tech Patterns */
+.bg-grid-pattern {
+    background-image: linear-gradient(to right, rgba(33, 99, 32, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(33, 99, 32, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+.tech-border {
+    position: relative;
+}
+
+.tech-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border-top: 2px solid #7BC440;
+    border-left: 2px solid #7BC440;
+    transition: all 0.3s ease;
+}
+
+.tech-border:hover::before {
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes progress {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+.animate-progress {
+    animation: progress 25s linear infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.animate-draw-line {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: dash 3s linear forwards infinite;
+}
+
+/* Glowing Line Animation */
+@keyframes flow {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    100% {
+        background-position: 0% 200%;
+    }
+}
+
+.animate-flow-y {
+    background-size: 100% 200%;
+    animation: flow 3s linear infinite;
+}
+
+/* New Animations for Cyber Grid */
+@keyframes grid-pan {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 40px 40px;
+    }
+}
+
+.animate-grid-pan {
+    animation: grid-pan 4s linear infinite;
+}
