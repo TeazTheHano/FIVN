@@ -69,6 +69,75 @@ body {
     font-family: var(--font-main);
 }
 
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.displayNone {
+    display: none;
+}
+
+.overflowHidden {
+    overflow: hidden;
+}
+
+.col2Flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--spacing-m);
+}
+
+.col2Grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-m);
+}
+
+.d-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.d-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.d-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gap-m {
+    gap: var(--spacing-m);
+}
+
+.gap-s {
+    gap: var(--spacing-s);
+}
+
+.gap-xs {
+    gap: var(--spacing-xs);
+}
+
+.gap-l {
+    gap: var(--spacing-l);
+}
+
+.gap-xl {
+    gap: var(--spacing-xl);
+}
+
+.marginAuto {
+    margin: auto;
+}
+
 /* Custom Scrollbar Hide for Carousel */
 .scrollbar-hide::-webkit-scrollbar {
     display: none;
@@ -86,27 +155,60 @@ body {
     background-size: 40px 40px;
 }
 
-.tech-border {
-    position: relative;
-}
-
-.tech-border::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 20px;
-    height: 20px;
-    border-top: 2px solid #7BC440;
-    border-left: 2px solid #7BC440;
-    transition: all 0.3s ease;
-}
-
-.tech-border:hover::before {
+.maxWidth1300 {
     width: 100%;
-    height: 100%;
+    max-width: 1300px;
+    margin: auto;
 }
 
+
+/*++++++++++++++ FONT ++++++++++++++*/
+
+.text-l {
+    font-size: var(--text-h3);
+    line-height: var(--lineheight-h3);
+}
+
+.text-m {
+    font-size: var(--text-base);
+    line-height: var(--lineheight-base);
+}
+
+.text-xs {
+    font-size: var(--text-xs);
+    line-height: var(--lineheight-xs);
+}
+
+.title-bold {
+    font-weight: var(--weight-bold);
+    color: var(--color-secondary);
+}
+
+.title-tag {
+    color: var(--color-secondary);
+    font-size: var(--text-xs);
+    line-height: var(--lineheight-xs);
+    font-weight: var(--weight-semibold);
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+
+    &::before {
+        content: "";
+        display: inline-block;
+        width: 2rem;
+        height: 1px;
+        background-color: var(--color-primary);
+        margin-right: 0.5rem;
+        transform: translateY(-50%);
+        vertical-align: middle;
+    }
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+/*++++++++++++++ ANIMATIONS ++++++++++++++*/
 @keyframes progress {
     0% {
         width: 0%;
@@ -178,4 +280,17 @@ body {
 
 .animate-grid-pan {
     animation: grid-pan 4s linear infinite;
+}
+
+
+/* +++++++++++++++ EFFECTS ++++++++++++++ */
+/* --- Spotlight Effect --- */
+.spotlight {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;
+    background: radial-gradient(circle 600px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+            rgb(var(--color-primary-raw) / 0.2),
+            transparent 40%);
 }

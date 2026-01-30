@@ -14,3 +14,6 @@
 
 /* COMPONENT */
 @import "components.css" layer(components);
+
+/* RESPONSIVE */
+@import "responsive.css" layer(responsive);

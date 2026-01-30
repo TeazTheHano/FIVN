@@ -1,0 +1,36 @@
+@media (max-width: 992px) {
+    #CoreValue {
+        #CoreValue_content h2 {
+            margin-top: auto;
+        }
+
+        .bg svg {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .mobileHide {
+        display: none;
+    }
+
+    .mobileShow {
+        display: block;
+    }
+
+    .mobileFlexWrap {
+        flex-wrap: wrap;
+    }
+
+    .mobileFlexColumn {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #hero {
+        h1 {
+            font-size: 2.5rem;
+        }
+    }
+}

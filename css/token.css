@@ -10,6 +10,7 @@
 
     /* Màu xanh đậm (Secondary/Dark Green) - Dùng cho tiêu đề, nền đậm, text nhấn mạnh */
     --color-secondary: #216320;
+    --color-secondary-raw: 33 99 32;
 
     /* --- Interactive States --- */
     /* Màu hover của Primary Green */
@@ -43,21 +44,28 @@
     --color-social-linkedin: #0077b5;
 
     --color-text-muted: #ccc;
+    --color-text-muted-2: #e5e7eb;
     --color-black: #000;
     --color-white: #fff;
 
     /* Font Sizes */
     --text-h1: 3.5rem;
+    --lineheight-h1: 4rem;
     /* 56px - Tiêu đề chính Hero */
     --text-h2: 2.5rem;
+    --lineheight-h2: 3rem;
     /* 40px - Tiêu đề Section */
     --text-h3: 1.75rem;
+    --lineheight-h3: 2rem;
     /* 28px - Tiêu đề phụ/Card */
     --text-base: 1rem;
+    --lineheight-base: 1.5rem;
     /* 16px - Văn bản nội dung */
-    --text-sm: 0.875rem;
-    /* 14px - Chú thích/Meta */
+    --text-xs: 0.75rem;
+    --lineheight-xs: 1.2rem;
+    /* 12px - Chú thích/Meta */
     --text-btn: 1.125rem;
+    --lineheight-btn: 1.25rem;
     /* 18px - Chữ trong nút bấm */
 
     /* Font Weights */
@@ -92,8 +100,8 @@
     --transition-slow: 700ms cubic-bezier(0.4, 0, 0.2, 1);
 
     /* --- Border Radius --- */
-    --radius-sm: 0.375rem;
-    --radius-md: 0.5rem;
-    --radius-lg: 1rem;
-    --radius-full: 9999px;
+    --radius-s: 0.375rem;
+    --radius-m: 0.5rem;
+    --radius-l: 1rem;
+    --radius-round: 9999px;
 }
