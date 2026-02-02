@@ -28,9 +28,12 @@
         flex-direction: column;
     }
 
-    #hero {
-        h1 {
-            font-size: 2.5rem;
-        }
+    h1 {
+        font-size: 2.5rem;
     }
+
+    #Programme_content {
+        grid-template-columns: 1fr;
+    }
+
 }

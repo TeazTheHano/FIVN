@@ -1,5 +1,5 @@
 function trackMousePosition() {
-    const heroElement = document.querySelector('#hero');
+    const trackElement = document.querySelectorAll('.mouse-parallax');
 
     let scrollOffsetX = 0;
     let scrollOffsetY = 0;
@@ -9,14 +9,14 @@ function trackMousePosition() {
         scrollOffsetY = window.scrollY;
     });
 
-    heroElement.addEventListener('mousemove', (event) => {
+    trackElement.addEventListener('mousemove', (event) => {
         const { clientX, clientY } = event;
         const normalizedX = (clientX / window.innerWidth) * 100 + scrollOffsetX / window.innerWidth * 100;
         const normalizedY = (clientY / window.innerHeight) * 100 + scrollOffsetY / window.innerHeight * 100;
 
         // Update spotlight
-        heroElement.style.setProperty('--mouse-x', `${normalizedX}%`);
-        heroElement.style.setProperty('--mouse-y', `${normalizedY}%`);
+        trackElement.style.setProperty('--mouse-x', `${normalizedX}%`);
+        trackElement.style.setProperty('--mouse-y', `${normalizedY}%`);
 
         // Parallax effect for background slides
         const parallaxOffsetX = (clientX - window.innerWidth / 2 + scrollOffsetX) / 50;
