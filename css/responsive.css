@@ -36,4 +36,15 @@
         grid-template-columns: 1fr;
     }
 
+    #Event_content {
+        .card {
+            direction: ltr;
+            grid-template-columns: auto 1fr;
+
+            .event_content_cards_mark {
+                display: none;
+            }
+        }
+    }
+
 }
