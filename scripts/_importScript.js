@@ -1,7 +1,8 @@
 // Load HTML content from a file and insert it into a DOM element
-function loadHtmlFromFile(elementQuery, filePath, fncWhenLoaded, retryCount = 3) {
+function loadHtmlFromFile(elementQuery, filePath, fncWhenLoaded, elementQuery2) {
     const element = document.querySelector(elementQuery);
 
+    const retryCount = 3
     if (element === null) {
         throw new Error(`Cannot find element with query ${elementQuery}`);
     }
@@ -16,7 +17,7 @@ function loadHtmlFromFile(elementQuery, filePath, fncWhenLoaded, retryCount = 3)
                     }
                     element.innerHTML = htmlContent;
                     if (typeof fncWhenLoaded === 'function') {
-                        fncWhenLoaded();
+                        fncWhenLoaded(elementQuery2);
                     }
                 })
                 .catch(error => {
@@ -57,8 +58,8 @@ const initFind = () => {
     // add section
     setTimeout(() => {
         headerScroll();
-        loadHtmlFromFile('#hero-section_placeholder', 'components/hero.html', trackMousePosition);
-
+        loadHtmlFromFile('#hero-section_placeholder', 'components/hero.html', trackMousePosition, '#hero');
+        trackMousePosition('#Programme')
     }, 100);
 }
 initFind();

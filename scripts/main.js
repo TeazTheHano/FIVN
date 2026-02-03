@@ -1,34 +1,54 @@
-function trackMousePosition() {
-    const trackElement = document.querySelectorAll('.mouse-parallax');
+function trackMousePosition(elementQuery) {
+    const trackElement = document.querySelector(elementQuery);
+    if (!trackElement) return;
 
-    let scrollOffsetX = 0;
-    let scrollOffsetY = 0;
+    const reset = () => {
+        trackElement.style.setProperty('--mouse-x', '50%');
+        trackElement.style.setProperty('--mouse-y', '50%');
 
-    window.addEventListener('scroll', () => {
-        scrollOffsetX = window.scrollX;
-        scrollOffsetY = window.scrollY;
-    });
+        const bg = trackElement.querySelector('.bg-slides');
+        if (bg) {
+            bg.style.transform = 'translate(0, 0) scale(1.05)';
+        }
+    };
 
     trackElement.addEventListener('mousemove', (event) => {
-        const { clientX, clientY } = event;
-        const normalizedX = (clientX / window.innerWidth) * 100 + scrollOffsetX / window.innerWidth * 100;
-        const normalizedY = (clientY / window.innerHeight) * 100 + scrollOffsetY / window.innerHeight * 100;
+        const rect = trackElement.getBoundingClientRect();
 
-        // Update spotlight
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+
+        const normalizedX = (x / rect.width) * 100;
+        const normalizedY = (y / rect.height) * 100;
+
         trackElement.style.setProperty('--mouse-x', `${normalizedX}%`);
         trackElement.style.setProperty('--mouse-y', `${normalizedY}%`);
 
-        // Parallax effect for background slides
-        const parallaxOffsetX = (clientX - window.innerWidth / 2 + scrollOffsetX) / 50;
-        const parallaxOffsetY = (clientY - window.innerHeight / 2 + scrollOffsetY) / 50;
-        const backgroundSlidesElement = document.querySelector('.bg-slides');
-        backgroundSlidesElement.style.transform = `translate(${parallaxOffsetX}px, ${parallaxOffsetY}px) scale(1.05)`;
+        // Parallax (viewport-based cho cảm giác tự nhiên)
+        const parallaxOffsetX = (event.clientX - window.innerWidth / 2) / 50;
+        const parallaxOffsetY = (event.clientY - window.innerHeight / 2) / 50;
 
-        // Add value to text
-        const textElements = document.querySelector('#hero .tech-coords-value')
-        textElements.innerHTML = `OFFSET: X: ${normalizedX.toFixed(2)}, Y: ${normalizedY.toFixed(2)}`;
+        const bg = trackElement.querySelector('.bg-slides');
+        if (bg) {
+            bg.style.transform =
+                `translate(${parallaxOffsetX}px, ${parallaxOffsetY}px) scale(1.05)`;
+        }
+
+        // Debug text (optional)
+        const text = trackElement.querySelector('.tech-coords-value');
+        if (text) {
+            text.innerHTML =
+                `X: ${normalizedX.toFixed(2)}% | Y: ${normalizedY.toFixed(2)}%`;
+        }
     });
+
+    // 👇 RESET KHI RỜI CHUỘT
+    trackElement.addEventListener('mouseleave', reset);
+
+    // optional: reset khi vừa load
+    reset();
 }
+
 
 function headerScroll() {
     const header = document.querySelector('header');
