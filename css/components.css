@@ -318,3 +318,28 @@
         z-index: 40;
     }
 }
+
+.CTA-button {
+    background-color: var(--color-white);
+    color: var(--color-secondary);
+
+    padding: var(--spacing-xs) var(--spacing-l);
+    margin: var(--spacing-xs) 0;
+
+    border: 1px solid var(--color-text-muted);
+    border-radius: var(--radius-round);
+
+    font-size: var(--text-xxs);
+    font-weight: var(--weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+
+    transition: var(--transition-fast);
+    filter: drop-shadow(var(--shadow-m));
+
+    &:hover {
+        background-color: var(--color-secondary);
+        color: var(--color-white);
+        border: 1px solid var(--color-secondary);
+    }
+}

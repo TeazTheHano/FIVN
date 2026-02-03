@@ -962,7 +962,7 @@ section {
 
                         div {
                             animation: none;
-                            
+
                             height: 100%;
                             transition: height 0.7s ease-out;
                             background: linear-gradient(90deg, transparent 0%, var(--color-primary) 50%, transparent 100%);
@@ -993,24 +993,138 @@ section {
             opacity: 0.4;
         }
     }
+}
 
-    button {
-        background-color: var(--color-white);
-        color: var(--color-secondary);
-        
-        padding: var(--spacing-xs) var(--spacing-l);
-        margin: var(--spacing-xs) 0;
-        
-        border: 1px solid var(--color-text-muted);
-        border-radius: var(--radius-round);
-        
-        font-size: var(--text-xxs);
-        font-weight: var(--weight-bold);
-        text-transform: uppercase;
-        letter-spacing: 0.1rem;
-        
-        transition: var(--transition-fast);
-        filter: drop-shadow(var(--shadow-m));
+#Network {
+    background-color: var(--color-bg-light);
+
+    #Network_content {
+        gap: var(--spacing-xl);
+
+
+        #Network_content_cards {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(200px, 400px));
+            gap: var(--spacing-l);
+
+            --max: 6;
+            overflow: hidden;
+
+            .card {
+                width: 100%;
+                background-color: var(--color-white);
+                padding: var(--spacing-m);
+                border-radius: var(--radius-l);
+                filter: drop-shadow(var(--shadow-xs));
+                gap: var(--spacing-m);
+
+                .top {
+                    width: 100%;
+
+                    img {
+                        width: 100px;
+                        aspect-ratio: 1;
+
+                        border-radius: var(--radius-round);
+                        filter: saturate(0);
+                    }
+
+                    .tag {
+                        letter-spacing: normal;
+                        font-weight: var(--weight-bold);
+                        color: var(--color-primary);
+                    }
+
+                    p,
+                    span {
+                        font-size: var(--text-xxs) !important;
+                        line-height: var(--lineheight-xxs);
+                        color: var(--color-text-muted);
+                    }
+
+                    div {
+                        flex: 1;
+
+                        div:last-child {
+                            border-radius: var(--radius-s);
+                            background-color: var(--color-text-muted-2);
+                            padding: var(--spacing-xxxs) var(--spacing-xs);
+
+                            p {
+                                color: var(--color-p-dark);
+                                font-weight: var(--weight-semibold);
+                            }
+
+                            span {
+                                color: var(--color-primary);
+                            }
+                        }
+                    }
+
+
+                }
+
+                .bottom {
+                    p {
+                        font-size: var(--text-xs);
+
+                        &::before,
+                        &::after {
+                            content: '"';
+                            padding: 0;
+                            margin: 0;
+                        }
+                    }
+
+                    a {
+                        float: right;
+                        margin-top: var(--spacing-xxxs);
+
+                        img {
+                            width: 20px;
+                            height: 20px;
+                            filter: saturate(0);
+                            opacity: 0.2;
+
+                            transition: var(--transition-fast);
+
+                            &:hover {
+                                opacity: 1;
+                                filter: saturate(1);
+                            }
+                        }
+                    }
+                }
+            }
+
+            .card:nth-child(n+7) {
+                max-height: 0;
+                padding: 0;
+                opacity: 0;
+                overflow: hidden;
+            }
+        }
+    }
+
+    label[for="Network_content_toggle_list"] {
+        cursor: pointer;
+        transition: var(--transition-slow);
+
+        &::after {
+            content: 'Xem toàn bộ danh sách ';
+        }
+    }
+
+    #Network_content_toggle_list:checked~#Network_content #Network_content_cards>.card {
+        padding: var(--spacing-m);
+        max-height: 1000px;
+        opacity: 1;
+    }
+
+    #Network_content_toggle_list:checked~#Network_content label[for="Network_content_toggle_list"] {
+        &::after {
+            content: 'Thu gọn';
+        }
     }
 
 }

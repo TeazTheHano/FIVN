@@ -32,9 +32,7 @@
         font-size: 2.5rem;
     }
 
-    #Programme_content {
-        grid-template-columns: 1fr;
-    }
+   
 
     #Event_content {
         .card {

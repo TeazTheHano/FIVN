@@ -158,6 +158,10 @@ body {
     gap: var(--spacing-xxs);
 }
 
+.gap-xxxs {
+    gap: var(--spacing-xxxs);
+}
+
 .gap-l {
     gap: var(--spacing-l);
 }
