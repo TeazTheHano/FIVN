@@ -60,6 +60,7 @@ const initFind = () => {
         headerScroll();
         loadHtmlFromFile('#hero-section_placeholder', 'components/hero.html', trackMousePosition, '#hero');
         trackMousePosition('#Programme')
+        eventQuarterText();
     }, 100);
 }
 initFind();

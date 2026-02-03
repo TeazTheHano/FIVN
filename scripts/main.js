@@ -57,3 +57,16 @@ function headerScroll() {
         header.classList.toggle('scrolled', window.scrollY > 100);
     });
 }
+
+
+function eventQuarterText() {
+    const eventlist = document.querySelectorAll('#Event_content_cards .card');
+
+    eventlist.forEach(event => { 
+        const date = event.querySelector('.bottom .time > div:first-of-type p').innerHTML;
+        const quadter = date.split(' ')[1];
+
+        const target = event.querySelector('.event_content_cards_mark')
+        target.innerHTML = quadter
+    });
+}
