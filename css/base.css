@@ -349,6 +349,37 @@ hr {
     }
 }
 
+@keyframes slide {
+
+    0%,
+    40% {
+        transform: translateX(0);
+    }
+
+    50%,
+    90% {
+        transform: translateX(calc(-100% - var(--spacing-xs)));
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes dotSync {
+
+    0%,
+    40% {
+        background-color: var(--color-text-muted);
+    }
+
+    50%,
+    100% {
+        background-color: var(--color-primary);
+    }
+}
+
+
 
 /* +++++++++++++++ EFFECTS ++++++++++++++ */
 /* --- Spotlight Effect --- */
