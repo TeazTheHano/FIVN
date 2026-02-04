@@ -62,11 +62,32 @@ function headerScroll() {
 function eventQuarterText() {
     const eventlist = document.querySelectorAll('#Event_content_cards .card');
 
-    eventlist.forEach(event => { 
+    eventlist.forEach(event => {
         const date = event.querySelector('.bottom .time > div:first-of-type p').innerHTML;
         const quadter = date.split(' ')[1];
 
         const target = event.querySelector('.event_content_cards_mark')
         target.innerHTML = quadter
     });
+}
+
+function sliderControl(listElementQuery, childElement, nextBtnQuery, prevBtnQuery) {
+    const slider = document.querySelector(listElementQuery)
+    const nextBtn = document.querySelector(nextBtnQuery)
+    const prevBtn = document.querySelector(prevBtnQuery)
+    const itemWidth = document.querySelector(childElement).offsetWidth
+    const sliderGap = getComputedStyle(slider).gap
+
+    console.log(slider, nextBtn, prevBtn, itemWidth);
+    
+
+    if (slider && nextBtn && prevBtn && itemWidth && sliderGap) {
+        nextBtn.addEventListener('click', () => {
+            slider.scrollBy({left: itemWidth + parseFloat(sliderGap), behavior: 'smooth'})
+        })
+        prevBtn.addEventListener('click', () => {
+            slider.scrollBy({left: -(itemWidth + parseFloat(sliderGap)), behavior: 'smooth'})
+        })
+        
+    }
 }

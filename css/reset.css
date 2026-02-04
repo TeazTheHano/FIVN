@@ -44,7 +44,7 @@ h3 {
 }
 
 p {
-    font-family: var(--font-body);
+    /* font-family: var(--font-body); */
     font-size: var(--text-base);
     line-height: var(--lh-base);
     color: var(--color-p-dark);
@@ -56,11 +56,35 @@ button,
 .btn {
     font-family: var(--font-body);
     font-size: var(--text-btn);
+    line-height: var(--lineheight-btn);
     font-weight: var(--weight-medium);
     padding: 0.75rem 1.5rem;
     border-radius: 0.5rem;
     cursor: pointer;
     transition: all 0.3s ease;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    box-shadow: var(--shadow-primary);
+}
+
+.btn-2 {
+    font-family: var(--font-body);
+    font-size: var(--text-btn);
+    line-height: var(--lineheight-btn);
+    font-weight: var(--weight-semibold);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-round);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: fit-content;
 
     box-shadow: var(--shadow-primary);
 }
@@ -74,6 +98,21 @@ button,
 .btn-primary:hover {
     background-color: var(--color-primary-hover);
     transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: var(--color-bg-light);
+    color: var(--color-secondary);
+    border: 1px solid var(--color-text-muted-2);
+    font-size: var(--text-xxs);
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+    font-weight: var(--weight-bold);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
 }
 
 /* Highlight */

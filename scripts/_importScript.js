@@ -61,6 +61,7 @@ const initFind = () => {
         loadHtmlFromFile('#hero-section_placeholder', 'components/hero.html', trackMousePosition, '#hero');
         trackMousePosition('#Programme')
         eventQuarterText();
+        sliderControl('#Course_content_cards', '#Course_content_cards .card', '#Course_content_cate_list .slider-controller-next', '#Course_content_cate_list .slider-controller-prev');
     }, 100);
 }
 initFind();

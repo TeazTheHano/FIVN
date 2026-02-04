@@ -1476,7 +1476,7 @@
       id="Course_content_cate_legal"
     />
 
-    <div id="Course_content" class="d-column-h-center">
+    <div id="Course_content" class="d-column maxWidth1300">
       <div class="d-column-h-center gap-xs">
         <p class="tag" binding-name="Đào tạo chuyên sâu">Đào tạo chuyên sâu</p>
         <h3 class="title-bold" binding-name="Khóa học ngắn hạn">
@@ -1490,12 +1490,393 @@
         </p>
       </div>
 
-      <div class="d-row gap-m" id="Course_content_cate_list">
-        <label for=""></label>
+      <div class="d-row-v-center gap-m" id="Course_content_cate_list">
+        <div class="d-row gap-xxs">
+          <label
+            class="btn-2"
+            for="Course_content_cate_all"
+            binding-name="Tất cả"
+            >Tất cả</label
+          >
+          <label
+            class="btn-2"
+            for="Course_content_cate_finance"
+            binding-name="Finance"
+            >Finance</label
+          >
+          <label
+            class="btn-2"
+            for="Course_content_cate_tech"
+            binding-name="Tech"
+            >Tech</label
+          >
+          <label
+            class="btn-2"
+            for="Course_content_cate_product"
+            binding-name="Product"
+            >Product</label
+          >
+          <label
+            class="btn-2"
+            for="Course_content_cate_marketing"
+            binding-name="Marketing"
+            >Marketing</label
+          >
+          <label
+            class="btn-2"
+            for="Course_content_cate_management"
+            binding-name="Management"
+            >Management</label
+          >
+          <label
+            class="btn-2"
+            for="Course_content_cate_legal"
+            binding-name="Legal"
+            >Legal</label
+          >
+        </div>
+
+        <div class="d-row mobileHide gap-xxs slider-controller">
+          <div class="slider-controller-prev btn-2">
+            <span class="material-symbols-outlined"> chevron_left </span>
+          </div>
+          <div class="slider-controller-next btn-2">
+            <span class="material-symbols-outlined"> chevron_right </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="Course_content_cards" class="d-row-v-center gap-m">
+      <div class="card" course-cate="Course_content_cate_finance">
+        <div class="top">
+          <img
+            binding-imgpath="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop"
+            src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop"
+            alt=""
+          />
+          <div class="tag"></div>
+        </div>
+
+        <div class="bottom">
+          <h4
+            binding-name="Fundraising Masterclass: Chiến lược Gọi vốn Series A"
+          >
+            Fundraising Masterclass: Chiến lược Gọi vốn Series A
+          </h4>
+          <div class="d-column gap-xxxs">
+            <div class="d-row-v-center gap-xxxs">
+              <span class="material-symbols-outlined"> person </span>
+              <p binding-name="Shark Louis Nguyen">Shark Louis Nguyen</p>
+            </div>
+            <div class="d-row-v-center gap-xxxs">
+              <span class="material-symbols-outlined"> schedule </span>
+              <p binding-name="15 - 17/10/2024">15 - 17/10/2024</p>
+            </div>
+            <div class="d-row-v-center gap-xxxs">
+              <span class="material-symbols-outlined"> location_on </span>
+              <p binding-name="HCMC">HCMC</p>
+            </div>
+          </div>
+          <p
+            binding-subdescription="Chiến lược gọi vốn, định giá doanh nghiệp và nghệ thuật đàm phán Term Sheet với các quỹ đầu tư mạo hiểm quốc tế."
+          >
+            Chiến lược gọi vốn, định giá doanh nghiệp và nghệ thuật đàm phán
+            Term Sheet với các quỹ đầu tư mạo hiểm quốc tế.
+          </p>
+          <div class="btn btn-secondary" binding-btntext="Đăng ký ngay">
+            Đăng ký ngay
+          </div>
+        </div>
       </div>
 
-      <div id="Course_content_cards" class="d-row-v-center gap-xs">
-        <div class="card"></div>
+      <!-- del -->
+      <div class="card" course-cate="Course_content_cate_legal">
+        <div class="top">
+          <img
+            binding-imgpath="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop"
+            src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop"
+            alt=""
+          />
+          <div class="tag"></div>
+        </div>
+
+        <div class="bottom">
+          <h4
+            binding-name="Fundraising Masterclass: Chiến lược Gọi vốn Series A"
+          >
+            Fundraising Masterclass: Chiến lược Gọi vốn Series A
+          </h4>
+          <div class="d-column gap-xxxs">
+            <div class="d-row-v-center gap-xxxs">
+              <span class="material-symbols-outlined"> person </span>
+              <p binding-name="Shark Louis Nguyen">Shark Louis Nguyen</p>
+            </div>
+            <div class="d-row-v-center gap-xxxs">
+              <span class="material-symbols-outlined"> schedule </span>
+              <p binding-name="15 - 17/10/2024">15 - 17/10/2024</p>
+            </div>
+            <div class="d-row-v-center gap-xxxs">
+              <span class="material-symbols-outlined"> location_on </span>
+              <p binding-name="HCMC">HCMC</p>
+            </div>
+          </div>
+          <p
+            binding-subdescription="Chiến lược gọi vốn, định giá doanh nghiệp và nghệ thuật đàm phán Term Sheet với các quỹ đầu tư mạo hiểm quốc tế."
+          >
+            Chiến lược gọi vốn, định giá doanh nghiệp và nghệ thuật đàm phán
+            Term Sheet với các quỹ đầu tư mạo hiểm quốc tế.
+          </p>
+          <div class="btn btn-secondary" binding-btntext="Đăng ký ngay">
+            Đăng ký ngay
+          </div>
+        </div>
+      </div>
+      <div class="card" course-cate="Course_content_cate_tech">
+        <div class="top">
+          <img
+            binding-imgpath="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop"
+            src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop"
+            alt=""
+          />
+          <div class="tag"></div>
+        </div>
+
+        <div class="bottom">
+          <h4
+            binding-name="Fundraising Masterclass: Chiến lược Gọi vốn Series A"
+          >
+            Fundraising Masterclass: Chiến lược Gọi vốn Series A
+          </h4>
+          <div class="d-column gap-xxxs">
+            <div class="d-row-v-center gap-xxxs">
+              <span class="material-symbols-outlined"> person </span>
+              <p binding-name="Shark Louis Nguyen">Shark Louis Nguyen</p>
+            </div>
+            <div class="d-row-v-center gap-xxxs">
+              <span class="material-symbols-outlined"> schedule </span>
+              <p binding-name="15 - 17/10/2024">15 - 17/10/2024</p>
+            </div>
+            <div class="d-row-v-center gap-xxxs">
+              <span class="material-symbols-outlined"> location_on </span>
+              <p binding-name="HCMC">HCMC</p>
+            </div>
+          </div>
+          <p
+            binding-subdescription="Chiến lược gọi vốn, định giá doanh nghiệp và nghệ thuật đàm phán Term Sheet với các quỹ đầu tư mạo hiểm quốc tế."
+          >
+            Chiến lược gọi vốn, định giá doanh nghiệp và nghệ thuật đàm phán
+            Term Sheet với các quỹ đầu tư mạo hiểm quốc tế.
+          </p>
+          <div class="btn btn-secondary" binding-btntext="Đăng ký ngay">
+            Đăng ký ngay
+          </div>
+        </div>
+      </div>
+      <div class="card" course-cate="Course_content_cate_finance">
+        <div class="top">
+          <img
+            binding-imgpath="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop"
+            src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop"
+            alt=""
+          />
+          <div class="tag"></div>
+        </div>
+
+        <div class="bottom">
+          <h4
+            binding-name="Fundraising Masterclass: Chiến lược Gọi vốn Series A"
+          >
+            Fundraising Masterclass: Chiến lược Gọi vốn Series A
+          </h4>
+          <div class="d-column gap-xxxs">
+            <div class="d-row-v-center gap-xxxs">
+              <span class="material-symbols-outlined"> person </span>
+              <p binding-name="Shark Louis Nguyen">Shark Louis Nguyen</p>
+            </div>
+            <div class="d-row-v-center gap-xxxs">
+              <span class="material-symbols-outlined"> schedule </span>
+              <p binding-name="15 - 17/10/2024">15 - 17/10/2024</p>
+            </div>
+            <div class="d-row-v-center gap-xxxs">
+              <span class="material-symbols-outlined"> location_on </span>
+              <p binding-name="HCMC">HCMC</p>
+            </div>
+          </div>
+          <p
+            binding-subdescription="Chiến lược gọi vốn, định giá doanh nghiệp và nghệ thuật đàm phán Term Sheet với các quỹ đầu tư mạo hiểm quốc tế."
+          >
+            Chiến lược gọi vốn, định giá doanh nghiệp và nghệ thuật đàm phán
+            Term Sheet với các quỹ đầu tư mạo hiểm quốc tế.
+          </p>
+          <div class="btn btn-secondary" binding-btntext="Đăng ký ngay">
+            Đăng ký ngay
+          </div>
+        </div>
+      </div>
+      <div class="card" course-cate="Course_content_cate_marketing">
+        <div class="top">
+          <img
+            binding-imgpath="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop"
+            src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop"
+            alt=""
+          />
+          <div class="tag"></div>
+        </div>
+
+        <div class="bottom">
+          <h4
+            binding-name="Fundraising Masterclass: Chiến lược Gọi vốn Series A"
+          >
+            Fundraising Masterclass: Chiến lược Gọi vốn Series A
+          </h4>
+          <div class="d-column gap-xxxs">
+            <div class="d-row-v-center gap-xxxs">
+              <span class="material-symbols-outlined"> person </span>
+              <p binding-name="Shark Louis Nguyen">Shark Louis Nguyen</p>
+            </div>
+            <div class="d-row-v-center gap-xxxs">
+              <span class="material-symbols-outlined"> schedule </span>
+              <p binding-name="15 - 17/10/2024">15 - 17/10/2024</p>
+            </div>
+            <div class="d-row-v-center gap-xxxs">
+              <span class="material-symbols-outlined"> location_on </span>
+              <p binding-name="HCMC">HCMC</p>
+            </div>
+          </div>
+          <p
+            binding-subdescription="Chiến lược gọi vốn, định giá doanh nghiệp và nghệ thuật đàm phán Term Sheet với các quỹ đầu tư mạo hiểm quốc tế."
+          >
+            Chiến lược gọi vốn, định giá doanh nghiệp và nghệ thuật đàm phán
+            Term Sheet với các quỹ đầu tư mạo hiểm quốc tế.
+          </p>
+          <div class="btn btn-secondary" binding-btntext="Đăng ký ngay">
+            Đăng ký ngay
+          </div>
+        </div>
+      </div>
+      <div class="card" course-cate="Course_content_cate_finance">
+        <div class="top">
+          <img
+            binding-imgpath="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop"
+            src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop"
+            alt=""
+          />
+          <div class="tag"></div>
+        </div>
+
+        <div class="bottom">
+          <h4
+            binding-name="Fundraising Masterclass: Chiến lược Gọi vốn Series A"
+          >
+            Fundraising Masterclass: Chiến lược Gọi vốn Series A
+          </h4>
+          <div class="d-column gap-xxxs">
+            <div class="d-row-v-center gap-xxxs">
+              <span class="material-symbols-outlined"> person </span>
+              <p binding-name="Shark Louis Nguyen">Shark Louis Nguyen</p>
+            </div>
+            <div class="d-row-v-center gap-xxxs">
+              <span class="material-symbols-outlined"> schedule </span>
+              <p binding-name="15 - 17/10/2024">15 - 17/10/2024</p>
+            </div>
+            <div class="d-row-v-center gap-xxxs">
+              <span class="material-symbols-outlined"> location_on </span>
+              <p binding-name="HCMC">HCMC</p>
+            </div>
+          </div>
+          <p
+            binding-subdescription="Chiến lược gọi vốn, định giá doanh nghiệp và nghệ thuật đàm phán Term Sheet với các quỹ đầu tư mạo hiểm quốc tế."
+          >
+            Chiến lược gọi vốn, định giá doanh nghiệp và nghệ thuật đàm phán
+            Term Sheet với các quỹ đầu tư mạo hiểm quốc tế.
+          </p>
+          <div class="btn btn-secondary" binding-btntext="Đăng ký ngay">
+            Đăng ký ngay
+          </div>
+        </div>
+      </div>
+      <div class="card" course-cate="Course_content_cate_marketing">
+        <div class="top">
+          <img
+            binding-imgpath="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop"
+            src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop"
+            alt=""
+          />
+          <div class="tag"></div>
+        </div>
+
+        <div class="bottom">
+          <h4
+            binding-name="Fundraising Masterclass: Chiến lược Gọi vốn Series A"
+          >
+            Fundraising Masterclass: Chiến lược Gọi vốn Series A
+          </h4>
+          <div class="d-column gap-xxxs">
+            <div class="d-row-v-center gap-xxxs">
+              <span class="material-symbols-outlined"> person </span>
+              <p binding-name="Shark Louis Nguyen">Shark Louis Nguyen</p>
+            </div>
+            <div class="d-row-v-center gap-xxxs">
+              <span class="material-symbols-outlined"> schedule </span>
+              <p binding-name="15 - 17/10/2024">15 - 17/10/2024</p>
+            </div>
+            <div class="d-row-v-center gap-xxxs">
+              <span class="material-symbols-outlined"> location_on </span>
+              <p binding-name="HCMC">HCMC</p>
+            </div>
+          </div>
+          <p
+            binding-subdescription="Chiến lược gọi vốn, định giá doanh nghiệp và nghệ thuật đàm phán Term Sheet với các quỹ đầu tư mạo hiểm quốc tế."
+          >
+            Chiến lược gọi vốn, định giá doanh nghiệp và nghệ thuật đàm phán
+            Term Sheet với các quỹ đầu tư mạo hiểm quốc tế.
+          </p>
+          <div class="btn btn-secondary" binding-btntext="Đăng ký ngay">
+            Đăng ký ngay
+          </div>
+        </div>
+      </div>
+      <div class="card" course-cate="Course_content_cate_finance">
+        <div class="top">
+          <img
+            binding-imgpath="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop"
+            src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop"
+            alt=""
+          />
+          <div class="tag"></div>
+        </div>
+
+        <div class="bottom">
+          <h4
+            binding-name="Fundraising Masterclass: Chiến lược Gọi vốn Series A"
+          >
+            Fundraising Masterclass: Chiến lược Gọi vốn Series A
+          </h4>
+          <div class="d-column gap-xxxs">
+            <div class="d-row-v-center gap-xxxs">
+              <span class="material-symbols-outlined"> person </span>
+              <p binding-name="Shark Louis Nguyen">Shark Louis Nguyen</p>
+            </div>
+            <div class="d-row-v-center gap-xxxs">
+              <span class="material-symbols-outlined"> schedule </span>
+              <p binding-name="15 - 17/10/2024">15 - 17/10/2024</p>
+            </div>
+            <div class="d-row-v-center gap-xxxs">
+              <span class="material-symbols-outlined"> location_on </span>
+              <p binding-name="HCMC">HCMC</p>
+            </div>
+          </div>
+          <p
+            binding-subdescription="Chiến lược gọi vốn, định giá doanh nghiệp và nghệ thuật đàm phán Term Sheet với các quỹ đầu tư mạo hiểm quốc tế."
+          >
+            Chiến lược gọi vốn, định giá doanh nghiệp và nghệ thuật đàm phán
+            Term Sheet với các quỹ đầu tư mạo hiểm quốc tế.
+          </p>
+          <div class="btn btn-secondary" binding-btntext="Đăng ký ngay">
+            Đăng ký ngay
+          </div>
+        </div>
       </div>
     </div>
   </section>
