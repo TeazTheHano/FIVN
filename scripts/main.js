@@ -79,15 +79,22 @@ function sliderControl(listElementQuery, childElement, nextBtnQuery, prevBtnQuer
     const sliderGap = getComputedStyle(slider).gap
 
     console.log(slider, nextBtn, prevBtn, itemWidth);
-    
+
 
     if (slider && nextBtn && prevBtn && itemWidth && sliderGap) {
         nextBtn.addEventListener('click', () => {
-            slider.scrollBy({left: itemWidth + parseFloat(sliderGap), behavior: 'smooth'})
+            slider.scrollBy({ left: itemWidth + parseFloat(sliderGap), behavior: 'smooth' })
         })
         prevBtn.addEventListener('click', () => {
-            slider.scrollBy({left: -(itemWidth + parseFloat(sliderGap)), behavior: 'smooth'})
+            slider.scrollBy({ left: -(itemWidth + parseFloat(sliderGap)), behavior: 'smooth' })
         })
-        
+
     }
 }
+
+sliderControl('#Course_content_cards', '#Course_content_cards .card', '#Course_content_cate_list .slider-controller-next', '#Course_content_cate_list .slider-controller-prev');
+trackMousePosition('#Programme')
+trackMousePosition('#Contact')
+trackMousePosition('#hero')
+eventQuarterText();
+headerScroll();
