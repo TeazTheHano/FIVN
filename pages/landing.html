@@ -2181,14 +2181,16 @@
       </div>
       <div class="right d-column gap-m">
         <div>
-          <h3>Đăng ký tư vấn</h3>
-          <p>Điền thông tin để nhận Brochure và lịch phỏng vấn.</p>
+          <h3 binding-name="Đăng ký tư vấn">Đăng ký tư vấn</h3>
+          <p binding-name="Điền thông tin để nhận Brochure và lịch phỏng vấn.">
+            Điền thông tin để nhận Brochure và lịch phỏng vấn.
+          </p>
         </div>
 
         <form action="" id="Contact_form" method="post">
           <div class="d-row mobileFlexColumn">
             <div>
-              <label for="name">Họ và tên</label>
+              <label for="name" binding-name="Họ và tên">Họ và tên</label>
               <input
                 type="text"
                 name="name"
@@ -2197,7 +2199,9 @@
               />
             </div>
             <div>
-              <label for="phone">Số điện thoại</label>
+              <label for="phone" binding-name="Số điện thoại"
+                >Số điện thoại</label
+              >
               <input
                 type="text"
                 name="phone"
@@ -2209,7 +2213,9 @@
           </div>
 
           <div>
-            <label for="email">Email công việc</label>
+            <label for="email" binding-name="Email công việc"
+              >Email công việc</label
+            >
             <input
               type="email"
               name="email"
@@ -2219,7 +2225,9 @@
           </div>
 
           <div>
-            <label for="stage">Giai đoạn startup</label>
+            <label for="stage" binding-name="Giai đoạn startup"
+              >Giai đoạn startup</label
+            >
             <input
               list="Contact_form_dl"
               name="stage"
@@ -2235,7 +2243,9 @@
           </div>
 
           <div>
-            <label for="message">Lời nhắn (tùy chọn)</label>
+            <label for="message" binding-name="Lời nhắn (tùy chọn)"
+              >Lời nhắn (tùy chọn)</label
+            >
             <textarea
               name="message"
               id="message"
@@ -2248,10 +2258,90 @@
           Ứng tuyển ngay
         </button>
 
-        <p class="agreement" binding-name="Bằng việc đăng ký, bạn đồng ý với Điều khoản của chúng tôi.">
+        <p
+          class="agreement"
+          binding-name="Bằng việc đăng ký, bạn đồng ý với Điều khoản của chúng tôi."
+        >
           Bằng việc đăng ký, bạn đồng ý với <a href="">Điều khoản</a> của chúng
           tôi.
         </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="Quote">
+    <div id="Quote_content" class="maxWidth1300 d-column-h-center gap-xl">
+      <div class="d-column-h-center gap-xs">
+        <p class="tag" binding-name="Chia sẻ từ Founder">Chia sẻ từ Founder</p>
+        <h2 binding-name="Người trong cuộc nói gì?">
+          Người trong cuộc nói gì?
+        </h2>
+      </div>
+
+      <div id="Quote_content_cards" class="d-row gap-m mobileFlexColumn">
+        <div class="card relative d-column gap-s">
+          <span class="material-symbols-outlined"> format_quote </span>
+          <p
+            binding-subdescription="Chương trình đã thay đổi hoàn toàn tư duy kinh doanh của tôi. Từ một kỹ sư chỉ biết code, tôi đã học được cách xây dựng mô hình kinh doanh bền vững"
+          >
+            Chương trình đã thay đổi hoàn toàn tư duy kinh doanh của tôi. Từ một
+            kỹ sư chỉ biết code, tôi đã học được cách xây dựng mô hình kinh
+            doanh bền vững.
+          </p>
+          <div class="d-row-v-center gap-s">
+            <img
+              binding-imgpath="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop"
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=800&auto=format&fit=crop"
+              alt=""
+            />
+            <div class="d-column">
+              <p>Nguyen Van A</p>
+              <p>Founder @ EcoFarm</p>
+            </div>
+          </div>
+        </div>
+        <div class="card relative d-column gap-s">
+          <span class="material-symbols-outlined"> format_quote </span>
+          <p
+            binding-subdescription="Chương trình đã thay đổi hoàn toàn tư duy kinh doanh của tôi. Từ một kỹ sư chỉ biết code, tôi đã học được cách xây dựng mô hình kinh doanh bền vững"
+          >
+            Chương trình đã thay đổi hoàn toàn tư duy kinh doanh của tôi. Từ một
+            kỹ sư chỉ biết code, tôi đã học được cách xây dựng mô hình kinh
+            doanh bền vững.
+          </p>
+          <div class="d-row-v-center gap-s">
+            <img
+              binding-imgpath="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop"
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=800&auto=format&fit=crop"
+              alt=""
+            />
+            <div class="d-column">
+              <p>Nguyen Van A</p>
+              <p>Founder @ EcoFarm</p>
+            </div>
+          </div>
+        </div>
+        <div class="card relative d-column gap-s">
+          <span class="material-symbols-outlined"> format_quote </span>
+          <p
+            binding-subdescription="Chương trình đã thay đổi hoàn toàn tư duy kinh doanh của tôi. Từ một kỹ sư chỉ biết code, tôi đã học được cách xây dựng mô hình kinh doanh bền vững"
+          >
+            Chương trình đã thay đổi hoàn toàn tư duy kinh doanh của tôi. Từ một
+            kỹ sư chỉ biết code, tôi đã học được cách xây dựng mô hình kinh
+            doanh bền vững.
+          </p>
+          <div class="d-row-v-center gap-s">
+            <img
+              binding-imgpath="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop"
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=800&auto=format&fit=crop"
+              alt=""
+            />
+            <div class="d-column">
+              <p>Nguyen Van A</p>
+              <p>Founder @ EcoFarm</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
