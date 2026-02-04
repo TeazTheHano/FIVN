@@ -1636,6 +1636,23 @@ section {
 }
 
 footer {
-    min-height: 100px;
-    gap: var(--spacing-xl);
+    .bg {
+        z-index: -3;
+        background-color: var(--color-black);
+        width: 100%;
+        height: 100%;
+
+        .graCoat {
+            z-index: 1;
+            background-image: linear-gradient(to right, var(--color-black) 20%, rgba(0, 0, 0, 0.7) 70%, rgba(1, 31, 0, 0.5) 100%);
+            width: 100%;
+            height: 100%;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
 }
