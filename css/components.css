@@ -1,5 +1,5 @@
 /* --- Hero Section Container --- */
-.hero-section {
+#not_in_use .hero-section {
     position: relative;
     height: 100vh;
     min-height: 600px;
@@ -164,6 +164,12 @@
                     flex-direction: row;
                     align-items: center;
                     gap: var(--spacing-xxs);
+                }
+
+                p {
+                    font-size: inherit;
+                    color: inherit;
+                    font-weight: inherit;
                 }
 
                 .btn-group-primary {
@@ -336,10 +342,10 @@
 
     transition: var(--transition-fast);
     filter: drop-shadow(var(--shadow-m));
+}
 
-    &:hover {
-        background-color: var(--color-secondary);
-        color: var(--color-white);
-        border: 1px solid var(--color-secondary);
-    }
+.CTA-button:hover {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    border: 1px solid var(--color-secondary);
 }

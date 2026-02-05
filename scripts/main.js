@@ -75,7 +75,7 @@ function sliderControl(listElementQuery, childElement, nextBtnQuery, prevBtnQuer
     const slider = document.querySelector(listElementQuery)
     const nextBtn = document.querySelector(nextBtnQuery)
     const prevBtn = document.querySelector(prevBtnQuery)
-    const itemWidth = document.querySelector(childElement).offsetWidth
+    const itemWidth = document.querySelector(childElement)
     const sliderGap = getComputedStyle(slider).gap
 
     console.log(slider, nextBtn, prevBtn, itemWidth);
@@ -83,10 +83,10 @@ function sliderControl(listElementQuery, childElement, nextBtnQuery, prevBtnQuer
 
     if (slider && nextBtn && prevBtn && itemWidth && sliderGap) {
         nextBtn.addEventListener('click', () => {
-            slider.scrollBy({ left: itemWidth + parseFloat(sliderGap), behavior: 'smooth' })
+            slider.scrollBy({ left: itemWidth.offsetWidth + parseFloat(sliderGap), behavior: 'smooth' })
         })
         prevBtn.addEventListener('click', () => {
-            slider.scrollBy({ left: -(itemWidth + parseFloat(sliderGap)), behavior: 'smooth' })
+            slider.scrollBy({ left: -(itemWidth.offsetWidth + parseFloat(sliderGap)), behavior: 'smooth' })
         })
 
     }

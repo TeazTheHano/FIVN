@@ -1,188 +1,549 @@
+<style>
+  #hero {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: var(--color-dark-contrast);
+  }
+
+  #hero #slide1:checked ~ .bg-slides .bg-slide:nth-child(1),
+  #hero #slide2:checked ~ .bg-slides .bg-slide:nth-child(2),
+  #hero #slide3:checked ~ .bg-slides .bg-slide:nth-child(3) {
+    opacity: 1;
+  }
+
+  #hero .bg-slides {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  #hero .bg-slides .bg-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity var(--transition-slow);
+    transform: scale(1.05);
+  }
+
+  #hero .bg-slides .bg-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Overlays - Carbon & Gradient */
+  #hero .bg-slides .overlay-carbon {
+    position: absolute;
+    inset: 0;
+    background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
+    opacity: 0.2;
+    mix-blend-mode: overlay;
+  }
+
+  #hero .bg-slides .overlay-gradient {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.95),
+        rgba(0, 0, 0, 0.7),
+        transparent
+      ),
+      linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.8),
+        transparent,
+        rgba(0, 0, 0, 0.5)
+      );
+  }
+
+  #hero .circuit-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    pointer-events: none;
+    opacity: 0.6;
+
+    @keyframes float {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+  }
+
+  #hero .circuit-overlay .animate-float {
+    animation: float 8s infinite ease-in-out;
+  }
+
+  #hero .content-container {
+    position: relative;
+    z-index: 20;
+
+    margin: 0 auto;
+    padding: 0 var(--spacing-m);
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  #hero .content-container .hero-content {
+    grid-area: 1 / 1;
+    opacity: 0;
+    transform: translateY(30px);
+    visibility: hidden;
+    transition: all 0.7s ease-out;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-m);
+  }
+
+  #hero .content-container .hero-content .system-tag {
+    font-family: var(--font-mono);
+    color: var(--color-primary);
+    font-size: var(--text-xxs);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    gap: var(--spacing-xs);
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  #hero .content-container .hero-content .system-tag .dot {
+    width: 8px;
+    height: 8px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  #hero .content-container .hero-content .system-tag::after {
+    content: "";
+    display: inline-block;
+    width: 3rem;
+    height: 0.5px;
+    background-color: var(--color-primary);
+    transform: translateY(-50%);
+    vertical-align: middle;
+  }
+
+  #hero .content-container .hero-content h1 {
+    line-height: 1.1;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    color: var(--color-white);
+  }
+
+  #hero .content-container .hero-content .description {
+    border-left: 4px solid var(--color-primary);
+    padding-left: 24px;
+    color: var(--color-text-muted);
+  }
+
+  #hero .content-container .hero-content .btn-group {
+    display: flex;
+    gap: 20px;
+  }
+
+  #hero .content-container .hero-content .btn-group button {
+    border-radius: 0;
+    color: var(--color-white);
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: var(--text-xxs);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-xxs);
+  }
+
+  #hero .content-container .hero-content .btn-group p {
+    font-size: inherit;
+    color: inherit;
+    font-weight: inherit;
+  }
+
+  #hero .content-container .hero-content .btn-group .btn-group-primary {
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 90% 100%, 0 100%);
+    background-color: var(--color-primary);
+    border: none;
+
+    .material-symbols-outlined {
+      font-variation-settings:
+        "FILL" 0,
+        "wght" 400,
+        "GRAD" 0,
+        "opsz" 16;
+    }
+  }
+
+  #hero .content-container .hero-content .btn-group .btn-group-secondary {
+    background-color: transparent;
+    border: 1px solid var(--color-white);
+
+    .material-symbols-outlined {
+      font-variation-settings:
+        "FILL" 1,
+        "wght" 400,
+        "GRAD" 0,
+        "opsz" 16;
+    }
+  }
+
+  #hero .side-nav {
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    z-index: 30;
+  }
+
+  #hero .side-nav .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+    opacity: 0.4;
+    transition: 0.3s;
+  }
+
+  #hero .side-nav .nav-item span {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--color-text-muted);
+  }
+
+  #hero .side-nav .nav-item .line {
+    width: 48px;
+    height: 2px;
+    background: var(--color-text-muted);
+    position: relative;
+  }
+
+  #hero .side-nav .nav-item .line::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0;
+    background: var(--color-primary);
+    transition: 0.3s;
+  }
+
+  #hero .side-nav .nav-item:hover {
+    opacity: 0.7;
+  }
+
+  #hero #slide1:checked ~ .content-container #content1,
+  #hero #slide2:checked ~ .content-container #content2,
+  #hero #slide3:checked ~ .content-container #content3 {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+  }
+
+  /* --- Navigation Control Logic --- */
+  #hero #slide1:checked ~ .content-container .side-nav label[for="slide1"],
+  #hero #slide2:checked ~ .content-container .side-nav label[for="slide2"],
+  #hero #slide3:checked ~ .content-container .side-nav label[for="slide3"] {
+    opacity: 1;
+  }
+
+  /* --- Navigation Control Animation --- */
+  #hero
+    #slide1:checked
+    ~ .content-container
+    .side-nav
+    label[for="slide1"]
+    .line::after,
+  #hero
+    #slide2:checked
+    ~ .content-container
+    .side-nav
+    label[for="slide2"]
+    .line::after,
+  #hero
+    #slide3:checked
+    ~ .content-container
+    .side-nav
+    label[for="slide3"]
+    .line::after {
+    width: 100%;
+  }
+
+  #hero .bottom-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 40;
+  }
+  #hero .bottom-progress .progress-fill {
+    height: 100%;
+    background: var(--color-primary);
+    width: 0%;
+  }
+
+  /* Simple auto-animation for bar (visual only) */
+  @keyframes progress {
+    from {
+      width: 0;
+    }
+
+    to {
+      width: 100%;
+    }
+  }
+
+  #hero .bottom-progress .animate-bar {
+    animation: progress 5s linear infinite;
+  }
+
+  #hero .tech-coords {
+    position: absolute;
+    bottom: 30px;
+    right: 40px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.4);
+    text-align: right;
+    z-index: 40;
+  }
+</style>
+
 <section class="hero-section mouse-parallax" id="hero">
-    <!-- Logic Radio -->
-    <input type="radio" name="hero" id="slide1" checked>
-    <input type="radio" name="hero" id="slide2">
-    <input type="radio" name="hero" id="slide3">
+  <!-- Logic Radio -->
+  <input hidden type="radio" name="hero" id="slide1" checked="" />
+  <input hidden type="radio" name="hero" id="slide2" />
+  <input hidden type="radio" name="hero" id="slide3" />
 
-    <!-- 1. Slider Backgrounds -->
-    <div class="bg-slides">
-        <div class="bg-slide">
-            <img 
-            binding-imgpath="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop"
-            src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop"
-                alt="Tech 1">
-            <div class="overlay-carbon"></div>
-            <div class="overlay-gradient"></div>
-        </div>
-        <div class="bg-slide">
-            <img 
-            binding-imgpath="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=80"
-            src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=80"
-                alt="Tech 2">
-            <div class="overlay-carbon"></div>
-            <div class="overlay-gradient"></div>
-        </div>
-        <div class="bg-slide">
-            <img 
-            binding-imgpath="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1920&q=80"
-            src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1920&q=80"
-                alt="Tech 3">
-            <div class="overlay-carbon"></div>
-            <div class="overlay-gradient"></div>
-        </div>
+  <!-- 1. Slider Backgrounds -->
+  <div class="bg-slides">
+    <div class="bg-slide">
+      <img
+        binding-imgpath="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
+        src="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
+        alt="Tech 1"
+      />
+      <div class="overlay-carbon"></div>
+      <div class="overlay-gradient"></div>
+    </div>
+    <div class="bg-slide">
+      <img
+        binding-imgpath="https://images.unsplash.com/photo-1518770660439-4636190af475"
+        src="https://images.unsplash.com/photo-1518770660439-4636190af475"
+        alt="Tech 2"
+      />
+      <div class="overlay-carbon"></div>
+      <div class="overlay-gradient"></div>
+    </div>
+    <div class="bg-slide">
+      <img
+        binding-imgpath="https://images.unsplash.com/photo-1504384308090-c894fdcc538d"
+        src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d"
+        alt="Tech 3"
+      />
+      <div class="overlay-carbon"></div>
+      <div class="overlay-gradient"></div>
+    </div>
+  </div>
+
+  <!-- 2. Spotlight -->
+  <div class="spotlight"></div>
+
+  <!-- 3. Circuit Overlay (SVG) -->
+  <div class="circuit-overlay">
+    <svg
+      width="100%"
+      height="100%"
+      viewBox="0 0 100 100"
+      preserveAspectRatio="none"
+    >
+      <defs>
+        <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#7BC440" stop-opacity="0.8"></stop>
+          <stop offset="100%" stop-color="#216320" stop-opacity="0.2"></stop>
+        </linearGradient>
+      </defs>
+      <g class="animate-float">
+        <path
+          d="M5,10 L8,8 L11,10 L11,14 L8,16 L5,14 Z"
+          fill="none"
+          stroke="#7BC440"
+          strokewidth="0.2"
+        ></path>
+        <circle cx="8" cy="12" r="0.5" fill="#7BC440"></circle>
+        <path
+          d="M15,20 L18,18 L21,20 L21,24 L18,26 L15,24 Z"
+          fill="none"
+          stroke="#7BC440"
+          strokewidth="0.2"
+          opacity="0.7"
+        ></path>
+        <circle cx="18" cy="22" r="0.5" fill="#7BC440"></circle>
+        <path
+          d="M8,16 L8,18 L12,22 L15,22"
+          fill="none"
+          stroke="url(#circuit-gradient)"
+          strokewidth="0.15"
+        ></path>
+        <path
+          d="M11,12 L15,12 L18,15 L18,18"
+          fill="none"
+          stroke="url(#circuit-gradient)"
+          strokewidth="0.15"
+        ></path>
+        <path
+          d="M5,12 L2,12"
+          fill="none"
+          stroke="url(#circuit-gradient)"
+          strokewidth="0.15"
+        ></path>
+        <circle
+          cx="12"
+          cy="22"
+          r="0.3"
+          fill="#fff"
+          classname="animate-pulse"
+        ></circle>
+      </g>
+
+      <circle r="0.3" fill="#fff">
+        <animateMotion
+          dur="5s"
+          repeatCount="indefinite"
+          path="M11,12 L20,12 L25,20"
+        ></animateMotion>
+      </circle>
+    </svg>
+  </div>
+
+  <!-- 4. Content Container -->
+  <div class="content-container maxWidth1300">
+    <div class="hero-content" id="content1">
+      <div class="system-tag">
+        <div class="dot"></div>
+        <span binding-name="SYSTEM: GLOBAL NETWORK"
+          >SYSTEM: GLOBAL NETWORK</span
+        >
+      </div>
+      <h1 binding-name="XÂY DỰNG TƯƠNG LAI SỐ">XÂY DỰNG TƯƠNG LAI SỐ</h1>
+      <p
+        class="description"
+        binding-subdescription="        Kết nối với mạng lưới tăng tốc khởi nghiệp lớn nhất thế giới.      "
+      >
+        Kết nối với mạng lưới tăng tốc khởi nghiệp lớn nhất thế giới.
+      </p>
+      <div class="btn-group mobileFlexColumn">
+        <button
+          class="btn-group-primary"
+          binding-btntext="          Đăng ký ngay          "
+        >
+          Đăng ký ngay
+        </button>
+        <button class="btn-group-secondary">
+          <span class="material-symbols-outlined"> play_arrow </span>
+          <p binding-btntext="Xem Video giới thiệu">Xem Video giới thiệu</p>
+        </button>
+      </div>
     </div>
 
-    <!-- 2. Spotlight -->
-    <div class="spotlight"></div>
-
-    <!-- 3. Circuit Overlay (SVG) -->
-    <div class="circuit-overlay">
-        <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <defs>
-                <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#7BC440" stop-opacity="0.8" />
-                    <stop offset="100%" stop-color="#216320" stop-opacity="0.2" />
-                </linearGradient>
-            </defs>
-            <g class="animate-float">
-                <path d="M5,10 L8,8 L11,10 L11,14 L8,16 L5,14 Z" fill="none" stroke="#7BC440" strokeWidth="0.2" />
-                <circle cx="8" cy="12" r="0.5" fill="#7BC440" />
-                <path d="M15,20 L18,18 L21,20 L21,24 L18,26 L15,24 Z" fill="none" stroke="#7BC440" strokeWidth="0.2"
-                    opacity="0.7" />
-                <circle cx="18" cy="22" r="0.5" fill="#7BC440" />
-                <path d="M8,16 L8,18 L12,22 L15,22" fill="none" stroke="url(#circuit-gradient)" strokeWidth="0.15" />
-                <path d="M11,12 L15,12 L18,15 L18,18" fill="none" stroke="url(#circuit-gradient)" strokeWidth="0.15" />
-                <path d="M5,12 L2,12" fill="none" stroke="url(#circuit-gradient)" strokeWidth="0.15" />
-                <circle cx="12" cy="22" r="0.3" fill="#fff" className="animate-pulse" />
-            </g>
-
-            <circle r="0.3" fill="#fff">
-                <animateMotion dur="5s" repeatCount="indefinite" path="M11,12 L20,12 L25,20" />
-            </circle>
-        </svg>
+    <div class="hero-content" id="content2">
+      <div class="system-tag">
+        <div class="dot"></div>
+        <span binding-name="SYSTEM: SILICON VALLEY DNA"
+          >SYSTEM: SILICON VALLEY DNA</span
+        >
+      </div>
+      <h1 binding-name="CHUẨN HÓA QUY TRÌNH">CHUẨN HÓA QUY TRÌNH</h1>
+      <p
+        class="description"
+        binding-subdescription="        Giáo trình Hard-core từ Thung lũng Silicon ngay tại Việt Nam.      "
+      >
+        Giáo trình Hard-core từ Thung lũng Silicon ngay tại Việt Nam.
+      </p>
+      <div class="btn-group mobileFlexColumn">
+        <button
+          class="btn-group-primary"
+          binding-btntext="          Đăng ký ngay          "
+        >
+          Đăng ký ngay
+        </button>
+        <button class="btn-group-secondary">
+          <span class="material-symbols-outlined"> play_arrow </span>
+          <p binding-btntext="            "></p>
+        </button>
+      </div>
     </div>
 
-    <!-- 4. Content Container -->
-    <div class="content-container maxWidth1300">
-        <div class="hero-content" id="content1">
-            <div class="system-tag"
-                binding-name=" SYSTEM: GLOBAL NETWORK"
-            >
-                <div class="dot"></div> SYSTEM: GLOBAL NETWORK
-            </div>
-            <h1
-                binding-name="XÂY DỰNG TƯƠNG LAI SỐ"
-                >XÂY DỰNG TƯƠNG LAI SỐ</h1>
-            <p class="description"
-                binding-subdescription="Kết nối với mạng lưới tăng tốc khởi nghiệp lớn nhất thế giới."
-                >Kết nối với mạng lưới tăng tốc khởi nghiệp lớn nhất thế giới.</p>
-            <div class="btn-group mobileFlexColumn">
-                <button class="btn-group-primary"
-                    binding-btntext="Đăng ký ngay">
-                    Đăng ký ngay
-                    <span class="material-symbols-outlined">
-                        arrow_forward
-                    </span>
-                </button>
-                <button class="btn-group-secondary"
-                    binding-btntext="Xem Video giới thiệu"
-                >
-                    <span class="material-symbols-outlined">
-                        play_arrow
-                    </span>
-                    Xem Video giới thiệu
-                </button>
-            </div>
-        </div>
-
-        <div class="hero-content" id="content2">
-            <div class="system-tag"
-                binding-name=" SYSTEM: SILICON VALLEY DNA"
-            >
-                <div class="dot"></div> SYSTEM: SILICON VALLEY DNA
-            </div>
-            <h1
-                binding-name="CHUẨN HÓA QUY TRÌNH"
-                >CHUẨN HÓA QUY TRÌNH</h1>
-            <p class="description"
-                binding-subdescription="Giáo trình Hard-core từ Thung lũng Silicon ngay tại Việt Nam."
-                >Giáo trình Hard-core từ Thung lũng Silicon ngay tại Việt Nam.</p>
-            <div class="btn-group mobileFlexColumn">
-                <button class="btn-group-primary"
-                    binding-btntext="Đăng ký ngay">
-                    Đăng ký ngay
-                    <span class="material-symbols-outlined">
-                        arrow_forward
-                    </span>
-                </button>
-                <button class="btn-group-secondary"
-                    binding-btntext="Xem Video giới thiệu"
-                >
-                    <span class="material-symbols-outlined">
-                        play_arrow
-                    </span>
-                    Xem Video giới thiệu
-                </button>
-            </div>
-        </div>
-
-        <div class="hero-content" id="content3">
-            <div class="system-tag"
-                binding-name=" SYSTEM: VENTURE CAPITAL"
-            >
-                <div class="dot"></div> SYSTEM: VENTURE CAPITAL
-            </div>
-            <h1
-                binding-name="TIẾP CẬN VỐN ĐẦU TƯ"
-                >TIẾP CẬN VỐN ĐẦU TƯ</h1>
-            <p class="description"
-                binding-subdescription="Cơ hội gọi vốn từ mạng lưới thiên thần và quỹ đầu tư đối tác."
-                >Cơ hội gọi vốn từ mạng lưới thiên thần và quỹ đầu tư đối tác.</p>
-            <div class="btn-group mobileFlexColumn">
-                <button class="btn-group-primary"
-                    binding-btntext="Đăng ký ngay">
-                    Đăng ký ngay
-                    <span class="material-symbols-outlined">
-                        arrow_forward
-                    </span>
-                </button>
-                <button class="btn-group-secondary"
-                    binding-btntext="Xem Video giới thiệu"
-                >
-                    <span class="material-symbols-outlined">
-                        play_arrow
-                    </span>
-                    Xem Video giới thiệu
-                </button>
-            </div>
-        </div>
-
-
-        <!-- 5. Navigation Side -->
-        <div class="side-nav mobileHide">
-            <label for="slide1" class="nav-item">
-                <span>01</span>
-                <div class="line"></div>
-            </label>
-            <label for="slide2" class="nav-item">
-                <span>02</span>
-                <div class="line"></div>
-            </label>
-            <label for="slide3" class="nav-item">
-                <span>03</span>
-                <div class="line"></div>
-            </label>
-        </div>
+    <div class="hero-content" id="content3">
+      <div class="system-tag">
+        <div class="dot"></div>
+        <span binding-name="          SYSTEM: VENTURE CAPITAL        ">
+          SYSTEM: VENTURE CAPITAL
+        </span>
+      </div>
+      <h1 binding-name="TIẾP CẬN VỐN ĐẦU TƯ">TIẾP CẬN VỐN ĐẦU TƯ</h1>
+      <p
+        class="description"
+        binding-subdescription="        Cơ hội gọi vốn từ mạng lưới thiên thần và quỹ đầu tư đối tác.      "
+      >
+        Cơ hội gọi vốn từ mạng lưới thiên thần và quỹ đầu tư đối tác.
+      </p>
+      <div class="btn-group mobileFlexColumn">
+        <button
+          class="btn-group-primary"
+          binding-btntext="Xem Video giới thiệu"
+        >
+          Xem Video giới thiệu
+        </button>
+        <button class="btn-group-secondary">
+          <span class="material-symbols-outlined"> play_arrow </span>
+          <p binding-btntext="          Đăng ký ngay          ">Đăng ký ngay</p>
+        </button>
+      </div>
     </div>
 
+    <!-- 5. Navigation Side -->
+    <div class="side-nav mobileHide">
+      <label for="slide1" class="nav-item">
+        <span>01</span>
+        <div class="line"></div>
+      </label>
+      <label for="slide2" class="nav-item">
+        <span>02</span>
+        <div class="line"></div>
+      </label>
+      <label for="slide3" class="nav-item">
+        <span>03</span>
+        <div class="line"></div>
+      </label>
+    </div>
+  </div>
 
-    <!-- 6. Coords & Progress -->
-    <div class="tech-coords">
-        <div>COORDS: 10.7626° N, 106.6602° E</div>
-        <div>STATUS: OPERATIONAL</div>
-        <div class="tech-coords-value"></div>
-    </div>
-    <div class="bottom-progress">
-        <div class="progress-fill animate-bar"></div>
-    </div>
+  <!-- 6. Coords & Progress -->
+  <div class="tech-coords">
+    <div>COORDS: 10.7626° N, 106.6602° E</div>
+    <div>STATUS: OPERATIONAL</div>
+    <div class="tech-coords-value"></div>
+  </div>
+  <div class="bottom-progress">
+    <div class="progress-fill animate-bar"></div>
+  </div>
 </section>

@@ -1,46 +1,50 @@
 @media (max-width: 992px) {
     #CoreValue {
         #CoreValue_content h2 {
-            margin-top: auto;
+            margin-top: auto !important;
         }
 
         .bg svg {
-            display: none;
+            display: none !important;
         }
     }
 }
 
 @media (max-width: 768px) {
     .mobileHide {
-        display: none;
+        display: none !important;
+    }
+
+    #menu-toggle:checked~#hamburger-menu {
+        display: flex !important;
     }
 
     .mobileShow {
-        display: block;
+        display: block !important;
     }
 
     .mobileFlexWrap {
-        flex-wrap: wrap;
+        flex-wrap: wrap !important;
     }
 
     .mobileFlexColumn {
-        display: flex;
-        flex-direction: column;
+        display: flex !important;
+        flex-direction: column !important;
     }
 
     h1 {
-        font-size: 2.5rem;
+        font-size: 2.5rem !important;
     }
 
-   
+
 
     #Event_content {
         .card {
-            direction: ltr;
-            grid-template-columns: auto 1fr;
+            direction: ltr !important;
+            grid-template-columns: auto 1fr !important;
 
             .event_content_cards_mark {
-                display: none;
+                display: none !important;
             }
         }
     }

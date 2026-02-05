@@ -8,7 +8,7 @@ header,
     z-index: 9999;
 }
 
-header {
+div[scrolled] {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -101,7 +101,7 @@ header {
     }
 }
 
-header.scrolled {
+div[scrolled] .scrolled {
     background-color: rgba(255, 255, 255, 0.9);
     box-shadow: var(--shadow-m);
     backdrop-filter: blur(10px);
@@ -109,6 +109,12 @@ header.scrolled {
 
     a {
         padding: var(--spacing-s) 0;
+    }
+
+    span,
+    a,
+    #hamburger-menu-icon {
+        color: var(--color-black);
     }
 
     #logo a {

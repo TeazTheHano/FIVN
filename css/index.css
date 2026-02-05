@@ -10,10 +10,10 @@
 @import "base.css" layer(base);
 
 /* LAYOUT */
-@import "layout.css" layer(layout);
+/* @import "layout.css" layer(layout); */
 
 /* COMPONENT */
-@import "components.css" layer(components);
+/* @import "components.css" layer(components); */
 
 /* RESPONSIVE */
 @import "responsive.css" layer(responsive);

@@ -1,3 +1,85 @@
+<style>
+  footer .bg {
+    z-index: -3;
+    background-color: var(--color-black);
+    width: 100%;
+    height: 100%;
+  }
+
+  footer .bg .graCoat {
+    z-index: 1;
+    background-image: linear-gradient(
+      to right,
+      var(--color-black) 10%,
+      rgba(0, 0, 0, 0.9) 80%,
+      rgba(1, 31, 0, 0.5) 100%
+    );
+    width: 100%;
+    height: 100%;
+  }
+
+  footer .bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ================= Footer content ================= */
+
+  footer .maxWidth1300 {
+    padding: var(--spacing-l);
+    gap: var(--spacing-m);
+  }
+
+  footer .maxWidth1300 img {
+    height: var(--spacing-xxxl);
+    object-fit: contain;
+    float: left;
+  }
+
+  footer .maxWidth1300 p {
+    font-size: var(--text-xxs);
+    color: var(--color-p-light);
+    text-align: justify;
+  }
+
+  /* ---------- Top ---------- */
+
+  footer .maxWidth1300 .top {
+    gap: var(--spacing-m);
+  }
+
+  footer .maxWidth1300 .top div {
+    flex: 1;
+    gap: var(--spacing-m);
+  }
+
+  footer .maxWidth1300 .top div > p:first-child {
+    font-weight: var(--weight-bold);
+    font-size: var(--text-s);
+  }
+
+  footer .maxWidth1300 .top div span {
+    color: var(--color-primary);
+    font-size: var(--spacing-m) !important;
+  }
+
+  footer .maxWidth1300 .top div > div {
+    gap: var(--spacing-xs);
+  }
+
+  footer .maxWidth1300 .top > div:first-child h3:first-child {
+    color: var(--color-primary);
+  }
+
+  /* ---------- Bottom ---------- */
+
+  footer .maxWidth1300 .bottom {
+    justify-content: space-between;
+    width: 100%;
+  }
+</style>
+
 <footer class="relative">
   <div class="bg absolute">
     <div class="graCoat absolute"></div>
@@ -10,18 +92,22 @@
   <div class="maxWidth1300 d-column">
     <div class="top d-row mobileFlexColumn">
       <div class="d-column">
-        <h3>F.I.VN</h3>
+        <img
+          binding-imgpath="https://static.izzi.asia/templates/FIVN/svg/Logo%20FIVN-01.svg"
+          src="https://static.izzi.asia/templates/FIVN/svg/Logo%20FIVN-01.svg"
+          alt=""
+        />
         <p
-          binding-subdescription="F.I.VN là đối tác địa phương của Founder Institute - Mạng lưới tăng tốc khởi nghiệp lớn nhất thế giới, giúp các founder xây dựng doanh nghiệp công nghệ bền vững."
+          binding-subdescription="FIVN là đối tác địa phương của Founder Institute - Mạng lưới tăng tốc khởi nghiệp lớn nhất thế giới, giúp các founder xây dựng doanh nghiệp công nghệ bền vững."
         >
-          F.I.VN là đối tác địa phương của Founder Institute - Mạng lưới tăng
-          tốc khởi nghiệp lớn nhất thế giới, giúp các founder xây dựng doanh
-          nghiệp công nghệ bền vững.
+          FIVN là đối tác địa phương của Founder Institute - Mạng lưới tăng tốc
+          khởi nghiệp lớn nhất thế giới, giúp các founder xây dựng doanh nghiệp
+          công nghệ bền vững.
         </p>
       </div>
 
       <div class="d-column">
-        <p binding-name="Về F.I.VN">Về F.I.VN</p>
+        <p binding-name="Về FIVN">Về FIVN</p>
         <p binding-name="Câu chuyện thương hiệu">Câu chuyện thương hiệu</p>
         <p binding-name="Đội ngũ điều hành">Đội ngũ điều hành</p>
         <p binding-name="Mạng lưới Mentor">Mạng lưới Mentor</p>
@@ -61,11 +147,11 @@
       </div>
     </div>
     <hr />
-    <div class="bottom d-row-v-center">
+    <div class="bottom d-row-v-center mobileFlexColumn gap-s">
       <p binding-name="© 2024 Founder Institute Vietnam. All rights reserved.">
         © 2024 Founder Institute Vietnam. All rights reserved.
       </p>
-      <div class="d-row mobileFlexColumn gap-s">
+      <div class="d-row gap-s">
         <p binding-name="Chính sách bảo mật">Chính sách bảo mật</p>
         <p binding-name="Điều khoản sử dụng">Điều khoản sử dụng</p>
         <p binding-name="Cookie Policy">Cookie Policy</p>

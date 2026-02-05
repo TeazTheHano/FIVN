@@ -1,0 +1,193 @@
+<style>
+  /* ================= ABOUT US ================= */
+
+  #AboutUs #AboutUs_content {
+    gap: calc(var(--spacing-xl) * 3);
+  }
+
+  /* ---------- LEFT ---------- */
+
+  #AboutUs #AboutUs_content .left {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-m);
+    padding-bottom: var(--spacing-l);
+  }
+
+  #AboutUs #AboutUs_content .left .left-item {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-m);
+    aspect-ratio: 1;
+  }
+
+  #AboutUs #AboutUs_content .left .left-item > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-primary);
+    opacity: 0.1;
+  }
+
+  #AboutUs #AboutUs_content .left .left-item > div:hover {
+    opacity: 0;
+  }
+
+  #AboutUs #AboutUs_content .left .left-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  #AboutUs #AboutUs_content .left .left-item:nth-child(even) {
+    transform: translateY(var(--spacing-l));
+  }
+
+  /* ---------- RIGHT ---------- */
+
+  #AboutUs #AboutUs_content .right {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-m);
+  }
+
+  #AboutUs #AboutUs_content .right h2:not(.title-bold) {
+    font-weight: var(--weight-regular);
+  }
+
+  /* tag */
+
+  #AboutUs #AboutUs_content .right .tag::before {
+    content: "";
+    display: inline-block;
+    width: 2rem;
+    height: 1px;
+    background-color: var(--color-primary);
+    margin-right: 0.5rem;
+    transform: translateY(-50%);
+    vertical-align: middle;
+  }
+
+  /* d-row */
+
+  #AboutUs #AboutUs_content .right .d-row {
+    column-gap: var(--spacing-l);
+    row-gap: var(--spacing-s);
+  }
+
+  @media (max-width: 767px) {
+    #AboutUs #AboutUs_content .right .d-row {
+      gap: 0;
+      justify-content: space-between;
+    }
+  }
+
+  /* ---------- CONTENT MOBILE ---------- */
+
+  @media (max-width: 767px) {
+    #AboutUs #AboutUs_content {
+      gap: var(--spacing-xl);
+    }
+  }
+
+  /* ---------- BG ---------- */
+
+  #AboutUs .bg {
+    background-color: var(--color-text-muted);
+    opacity: 0.1;
+    width: 100%;
+    height: 300%;
+    top: 0;
+    left: 65%;
+    z-index: -1;
+    --tw-translate-x: 5rem;
+    --tw-skew-x: -12deg;
+    transform: rotate(10deg);
+  }
+</style>
+
+<section id="AboutUs" class="relative">
+  <div class="bg absolute"></div>
+  <div id="AboutUs_content" class="col2Grid mobileFlexColumn maxWidth1300">
+    <div class="left">
+      <div class="left-item">
+        <div></div>
+        <img
+          binding-imgpath="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=800&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=800&auto=format&fit=crop"
+          alt=""
+        />
+      </div>
+      <div class="left-item">
+        <div></div>
+        <img
+          binding-imgpath="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop"
+          alt=""
+        />
+      </div>
+      <div class="left-item">
+        <div></div>
+        <img
+          binding-imgpath="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop"
+          alt=""
+        />
+      </div>
+      <div class="left-item">
+        <div></div>
+        <img
+          binding-imgpath="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="tag" binding-name="Hành trình & Tầm nhìn">
+        Hành trình & Tầm nhìn
+      </div>
+      <div class="title-container">
+        <h2 binding-name="Kiến tạo hệ sinh thái">Kiến tạo hệ sinh thái</h2>
+        <h2 binding-name="Khởi nghiệp Công nghệ." class="title-bold">
+          Khởi nghiệp Công nghệ.
+        </h2>
+      </div>
+      <p
+        class="title-description text-justify"
+        binding-subdescription="Được hình thành từ khát vọng đưa trí tuệ Việt vươn tầm thế giới, Founder Institute Vietnam không chỉ là một bệ phóng startup mà còn là biểu tượng của sự chuyển mình trong nền kinh tế số. Tầm nhìn vĩ mô của chúng tôi là định hình lại bản đồ công nghệ khu vực Đông Nam Á, thông qua việc chuẩn hóa quy trình ươm tạo và kết nối dòng vốn đầu tư mạo hiểm toàn cầu vào những ý tưởng đột phá nhất."
+      >
+        Được hình thành từ khát vọng đưa trí tuệ Việt vươn tầm thế giới, Founder
+        Institute Vietnam không chỉ là một bệ phóng startup mà còn là biểu tượng
+        của sự chuyển mình trong nền kinh tế số. Tầm nhìn vĩ mô của chúng tôi là
+        định hình lại bản đồ công nghệ khu vực Đông Nam Á, thông qua việc chuẩn
+        hóa quy trình ươm tạo và kết nối dòng vốn đầu tư mạo hiểm toàn cầu vào
+        những ý tưởng đột phá nhất.
+      </p>
+      <hr />
+      <div class="d-row">
+        <div>
+          <p class="title-bold text-l" binding-name="14+">14+</p>
+          <p class="text-xxs" binding-name="Năm hình thành">Năm hình thành</p>
+        </div>
+        <div>
+          <p class="title-bold text-l" binding-name="200+">200+</p>
+          <p class="text-xxs" binding-name="Thành phố Global">
+            Thành phố Global
+          </p>
+        </div>
+        <div>
+          <p class="title-bold text-l" binding-name="$1.75B">$1.75B</p>
+          <p class="text-xxs" binding-name="Định giá Portfolio">
+            Định giá Portfolio
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

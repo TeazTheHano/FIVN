@@ -59,7 +59,16 @@ const initFind = () => {
     setTimeout(() => {
         headerScroll();
         loadHtmlFromFile('#hero-section_placeholder', 'components/hero.html', trackMousePosition, '#hero');
-        trackMousePosition('#Programme')
+        loadHtmlFromFile('#event-section_placeholder', 'components/event.html', eventQuarterText);
+        loadHtmlFromFile('#about_us-section_placeholder', 'components/about_us.html');
+        loadHtmlFromFile('#core_value-section_placeholder', 'components/core_value.html');
+        loadHtmlFromFile('#programme-section_placeholder', 'components/programme.html', trackMousePosition, '#Programme');
+        loadHtmlFromFile('#network-section_placeholder', 'components/network.html', trackMousePosition, '#Contact');
+        loadHtmlFromFile('#course-section_placeholder', 'components/course.html');
+        loadHtmlFromFile('#partner-section_placeholder', 'components/partner.html');
+        loadHtmlFromFile('#contact-section_placeholder', 'components/contact.html');
+        loadHtmlFromFile('#quote-section_placeholder', 'components/quote.html');
+        loadHtmlFromFile('#FAQ-section_placeholder', 'components/FAQ.html');
         trackMousePosition('#Contact')
         eventQuarterText();
         sliderControl('#Course_content_cards', '#Course_content_cards .card', '#Course_content_cate_list .slider-controller-next', '#Course_content_cate_list .slider-controller-prev');

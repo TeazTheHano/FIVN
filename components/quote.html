@@ -1,0 +1,129 @@
+<style>
+  /* ===== Quote ===== */
+  #Quote #Quote_content > div:first-child {
+    text-align: center;
+  }
+
+  /* ===== Cards ===== */
+  #Quote #Quote_content #Quote_content_cards .card {
+    position: relative;
+    padding: var(--spacing-m);
+    padding-top: var(--spacing-xl);
+
+    border-radius: var(--radius-l);
+    background-color: var(--color-text-muted-2);
+  }
+
+  /* icon quote */
+  #Quote #Quote_content #Quote_content_cards .card span {
+    font-size: var(--spacing-xxl) !important;
+    color: var(--color-primary);
+    position: absolute;
+    opacity: 0.2;
+    top: var(--spacing-xs);
+    left: var(--spacing-xs);
+  }
+
+  /* paragraph */
+  #Quote #Quote_content #Quote_content_cards .card p {
+    font-size: var(--text-xs);
+  }
+
+  /* quote text */
+  #Quote #Quote_content #Quote_content_cards .card > p {
+    font-style: italic;
+  }
+
+  #Quote #Quote_content #Quote_content_cards .card > p::before,
+  #Quote #Quote_content #Quote_content_cards .card > p::after {
+    content: '"';
+  }
+
+  /* author block */
+  #Quote #Quote_content #Quote_content_cards .card > div > img {
+    height: var(--spacing-xl);
+    width: var(--spacing-xl);
+    object-fit: cover;
+    border-radius: var(--radius-round);
+  }
+
+  #Quote #Quote_content #Quote_content_cards .card > div p:first-child {
+    color: var(--color-black);
+    font-weight: var(--weight-semibold);
+  }
+</style>
+
+<section id="Quote">
+  <div id="Quote_content" class="maxWidth1300 d-column-h-center gap-xl">
+    <div class="d-column-h-center gap-xs">
+      <p class="tag" binding-name="Chia sẻ từ Founder">Chia sẻ từ Founder</p>
+      <h2 binding-name="Người trong cuộc nói gì?">Người trong cuộc nói gì?</h2>
+    </div>
+
+    <div id="Quote_content_cards" class="d-row gap-m mobileFlexColumn">
+      <div class="card relative d-column gap-s">
+        <span class="material-symbols-outlined"> format_quote </span>
+        <p
+          binding-subdescription="Chương trình đã thay đổi hoàn toàn tư duy kinh doanh của tôi. Từ một kỹ sư chỉ biết code, tôi đã học được cách xây dựng mô hình kinh doanh bền vững"
+        >
+          Chương trình đã thay đổi hoàn toàn tư duy kinh doanh của tôi. Từ một
+          kỹ sư chỉ biết code, tôi đã học được cách xây dựng mô hình kinh doanh
+          bền vững.
+        </p>
+        <div class="d-row-v-center gap-s">
+          <img
+            binding-imgpath="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop"
+            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=800&auto=format&fit=crop"
+            alt=""
+          />
+          <div class="d-column">
+            <p>Nguyen Van A</p>
+            <p>Founder @ EcoFarm</p>
+          </div>
+        </div>
+      </div>
+      <div class="card relative d-column gap-s">
+        <span class="material-symbols-outlined"> format_quote </span>
+        <p
+          binding-subdescription="Chương trình đã thay đổi hoàn toàn tư duy kinh doanh của tôi. Từ một kỹ sư chỉ biết code, tôi đã học được cách xây dựng mô hình kinh doanh bền vững"
+        >
+          Chương trình đã thay đổi hoàn toàn tư duy kinh doanh của tôi. Từ một
+          kỹ sư chỉ biết code, tôi đã học được cách xây dựng mô hình kinh doanh
+          bền vững.
+        </p>
+        <div class="d-row-v-center gap-s">
+          <img
+            binding-imgpath="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop"
+            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=800&auto=format&fit=crop"
+            alt=""
+          />
+          <div class="d-column">
+            <p>Nguyen Van A</p>
+            <p>Founder @ EcoFarm</p>
+          </div>
+        </div>
+      </div>
+      <div class="card relative d-column gap-s">
+        <span class="material-symbols-outlined"> format_quote </span>
+        <p
+          binding-subdescription="Chương trình đã thay đổi hoàn toàn tư duy kinh doanh của tôi. Từ một kỹ sư chỉ biết code, tôi đã học được cách xây dựng mô hình kinh doanh bền vững"
+        >
+          Chương trình đã thay đổi hoàn toàn tư duy kinh doanh của tôi. Từ một
+          kỹ sư chỉ biết code, tôi đã học được cách xây dựng mô hình kinh doanh
+          bền vững.
+        </p>
+        <div class="d-row-v-center gap-s">
+          <img
+            binding-imgpath="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop"
+            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=800&auto=format&fit=crop"
+            alt=""
+          />
+          <div class="d-column">
+            <p>Nguyen Van A</p>
+            <p>Founder @ EcoFarm</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

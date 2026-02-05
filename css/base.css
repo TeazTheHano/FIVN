@@ -396,3 +396,16 @@ hr {
         --mouse-x 0.3s ease,
         --mouse-y 0.3s ease;
 }
+
+section {
+    margin: auto;
+    overflow: hidden;
+
+    >div[id$="_content"] {
+        padding: var(--spacing-xxxl) var(--spacing-l);
+
+        @media (max-width: 767px) {
+            padding: var(--spacing-xl) var(--spacing-m);
+        }
+    }
+}
