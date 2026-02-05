@@ -1,0 +1,179 @@
+<div
+  class="section section-padding"
+  data-bg-color="rgb(227 242 255 / 80%)"
+  id="9c7d9f31-6af1-4e0d-dff1-ab562ef5ab58"
+>
+  <div class="container">
+    <!-- Section Title Start -->
+    <div class="section-title-two text-center" data-aos="fade-up">
+      <h2 class="title main-color fz-48" binding-name="LỊCH HOẠT ĐỘNG">
+        LỊCH HOẠT ĐỘNG
+      </h2>
+    </div>
+    <!-- Section Title End -->
+    <div class="course-nav-tab">
+      <ul class="nav justify-content-center">
+        <li>
+          <a
+            class="active pr-2 pl-2"
+            data-bs-toggle="tab"
+            href="#courses"
+            binding-subdescription="Chương trình"
+            >Chương trình</a
+          >
+        </li>
+        <li>
+          <a
+            class="pr-2 pl-2"
+            data-bs-toggle="tab"
+            href="#event"
+            binding-subdescription="Sự kiện"
+            >Sự kiện</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="tab-content">
+      <div id="courses" class="tab-pane fade show active">
+        <div
+          class="row row-cols-lg-3 row-cols-md-2 row-cols-1 max-mb-n30 justify-content-center"
+        >
+          <!-- Event Start -->
+          <div
+            class="col max-mb-30"
+            repeat="event|size:3|sort:startDateTime:desc|param:type:128|includes:"
+            data-aos="fade-up"
+          >
+            <div class="event">
+              <div class="thumbnail">
+                <a
+                  href="/{{languageCode}}/eventcourse/{{friendlyUrl}}"
+                  class="image"
+                  ><img
+                    src="{{images|getthumbnailbyindex:1|getPath:?mode=crop&amp;width=370&amp;height=208}}"
+                    alt="Event Image"
+                /></a>
+                <div class="event-overlay-background"></div>
+                <div class="event-overlay-content">
+                  <a
+                    class="btn btn-md btn-light btn-hover-light theme-color"
+                    href="/{{languageCode}}/eventcourse/{{friendlyUrl}}"
+                    >Chi tiết</a
+                  >
+                </div>
+              </div>
+              <div class="info">
+                <ul class="meta">
+                  <li>
+                    <i class="far fa-calendar"></i
+                    >{{startDateTimeUtc|formatdatetime:DD}}/{{startDateTimeUtc|formatdatetime:MM}}/{{startDateTimeUtc|formatdatetime:YYYY}}
+                  </li>
+                  <li>
+                    <i class="far fa-clock"></i
+                    >{{startDateTimeUtc|formatdatetime:hh}}:{{startDateTimeUtc|formatdatetime:mm}},
+                    GMT {{startDateTimeUtc|formatdatetime:timezone}}
+                  </li>
+                </ul>
+                <h3 class="title">
+                  <a href="/{{languageCode}}/eventcourse/{{friendlyUrl}}"
+                    >{{name}}</a
+                  >
+                </h3>
+                <ul class="event-location">
+                  <li repeat="address|param:id:parent.addressIds|includes:">
+                    <i class="far fa-map-marker-alt"></i>{{name}}
+                    {{detailAddress}}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- Event End -->
+        </div>
+
+        <div class="row max-mt-40">
+          <div class="text-center col-lg-7 mx-auto">
+            <a
+              class="link link-lg primary-three"
+              binding-btnhref=""
+              href="https://viod.vn/vi-VN/eventcourses"
+              ><mark
+                ><span binding-btntext="Tất cả chương trình "
+                  >Tất cả chương trình
+                </span>
+                <i class="far fa-long-arrow-right"></i></mark
+            ></a>
+          </div>
+        </div>
+      </div>
+
+      <div id="event" class="tab-pane fade">
+        <div
+          class="row row-cols-lg-3 row-cols-md-2 row-cols-1 max-mb-n30 justify-content-center"
+        >
+          <!-- Event Start -->
+          <div
+            class="col max-mb-30 1"
+            repeat="event|size:3|sort:startDateTime:desc|param:type:1|includes:"
+            data-aos="fade-up"
+          >
+            <div class="event">
+              <div class="thumbnail">
+                <a href="/{{languageCode}}/event/{{friendlyUrl}}" class="image"
+                  ><img
+                    src="{{images|getthumbnailbyindex:1|getPath:?mode=crop&amp;width=370&amp;height=208}}"
+                    alt="Event Image"
+                /></a>
+                <div class="event-overlay-background"></div>
+                <div class="event-overlay-content">
+                  <a
+                    class="btn btn-md btn-light btn-hover-light theme-color"
+                    href="/{{languageCode}}/event/{{friendlyUrl}}"
+                    >Chi tiết</a
+                  >
+                </div>
+              </div>
+              <div class="info">
+                <ul class="meta">
+                  <li>
+                    <i class="far fa-calendar"></i
+                    >{{startDateTimeUtc|formatdatetime:DD}}/{{startDateTimeUtc|formatdatetime:MM}}/{{startDateTimeUtc|formatdatetime:YYYY}}
+                  </li>
+                  <li>
+                    <i class="far fa-clock"></i
+                    >{{startDateTimeUtc|formatdatetime:hh}}:{{startDateTimeUtc|formatdatetime:mm}},
+                    GMT {{startDateTimeUtc|formatdatetime:timezone}}
+                  </li>
+                </ul>
+                <h3 class="title">
+                  <a href="/{{languageCode}}/event/{{friendlyUrl}}">{{name}}</a>
+                </h3>
+                <ul class="event-location">
+                  <li repeat="address|param:id:parent.addressIds|includes:">
+                    <i class="far fa-map-marker-alt 1"></i>{{name}}
+                    {{detailAddress}}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- Event End -->
+        </div>
+
+        <div class="row max-mt-40">
+          <div class="text-center col-lg-7 mx-auto">
+            <a
+              class="link link-lg primary-three"
+              binding-btnhref=""
+              href="https://viod.vn/vi-vn/pages/events"
+            >
+              <mark
+                ><span binding-btntext="Tất cả sự kiện">Tất cả sự kiện</span>
+                <i class="far fa-long-arrow-right"></i></mark
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
