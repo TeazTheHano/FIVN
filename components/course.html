@@ -21,7 +21,7 @@
     width: 100%;
   }
 
-  #Course #Course_content #Course_content_cate_list div {
+  #Course #Course_content #Course_content_cate_list div:first-child {
     flex-wrap: wrap;
   }
 
@@ -275,6 +275,7 @@
 <section id="Course" class="relative">
   <!-- Logic Radio -->
   <input
+    re
     type="radio"
     name="Course_content_cate"
     hidden
@@ -287,7 +288,7 @@
     hidden
     id="Course_content_cate_finance"
   />
-  <input
+  <!-- <input
     type="radio"
     name="Course_content_cate"
     hidden
@@ -316,7 +317,7 @@
     name="Course_content_cate"
     hidden
     id="Course_content_cate_legal"
-  />
+  /> -->
 
   <div id="Course_content" class="d-column maxWidth1300">
     <div class="d-column-h-center gap-xs">
