@@ -182,36 +182,31 @@
     </div>
 
     <div id="Network_content_cards" class="mobileFlexColumn">
-      <div class="card d-column">
+      <div
+        class="card d-column"
+        repeat="article|param:categories.id:e618564c-bdf8-4399-ad7a-5118e6d9b2ba|sort:createdDate:desc|includes:"
+      >
         <div class="top d-row gap-m">
-          <img
-            binding-imgpath="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop"
-            src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop"
-            alt=""
-          />
+          <img src="https://static.izzi.asia/{{images.path}}" alt="{{name}}" />
           <div class="info d-column gap-xxs">
-            <h4 binding-name="Nguyễn Hồng Tâm">Nguyễn Hồng Tâm</h4>
-            <p class="tag" binding-name="Investment Director">
-              Investment Director
+            <h4>{{name}}</h4>
+            <p class="tag">
+              {{metaDescription}}
             </p>
             <div class="d-row-v-center gap-xxxs">
               <span class="material-symbols-outlined"> trip </span>
-              <p binding-name="VinaCapital Ventures">VinaCapital Ventures</p>
+              <p>{{metaName}}</p>
             </div>
             <div class="d-row-v-center gap-xxxs">
               <span class="material-symbols-outlined"> award_star </span>
-              <p>12+ Năm</p>
+              <p>{{metaKeyword}}</p>
             </div>
           </div>
         </div>
         <hr />
         <div class="bottom">
-          <p
-            binding-name="Quản lý danh mục đầu tư công nghệ trị giá 50 triệu USD."
-          >
-            Quản lý danh mục đầu tư công nghệ trị giá 50 triệu USD.
-          </p>
-          <a href="" binding-btnhref="">
+          <p>{{subDescription}}</p>
+          <a href="{{description}}">
             <img
               src="https://static.izzi.asia/templates/FIVN/svg/linkedin.svg"
               alt=""
