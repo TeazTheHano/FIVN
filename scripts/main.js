@@ -62,12 +62,45 @@ function headerScroll() {
 function eventQuarterText() {
     const eventlist = document.querySelectorAll('#Event_content_cards .card');
 
-    eventlist.forEach(event => {
-        const date = event.querySelector('.bottom .time > div:first-of-type p').innerHTML;
-        const quadter = date.split(' ')[1];
+    function quarterText(event, startDateTime) {
+        if (!startDateTime) return;
+
+        const data = startDateTime;
+        const quater = data.split(' ')[1];
 
         const target = event.querySelector('.event_content_cards_mark')
-        target.innerHTML = quadter
+        if (target) target.innerHTML = quater
+    }
+
+    eventlist.forEach(event => {
+        const startDateTimeUtc = event.querySelector('.bottom .time .startDateTimeUtc');
+        const endDateTimeUtc = event.querySelector('.bottom .time .endDateTimeUtc');
+        const dateP = event.querySelector('.bottom .time .card-date');
+        const timeP = event.querySelector('.bottom .time .card-time');
+        const eventSchedules = event.querySelector('.event-schedule');
+
+        if (!startDateTimeUtc || !endDateTimeUtc || !dateP || !timeP) return;
+
+        try {
+            const startDateTime = new Date(startDateTimeUtc.innerText);
+            const endDateTime = new Date(endDateTimeUtc.innerText);
+
+            const optionsDate = { year: 'numeric', month: 'short', day: 'numeric' };
+            const optionsTime = { hour: '2-digit', minute: '2-digit' };
+
+
+            let startdateText = startDateTime.toLocaleDateString('en-GB', optionsDate).toUpperCase();
+            let enddateText = endDateTime.toLocaleDateString('en-GB', optionsDate).toUpperCase();
+            let timeText = `${startDateTime.toLocaleTimeString('en-GB', optionsTime)} - ${endDateTime.toLocaleTimeString('en-GB', optionsTime)}`;
+
+            dateP.innerText = startdateText === enddateText ? startdateText : `${startdateText} - ${enddateText}`;
+            timeP.innerText = timeText;
+
+            quarterText(event, startdateText);
+
+        } catch (error) {
+            console.error(`Error in eventQuarterText: ${error}`);
+        }
     });
 }
 

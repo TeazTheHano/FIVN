@@ -7,7 +7,9 @@
 
   #Network #Network_content #Network_content_cards {
     display: grid;
-    grid-template-columns: repeat(3, minmax(200px, 400px));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 400px));
+    justify-content: center;
+    width: 100%;
     column-gap: var(--spacing-l);
     margin-top: var(--spacing-m);
     --max: 6;
@@ -36,7 +38,7 @@
 
   #Network #Network_content #Network_content_cards .card .top img {
     width: 100px;
-    aspect-ratio: 1;
+    height: 100px;
     border-radius: var(--radius-round);
     filter: saturate(0);
   }

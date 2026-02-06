@@ -37,19 +37,28 @@
   /* ---------- CHECKED STATE ---------- */
 
   #Event #all:checked ~ div label[for="all"],
-  #Event #q4_2024:checked ~ div label[for="q4_2024"],
-  #Event #q1_2025:checked ~ div label[for="q1_2025"] {
+  #Event #openning:checked ~ div label[for="openning"],
+  #Event #event:checked ~ div label[for="event"],
+  #Event #lunchup:checked ~ div label[for="lunchup"],
+  #Event #online:checked ~ div label[for="online"],
+  #Event #offline:checked ~ div label[for="offline"] {
     background-color: var(--color-secondary);
     color: var(--color-white) !important;
   }
 
-  #Event #q4_2024:checked ~ div div[event-cate],
-  #Event #q1_2025:checked ~ div div[event-cate] {
+  #Event #openning:checked ~ div div[event-cate],
+  #Event #event:checked ~ div div[event-cate],
+  #Event #lunchup:checked ~ div div[event-cate],
+  #Event #online:checked ~ div div[event-cate],
+  #Event #offline:checked ~ div div[event-cate] {
     display: none;
   }
 
-  #Event #q4_2024:checked ~ div div[event-cate="q4_2024"],
-  #Event #q1_2025:checked ~ div div[event-cate="q1_2025"] {
+  #Event #openning:checked ~ div div[event-cate="openning"],
+  #Event #event:checked ~ div div[event-cate="event"],
+  #Event #lunchup:checked ~ div div[event-cate="lunchup"],
+  #Event #online:checked ~ div div[event-cate="online"],
+  #Event #offline:checked ~ div div[event-cate="offline"] {
     display: grid;
   }
 
@@ -80,6 +89,8 @@
     justify-self: center;
     opacity: 0.1;
     flex: 1;
+    pointer-events: none;
+    user-select: none;
   }
 
   /* ---------- TIMELINE ---------- */
@@ -174,7 +185,7 @@
 
   /* ---------- STATE ---------- */
 
-  #Event #Event_content_cards .card .card-item .top div[state="0"]::after {
+  #Event #Event_content_cards .card .card-item .top div[state="ended"]::after {
     content: "Ended";
     background-color: var(--color-social-linkedin);
     padding: var(--spacing-xxxs) var(--spacing-xs);
@@ -182,7 +193,12 @@
     color: var(--color-white);
   }
 
-  #Event #Event_content_cards .card .card-item .top div[state="1"]::after {
+  #Event
+    #Event_content_cards
+    .card
+    .card-item
+    .top
+    div[state="ongoing"]::after {
     content: "Ongoing";
     display: inline-block;
     padding: 2px 8px;
@@ -191,7 +207,12 @@
     animation: breatheState1 1.2s ease-in-out infinite alternate;
   }
 
-  #Event #Event_content_cards .card .card-item .top div[state="2"]::after {
+  #Event
+    #Event_content_cards
+    .card
+    .card-item
+    .top
+    div[state="upcoming"]::after {
     content: "Upcoming";
     background-color: var(--color-primary);
     padding: var(--spacing-xxxs) var(--spacing-xs);
@@ -199,7 +220,12 @@
     color: var(--color-white);
   }
 
-  #Event #Event_content_cards .card .card-item .top div[state="3"]::after {
+  #Event
+    #Event_content_cards
+    .card
+    .card-item
+    .top
+    div[state="registration open"]::after {
     content: "Registration open";
     background-color: var(--color-secondary);
     padding: var(--spacing-xxxs) var(--spacing-xs);
@@ -207,7 +233,12 @@
     color: var(--color-white);
   }
 
-  #Event #Event_content_cards .card .card-item .top div[state="4"]::after {
+  #Event
+    #Event_content_cards
+    .card
+    .card-item
+    .top
+    div[state="scheduled"]::after {
     content: "Scheduled";
     background-color: var(--color-secondary);
     padding: var(--spacing-xxxs) var(--spacing-xs);
@@ -316,32 +347,30 @@
     <!-- Logic Radio -->
 
     <input type="radio" name="Event_content_cate" hidden id="all" checked />
-    <input type="radio" name="Event_content_cate" hidden id="q4_2024" />
-    <input type="radio" name="Event_content_cate" hidden id="q1_2025" />
+    <input type="radio" name="Event_content_cate" hidden id="openning" />
+    <input type="radio" name="Event_content_cate" hidden id="event" />
+    <input type="radio" name="Event_content_cate" hidden id="lunchup" />
+    <input type="radio" name="Event_content_cate" hidden id="online" />
+    <input type="radio" name="Event_content_cate" hidden id="offline" />
 
     <p class="tag" binding-name="Lịch trình">Lịch trình</p>
     <h3 binding-name="Sự kiện & Hoạt động">Sự kiện & Hoạt động</h3>
 
     <div class="d-row" id="Event_content_cate_selector">
       <label for="all" binding="Tất cả">Tất cả</label>
-      <label for="q4_2024" binding="Q4 2024">Q4 2024</label>
-      <label for="q1_2025" binding="Q1 2025">Q1 2025</label>
-    </div>
-    <div
-      repeat="event|param:id:a1d8bf9b-d909-4c2c-0326-54a35c390c60|size:9|includes:"
-    >
-      {{name}} - {{addresses}}
+      <label for="openning" binding="Khai giảng">Khai giảng</label>
+      <label for="event" binding="Sự kiện">Sự kiện</label>
+      <label for="lunchup" binding="Lunchup">Lunchup</label>
+      <label for="online" binding="Online">Online</label>
+      <label for="offline" binding="Offline">Offline</label>
     </div>
 
-    <div
-      id="Event_content_cards"
-      repeat="event|size:8|sort:startDateTime:desc|param:type:128|includes:"
-      data-aos="fade-up"
-    >
-      <a
-        href="/{{languageCode}}/eventcourse/{{friendlyUrl}}"
+    <div id="Event_content_cards">
+      <div
         class="card relative d-row gap-m"
-        event-cate=""
+        repeat="event|size:8|sort:startDateTime:desc|param:type:1|includes:"
+        data-aos="fade-up"
+        event-cate="{{metaName}}"
       >
         <div class="event_content_cards_mark"></div>
         <div class="rounded d-column-h-center">
@@ -353,53 +382,56 @@
 
         <div binding-btnhref="" class="card-item">
           <div class="top relative">
-            <div class="tag absolute" state="1"></div>
+            <!-- TODO: sync state with schedule -->
+            <div class="tag absolute" state=""></div>
             <img
               class="absolute"
-              binding-imgpath="https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=800&auto=format&fit=crop"
-              src="https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=800&auto=format&fit=crop"
+              src="https://static.izzi.asia/{{images.path}}"
               alt=""
             />
-            <p class="tag" binding-name="Networking">Networking</p>
-            <h4>Tech Innovation Gala</h4>
+            <p class="tag">{{metaKeyword}}</p>
+            <h4>{{name}}</h4>
           </div>
 
-          <div class="bottom">
-            <div class="time">
-              <div>
-                <span class="material-symbols-outlined"> calendar_today </span>
-                <p binding-name="15 OCT 2024">15 OCT 2024</p>
+            <div class="bottom">
+              <div class="time">
+                <p class="d-none startDateTimeUtc">{{startDateTimeUtc}}</p>
+                <p class="d-none endDateTimeUtc">{{endDateTimeUtc}}</p>
+                <div>
+                  <span class="material-symbols-outlined"> calendar_today </span>
+                  <p class="card-date"></p>
+                </div>
+                <div>
+                  <span class="material-symbols-outlined"> schedule </span>
+                  <p class="card-time"></p>
+                </div>
               </div>
+
+              <hr />
+
+              <p>{{subDescription}}</p>
               <div>
-                <span class="material-symbols-outlined"> schedule </span>
-                <p binding-name="18:00 - 21:30">18:00 - 21:30</p>
+                <span class="material-symbols-outlined"> location_on </span>
+                <p repeat="address|param:id:parent.addressIds|includes:"><p>{{name}} {{detailAddress}}</p></p>
               </div>
-            </div>
-
-            <hr />
-
-            <p
-              binding-subdescription="Sự kiện networking lớn nhất năm quy tụ 500+ founder và 50 quỹ đầu tư."
-            >
-              Sự kiện networking lớn nhất năm quy tụ 500+ founder và 50 quỹ đầu
-              tư.
-            </p>
-            <div>
-              <span class="material-symbols-outlined"> location_on </span>
-              <p binding-subdescription="Gem Center, HCMC">Gem Center, HCMC</p>
             </div>
           </div>
         </div>
-      </a>
-    </div>
+      </div>
 
-    <button
-      binding-btnhref=""
-      binding-btntext="Xem lịch trình đầy đủ"
-      class="d-row-v-center gap-xxs CTA-button"
-    >
-      Xem lịch trình đầy đủ
-      <span class="material-symbols-outlined"> arrow_right_alt </span>
-    </button>
+          <button
+            binding-btnhref=""
+            binding-btntext="Xem lịch trình đầy đủ"
+            class="d-row-v-center gap-xxs CTA-button"
+          >
+            Xem lịch trình đầy đủ
+            <span class="material-symbols-outlined"> arrow_right_alt </span>
+          </button>
+        </div>
+        </section>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
