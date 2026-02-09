@@ -1,17 +1,104 @@
-<section id="FAQ">
-  <input type="radio" name="FAQ" id="slide1" hidden checked />
-  <input type="radio" name="FAQ" id="slide2" hidden />
-  <input type="radio" name="FAQ" id="slide3" hidden />
-  <input type="radio" name="FAQ" id="slide4" hidden />
+<div>
+  <style>
+    #FAQ_content_cards {
+      max-width: 1000px;
+      width: 100%;
+    }
 
-  <div id="FAQ_content">
-    <div class="d-column-h-center">
-      <p class="tag" binding-name="Giải đáp thắc mắc">Giải đáp thắc mắc</p>
-      <h2 binding-name="Câu hỏi thường gặp">Câu hỏi thường gặp</h2>
-    </div>
+    #FAQ_content_cards .FAQ_content_card > label {
+      display: flex;
+      flex-direction: column;
+      /* gap: var(--spacing-s); */
+      border: 1px solid var(--color-text-muted-2);
+      border-radius: var(--radius-m);
+    }
 
-    <div id="FAQ_content_cards">
-      <div class="card"></div>
+    #FAQ_content_cards .FAQ_content_card > label > div:first-child {
+      justify-content: space-between;
+      cursor: pointer;
+      padding: var(--spacing-m) var(--spacing-l);
+    }
+
+    #FAQ_content_cards .FAQ_content_card > label > div h4 {
+      flex: 1;
+    }
+
+    #FAQ_content_cards .FAQ_content_card > label > div > div .absolute {
+      right: 0;
+      top: 0;
+      opacity: 0;
+    }
+
+    #FAQ_content_cards .FAQ_content_card_answer {
+      max-height: 0;
+      padding: 0 var(--spacing-l);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      color: var(--color-p-dark);
+      background-color: var(--color-bg-mint);
+    }
+
+    #FAQ_content_cards
+      .FAQ_content_card
+      input[type="radio"]:checked
+      ~ label
+      .FAQ_content_card_answer {
+      padding: var(--spacing-m) var(--spacing-l);
+      max-height: unset;
+    }
+
+    #FAQ_content_cards
+      .FAQ_content_card
+      input[type="radio"]:checked
+      ~ label
+      > div
+      > div
+      .absolute {
+      opacity: 1;
+      transition: transform 0.3s ease;
+      transform: rotate(180deg);
+    }
+
+    #FAQ_content_cards
+      .FAQ_content_card
+      input[type="radio"]:checked
+      ~ label
+      > div
+      > div
+      span:first-child {
+      opacity: 0;
+      transition: transform 0.3s ease;
+      transform: rotate(180deg);
+    }
+  </style>
+
+  <section id="FAQ">
+    <div id="FAQ_content" class="maxWidth1300 d-column-h-center gap-xl">
+      <div class="d-column-h-center gap-xs">
+        <p class="tag" binding-name="Giải đáp thắc mắc">Giải đáp thắc mắc</p>
+        <h3 binding-name="Câu hỏi thường gặp">Câu hỏi thường gặp</h3>
+      </div>
+
+      <div id="FAQ_content_cards" class="d-column gap-m">
+        <div
+          class="FAQ_content_card"
+          repeat="article|param:categories.id:c91d916f-b71b-f7f6-7be7-94a13a9554d4|sort:createdDate:desc|includes:"
+        >
+          <input type="radio" name="FAQ" id="{{id}}" hidden />
+
+          <label for="{{id}}">
+            <div class="d-row-v-center gap-s">
+              <h4>{{name}}</h4>
+              <div class="relative">
+                <span class="material-symbols-outlined"> add </span>
+                <span class="material-symbols-outlined absolute"> remove </span>
+              </div>
+            </div>
+
+            <div class="FAQ_content_card_answer">{{description}}</div>
+          </label>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>

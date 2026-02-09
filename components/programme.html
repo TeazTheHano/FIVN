@@ -1,791 +1,818 @@
-<style>
-  /* ================= PROGRAMME ================= */
-
-  #Programme #Programme_content {
-    color: var(--color-white);
-
-    display: grid;
-    grid-template-columns: 1fr calc(50% + calc(var(--spacing-xl) / 2));
-    gap: var(--spacing-xl);
-  }
-
-  /* ---------- LEFT ---------- */
-
-  #Programme #Programme_content .left {
-    padding-top: var(--spacing-l);
-  }
-
-  /* tag */
-
-  #Programme #Programme_content .left .tag {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.1rem;
-    color: var(--color-primary);
-    text-transform: uppercase;
-    font-weight: var(--weight-bold);
-
-    backdrop-filter: blur(2px);
-    background-color: rgba(255, 255, 255, 0.1);
-    backface-visibility: hidden;
-
-    width: fit-content;
-    padding: var(--spacing-xxxs) var(--spacing-xs);
-
-    border-radius: var(--radius-round);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
-
-  /* gradient text */
-
-  #Programme #Programme_content .left .gradient-text-mainColor {
-    background: linear-gradient(
-      90deg,
-      var(--color-primary) 0%,
-      var(--color-primary) 30%,
-      var(--color-white) 60%,
-      var(--color-white) 80%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  /* icon text */
-
-  #Programme #Programme_content .left .icon-text {
-    transition: var(--transition-fast);
-  }
-
-  #Programme #Programme_content .left .icon-text .icon {
-    width: 40px;
-    height: 40px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 100%;
-    background-color: rgb(255 255 255 / 0.05);
-    color: var(--color-primary);
-  }
-
-  #Programme #Programme_content .left .icon-text p {
-    color: var(--color-white);
-  }
-
-  #Programme #Programme_content .left .icon-text:hover .icon {
-    background-color: var(--color-primary);
-    color: var(--color-white);
-  }
-
-  /* ---------- RIGHT ---------- */
-
-  #Programme #Programme_content .right .card .rounded {
-    height: inherit;
-    position: relative;
-  }
-
-  /* rounded dot */
-
-  #Programme #Programme_content .right .card .rounded .rounded-dot {
-    position: absolute;
-    top: var(--spacing-m);
-
-    aspect-ratio: 1;
-    width: var(--spacing-m);
-    height: var(--spacing-m);
-
-    background-color: rgba(0, 0, 0, 0.2);
-    border-radius: var(--radius-round);
-    border: 2px solid rgba(255, 255, 255, 0.2);
-
-    outline: 0 solid var(--color-primary);
-    outline-offset: calc(-1 * var(--spacing-m) / 2);
-  }
-
-  /* rounded line */
-
-  #Programme #Programme_content .right .card .rounded .rounded-line {
-    width: 2px;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.2);
-  }
-
-  #Programme #Programme_content .right .card .rounded .rounded-line > div {
-    width: 2px;
-    height: 0%;
-    background: linear-gradient(
-      to top,
-      transparent 0%,
-      var(--color-primary) 80%,
-      transparent 100%
-    );
-  }
-
-  /* ---------- CARD ITEM ---------- */
-
-  #Programme #Programme_content .right .card .card-item {
-    flex: 1;
-    border-radius: var(--radius-l);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    overflow: hidden;
-    margin-bottom: var(--spacing-l);
-  }
-
-  /* gradient coat */
-
-  #Programme #Programme_content .right .card .card-item .graCoat {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background: linear-gradient(
-      to right,
-      hsl(217, 33%, 10%) 10%,
-      hsla(215, 33%, 10%, 0.95) 40%,
-      hsla(216, 33%, 10%, 0.7) 100%
-    );
-  }
-
-  /* image */
-
-  #Programme #Programme_content .right .card .card-item img {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    z-index: -2;
-    filter: saturate(0);
-    opacity: 0;
-  }
-
-  /* tag inside card */
-
-  #Programme #Programme_content .right .card .card-item .tag {
-    color: var(--color-primary);
-  }
-
-  /* ---------- CARD LABEL ---------- */
-
-  #Programme #Programme_content .right .card .card-item .card-item-label {
-    padding: var(--spacing-l);
-  }
-
-  #Programme #Programme_content .right .card .card-item .card-item-label h3 {
-    color: var(--color-white);
-  }
-
-  #Programme #Programme_content .right .card .card-item .card-item-label .icon {
-    aspect-ratio: 1;
-    width: var(--spacing-xxl);
-    height: var(--spacing-xxl);
-
-    background-color: rgba(0, 0, 0, 0.2);
-    color: var(--color-primary);
-
-    border-radius: var(--radius-m);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-
-    filter: drop-shadow(--shadow-m);
-  }
-
-  #Programme
-    #Programme_content
-    .right
-    .card
-    .card-item
-    .card-item-label
-    .d-column {
-    flex: 1;
-  }
-
-  #Programme #Programme_content .right .card .card-item .card-item-label > p {
-    color: var(--color-white);
-    opacity: 0.2;
-    font-weight: var(--weight-bold);
-    font-size: var(--text-h2);
-    line-height: 1;
-  }
-
-  #Programme
-    #Programme_content
-    .right
-    .card
-    .card-item
-    .card-item-label
-    div
-    .card-subdescription {
-    border-left: 1px solid var(--color-text-muted);
-    padding-left: var(--spacing-xs);
-    color: var(--color-text-muted);
-  }
-
-  /* ---------- CARD CATE ---------- */
-
-  #Programme #Programme_content .right .card .card-item .card-item-cate {
-    padding: 0 var(--spacing-l);
-    align-items: end;
-  }
-
-  #Programme #Programme_content .right .card .card-item .card-item-cate > div {
-    width: 100%;
-  }
-
-  #Programme
-    #Programme_content
-    .right
-    .card
-    .card-item
-    .card-item-cate
-    .card-item-cate-item {
-    flex: 1;
-
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-xxxs);
-    padding: var(--spacing-xs);
-
-    background-color: rgba(0, 0, 0, 0.4);
-    border-radius: var(--radius-m);
-  }
-
-  #Programme
-    #Programme_content
-    .right
-    .card
-    .card-item
-    .card-item-cate
-    .card-item-cate-item
-    .material-symbols-outlined {
-    color: var(--color-primary);
-    font-size: var(--text-s) !important;
-    font-variation-settings:
-      "FILL" 0,
-      "wght" 300,
-      "GRAD" 0,
-      "opsz" 24;
-    font-weight: thin !important;
-  }
-
-  #Programme
-    #Programme_content
-    .right
-    .card
-    .card-item
-    .card-item-cate
-    .card-item-cate-item
-    .tag {
-    font-size: var(--text-xxxs);
-  }
-
-  #Programme
-    #Programme_content
-    .right
-    .card
-    .card-item
-    .card-item-cate
-    .card-item-cate-item
-    p {
-    font-weight: var(--weight-bold);
-    font-size: var(--text-xxs);
-    line-height: var(--lineheight-xxs);
-  }
-
-  /* link arrow */
-
-  #Programme #Programme_content .right .card .card-item .card-item-cate a {
-    text-decoration: none;
-    color: var(--color-primary);
-  }
-
-  #Programme
-    #Programme_content
-    .right
-    .card
-    .card-item
-    .card-item-cate
-    a::after {
-    content: "";
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    margin-left: 6px;
-    margin-bottom: 1px;
-
-    border-top: 2px solid currentColor;
-    border-right: 2px solid currentColor;
-    transform: rotate(45deg);
-  }
-
-  /* ---------- COLLAPSED ---------- */
-
-  #Programme #Programme_content .right .card .card-item hr,
-  #Programme #Programme_content .right .card .card-item .card-item-cate {
-    max-height: 0;
-    visibility: hidden;
-    transform: var(--transition-slow);
-  }
-
-  /* ---------- HOVER CARD ---------- */
-
-  #Programme #Programme_content .right .card:hover .rounded .rounded-dot {
-    outline: calc(var(--spacing-m) / 2) solid var(--color-primary);
-    outline-offset: calc(-1 * var(--spacing-m) / 2);
-  }
-
-  #Programme #Programme_content .right .card:hover .rounded .rounded-line div {
-    height: 100%;
-    transition: height 0.7s ease-out;
-  }
-
-  #Programme #Programme_content .right .card:hover .card-item {
-    border: 1px solid var(--color-secondary);
-  }
-
-  #Programme #Programme_content .right .card:hover .card-item img {
-    opacity: 1;
-  }
-
-  #Programme
-    #Programme_content
-    .right
-    .card:hover
-    .card-item
-    .card-item-label
-    .icon {
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    border: none;
-  }
-
-  #Programme
-    #Programme_content
-    .right
-    .card:hover
-    .card-item
-    .card-item-label
-    h3 {
-    color: var(--color-primary);
-  }
-
-  #Programme
-    #Programme_content
-    .right
-    .card:hover
-    .card-item
-    .card-item-label
-    div
-    .card-subdescription {
-    border-left: 1px solid var(--color-primary);
-    color: var(--color-white);
-  }
-
-  #Programme #Programme_content .right .card:hover .card-item hr {
-    visibility: visible;
-  }
-
-  #Programme #Programme_content .right .card:hover .card-item .card-item-cate {
-    visibility: visible;
-    padding: var(--spacing-l);
-    max-height: 1000px;
-  }
-
-  /* ---------- BG ---------- */
-
-  #Programme .bg {
-    z-index: -2;
-
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-
-    background-color: #030712;
-  }
-
-  #Programme .bg img {
-    opacity: 0.1;
-  }
-
-  /* ---------- TEXT ---------- */
-
-  #Programme p {
-    color: var(--color-p-light);
-  }
-</style>
-
-<section id="Programme" class="relative mouse-parallax">
-  <div class="bg absolute">
-    <img
-      src="https://static.izzi.asia/templates/FIVN/svg/grid-pattern.svg"
-      alt=""
-    />
-  </div>
-  <div class="spotlight"></div>
-
-  <div id="Programme_content" class="maxWidth1300 mobileFlexColumn">
-    <div class="left d-column gap-l">
-      <div class="tag" binding-name="Chương trình Flagship">
-        Chương trình Flagship
-      </div>
-
-      <div>
-        <h1 binding-name="Lộ trình">Lộ trình</h1>
-        <h1 binding-name="Tăng tốc 4.0" class="gradient-text-mainColor">
-          Tăng tốc 4.0
-        </h1>
-      </div>
-
-      <p
-        binding-subdescription='Một hành trình 14 tuần được thiết kế "đo ni đóng giày" để biến ý tưởng sơ khai thành một startup có khả năng gọi vốn triệu đô.'
-      >
-        Một hành trình 14 tuần được thiết kế "đo ni đóng giày" để biến ý tưởng
-        sơ khai thành một startup có khả năng gọi vốn triệu đô.
-      </p>
-
-      <div class="d-column gap-m">
-        <div class="icon-text d-row-v-center gap-xs">
-          <div class="icon">
-            <span class="material-symbols-outlined"> schedule </span>
-          </div>
-          <p class="text-xs" binding-name="Thời lượng: 14 Tuần">
-            Thời lượng: 14 Tuần
-          </p>
-        </div>
-        <div class="icon-text d-row-v-center gap-xs">
-          <div class="icon">
-            <span class="material-symbols-outlined"> group </span>
-          </div>
-          <p
-            class="text-xs"
-            binding-name="Hình thức: Hybrid (Online & Offline)"
-          >
-            Hình thức: Hybrid (Online & Offline)
-          </p>
-        </div>
-      </div>
-
-      <button class="btn btn-primary" binding-name="Ứng tuyển ngay">
-        Ứng tuyển ngay
-      </button>
+<div>
+  <style>
+    /* ================= PROGRAMME ================= */
+
+    #Programme #Programme_content {
+      color: var(--color-white);
+
+      display: grid;
+      grid-template-columns: 1fr calc(50% + calc(var(--spacing-xl) / 2));
+      gap: var(--spacing-xl);
+    }
+
+    /* ---------- LEFT ---------- */
+
+    #Programme #Programme_content .left {
+      padding-top: var(--spacing-l);
+    }
+
+    /* tag */
+
+    #Programme #Programme_content .left .tag {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.1rem;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      font-weight: var(--weight-bold);
+
+      backdrop-filter: blur(2px);
+      background-color: rgba(255, 255, 255, 0.1);
+      backface-visibility: hidden;
+
+      width: fit-content;
+      padding: var(--spacing-xxxs) var(--spacing-xs);
+
+      border-radius: var(--radius-round);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* gradient text */
+
+    #Programme #Programme_content .left .gradient-text-mainColor {
+      background: linear-gradient(
+        90deg,
+        var(--color-primary) 0%,
+        var(--color-primary) 30%,
+        var(--color-white) 60%,
+        var(--color-white) 80%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* icon text */
+
+    #Programme #Programme_content .left .icon-text {
+      transition: var(--transition-fast);
+    }
+
+    #Programme #Programme_content .left .icon-text .icon {
+      width: 40px;
+      height: 40px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 100%;
+      background-color: rgb(255 255 255 / 0.05);
+      color: var(--color-primary);
+    }
+
+    #Programme #Programme_content .left .icon-text p {
+      color: var(--color-white);
+    }
+
+    #Programme #Programme_content .left .icon-text:hover .icon {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
+
+    /* ---------- RIGHT ---------- */
+
+    #Programme #Programme_content .right .card .rounded {
+      height: inherit;
+      position: relative;
+    }
+
+    /* rounded dot */
+
+    #Programme #Programme_content .right .card .rounded .rounded-dot {
+      position: absolute;
+      top: var(--spacing-m);
+
+      aspect-ratio: 1;
+      width: var(--spacing-m);
+      height: var(--spacing-m);
+
+      background-color: rgba(0, 0, 0, 0.2);
+      border-radius: var(--radius-round);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+
+      outline: 0 solid var(--color-primary);
+      outline-offset: calc(-1 * var(--spacing-m) / 2);
+    }
+
+    /* rounded line */
+
+    #Programme #Programme_content .right .card .rounded .rounded-line {
+      width: 2px;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    #Programme #Programme_content .right .card .rounded .rounded-line > div {
+      width: 2px;
+      height: 0%;
+      background: linear-gradient(
+        to top,
+        transparent 0%,
+        var(--color-primary) 80%,
+        transparent 100%
+      );
+    }
+
+    /* ---------- CARD ITEM ---------- */
+
+    #Programme #Programme_content .right .card .card-item {
+      flex: 1;
+      border-radius: var(--radius-l);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      overflow: hidden;
+      margin-bottom: var(--spacing-l);
+    }
+
+    /* gradient coat */
+
+    #Programme #Programme_content .right .card .card-item .graCoat {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: linear-gradient(
+        to right,
+        hsl(217, 33%, 10%) 10%,
+        hsla(215, 33%, 10%, 0.95) 40%,
+        hsla(216, 33%, 10%, 0.7) 100%
+      );
+    }
+
+    /* image */
+
+    #Programme #Programme_content .right .card .card-item img {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: -2;
+      filter: saturate(0);
+      opacity: 0;
+    }
+
+    /* tag inside card */
+
+    #Programme #Programme_content .right .card .card-item .tag {
+      color: var(--color-primary);
+    }
+
+    /* ---------- CARD LABEL ---------- */
+
+    #Programme #Programme_content .right .card .card-item .card-item-label {
+      padding: var(--spacing-l);
+    }
+
+    #Programme #Programme_content .right .card .card-item .card-item-label h3 {
+      color: var(--color-white);
+    }
+
+    #Programme
+      #Programme_content
+      .right
+      .card
+      .card-item
+      .card-item-label
+      .icon {
+      aspect-ratio: 1;
+      width: var(--spacing-xxl);
+      height: var(--spacing-xxl);
+
+      background-color: rgba(0, 0, 0, 0.2);
+      color: var(--color-primary);
+
+      border-radius: var(--radius-m);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+
+      filter: drop-shadow(--shadow-m);
+    }
+
+    #Programme
+      #Programme_content
+      .right
+      .card
+      .card-item
+      .card-item-label
+      .d-column {
+      flex: 1;
+    }
+
+    #Programme #Programme_content .right .card .card-item .card-item-label > p {
+      color: var(--color-white);
+      opacity: 0.2;
+      font-weight: var(--weight-bold);
+      font-size: var(--text-h2);
+      line-height: 1;
+    }
+
+    #Programme
+      #Programme_content
+      .right
+      .card
+      .card-item
+      .card-item-label
+      div
+      .card-subdescription {
+      border-left: 1px solid var(--color-text-muted);
+      padding-left: var(--spacing-xs);
+      color: var(--color-text-muted);
+    }
+
+    /* ---------- CARD CATE ---------- */
+
+    #Programme #Programme_content .right .card .card-item .card-item-cate {
+      padding: 0 var(--spacing-l);
+      align-items: end;
+    }
+
+    #Programme
+      #Programme_content
+      .right
+      .card
+      .card-item
+      .card-item-cate
+      > div {
+      width: 100%;
+    }
+
+    #Programme
+      #Programme_content
+      .right
+      .card
+      .card-item
+      .card-item-cate
+      .card-item-cate-item {
+      flex: 1;
+
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-xxxs);
+      padding: var(--spacing-xs);
+
+      background-color: rgba(0, 0, 0, 0.4);
+      border-radius: var(--radius-m);
+    }
+
+    #Programme
+      #Programme_content
+      .right
+      .card
+      .card-item
+      .card-item-cate
+      .card-item-cate-item
+      .material-symbols-outlined {
+      color: var(--color-primary);
+      font-size: var(--text-s) !important;
+      font-variation-settings:
+        "FILL" 0,
+        "wght" 300,
+        "GRAD" 0,
+        "opsz" 24;
+      font-weight: thin !important;
+    }
+
+    #Programme
+      #Programme_content
+      .right
+      .card
+      .card-item
+      .card-item-cate
+      .card-item-cate-item
+      .tag {
+      font-size: var(--text-xxxs);
+    }
+
+    #Programme
+      #Programme_content
+      .right
+      .card
+      .card-item
+      .card-item-cate
+      .card-item-cate-item
+      p {
+      font-weight: var(--weight-bold);
+      font-size: var(--text-xxs);
+      line-height: var(--lineheight-xxs);
+    }
+
+    /* link arrow */
+
+    #Programme #Programme_content .right .card .card-item .card-item-cate a {
+      text-decoration: none;
+      color: var(--color-primary);
+    }
+
+    #Programme
+      #Programme_content
+      .right
+      .card
+      .card-item
+      .card-item-cate
+      a::after {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      margin-left: 6px;
+      margin-bottom: 1px;
+
+      border-top: 2px solid currentColor;
+      border-right: 2px solid currentColor;
+      transform: rotate(45deg);
+    }
+
+    /* ---------- COLLAPSED ---------- */
+
+    #Programme #Programme_content .right .card .card-item hr,
+    #Programme #Programme_content .right .card .card-item .card-item-cate {
+      max-height: 0;
+      visibility: hidden;
+      transform: var(--transition-slow);
+    }
+
+    /* ---------- HOVER CARD ---------- */
+
+    #Programme #Programme_content .right .card:hover .rounded .rounded-dot {
+      outline: calc(var(--spacing-m) / 2) solid var(--color-primary);
+      outline-offset: calc(-1 * var(--spacing-m) / 2);
+    }
+
+    #Programme
+      #Programme_content
+      .right
+      .card:hover
+      .rounded
+      .rounded-line
+      div {
+      height: 100%;
+      transition: height 0.7s ease-out;
+    }
+
+    #Programme #Programme_content .right .card:hover .card-item {
+      border: 1px solid var(--color-secondary);
+    }
+
+    #Programme #Programme_content .right .card:hover .card-item img {
+      opacity: 1;
+    }
+
+    #Programme
+      #Programme_content
+      .right
+      .card:hover
+      .card-item
+      .card-item-label
+      .icon {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      border: none;
+    }
+
+    #Programme
+      #Programme_content
+      .right
+      .card:hover
+      .card-item
+      .card-item-label
+      h3 {
+      color: var(--color-primary);
+    }
+
+    #Programme
+      #Programme_content
+      .right
+      .card:hover
+      .card-item
+      .card-item-label
+      div
+      .card-subdescription {
+      border-left: 1px solid var(--color-primary);
+      color: var(--color-white);
+    }
+
+    #Programme #Programme_content .right .card:hover .card-item hr {
+      visibility: visible;
+    }
+
+    #Programme
+      #Programme_content
+      .right
+      .card:hover
+      .card-item
+      .card-item-cate {
+      visibility: visible;
+      padding: var(--spacing-l);
+      max-height: 1000px;
+    }
+
+    /* ---------- BG ---------- */
+
+    #Programme .bg {
+      z-index: -2;
+
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+
+      background-color: #030712;
+    }
+
+    #Programme .bg img {
+      opacity: 0.1;
+    }
+
+    /* ---------- TEXT ---------- */
+
+    #Programme p {
+      color: var(--color-p-light);
+    }
+  </style>
+
+  <section id="Programme" class="relative mouse-parallax">
+    <div class="bg absolute">
+      <img
+        src="https://static.izzi.asia/templates/FIVN/svg/grid-pattern.svg"
+        alt=""
+      />
     </div>
+    <div class="spotlight"></div>
 
-    <!-- >>> CONTENT -->
-    <div class="right">
-      <!-- CARD 1 -->
-      <div class="card relative d-row gap-m">
-        <div class="rounded d-column-h-center">
-          <div class="rounded-dot"></div>
-          <div class="rounded-line">
-            <div></div>
-          </div>
+    <div id="Programme_content" class="maxWidth1300 mobileFlexColumn">
+      <div class="left d-column gap-l">
+        <div class="tag" binding-name="Chương trình Flagship">
+          Chương trình Flagship
         </div>
-        <div class="card-item relative">
-          <div class="graCoat absolute"></div>
-          <img
-            src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=800&auto=format&fit=crop"
-            binding-imgpath="https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=800&auto=format&fit=crop"
-            class="absolute"
-            alt=""
-          />
 
-          <div class="card-item-label d-row gap-m mobileFlexColumn">
-            <div class="icon d-center">
-              <span class="material-symbols-outlined"> target </span>
+        <div>
+          <h1 binding-name="Lộ trình">Lộ trình</h1>
+          <h1 binding-name="Tăng tốc 4.0" class="gradient-text-mainColor">
+            Tăng tốc 4.0
+          </h1>
+        </div>
+
+        <p
+          binding-subdescription='Một hành trình 14 tuần được thiết kế "đo ni đóng giày" để biến ý tưởng sơ khai thành một startup có khả năng gọi vốn triệu đô.'
+        >
+          Một hành trình 14 tuần được thiết kế "đo ni đóng giày" để biến ý tưởng
+          sơ khai thành một startup có khả năng gọi vốn triệu đô.
+        </p>
+
+        <div class="d-column gap-m">
+          <div class="icon-text d-row-v-center gap-xs">
+            <div class="icon">
+              <span class="material-symbols-outlined"> schedule </span>
             </div>
-            <div class="d-column gap-xxs">
-              <p class="tag" binding-name="Tháng 1 - Tháng 2">
-                Tháng 1 - Tháng 2
-              </p>
-              <h3 binding-name="Idea Validation">Idea Validation</h3>
-              <p
-                class="card-subdescription text-xxs"
-                binding-subdescription="Kiểm chứng giả thuyết kinh doanh bằng phương pháp 'Fail Fast'."
-              >
-                Kiểm chứng giả thuyết kinh doanh bằng phương pháp 'Fail Fast'.
-              </p>
-            </div>
-            <p>01</p>
+            <p class="text-xs" binding-name="Thời lượng: 14 Tuần">
+              Thời lượng: 14 Tuần
+            </p>
           </div>
-
-          <hr />
-
-          <div class="card-item-cate d-column gap-m">
-            <div class="d-row mobileFlexColumn gap-s">
-              <div class="card-item-cate-item">
-                <div class="d-row-v-center gap-xxs">
-                  <span class="material-symbols-outlined"> docs </span>
-                  <div class="tag" binding-name="Khối lượng">Khối lượng</div>
-                </div>
-                <p binding-name="15 Bài tập chuyên sâu">
-                  15 Bài tập chuyên sâu
-                </p>
-              </div>
-              <div class="card-item-cate-item">
-                <div class="d-row-v-center gap-xxs">
-                  <span class="material-symbols-outlined"> add_diamond </span>
-                  <div class="tag" binding-name="Giá trị">Giá trị</div>
-                </div>
-                <p binding-name="Tư duy phản biện & Định hình">
-                  Tư duy phản biện & Định hình
-                </p>
-              </div>
-              <div class="card-item-cate-item">
-                <div class="d-row-v-center gap-xxs">
-                  <span class="material-symbols-outlined"> task_alt </span>
-                  <div class="tag" binding-name="Kết quả">Kết quả</div>
-                </div>
-                <p binding-name="Hồ sơ ý tưởng (Validated Idea)">
-                  Hồ sơ ý tưởng (Validated Idea)
-                </p>
-              </div>
+          <div class="icon-text d-row-v-center gap-xs">
+            <div class="icon">
+              <span class="material-symbols-outlined"> group </span>
             </div>
-            <a
-              href="#Programme_content"
-              class="card-item-cate-detail tag"
-              binding-btntext="Chi tiết chương trình"
-              binding-btnhref=""
-              >Chi tiết chương trình</a
+            <p
+              class="text-xs"
+              binding-name="Hình thức: Hybrid (Online & Offline)"
             >
+              Hình thức: Hybrid (Online & Offline)
+            </p>
           </div>
         </div>
+
+        <button class="btn btn-primary" binding-name="Ứng tuyển ngay">
+          Ứng tuyển ngay
+        </button>
       </div>
 
-      <!-- CARD 2 -->
-      <div class="card relative d-row gap-m">
-        <div class="rounded d-column-h-center">
-          <div class="rounded-dot"></div>
-          <div class="rounded-line">
-            <div></div>
-          </div>
-        </div>
-        <div class="card-item relative">
-          <div class="graCoat absolute"></div>
-          <img
-            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop"
-            binding-imgpath="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop"
-            class="absolute"
-            alt=""
-          />
-
-          <div class="card-item-label d-row gap-m mobileFlexColumn">
-            <div class="icon d-center">
-              <span class="material-symbols-outlined"> rocket_launch </span>
+      <!-- >>> CONTENT -->
+      <div class="right">
+        <!-- CARD 1 -->
+        <div class="card relative d-row gap-m">
+          <div class="rounded d-column-h-center">
+            <div class="rounded-dot"></div>
+            <div class="rounded-line">
+              <div></div>
             </div>
-            <div class="d-column gap-xxs">
-              <p class="tag" binding-name="Tháng 3 - Tháng 4">
-                Tháng 3 - Tháng 4
-              </p>
-              <h3 binding-name="Product Development">Product Development</h3>
-              <p
-                class="card-subdescription text-xxs"
-                binding-subdescription="Xây dựng MVP (Sản phẩm khả thi tối thiểu) và kiến trúc công nghệ"
+          </div>
+          <div class="card-item relative">
+            <div class="graCoat absolute"></div>
+            <img
+              src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=800&auto=format&fit=crop"
+              binding-imgpath="https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=800&auto=format&fit=crop"
+              class="absolute"
+              alt=""
+            />
+
+            <div class="card-item-label d-row gap-m mobileFlexColumn">
+              <div class="icon d-center">
+                <span class="material-symbols-outlined"> target </span>
+              </div>
+              <div class="d-column gap-xxs">
+                <p class="tag" binding-name="Tháng 1 - Tháng 2">
+                  Tháng 1 - Tháng 2
+                </p>
+                <h3 binding-name="Idea Validation">Idea Validation</h3>
+                <p
+                  class="card-subdescription text-xxs"
+                  binding-subdescription="Kiểm chứng giả thuyết kinh doanh bằng phương pháp 'Fail Fast'."
+                >
+                  Kiểm chứng giả thuyết kinh doanh bằng phương pháp 'Fail Fast'.
+                </p>
+              </div>
+              <p>01</p>
+            </div>
+
+            <hr />
+
+            <div class="card-item-cate d-column gap-m">
+              <div class="d-row mobileFlexColumn gap-s">
+                <div class="card-item-cate-item">
+                  <div class="d-row-v-center gap-xxs">
+                    <span class="material-symbols-outlined"> docs </span>
+                    <div class="tag" binding-name="Khối lượng">Khối lượng</div>
+                  </div>
+                  <p binding-name="15 Bài tập chuyên sâu">
+                    15 Bài tập chuyên sâu
+                  </p>
+                </div>
+                <div class="card-item-cate-item">
+                  <div class="d-row-v-center gap-xxs">
+                    <span class="material-symbols-outlined"> add_diamond </span>
+                    <div class="tag" binding-name="Giá trị">Giá trị</div>
+                  </div>
+                  <p binding-name="Tư duy phản biện & Định hình">
+                    Tư duy phản biện & Định hình
+                  </p>
+                </div>
+                <div class="card-item-cate-item">
+                  <div class="d-row-v-center gap-xxs">
+                    <span class="material-symbols-outlined"> task_alt </span>
+                    <div class="tag" binding-name="Kết quả">Kết quả</div>
+                  </div>
+                  <p binding-name="Hồ sơ ý tưởng (Validated Idea)">
+                    Hồ sơ ý tưởng (Validated Idea)
+                  </p>
+                </div>
+              </div>
+              <a
+                href="#Programme_content"
+                class="card-item-cate-detail tag"
+                binding-btntext="Chi tiết chương trình"
+                binding-btnhref=""
+                >Chi tiết chương trình</a
               >
-                Xây dựng MVP (Sản phẩm khả thi tối thiểu) và kiến trúc công nghệ
-              </p>
             </div>
-            <p>02</p>
           </div>
+        </div>
 
-          <hr />
+        <!-- CARD 2 -->
+        <div class="card relative d-row gap-m">
+          <div class="rounded d-column-h-center">
+            <div class="rounded-dot"></div>
+            <div class="rounded-line">
+              <div></div>
+            </div>
+          </div>
+          <div class="card-item relative">
+            <div class="graCoat absolute"></div>
+            <img
+              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop"
+              binding-imgpath="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop"
+              class="absolute"
+              alt=""
+            />
 
-          <div class="card-item-cate d-column gap-m">
-            <div class="d-row mobileFlexColumn gap-s">
-              <div class="card-item-cate-item">
-                <div class="d-row-v-center gap-xxs">
-                  <span class="material-symbols-outlined"> docs </span>
-                  <div class="tag" binding-name="Khối lượng">Khối lượng</div>
-                </div>
-                <p binding-name="10 Sprint kỹ thuật">10 Sprint kỹ thuật</p>
+            <div class="card-item-label d-row gap-m mobileFlexColumn">
+              <div class="icon d-center">
+                <span class="material-symbols-outlined"> rocket_launch </span>
               </div>
-              <div class="card-item-cate-item">
-                <div class="d-row-v-center gap-xxs">
-                  <span class="material-symbols-outlined"> add_diamond </span>
-                  <div class="tag" binding-name="Giá trị">Giá trị</div>
-                </div>
-                <p binding-name="Kiến trúc hệ thống chuẩn Silicon">
-                  Kiến trúc hệ thống chuẩn Silicon
+              <div class="d-column gap-xxs">
+                <p class="tag" binding-name="Tháng 3 - Tháng 4">
+                  Tháng 3 - Tháng 4
+                </p>
+                <h3 binding-name="Product Development">Product Development</h3>
+                <p
+                  class="card-subdescription text-xxs"
+                  binding-subdescription="Xây dựng MVP (Sản phẩm khả thi tối thiểu) và kiến trúc công nghệ"
+                >
+                  Xây dựng MVP (Sản phẩm khả thi tối thiểu) và kiến trúc công
+                  nghệ
                 </p>
               </div>
-              <div class="card-item-cate-item">
-                <div class="d-row-v-center gap-xxs">
-                  <span class="material-symbols-outlined"> task_alt </span>
-                  <div class="tag" binding-name="Kết quả">Kết quả</div>
+              <p>02</p>
+            </div>
+
+            <hr />
+
+            <div class="card-item-cate d-column gap-m">
+              <div class="d-row mobileFlexColumn gap-s">
+                <div class="card-item-cate-item">
+                  <div class="d-row-v-center gap-xxs">
+                    <span class="material-symbols-outlined"> docs </span>
+                    <div class="tag" binding-name="Khối lượng">Khối lượng</div>
+                  </div>
+                  <p binding-name="10 Sprint kỹ thuật">10 Sprint kỹ thuật</p>
                 </div>
-                <p binding-name="Sản phẩm mẫu (MVP)">Sản phẩm mẫu (MVP)</p>
+                <div class="card-item-cate-item">
+                  <div class="d-row-v-center gap-xxs">
+                    <span class="material-symbols-outlined"> add_diamond </span>
+                    <div class="tag" binding-name="Giá trị">Giá trị</div>
+                  </div>
+                  <p binding-name="Kiến trúc hệ thống chuẩn Silicon">
+                    Kiến trúc hệ thống chuẩn Silicon
+                  </p>
+                </div>
+                <div class="card-item-cate-item">
+                  <div class="d-row-v-center gap-xxs">
+                    <span class="material-symbols-outlined"> task_alt </span>
+                    <div class="tag" binding-name="Kết quả">Kết quả</div>
+                  </div>
+                  <p binding-name="Sản phẩm mẫu (MVP)">Sản phẩm mẫu (MVP)</p>
+                </div>
               </div>
-            </div>
-            <a
-              href="#Programme_content"
-              class="card-item-cate-detail tag"
-              binding-btntext="Chi tiết chương trình"
-              binding-btnhref=""
-              >Chi tiết chương trình</a
-            >
-          </div>
-        </div>
-      </div>
-
-      <!-- CARD 3 -->
-      <div class="card relative d-row gap-m">
-        <div class="rounded d-column-h-center">
-          <div class="rounded-dot"></div>
-          <div class="rounded-line">
-            <div></div>
-          </div>
-        </div>
-        <div class="card-item relative">
-          <div class="graCoat absolute"></div>
-          <img
-            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop"
-            binding-imgpath="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop"
-            class="absolute"
-            alt=""
-          />
-
-          <div class="card-item-label d-row gap-m mobileFlexColumn">
-            <div class="icon d-center">
-              <span class="material-symbols-outlined"> trending_up </span>
-            </div>
-            <div class="d-column gap-xxs">
-              <p class="tag" binding-name="Tháng 5">Tháng 5</p>
-              <h3 binding-name="Growth & Traction">Growth & Traction</h3>
-              <p
-                class="card-subdescription text-xxs"
-                binding-subdescription="Chiến lược Go-to-market du kích. Tập trung vào các chỉ số tăng trưởng."
+              <a
+                href="#Programme_content"
+                class="card-item-cate-detail tag"
+                binding-btntext="Chi tiết chương trình"
+                binding-btnhref=""
+                >Chi tiết chương trình</a
               >
-                Chiến lược Go-to-market du kích. Tập trung vào các chỉ số tăng
-                trưởng.
-              </p>
             </div>
-            <p>03</p>
-          </div>
-
-          <hr />
-
-          <div class="card-item-cate d-column gap-m">
-            <div class="d-row mobileFlexColumn gap-s">
-              <div class="card-item-cate-item">
-                <div class="d-row-v-center gap-xxs">
-                  <span class="material-symbols-outlined"> docs </span>
-                  <div class="tag" binding-name="Khối lượng">Khối lượng</div>
-                </div>
-                <p binding-name="8 Chiến dịch thực nghiệm">
-                  8 Chiến dịch thực nghiệm
-                </p>
-              </div>
-              <div class="card-item-cate-item">
-                <div class="d-row-v-center gap-xxs">
-                  <span class="material-symbols-outlined"> add_diamond </span>
-                  <div class="tag" binding-name="Giá trị">Giá trị</div>
-                </div>
-                <p binding-name="User Acquisition Strategies">
-                  User Acquisition Strategies
-                </p>
-              </div>
-              <div class="card-item-cate-item">
-                <div class="d-row-v-center gap-xxs">
-                  <span class="material-symbols-outlined"> task_alt </span>
-                  <div class="tag" binding-name="Kết quả">Kết quả</div>
-                </div>
-                <p binding-name="1000+ Người dùng đầu tiên">
-                  1000+ Người dùng đầu tiên
-                </p>
-              </div>
-            </div>
-            <a
-              href="#Programme_content"
-              class="card-item-cate-detail tag"
-              binding-btntext="Chi tiết chương trình"
-              binding-btnhref=""
-              >Chi tiết chương trình</a
-            >
           </div>
         </div>
-      </div>
 
-      <!-- CARD 4 -->
-      <div class="card relative d-row gap-m">
-        <div class="rounded d-column-h-center">
-          <div class="rounded-dot"></div>
-          <div class="rounded-line">
-            <div></div>
-          </div>
-        </div>
-        <div class="card-item relative">
-          <div class="graCoat absolute"></div>
-          <img
-            src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=800&auto=format&fit=crop"
-            binding-imgpath="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=800&auto=format&fit=crop"
-            class="absolute"
-            alt=""
-          />
-
-          <div class="card-item-label d-row gap-m mobileFlexColumn">
-            <div class="icon d-center">
-              <span class="material-symbols-outlined"> verified_user </span>
+        <!-- CARD 3 -->
+        <div class="card relative d-row gap-m">
+          <div class="rounded d-column-h-center">
+            <div class="rounded-dot"></div>
+            <div class="rounded-line">
+              <div></div>
             </div>
-            <div class="d-column gap-xxs">
-              <p class="tag" binding-name="Tháng 6 (Demo Day)">
-                Tháng 6 (Demo Day)
-              </p>
-              <h3 binding-name="Funding & Legal">Funding & Legal</h3>
-              <p
-                class="card-subdescription text-xxs"
-                binding-subdescription="Hoàn thiện hồ sơ gọi vốn và cấu trúc pháp lý cho vòng Pitching."
+          </div>
+          <div class="card-item relative">
+            <div class="graCoat absolute"></div>
+            <img
+              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop"
+              binding-imgpath="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop"
+              class="absolute"
+              alt=""
+            />
+
+            <div class="card-item-label d-row gap-m mobileFlexColumn">
+              <div class="icon d-center">
+                <span class="material-symbols-outlined"> trending_up </span>
+              </div>
+              <div class="d-column gap-xxs">
+                <p class="tag" binding-name="Tháng 5">Tháng 5</p>
+                <h3 binding-name="Growth & Traction">Growth & Traction</h3>
+                <p
+                  class="card-subdescription text-xxs"
+                  binding-subdescription="Chiến lược Go-to-market du kích. Tập trung vào các chỉ số tăng trưởng."
+                >
+                  Chiến lược Go-to-market du kích. Tập trung vào các chỉ số tăng
+                  trưởng.
+                </p>
+              </div>
+              <p>03</p>
+            </div>
+
+            <hr />
+
+            <div class="card-item-cate d-column gap-m">
+              <div class="d-row mobileFlexColumn gap-s">
+                <div class="card-item-cate-item">
+                  <div class="d-row-v-center gap-xxs">
+                    <span class="material-symbols-outlined"> docs </span>
+                    <div class="tag" binding-name="Khối lượng">Khối lượng</div>
+                  </div>
+                  <p binding-name="8 Chiến dịch thực nghiệm">
+                    8 Chiến dịch thực nghiệm
+                  </p>
+                </div>
+                <div class="card-item-cate-item">
+                  <div class="d-row-v-center gap-xxs">
+                    <span class="material-symbols-outlined"> add_diamond </span>
+                    <div class="tag" binding-name="Giá trị">Giá trị</div>
+                  </div>
+                  <p binding-name="User Acquisition Strategies">
+                    User Acquisition Strategies
+                  </p>
+                </div>
+                <div class="card-item-cate-item">
+                  <div class="d-row-v-center gap-xxs">
+                    <span class="material-symbols-outlined"> task_alt </span>
+                    <div class="tag" binding-name="Kết quả">Kết quả</div>
+                  </div>
+                  <p binding-name="1000+ Người dùng đầu tiên">
+                    1000+ Người dùng đầu tiên
+                  </p>
+                </div>
+              </div>
+              <a
+                href="#Programme_content"
+                class="card-item-cate-detail tag"
+                binding-btntext="Chi tiết chương trình"
+                binding-btnhref=""
+                >Chi tiết chương trình</a
               >
-                Hoàn thiện hồ sơ gọi vốn và cấu trúc pháp lý cho vòng Pitching.
-              </p>
             </div>
-            <p>04</p>
           </div>
+        </div>
 
-          <hr />
-
-          <div class="card-item-cate d-column gap-m">
-            <div class="d-row mobileFlexColumn gap-s">
-              <div class="card-item-cate-item">
-                <div class="d-row-v-center gap-xxs">
-                  <span class="material-symbols-outlined"> docs </span>
-                  <div class="tag" binding-name="Khối lượng">Khối lượng</div>
-                </div>
-                <p binding-name="5 Phiên Pitching giả lập">
-                  5 Phiên Pitching giả lập
-                </p>
-              </div>
-              <div class="card-item-cate-item">
-                <div class="d-row-v-center gap-xxs">
-                  <span class="material-symbols-outlined"> add_diamond </span>
-                  <div class="tag" binding-name="Giá trị">Giá trị</div>
-                </div>
-                <p binding-name="Định giá & Pháp lý doanh nghiệp">
-                  Định giá & Pháp lý doanh nghiệp
-                </p>
-              </div>
-              <div class="card-item-cate-item">
-                <div class="d-row-v-center gap-xxs">
-                  <span class="material-symbols-outlined"> task_alt </span>
-                  <div class="tag" binding-name="Kết quả">Kết quả</div>
-                </div>
-                <p binding-name="Cam kết đầu tư (Funding)">
-                  Cam kết đầu tư (Funding)
-                </p>
-              </div>
+        <!-- CARD 4 -->
+        <div class="card relative d-row gap-m">
+          <div class="rounded d-column-h-center">
+            <div class="rounded-dot"></div>
+            <div class="rounded-line">
+              <div></div>
             </div>
-            <a
-              href="#Programme_content"
-              class="card-item-cate-detail tag"
-              binding-btntext="Chi tiết chương trình"
-              binding-btnhref=""
-              >Chi tiết chương trình</a
-            >
+          </div>
+          <div class="card-item relative">
+            <div class="graCoat absolute"></div>
+            <img
+              src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=800&auto=format&fit=crop"
+              binding-imgpath="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=800&auto=format&fit=crop"
+              class="absolute"
+              alt=""
+            />
+
+            <div class="card-item-label d-row gap-m mobileFlexColumn">
+              <div class="icon d-center">
+                <span class="material-symbols-outlined"> verified_user </span>
+              </div>
+              <div class="d-column gap-xxs">
+                <p class="tag" binding-name="Tháng 6 (Demo Day)">
+                  Tháng 6 (Demo Day)
+                </p>
+                <h3 binding-name="Funding & Legal">Funding & Legal</h3>
+                <p
+                  class="card-subdescription text-xxs"
+                  binding-subdescription="Hoàn thiện hồ sơ gọi vốn và cấu trúc pháp lý cho vòng Pitching."
+                >
+                  Hoàn thiện hồ sơ gọi vốn và cấu trúc pháp lý cho vòng
+                  Pitching.
+                </p>
+              </div>
+              <p>04</p>
+            </div>
+
+            <hr />
+
+            <div class="card-item-cate d-column gap-m">
+              <div class="d-row mobileFlexColumn gap-s">
+                <div class="card-item-cate-item">
+                  <div class="d-row-v-center gap-xxs">
+                    <span class="material-symbols-outlined"> docs </span>
+                    <div class="tag" binding-name="Khối lượng">Khối lượng</div>
+                  </div>
+                  <p binding-name="5 Phiên Pitching giả lập">
+                    5 Phiên Pitching giả lập
+                  </p>
+                </div>
+                <div class="card-item-cate-item">
+                  <div class="d-row-v-center gap-xxs">
+                    <span class="material-symbols-outlined"> add_diamond </span>
+                    <div class="tag" binding-name="Giá trị">Giá trị</div>
+                  </div>
+                  <p binding-name="Định giá & Pháp lý doanh nghiệp">
+                    Định giá & Pháp lý doanh nghiệp
+                  </p>
+                </div>
+                <div class="card-item-cate-item">
+                  <div class="d-row-v-center gap-xxs">
+                    <span class="material-symbols-outlined"> task_alt </span>
+                    <div class="tag" binding-name="Kết quả">Kết quả</div>
+                  </div>
+                  <p binding-name="Cam kết đầu tư (Funding)">
+                    Cam kết đầu tư (Funding)
+                  </p>
+                </div>
+              </div>
+              <a
+                href="#Programme_content"
+                class="card-item-cate-detail tag"
+                binding-btntext="Chi tiết chương trình"
+                binding-btnhref=""
+                >Chi tiết chương trình</a
+              >
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>

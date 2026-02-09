@@ -1,4 +1,5 @@
-<style>
+<div>
+  <style>
   /* ================= EVENT ================= */
 
   #Event #Event_content {
@@ -16,12 +17,16 @@
   /* ---------- CATEGORY SELECTOR ---------- */
 
   #Event #Event_content #Event_content_cate_selector {
+    max-width: 100%;
+    width: fit-content;
     padding: var(--spacing-xxxs);
     margin-top: var(--spacing-xs);
     margin-bottom: var(--spacing-m);
     background-color: var(--color-text-muted-2);
     border-radius: var(--radius-round);
     border: 1px solid var(--color-text-muted);
+    overflow-x: scroll;
+
   }
 
   #Event #Event_content #Event_content_cate_selector label {
@@ -32,6 +37,7 @@
     font-weight: var(--weight-semibold);
     text-transform: uppercase;
     cursor: pointer;
+    white-space: nowrap;
   }
 
   /* ---------- CHECKED STATE ---------- */
@@ -366,7 +372,7 @@
     <p class="tag" binding-name="Lịch trình">Lịch trình</p>
     <h3 binding-name="Sự kiện & Hoạt động">Sự kiện & Hoạt động</h3>
 
-    <div class="d-row" id="Event_content_cate_selector">
+    <div class="d-row scrollbar-hide" id="Event_content_cate_selector">
       <label for="all" binding="Tất cả">Tất cả</label>
       <label for="openning" binding="Khai giảng">Khai giảng</label>
       <label for="event" binding="Sự kiện">Sự kiện</label>
@@ -445,3 +451,4 @@
     </div>
   </div>
 </section>
+</div>

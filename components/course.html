@@ -1,735 +1,338 @@
-<style>
-  #Course {
-    background-color: var(--color-bg-light);
-  }
+<div>
+  <style>
+    #Course {
+      background-color: var(--color-bg-light);
+    }
 
-  /* ================= Course Content ================= */
+    /* ================= Course Content ================= */
 
-  #Course #Course_content {
-    gap: var(--spacing-m);
-    padding-bottom: var(--spacing-l);
-  }
+    #Course #Course_content {
+      gap: var(--spacing-m);
+      padding-bottom: var(--spacing-l);
+    }
 
-  #Course #Course_content .tag {
-    color: var(--color-primary);
-  }
+    #Course #Course_content .tag {
+      color: var(--color-primary);
+    }
 
-  /* ---------- Category list ---------- */
+    /* ---------- Category list ---------- */
 
-  #Course #Course_content #Course_content_cate_list {
-    justify-content: space-between;
-    width: 100%;
-  }
+    #Course #Course_content #Course_content_cate_list {
+      justify-content: space-between;
+      width: 100%;
+    }
 
-  #Course #Course_content #Course_content_cate_list div:first-child {
-    flex-wrap: wrap;
-  }
+    #Course #Course_content #Course_content_cate_list div:first-child {
+      flex-wrap: wrap;
+    }
 
-  #Course #Course_content #Course_content_cate_list label,
-  #Course #Course_content #Course_content_cate_list .btn-2 {
-    border: 1px solid var(--color-text-muted-2);
-    color: var(--color-p-dark);
-    background-color: var(--color-white);
-    font-size: var(--text-xs);
-  }
+    #Course #Course_content #Course_content_cate_list label,
+    #Course #Course_content #Course_content_cate_list .btn-2 {
+      border: 1px solid var(--color-text-muted-2);
+      color: var(--color-p-dark);
+      background-color: var(--color-white);
+      font-size: var(--text-xs);
+    }
 
-  #Course #Course_content #Course_content_cate_list label:hover,
-  #Course #Course_content #Course_content_cate_list .btn-2:hover {
-    background-color: var(--color-secondary);
-    color: var(--color-white);
-  }
+    #Course #Course_content #Course_content_cate_list label:hover,
+    #Course #Course_content #Course_content_cate_list .btn-2:hover {
+      background-color: var(--color-secondary);
+      color: var(--color-white);
+    }
 
-  #Course #Course_content #Course_content_cate_list .slider-controller .btn-2 {
-    aspect-ratio: 1;
-  }
+    #Course
+      #Course_content
+      #Course_content_cate_list
+      .slider-controller
+      .btn-2 {
+      aspect-ratio: 1;
+    }
 
-  /* ================= Course Cards ================= */
+    /* ================= Course Cards ================= */
 
-  #Course #Course_content_cards {
-    overflow: scroll;
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
-    padding-bottom: var(--spacing-xxxl);
+    #Course #Course_content_cards {
+      overflow: scroll;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      padding-bottom: var(--spacing-xxxl);
 
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
 
-  #Course #Course_content_cards .card {
-    flex: 0 0 auto;
-    width: 70vw;
-    min-width: 200px;
-    max-width: 400px;
+    #Course #Course_content_cards .card {
+      flex: 0 0 auto;
+      width: 70vw;
+      min-width: 200px;
+      max-width: 400px;
+      height: fit-content;
 
-    display: none;
+      display: none;
 
-    border-radius: var(--radius-l);
-    overflow: hidden;
-    filter: drop-shadow(var(--shadow-s));
-    background-color: var(--color-white);
-  }
+      border-radius: var(--radius-l);
+      overflow: hidden;
+      filter: drop-shadow(var(--shadow-s));
+      background-color: var(--color-white);
+    }
 
-  /* ---------- Card Top ---------- */
+    /* ---------- Card Top ---------- */
 
-  #Course #Course_content_cards .card .top {
-    position: relative;
-  }
+    #Course #Course_content_cards .card .top {
+      position: relative;
+    }
 
-  #Course #Course_content_cards .card .top img {
-    height: 200px;
-  }
+    #Course #Course_content_cards .card .top img {
+      height: 200px;
+    }
 
-  #Course #Course_content_cards .card .top .tag {
-    position: absolute;
-    top: var(--spacing-s);
-    right: var(--spacing-s);
-    z-index: 1;
+    #Course #Course_content_cards .card .top .tag {
+      position: absolute;
+      top: var(--spacing-s);
+      right: var(--spacing-s);
+      z-index: 1;
 
-    font-size: var(--text-xxxs);
-    font-weight: var(--weight-bold);
-    letter-spacing: normal;
+      font-size: var(--text-xxxs);
+      font-weight: var(--weight-bold);
+      letter-spacing: normal;
 
-    color: var(--color-secondary);
-    background-color: var(--color-white);
+      color: var(--color-secondary);
+      background-color: var(--color-white);
 
-    padding: var(--spacing-xxxs) var(--spacing-xs);
-    border-radius: var(--radius-round);
-  }
+      padding: var(--spacing-xxxs) var(--spacing-xs);
+      border-radius: var(--radius-round);
+    }
 
-  #Course #Course_content_cards .card .top .tag::before {
-    content: "";
-  }
+    #Course #Course_content_cards .card .top .tag::before {
+      content: "";
+    }
 
-  /* ---------- Card Bottom ---------- */
+    /* ---------- Card Bottom ---------- */
 
-  #Course #Course_content_cards .card .bottom {
-    padding: var(--spacing-m);
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-s);
-  }
+    #Course #Course_content_cards .card .bottom {
+      padding: var(--spacing-m);
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-s);
+    }
 
-  #Course #Course_content_cards .card .bottom p {
-    font-size: var(--text-xs);
-    color: var(--color-p-dark);
-    font-weight: var(--weight-thin);
-  }
+    #Course #Course_content_cards .card .bottom {
+      font-size: var(--text-xs);
+      color: var(--color-p-dark);
+      font-weight: var(--weight-thin);
+    }
 
-  #Course #Course_content_cards .card .bottom span {
-    color: var(--color-primary);
-    font-size: var(--text-s) !important;
-  }
+    #Course #Course_content_cards .card .bottom span {
+      color: var(--color-primary);
+      font-size: var(--text-s) !important;
+    }
 
-  #Course #Course_content_cards .card .bottom h4 {
-    line-height: 1.5;
-  }
+    #Course #Course_content_cards .card .bottom h4 {
+      line-height: 1.5;
+    }
 
-  #Course #Course_content_cards .card .bottom h4 + div p {
-    font-size: var(--text-xxs);
-  }
+    #Course #Course_content_cards .card .bottom h4 + div p {
+      font-size: var(--text-xxs);
+    }
 
-  #Course #Course_content_cards .card .bottom h4 + div div:first-child p {
-    font-weight: var(--weight-semibold);
-  }
+    #Course #Course_content_cards .card .bottom h4 + div div:first-child p {
+      font-weight: var(--weight-semibold);
+    }
 
-  /* ---------- Hover ---------- */
+    #Course #Course_content_cards .card .bottom .btn {
+      text-decoration: none;
+    }
 
-  #Course #Course_content_cards .card:hover {
-    transform: translateY(calc(-1 * var(--spacing-xxxs)));
-    filter: drop-shadow(var(--shadow-xl)) drop-shadow(var(--shadow-m));
-  }
+    /* ---------- Hover ---------- */
 
-  #Course #Course_content_cards .card:hover .top img {
-    transform: scale(1.1);
-  }
+    #Course #Course_content_cards .card:hover {
+      transform: translateY(calc(-1 * var(--spacing-xxxs)));
+      filter: drop-shadow(var(--shadow-xl)) drop-shadow(var(--shadow-m));
+    }
 
-  #Course #Course_content_cards .card:hover .bottom .btn {
-    filter: drop-shadow(var(--shadow-m));
-  }
+    #Course #Course_content_cards .card:hover .top img {
+      transform: scale(1.1);
+    }
 
-  /* ================= Course category tag content ================= */
+    #Course #Course_content_cards .card:hover .bottom .btn {
+      filter: drop-shadow(var(--shadow-m));
+    }
 
-  #Course
-    #Course_content_cards
-    .card[course-cate$="finance"]
-    .top
-    .tag::before {
-    content: "Finance";
-  }
+    /* ================= Course category tag content ================= */
 
-  #Course #Course_content_cards .card[course-cate$="tech"] .top .tag::before {
-    content: "Tech";
-  }
+    #Course
+      #Course_content_cards
+      .card[course-cate$="finance"]
+      .top
+      .tag::before {
+      content: "Finance";
+    }
 
-  #Course
-    #Course_content_cards
-    .card[course-cate$="product"]
-    .top
-    .tag::before {
-    content: "Product";
-  }
+    #Course #Course_content_cards .card[course-cate$="tech"] .top .tag::before {
+      content: "Tech";
+    }
 
-  #Course
-    #Course_content_cards
-    .card[course-cate$="marketing"]
-    .top
-    .tag::before {
-    content: "Marketing";
-  }
+    #Course
+      #Course_content_cards
+      .card[course-cate$="product"]
+      .top
+      .tag::before {
+      content: "Product";
+    }
 
-  #Course
-    #Course_content_cards
-    .card[course-cate$="management"]
-    .top
-    .tag::before {
-    content: "Management";
-  }
+    #Course
+      #Course_content_cards
+      .card[course-cate$="marketing"]
+      .top
+      .tag::before {
+      content: "Marketing";
+    }
 
-  #Course #Course_content_cards .card[course-cate$="legal"] .top .tag::before {
-    content: "Legal";
-  }
+    #Course
+      #Course_content_cards
+      .card[course-cate$="management"]
+      .top
+      .tag::before {
+      content: "Management";
+    }
 
-  /* ================= Active category button ================= */
+    /* ================= Scroll padding edges ================= */
 
-  #Course
-    input[name="Course_content_cate"][id="Course_content_cate_all"]:checked
-    ~ #Course_content
-    #Course_content_cate_list
-    label[for="Course_content_cate_all"],
-  #Course
-    input[name="Course_content_cate"][id="Course_content_cate_finance"]:checked
-    ~ #Course_content
-    #Course_content_cate_list
-    label[for="Course_content_cate_finance"],
-  #Course
-    input[name="Course_content_cate"][id="Course_content_cate_tech"]:checked
-    ~ #Course_content
-    #Course_content_cate_list
-    label[for="Course_content_cate_tech"],
-  #Course
-    input[name="Course_content_cate"][id="Course_content_cate_product"]:checked
-    ~ #Course_content
-    #Course_content_cate_list
-    label[for="Course_content_cate_product"],
-  #Course
-    input[name="Course_content_cate"][id="Course_content_cate_marketing"]:checked
-    ~ #Course_content
-    #Course_content_cate_list
-    label[for="Course_content_cate_marketing"],
-  #Course
-    input[name="Course_content_cate"][id="Course_content_cate_management"]:checked
-    ~ #Course_content
-    #Course_content_cate_list
-    label[for="Course_content_cate_management"],
-  #Course
-    input[name="Course_content_cate"][id="Course_content_cate_legal"]:checked
-    ~ #Course_content
-    #Course_content_cate_list
-    label[for="Course_content_cate_legal"] {
-    background-color: var(--color-secondary);
-    color: var(--color-white);
-  }
+    #Course #Course_content_cards::before,
+    #Course #Course_content_cards::after {
+      content: "";
+      flex: 0 0 max(0px, calc((100vw - 1300px) / 2));
+    }
+  </style>
 
-  /* ================= Show cards by category ================= */
+  <style
+    repeat="category|param:parentId:7f8ad86d-404d-c0a9-69d2-36aed2d53306|sort:displayOrder:asc|includes:"
+  >
+    /* ================= Active category button ================= */
 
-  #Course
-    input[name="Course_content_cate"][id="Course_content_cate_all"]:checked
-    ~ #Course_content_cards
-    > div[course-cate],
-  #Course
-    input[name="Course_content_cate"][id="Course_content_cate_finance"]:checked
-    ~ #Course_content_cards
-    > div[course-cate="Course_content_cate_finance"],
-  #Course
-    input[name="Course_content_cate"][id="Course_content_cate_tech"]:checked
-    ~ #Course_content_cards
-    > div[course-cate="Course_content_cate_tech"],
-  #Course
-    input[name="Course_content_cate"][id="Course_content_cate_product"]:checked
-    ~ #Course_content_cards
-    > div[course-cate="Course_content_cate_product"],
-  #Course
-    input[name="Course_content_cate"][id="Course_content_cate_marketing"]:checked
-    ~ #Course_content_cards
-    > div[course-cate="Course_content_cate_marketing"],
-  #Course
-    input[name="Course_content_cate"][id="Course_content_cate_management"]:checked
-    ~ #Course_content_cards
-    > div[course-cate="Course_content_cate_management"],
-  #Course
-    input[name="Course_content_cate"][id="Course_content_cate_legal"]:checked
-    ~ #Course_content_cards
-    > div[course-cate="Course_content_cate_legal"] {
-    display: block;
-  }
+    #Course
+      input[name="Course_content_cate"][id="Course_content_cate_all"]:checked
+      ~ #Course_content
+      #Course_content_cate_list
+      label[for="Course_content_cate_all"],
+    #Course
+      input[name="Course_content_cate"][id="{{name}}"]:checked
+      ~ #Course_content
+      #Course_content_cate_list
+      label[for="{{name}}"] {
+      background-color: var(--color-secondary);
+      color: var(--color-white);
+    }
 
-  /* ================= Scroll padding edges ================= */
+    /* ================= Show cards by category ================= */
 
-  #Course #Course_content_cards::before,
-  #Course #Course_content_cards::after {
-    content: "";
-    flex: 0 0 max(0px, calc((100vw - 1300px) / 2));
-  }
-</style>
+    #Course
+      input[name="Course_content_cate"][id="Course_content_cate_all"]:checked
+      ~ #Course_content_cards
+      > div[course-cate],
+    #Course
+      input[name="Course_content_cate"][id="{{name}}"]:checked
+      ~ #Course_content_cards
+      > div[course-cate="{{name}}"] {
+      display: block;
+    }
+  </style>
 
-<section id="Course" class="relative">
-  <!-- Logic Radio -->
-  <input
-    re
-    type="radio"
-    name="Course_content_cate"
-    hidden
-    id="Course_content_cate_all"
-    checked
-  />
-  <input
-    type="radio"
-    name="Course_content_cate"
-    hidden
-    id="Course_content_cate_finance"
-  />
-  <!-- <input
-    type="radio"
-    name="Course_content_cate"
-    hidden
-    id="Course_content_cate_tech"
-  />
-  <input
-    type="radio"
-    name="Course_content_cate"
-    hidden
-    id="Course_content_cate_product"
-  />
-  <input
-    type="radio"
-    name="Course_content_cate"
-    hidden
-    id="Course_content_cate_marketing"
-  />
-  <input
-    type="radio"
-    name="Course_content_cate"
-    hidden
-    id="Course_content_cate_management"
-  />
-  <input
-    type="radio"
-    name="Course_content_cate"
-    hidden
-    id="Course_content_cate_legal"
-  /> -->
+  <section id="Course" class="relative">
+    <!-- Logic Radio -->
+    <input
+      re
+      type="radio"
+      name="Course_content_cate"
+      hidden
+      id="Course_content_cate_all"
+      checked
+    />
+    <input
+      repeat="category|param:parentId:7f8ad86d-404d-c0a9-69d2-36aed2d53306|sort:displayOrder:asc|includes:"
+      type="radio"
+      name="Course_content_cate"
+      hidden
+      id="{{name}}"
+    />
 
-  <div id="Course_content" class="d-column maxWidth1300">
-    <div class="d-column-h-center gap-xs">
-      <p class="tag" binding-name="Đào tạo chuyên sâu">Đào tạo chuyên sâu</p>
-      <h3 class="title-bold" binding-name="Khóa học ngắn hạn">
-        Khóa học ngắn hạn
-      </h3>
-      <p
-        binding-subdescription='Kỹ năng thực chiến dành cho Founder bận rộn, tập trung vào những "nút thắt" quan trọng nhất.'
+    <div id="Course_content" class="d-column maxWidth1300">
+      <div class="d-column-h-center gap-xs">
+        <p class="tag" binding-name="Đào tạo chuyên sâu">Đào tạo chuyên sâu</p>
+        <h3 class="title-bold" binding-name="Khóa học ngắn hạn">
+          Khóa học ngắn hạn
+        </h3>
+        <p
+          binding-subdescription='Kỹ năng thực chiến dành cho Founder bận rộn, tập trung vào những "nút thắt" quan trọng nhất.'
+        >
+          Kỹ năng thực chiến dành cho Founder bận rộn, tập trung vào những "nút
+          thắt" quan trọng nhất.
+        </p>
+      </div>
+
+      <div class="d-row-v-center gap-m" id="Course_content_cate_list">
+        <div class="d-row gap-xxs">
+          <label
+            class="btn-2"
+            for="Course_content_cate_all"
+            binding-name="Tất cả"
+            >Tất cả</label
+          >
+          <label
+            repeat="category|param:parentId:7f8ad86d-404d-c0a9-69d2-36aed2d53306|sort:displayOrder:asc|includes:"
+            class="btn-2"
+            for="{{name}}"
+            >{{subDescription}}</label
+          >
+        </div>
+
+        <div class="d-row mobileHide gap-xxs slider-controller">
+          <div class="slider-controller-prev btn-2">
+            <span class="material-symbols-outlined"> chevron_left </span>
+          </div>
+          <div class="slider-controller-next btn-2">
+            <span class="material-symbols-outlined"> chevron_right </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="Course_content_cards" class="d-row gap-m">
+      <div
+        class="card"
+        course-cate="{{metaKeyword}}"
+        repeat="article|size:20|sort:postTime:desc|param:categories.id:89a3995d-a667-ff2b-0527-e1fb836557b3|includes:"
       >
-        Kỹ năng thực chiến dành cho Founder bận rộn, tập trung vào những "nút
-        thắt" quan trọng nhất.
-      </p>
-    </div>
-
-    <div class="d-row-v-center gap-m" id="Course_content_cate_list">
-      <div class="d-row gap-xxs">
-        <label class="btn-2" for="Course_content_cate_all" binding-name="Tất cả"
-          >Tất cả</label
-        >
-        <label
-          class="btn-2"
-          for="Course_content_cate_finance"
-          binding-name="Finance"
-          >Finance</label
-        >
-        <label class="btn-2" for="Course_content_cate_tech" binding-name="Tech"
-          >Tech</label
-        >
-        <label
-          class="btn-2"
-          for="Course_content_cate_product"
-          binding-name="Product"
-          >Product</label
-        >
-        <label
-          class="btn-2"
-          for="Course_content_cate_marketing"
-          binding-name="Marketing"
-          >Marketing</label
-        >
-        <label
-          class="btn-2"
-          for="Course_content_cate_management"
-          binding-name="Management"
-          >Management</label
-        >
-        <label
-          class="btn-2"
-          for="Course_content_cate_legal"
-          binding-name="Legal"
-          >Legal</label
-        >
-      </div>
-
-      <div class="d-row mobileHide gap-xxs slider-controller">
-        <div class="slider-controller-prev btn-2">
-          <span class="material-symbols-outlined"> chevron_left </span>
+        <div class="top">
+          <img src="https://static.izzi.asia/{{images.path}}" alt="{{name}}" />
+          <!-- <div class="tag">{{categories[1].subDescription}}</div> -->
         </div>
-        <div class="slider-controller-next btn-2">
-          <span class="material-symbols-outlined"> chevron_right </span>
+
+        <div class="bottom">
+          <h4>{{name}}</h4>
+          <div class="d-column gap-xxxs">
+            <div class="d-row-v-center gap-xxxs">
+              <span class="material-symbols-outlined"> person </span>
+              <p>{{subDescription}}</p>
+            </div>
+            <div class="d-row-v-center gap-xxxs">
+              <span class="material-symbols-outlined"> schedule </span>
+              <p>{{metaDescription}}</p>
+            </div>
+            <div class="d-row-v-center gap-xxxs">
+              <span class="material-symbols-outlined"> location_on </span>
+              <p>{{metaName}}</p>
+            </div>
+          </div>
+          <div class="description">{{description}}</div>
+          <a
+            class="btn btn-secondary"
+            binding-btntext="Đăng ký ngay"
+            href="/{{languageCode}}/khoa-hoc/{{friendlyUrl}}"
+          >
+            Đăng ký ngay
+          </a>
         </div>
       </div>
     </div>
-  </div>
-
-  <div id="Course_content_cards" class="d-row-v-center gap-m">
-    <div class="card" course-cate="Course_content_cate_finance">
-      <div class="top">
-        <img
-          binding-imgpath="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop"
-          src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop"
-          alt=""
-        />
-        <div class="tag"></div>
-      </div>
-
-      <div class="bottom">
-        <h4 binding-name="Fundraising Masterclass: Chiến lược Gọi vốn Series A">
-          Fundraising Masterclass: Chiến lược Gọi vốn Series A
-        </h4>
-        <div class="d-column gap-xxxs">
-          <div class="d-row-v-center gap-xxxs">
-            <span class="material-symbols-outlined"> person </span>
-            <p binding-name="Shark Louis Nguyen">Shark Louis Nguyen</p>
-          </div>
-          <div class="d-row-v-center gap-xxxs">
-            <span class="material-symbols-outlined"> schedule </span>
-            <p binding-name="15 - 17/10/2024">15 - 17/10/2024</p>
-          </div>
-          <div class="d-row-v-center gap-xxxs">
-            <span class="material-symbols-outlined"> location_on </span>
-            <p binding-name="HCMC">HCMC</p>
-          </div>
-        </div>
-        <p
-          binding-subdescription="Chiến lược gọi vốn, định giá doanh nghiệp và nghệ thuật đàm phán Term Sheet với các quỹ đầu tư mạo hiểm quốc tế."
-        >
-          Chiến lược gọi vốn, định giá doanh nghiệp và nghệ thuật đàm phán Term
-          Sheet với các quỹ đầu tư mạo hiểm quốc tế.
-        </p>
-        <div
-          class="btn btn-secondary"
-          binding-btntext="Đăng ký ngay"
-          binding-btnhref=""
-        >
-          Đăng ký ngay
-        </div>
-      </div>
-    </div>
-
-    <!-- del -->
-    <div class="card" course-cate="Course_content_cate_legal">
-      <div class="top">
-        <img
-          binding-imgpath="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop"
-          src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop"
-          alt=""
-        />
-        <div class="tag"></div>
-      </div>
-
-      <div class="bottom">
-        <h4 binding-name="Fundraising Masterclass: Chiến lược Gọi vốn Series A">
-          Fundraising Masterclass: Chiến lược Gọi vốn Series A
-        </h4>
-        <div class="d-column gap-xxxs">
-          <div class="d-row-v-center gap-xxxs">
-            <span class="material-symbols-outlined"> person </span>
-            <p binding-name="Shark Louis Nguyen">Shark Louis Nguyen</p>
-          </div>
-          <div class="d-row-v-center gap-xxxs">
-            <span class="material-symbols-outlined"> schedule </span>
-            <p binding-name="15 - 17/10/2024">15 - 17/10/2024</p>
-          </div>
-          <div class="d-row-v-center gap-xxxs">
-            <span class="material-symbols-outlined"> location_on </span>
-            <p binding-name="HCMC">HCMC</p>
-          </div>
-        </div>
-        <p
-          binding-subdescription="Chiến lược gọi vốn, định giá doanh nghiệp và nghệ thuật đàm phán Term Sheet với các quỹ đầu tư mạo hiểm quốc tế."
-        >
-          Chiến lược gọi vốn, định giá doanh nghiệp và nghệ thuật đàm phán Term
-          Sheet với các quỹ đầu tư mạo hiểm quốc tế.
-        </p>
-        <div
-          class="btn btn-secondary"
-          binding-btntext="Đăng ký ngay"
-          binding-btnhref=""
-        >
-          Đăng ký ngay
-        </div>
-      </div>
-    </div>
-    <div class="card" course-cate="Course_content_cate_tech">
-      <div class="top">
-        <img
-          binding-imgpath="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop"
-          src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop"
-          alt=""
-        />
-        <div class="tag"></div>
-      </div>
-
-      <div class="bottom">
-        <h4 binding-name="Fundraising Masterclass: Chiến lược Gọi vốn Series A">
-          Fundraising Masterclass: Chiến lược Gọi vốn Series A
-        </h4>
-        <div class="d-column gap-xxxs">
-          <div class="d-row-v-center gap-xxxs">
-            <span class="material-symbols-outlined"> person </span>
-            <p binding-name="Shark Louis Nguyen">Shark Louis Nguyen</p>
-          </div>
-          <div class="d-row-v-center gap-xxxs">
-            <span class="material-symbols-outlined"> schedule </span>
-            <p binding-name="15 - 17/10/2024">15 - 17/10/2024</p>
-          </div>
-          <div class="d-row-v-center gap-xxxs">
-            <span class="material-symbols-outlined"> location_on </span>
-            <p binding-name="HCMC">HCMC</p>
-          </div>
-        </div>
-        <p
-          binding-subdescription="Chiến lược gọi vốn, định giá doanh nghiệp và nghệ thuật đàm phán Term Sheet với các quỹ đầu tư mạo hiểm quốc tế."
-        >
-          Chiến lược gọi vốn, định giá doanh nghiệp và nghệ thuật đàm phán Term
-          Sheet với các quỹ đầu tư mạo hiểm quốc tế.
-        </p>
-        <div
-          class="btn btn-secondary"
-          binding-btntext="Đăng ký ngay"
-          binding-btnhref=""
-        >
-          Đăng ký ngay
-        </div>
-      </div>
-    </div>
-    <div class="card" course-cate="Course_content_cate_finance">
-      <div class="top">
-        <img
-          binding-imgpath="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop"
-          src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop"
-          alt=""
-        />
-        <div class="tag"></div>
-      </div>
-
-      <div class="bottom">
-        <h4 binding-name="Fundraising Masterclass: Chiến lược Gọi vốn Series A">
-          Fundraising Masterclass: Chiến lược Gọi vốn Series A
-        </h4>
-        <div class="d-column gap-xxxs">
-          <div class="d-row-v-center gap-xxxs">
-            <span class="material-symbols-outlined"> person </span>
-            <p binding-name="Shark Louis Nguyen">Shark Louis Nguyen</p>
-          </div>
-          <div class="d-row-v-center gap-xxxs">
-            <span class="material-symbols-outlined"> schedule </span>
-            <p binding-name="15 - 17/10/2024">15 - 17/10/2024</p>
-          </div>
-          <div class="d-row-v-center gap-xxxs">
-            <span class="material-symbols-outlined"> location_on </span>
-            <p binding-name="HCMC">HCMC</p>
-          </div>
-        </div>
-        <p
-          binding-subdescription="Chiến lược gọi vốn, định giá doanh nghiệp và nghệ thuật đàm phán Term Sheet với các quỹ đầu tư mạo hiểm quốc tế."
-        >
-          Chiến lược gọi vốn, định giá doanh nghiệp và nghệ thuật đàm phán Term
-          Sheet với các quỹ đầu tư mạo hiểm quốc tế.
-        </p>
-        <div
-          class="btn btn-secondary"
-          binding-btntext="Đăng ký ngay"
-          binding-btnhref=""
-        >
-          Đăng ký ngay
-        </div>
-      </div>
-    </div>
-    <div class="card" course-cate="Course_content_cate_marketing">
-      <div class="top">
-        <img
-          binding-imgpath="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop"
-          src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop"
-          alt=""
-        />
-        <div class="tag"></div>
-      </div>
-
-      <div class="bottom">
-        <h4 binding-name="Fundraising Masterclass: Chiến lược Gọi vốn Series A">
-          Fundraising Masterclass: Chiến lược Gọi vốn Series A
-        </h4>
-        <div class="d-column gap-xxxs">
-          <div class="d-row-v-center gap-xxxs">
-            <span class="material-symbols-outlined"> person </span>
-            <p binding-name="Shark Louis Nguyen">Shark Louis Nguyen</p>
-          </div>
-          <div class="d-row-v-center gap-xxxs">
-            <span class="material-symbols-outlined"> schedule </span>
-            <p binding-name="15 - 17/10/2024">15 - 17/10/2024</p>
-          </div>
-          <div class="d-row-v-center gap-xxxs">
-            <span class="material-symbols-outlined"> location_on </span>
-            <p binding-name="HCMC">HCMC</p>
-          </div>
-        </div>
-        <p
-          binding-subdescription="Chiến lược gọi vốn, định giá doanh nghiệp và nghệ thuật đàm phán Term Sheet với các quỹ đầu tư mạo hiểm quốc tế."
-        >
-          Chiến lược gọi vốn, định giá doanh nghiệp và nghệ thuật đàm phán Term
-          Sheet với các quỹ đầu tư mạo hiểm quốc tế.
-        </p>
-        <div
-          class="btn btn-secondary"
-          binding-btntext="Đăng ký ngay"
-          binding-btnhref=""
-        >
-          Đăng ký ngay
-        </div>
-      </div>
-    </div>
-    <div class="card" course-cate="Course_content_cate_finance">
-      <div class="top">
-        <img
-          binding-imgpath="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop"
-          src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop"
-          alt=""
-        />
-        <div class="tag"></div>
-      </div>
-
-      <div class="bottom">
-        <h4 binding-name="Fundraising Masterclass: Chiến lược Gọi vốn Series A">
-          Fundraising Masterclass: Chiến lược Gọi vốn Series A
-        </h4>
-        <div class="d-column gap-xxxs">
-          <div class="d-row-v-center gap-xxxs">
-            <span class="material-symbols-outlined"> person </span>
-            <p binding-name="Shark Louis Nguyen">Shark Louis Nguyen</p>
-          </div>
-          <div class="d-row-v-center gap-xxxs">
-            <span class="material-symbols-outlined"> schedule </span>
-            <p binding-name="15 - 17/10/2024">15 - 17/10/2024</p>
-          </div>
-          <div class="d-row-v-center gap-xxxs">
-            <span class="material-symbols-outlined"> location_on </span>
-            <p binding-name="HCMC">HCMC</p>
-          </div>
-        </div>
-        <p
-          binding-subdescription="Chiến lược gọi vốn, định giá doanh nghiệp và nghệ thuật đàm phán Term Sheet với các quỹ đầu tư mạo hiểm quốc tế."
-        >
-          Chiến lược gọi vốn, định giá doanh nghiệp và nghệ thuật đàm phán Term
-          Sheet với các quỹ đầu tư mạo hiểm quốc tế.
-        </p>
-        <div
-          class="btn btn-secondary"
-          binding-btntext="Đăng ký ngay"
-          binding-btnhref=""
-        >
-          Đăng ký ngay
-        </div>
-      </div>
-    </div>
-    <div class="card" course-cate="Course_content_cate_marketing">
-      <div class="top">
-        <img
-          binding-imgpath="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop"
-          src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop"
-          alt=""
-        />
-        <div class="tag"></div>
-      </div>
-
-      <div class="bottom">
-        <h4 binding-name="Fundraising Masterclass: Chiến lược Gọi vốn Series A">
-          Fundraising Masterclass: Chiến lược Gọi vốn Series A
-        </h4>
-        <div class="d-column gap-xxxs">
-          <div class="d-row-v-center gap-xxxs">
-            <span class="material-symbols-outlined"> person </span>
-            <p binding-name="Shark Louis Nguyen">Shark Louis Nguyen</p>
-          </div>
-          <div class="d-row-v-center gap-xxxs">
-            <span class="material-symbols-outlined"> schedule </span>
-            <p binding-name="15 - 17/10/2024">15 - 17/10/2024</p>
-          </div>
-          <div class="d-row-v-center gap-xxxs">
-            <span class="material-symbols-outlined"> location_on </span>
-            <p binding-name="HCMC">HCMC</p>
-          </div>
-        </div>
-        <p
-          binding-subdescription="Chiến lược gọi vốn, định giá doanh nghiệp và nghệ thuật đàm phán Term Sheet với các quỹ đầu tư mạo hiểm quốc tế."
-        >
-          Chiến lược gọi vốn, định giá doanh nghiệp và nghệ thuật đàm phán Term
-          Sheet với các quỹ đầu tư mạo hiểm quốc tế.
-        </p>
-        <div
-          class="btn btn-secondary"
-          binding-btntext="Đăng ký ngay"
-          binding-btnhref=""
-        >
-          Đăng ký ngay
-        </div>
-      </div>
-    </div>
-    <div class="card" course-cate="Course_content_cate_finance">
-      <div class="top">
-        <img
-          binding-imgpath="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop"
-          src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop"
-          alt=""
-        />
-        <div class="tag"></div>
-      </div>
-
-      <div class="bottom">
-        <h4 binding-name="Fundraising Masterclass: Chiến lược Gọi vốn Series A">
-          Fundraising Masterclass: Chiến lược Gọi vốn Series A
-        </h4>
-        <div class="d-column gap-xxxs">
-          <div class="d-row-v-center gap-xxxs">
-            <span class="material-symbols-outlined"> person </span>
-            <p binding-name="Shark Louis Nguyen">Shark Louis Nguyen</p>
-          </div>
-          <div class="d-row-v-center gap-xxxs">
-            <span class="material-symbols-outlined"> schedule </span>
-            <p binding-name="15 - 17/10/2024">15 - 17/10/2024</p>
-          </div>
-          <div class="d-row-v-center gap-xxxs">
-            <span class="material-symbols-outlined"> location_on </span>
-            <p binding-name="HCMC">HCMC</p>
-          </div>
-        </div>
-        <p
-          binding-subdescription="Chiến lược gọi vốn, định giá doanh nghiệp và nghệ thuật đàm phán Term Sheet với các quỹ đầu tư mạo hiểm quốc tế."
-        >
-          Chiến lược gọi vốn, định giá doanh nghiệp và nghệ thuật đàm phán Term
-          Sheet với các quỹ đầu tư mạo hiểm quốc tế.
-        </p>
-        <div
-          class="btn btn-secondary"
-          binding-btntext="Đăng ký ngay"
-          binding-btnhref=""
-        >
-          Đăng ký ngay
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
+</div>

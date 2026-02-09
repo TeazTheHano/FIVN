@@ -1,317 +1,320 @@
-<style>
-  /* ===== Background ===== */
-  #Contact .bg {
-    z-index: -3;
-    background-color: var(--color-black);
-    width: 100%;
-    height: 100%;
-  }
+<div>
+  <style>
+    /* ===== Background ===== */
+    #Contact .bg {
+      z-index: -3;
+      background-color: var(--color-black);
+      width: 100%;
+      height: 100%;
+    }
 
-  #Contact .bg .graCoat {
-    z-index: 1;
-    background-image: linear-gradient(
-      to right,
-      var(--color-black) 20%,
-      rgba(0, 0, 0, 0.7) 70%,
-      rgba(1, 31, 0, 0.5) 100%
-    );
-    width: 100%;
-    height: 100%;
-  }
+    #Contact .bg .graCoat {
+      z-index: 1;
+      background-image: linear-gradient(
+        to right,
+        var(--color-black) 20%,
+        rgba(0, 0, 0, 0.7) 70%,
+        rgba(1, 31, 0, 0.5) 100%
+      );
+      width: 100%;
+      height: 100%;
+    }
 
-  #Contact .bg img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+    #Contact .bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-  /* ===== Layout ===== */
-  #Contact #Contact_content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-xl);
-    color: var(--color-white);
-  }
+    /* ===== Layout ===== */
+    #Contact #Contact_content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-xl);
+      color: var(--color-white);
+    }
 
-  /* ===== Left ===== */
-  #Contact #Contact_content .left {
-    padding-top: var(--spacing-l);
-  }
+    /* ===== Left ===== */
+    #Contact #Contact_content .left {
+      padding-top: var(--spacing-l);
+    }
 
-  #Contact #Contact_content .left p {
-    color: var(--color-p-light);
-  }
+    #Contact #Contact_content .left p {
+      color: var(--color-p-light);
+    }
 
-  #Contact #Contact_content .left .tag {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.1rem;
-    color: var(--color-primary);
-    text-transform: uppercase;
-    font-weight: var(--weight-bold);
+    #Contact #Contact_content .left .tag {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.1rem;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      font-weight: var(--weight-bold);
 
-    backdrop-filter: blur(2px);
-    background-color: rgba(255, 255, 255, 0.1);
-    backface-visibility: hidden;
+      backdrop-filter: blur(2px);
+      background-color: rgba(255, 255, 255, 0.1);
+      backface-visibility: hidden;
 
-    width: fit-content;
-    padding: var(--spacing-xxxs) var(--spacing-xs);
+      width: fit-content;
+      padding: var(--spacing-xxxs) var(--spacing-xs);
 
-    border-radius: var(--radius-round);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
+      border-radius: var(--radius-round);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
 
-  #Contact #Contact_content .left .gradient-text-mainColor {
-    background: linear-gradient(
-      90deg,
-      var(--color-primary) 0%,
-      var(--color-primary) 30%,
-      var(--color-white) 60%,
-      var(--color-white) 80%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+    #Contact #Contact_content .left .gradient-text-mainColor {
+      background: linear-gradient(
+        90deg,
+        var(--color-primary) 0%,
+        var(--color-primary) 30%,
+        var(--color-white) 60%,
+        var(--color-white) 80%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-  #Contact #Contact_content .left .icon-text {
-    transition: var(--transition-fast);
-  }
+    #Contact #Contact_content .left .icon-text {
+      transition: var(--transition-fast);
+    }
 
-  #Contact #Contact_content .left .icon-text .icon {
-    width: var(--spacing-xl);
-    height: var(--spacing-xl);
+    #Contact #Contact_content .left .icon-text .icon {
+      width: var(--spacing-xl);
+      height: var(--spacing-xl);
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-    border-radius: var(--radius-l);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius-l);
+      border: 1px solid rgba(255, 255, 255, 0.2);
 
-    background-color: rgba(137, 255, 182, 0.1);
-    color: var(--color-primary);
-  }
+      background-color: rgba(137, 255, 182, 0.1);
+      color: var(--color-primary);
+    }
 
-  /* ===== Right ===== */
-  #Contact #Contact_content .right {
-    background-color: var(--color-bg-light);
-    padding: var(--spacing-l);
-    border-radius: var(--radius-xl);
-  }
+    /* ===== Right ===== */
+    #Contact #Contact_content .right {
+      background-color: var(--color-bg-light);
+      padding: var(--spacing-l);
+      border-radius: var(--radius-xl);
+    }
 
-  #Contact #Contact_content .right h3 {
-    color: var(--color-black);
-  }
+    #Contact #Contact_content .right h3 {
+      color: var(--color-black);
+    }
 
-  #Contact #Contact_content .right p {
-    font-size: var(--text-xs);
-    color: var(--color-p-dark);
-  }
+    #Contact #Contact_content .right p {
+      font-size: var(--text-xs);
+      color: var(--color-p-dark);
+    }
 
-  #Contact #Contact_content .right div {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-xxs);
-  }
+    #Contact #Contact_content .right div {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-xxs);
+    }
 
-  #Contact #Contact_content .right div label {
-    font-weight: var(--weight-semibold);
-    text-transform: uppercase;
-    font-size: var(--text-xs);
-    color: var(--color-p-dark);
-    margin-top: var(--spacing-l);
-  }
+    #Contact #Contact_content .right div label {
+      font-weight: var(--weight-semibold);
+      text-transform: uppercase;
+      font-size: var(--text-xs);
+      color: var(--color-p-dark);
+      margin-top: var(--spacing-l);
+    }
 
-  /* ===== Form ===== */
-  #Contact #Contact_content .right form textarea,
-  #Contact #Contact_content .right form input {
-    color: var(--color-black);
-    font-family: var(--font-main);
-    padding: var(--spacing-xs);
-    border-radius: var(--radius-s);
-    border: 1px solid var(--color-text-muted);
-    background-color: var(--color-white);
-  }
+    /* ===== Form ===== */
+    #Contact #Contact_content .right form textarea,
+    #Contact #Contact_content .right form input {
+      color: var(--color-black);
+      font-family: var(--font-main);
+      padding: var(--spacing-xs);
+      border-radius: var(--radius-s);
+      border: 1px solid var(--color-text-muted);
+      background-color: var(--color-white);
+    }
 
-  #Contact #Contact_content .right form > div:first-child {
-    flex-direction: row;
-    justify-content: space-between;
-  }
+    #Contact #Contact_content .right form > div:first-child {
+      flex-direction: row;
+      justify-content: space-between;
+    }
 
-  #Contact #Contact_content .right form .btn {
-    width: 100%;
-  }
+    #Contact #Contact_content .right form .btn {
+      width: 100%;
+    }
 
-  /* ===== Agreement ===== */
-  #Contact #Contact_content .right .agreement {
-    font-size: var(--text-xxxs);
-    color: var(--color-text-muted);
-    text-align: center;
-  }
-</style>
+    /* ===== Agreement ===== */
+    #Contact #Contact_content .right .agreement {
+      font-size: var(--text-xxxs);
+      color: var(--color-text-muted);
+      text-align: center;
+    }
+  </style>
 
-<section id="Contact" class="relative mouse-parallax">
-  <div class="bg absolute">
-    <div class="graCoat absolute"></div>
-    <img
-      binding-imgpath="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
-      src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
-      alt=""
-    />
-  </div>
-  <div class="spotlight"></div>
-
-  <div id="Contact_content" class="maxWidth1300 d-row mobileFlexColumn">
-    <div class="left d-column gap-l">
-      <div class="tag" binding-name="Đang mở đơn đăng ký Batch 14">
-        Đang mở đơn đăng ký Batch 14
-      </div>
-
-      <div>
-        <h1 binding-name="Sẵn sàng để">Sẵn sàng để</h1>
-        <h1 binding-name="Bứt phá giới hạn?" class="gradient-text-mainColor">
-          Bứt phá giới hạn
-        </h1>
-      </div>
-
-      <p
-        binding-subdescription="Đừng để ý tưởng triệu đô chỉ nằm trên giấy. Hãy tham gia cùng cộng đồng Founder ưu tú nhất Việt Nam và tiếp cận nguồn vốn toàn cầu ngay hôm nay."
-      >
-        Đừng để ý tưởng triệu đô chỉ nằm trên giấy. Hãy tham gia cùng cộng đồng
-        Founder ưu tú nhất Việt Nam và tiếp cận nguồn vốn toàn cầu ngay hôm nay.
-      </p>
-
-      <div class="d-column gap-m">
-        <div class="icon-text d-row-v-center gap-xs">
-          <div class="icon">
-            <span class="material-symbols-outlined"> group </span>
-          </div>
-          <div class="d-column gap-xxxs">
-            <h4 binding-name="Mạng lưới Elite">Mạng lưới Elite</h4>
-            <p
-              class="text-xs"
-              binding-name="Kết nối với 500+ Founder và CEO thành công."
-            >
-              Kết nối với 500+ Founder và CEO thành công.
-            </p>
-          </div>
-        </div>
-        <div class="icon-text d-row-v-center gap-xs">
-          <div class="icon">
-            <span class="material-symbols-outlined"> bolt </span>
-          </div>
-          <div class="d-column gap-xxxs">
-            <h4 binding-name="Quy trình thực chiến">Quy trình thực chiến</h4>
-            <p
-              class="text-xs"
-              binding-name="Giáo trình đã được kiểm chứng tại Silicon Valley."
-            >
-              Giáo trình đã được kiểm chứng tại Silicon Valley.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <hr />
-      <div class="d-row gap-s">
-        <div class="d-column gap-xxs">
-          <p class="text-xs" binding-name="Hotline tư vấn">Hotline tư vấn</p>
-          <h4 class="" binding-name="(+84) 909 123 456">(+84) 909 123 456</h4>
-        </div>
-        <div class="d-column gap-xxs">
-          <p class="text-xs" binding-name="Email hỗ trợ">Email hỗ trợ</p>
-          <h4 class="" binding-name="vietnam@fi.co">vietnam@fi.co</h4>
-        </div>
-      </div>
+  <section id="Contact" class="relative mouse-parallax">
+    <div class="bg absolute">
+      <div class="graCoat absolute"></div>
+      <img
+        binding-imgpath="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
+        src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
+        alt=""
+      />
     </div>
-    <div class="right d-column gap-m">
-      <div>
-        <h3 binding-name="Đăng ký tư vấn">Đăng ký tư vấn</h3>
-        <p binding-name="Điền thông tin để nhận Brochure và lịch phỏng vấn.">
-          Điền thông tin để nhận Brochure và lịch phỏng vấn.
+    <div class="spotlight"></div>
+
+    <div id="Contact_content" class="maxWidth1300 d-row mobileFlexColumn">
+      <div class="left d-column gap-l">
+        <div class="tag" binding-name="Đang mở đơn đăng ký Batch 14">
+          Đang mở đơn đăng ký Batch 14
+        </div>
+
+        <div>
+          <h1 binding-name="Sẵn sàng để">Sẵn sàng để</h1>
+          <h1 binding-name="Bứt phá giới hạn?" class="gradient-text-mainColor">
+            Bứt phá giới hạn
+          </h1>
+        </div>
+
+        <p
+          binding-subdescription="Đừng để ý tưởng triệu đô chỉ nằm trên giấy. Hãy tham gia cùng cộng đồng Founder ưu tú nhất Việt Nam và tiếp cận nguồn vốn toàn cầu ngay hôm nay."
+        >
+          Đừng để ý tưởng triệu đô chỉ nằm trên giấy. Hãy tham gia cùng cộng
+          đồng Founder ưu tú nhất Việt Nam và tiếp cận nguồn vốn toàn cầu ngay
+          hôm nay.
+        </p>
+
+        <div class="d-column gap-m">
+          <div class="icon-text d-row-v-center gap-xs">
+            <div class="icon">
+              <span class="material-symbols-outlined"> group </span>
+            </div>
+            <div class="d-column gap-xxxs">
+              <h4 binding-name="Mạng lưới Elite">Mạng lưới Elite</h4>
+              <p
+                class="text-xs"
+                binding-name="Kết nối với 500+ Founder và CEO thành công."
+              >
+                Kết nối với 500+ Founder và CEO thành công.
+              </p>
+            </div>
+          </div>
+          <div class="icon-text d-row-v-center gap-xs">
+            <div class="icon">
+              <span class="material-symbols-outlined"> bolt </span>
+            </div>
+            <div class="d-column gap-xxxs">
+              <h4 binding-name="Quy trình thực chiến">Quy trình thực chiến</h4>
+              <p
+                class="text-xs"
+                binding-name="Giáo trình đã được kiểm chứng tại Silicon Valley."
+              >
+                Giáo trình đã được kiểm chứng tại Silicon Valley.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <hr />
+        <div class="d-row gap-s">
+          <div class="d-column gap-xxs">
+            <p class="text-xs" binding-name="Hotline tư vấn">Hotline tư vấn</p>
+            <h4 class="" binding-name="(+84) 909 123 456">(+84) 909 123 456</h4>
+          </div>
+          <div class="d-column gap-xxs">
+            <p class="text-xs" binding-name="Email hỗ trợ">Email hỗ trợ</p>
+            <h4 class="" binding-name="vietnam@fi.co">vietnam@fi.co</h4>
+          </div>
+        </div>
+      </div>
+      <div class="right d-column gap-m">
+        <div>
+          <h3 binding-name="Đăng ký tư vấn">Đăng ký tư vấn</h3>
+          <p binding-name="Điền thông tin để nhận Brochure và lịch phỏng vấn.">
+            Điền thông tin để nhận Brochure và lịch phỏng vấn.
+          </p>
+        </div>
+
+        <form action="" id="Contact_form" method="post">
+          <div class="d-row mobileFlexColumn">
+            <div>
+              <label for="name" binding-name="Họ và tên">Họ và tên</label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Nguyen Van A"
+              />
+            </div>
+            <div>
+              <label for="phone" binding-name="Số điện thoại"
+                >Số điện thoại</label
+              >
+              <input
+                type="text"
+                name="phone"
+                id="phone"
+                placeholder="0987654321"
+                pattern="[0-9]{10}"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label for="email" binding-name="Email công việc"
+              >Email công việc</label
+            >
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="founder@startup.com"
+            />
+          </div>
+
+          <div>
+            <label for="stage" binding-name="Giai đoạn startup"
+              >Giai đoạn startup</label
+            >
+            <input
+              list="Contact_form_dl"
+              name="stage"
+              id="stage"
+              placeholder="Giai đoạn startup"
+            />
+            <datalist id="Contact_form_dl">
+              <option value="Chỉ có ý tưởng"></option>
+              <option value="Đã có MVP/ Sản phẩm mẫu"></option>
+              <option value="Đã có doanh thu/ người dùng"></option>
+              <option value="Đang gọi vốn"></option>
+            </datalist>
+          </div>
+
+          <div>
+            <label for="message" binding-name="Lời nhắn (tùy chọn)"
+              >Lời nhắn (tùy chọn)</label
+            >
+            <textarea
+              name="message"
+              id="message"
+              rows="4"
+              placeholder="Chia sẻ ngắn gọn về dự án"
+            ></textarea>
+          </div>
+        </form>
+        <button class="btn btn-primary" binding-name="Ứng tuyển ngay">
+          Ứng tuyển ngay
+        </button>
+
+        <p
+          class="agreement"
+          binding-name="Bằng việc đăng ký, bạn đồng ý với Điều khoản của chúng tôi."
+        >
+          Bằng việc đăng ký, bạn đồng ý với <a href="">Điều khoản</a> của chúng
+          tôi.
         </p>
       </div>
-
-      <form action="" id="Contact_form" method="post">
-        <div class="d-row mobileFlexColumn">
-          <div>
-            <label for="name" binding-name="Họ và tên">Họ và tên</label>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              placeholder="Nguyen Van A"
-            />
-          </div>
-          <div>
-            <label for="phone" binding-name="Số điện thoại"
-              >Số điện thoại</label
-            >
-            <input
-              type="text"
-              name="phone"
-              id="phone"
-              placeholder="0987654321"
-              pattern="[0-9]{10}"
-            />
-          </div>
-        </div>
-
-        <div>
-          <label for="email" binding-name="Email công việc"
-            >Email công việc</label
-          >
-          <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="founder@startup.com"
-          />
-        </div>
-
-        <div>
-          <label for="stage" binding-name="Giai đoạn startup"
-            >Giai đoạn startup</label
-          >
-          <input
-            list="Contact_form_dl"
-            name="stage"
-            id="stage"
-            placeholder="Giai đoạn startup"
-          />
-          <datalist id="Contact_form_dl">
-            <option value="Chỉ có ý tưởng"></option>
-            <option value="Đã có MVP/ Sản phẩm mẫu"></option>
-            <option value="Đã có doanh thu/ người dùng"></option>
-            <option value="Đang gọi vốn"></option>
-          </datalist>
-        </div>
-
-        <div>
-          <label for="message" binding-name="Lời nhắn (tùy chọn)"
-            >Lời nhắn (tùy chọn)</label
-          >
-          <textarea
-            name="message"
-            id="message"
-            rows="4"
-            placeholder="Chia sẻ ngắn gọn về dự án"
-          ></textarea>
-        </div>
-      </form>
-      <button class="btn btn-primary" binding-name="Ứng tuyển ngay">
-        Ứng tuyển ngay
-      </button>
-
-      <p
-        class="agreement"
-        binding-name="Bằng việc đăng ký, bạn đồng ý với Điều khoản của chúng tôi."
-      >
-        Bằng việc đăng ký, bạn đồng ý với <a href="">Điều khoản</a> của chúng
-        tôi.
-      </p>
     </div>
-  </div>
-</section>
+  </section>
+</div>

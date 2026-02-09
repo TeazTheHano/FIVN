@@ -1,254 +1,262 @@
-<style>
-  /* ================= CORE VALUE ================= */
+<div>
+  <style>
+    /* ================= CORE VALUE ================= */
 
-  #CoreValue #CoreValue_content {
-    gap: var(--spacing-xl);
-    align-items: center;
-  }
+    #CoreValue #CoreValue_content {
+      gap: var(--spacing-xl);
+      align-items: center;
+    }
 
-  /* heading */
+    /* heading */
 
-  #CoreValue #CoreValue_content h2 {
-    margin-top: calc(200px - var(--spacing-xxxl));
-  }
+    #CoreValue #CoreValue_content h2 {
+      margin-top: calc(200px - var(--spacing-xxxl));
+    }
 
-  /* ---------- ROW ---------- */
+    /* ---------- ROW ---------- */
 
-  #CoreValue #CoreValue_content .d-row {
-    width: 100%;
-  }
+    #CoreValue #CoreValue_content .d-row {
+      width: 100%;
+    }
 
-  /* ---------- CONTAINER ---------- */
+    /* ---------- CONTAINER ---------- */
 
-  #CoreValue #CoreValue_content .d-row .container {
-    position: relative;
+    #CoreValue #CoreValue_content .d-row .container {
+      position: relative;
 
-    height: 500px;
-    width: 100%;
+      height: 500px;
+      width: 100%;
 
-    filter: drop-shadow(--shadow-m);
+      filter: drop-shadow(--shadow-m);
 
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-    gap: var(--spacing-s);
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      gap: var(--spacing-s);
 
-    border-radius: var(--radius-l);
-    overflow: hidden;
+      border-radius: var(--radius-l);
+      overflow: hidden;
 
-    color: var(--color-white);
-    padding: var(--spacing-m);
+      color: var(--color-white);
+      padding: var(--spacing-m);
 
-    transition: var(--transition-base);
-  }
+      transition: var(--transition-base);
+    }
 
-  /* text */
+    /* text */
 
-  #CoreValue #CoreValue_content .d-row .container p {
-    color: currentColor;
-    height: 0;
-    overflow: hidden;
-  }
+    #CoreValue #CoreValue_content .d-row .container p {
+      color: currentColor;
+      height: 0;
+      overflow: hidden;
+    }
 
-  /* transform default */
+    /* transform default */
 
-  #CoreValue #CoreValue_content .d-row .container h3,
-  #CoreValue #CoreValue_content .d-row .container .indicator,
-  #CoreValue #CoreValue_content .d-row .container p {
-    transform: translateY(30%);
-  }
+    #CoreValue #CoreValue_content .d-row .container h3,
+    #CoreValue #CoreValue_content .d-row .container .indicator,
+    #CoreValue #CoreValue_content .d-row .container p {
+      transform: translateY(30%);
+    }
 
-  /* indicator */
+    /* indicator */
 
-  #CoreValue #CoreValue_content .d-row .container .indicator {
-    width: var(--spacing-xl);
-    height: 4px;
-    background: var(--color-primary);
-  }
+    #CoreValue #CoreValue_content .d-row .container .indicator {
+      width: var(--spacing-xl);
+      height: 4px;
+      background: var(--color-primary);
+    }
 
-  /* image */
+    /* image */
 
-  #CoreValue #CoreValue_content .d-row .container img {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    z-index: -2;
-  }
+    #CoreValue #CoreValue_content .d-row .container img {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: -2;
+    }
 
-  /* gradient coat */
+    /* gradient coat */
 
-  #CoreValue #CoreValue_content .d-row .container .graCoat {
-    background-image: linear-gradient(
-      to bottom,
-      rgb(0 0 0 / 0.5),
-      rgba(1, 31, 0, 0.8)
-    );
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-  }
+    #CoreValue #CoreValue_content .d-row .container .graCoat {
+      background-image: linear-gradient(
+        to bottom,
+        rgb(0 0 0 / 0.5),
+        rgba(1, 31, 0, 0.8)
+      );
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
 
-  /* ---------- HOVER ---------- */
+    /* ---------- HOVER ---------- */
 
-  #CoreValue #CoreValue_content .d-row .container:hover {
-    outline: 3px solid var(--color-primary);
-    outline-offset: -3px;
-  }
+    #CoreValue #CoreValue_content .d-row .container:hover {
+      outline: 3px solid var(--color-primary);
+      outline-offset: -3px;
+    }
 
-  #CoreValue #CoreValue_content .d-row .container:hover .graCoat {
-    opacity: 0.5;
-  }
+    #CoreValue #CoreValue_content .d-row .container:hover .graCoat {
+      opacity: 0.5;
+    }
 
-  #CoreValue #CoreValue_content .d-row .container:hover .indicator {
-    width: var(--spacing-xxxl);
-  }
+    #CoreValue #CoreValue_content .d-row .container:hover .indicator {
+      width: var(--spacing-xxxl);
+    }
 
-  #CoreValue #CoreValue_content .d-row .container:hover p {
-    height: auto;
-  }
+    #CoreValue #CoreValue_content .d-row .container:hover p {
+      height: auto;
+    }
 
-  #CoreValue #CoreValue_content .d-row .container:hover p,
-  #CoreValue #CoreValue_content .d-row .container:hover h3,
-  #CoreValue #CoreValue_content .d-row .container:hover .indicator {
-    transform: translateY(0);
-  }
+    #CoreValue #CoreValue_content .d-row .container:hover p,
+    #CoreValue #CoreValue_content .d-row .container:hover h3,
+    #CoreValue #CoreValue_content .d-row .container:hover .indicator {
+      transform: translateY(0);
+    }
 
-  #CoreValue #CoreValue_content .d-row .container:hover img {
-    scale: 1.1;
-    transition: var(--transition-slow);
-  }
+    #CoreValue #CoreValue_content .d-row .container:hover img {
+      scale: 1.1;
+      transition: var(--transition-slow);
+    }
 
-  /* ---------- BG ---------- */
+    /* ---------- BG ---------- */
 
-  #CoreValue .bg {
-    z-index: -2;
+    #CoreValue .bg {
+      z-index: -2;
 
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-  }
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
 
-  /* bg svg */
+    /* bg svg */
 
-  #CoreValue .bg svg {
-    width: 100dvw;
-    height: 200px;
-    position: absolute;
-    top: 0;
+    #CoreValue .bg svg {
+      width: 100dvw;
+      height: 200px;
+      position: absolute;
+      top: 0;
 
-    z-index: -1;
-    transform: translateX(3.5%);
-  }
+      z-index: -1;
+      transform: translateX(3.5%);
+    }
 
-  /* bg img */
+    /* bg img */
 
-  #CoreValue .bg img {
-    opacity: 0.1;
-  }
-</style>
+    #CoreValue .bg img {
+      opacity: 0.1;
+    }
+  </style>
 
-<section id="CoreValue" class="relative">
-  <div class="bg absolute">
-    <svg
-      width="100%"
-      height="100%"
-      viewBox="0 0 1440 200"
-      preserveAspectRatio="none"
-    >
-      <defs>
-        <linearGradient id="stream-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#7BC440" stop-opacity="0"></stop>
-          <stop offset="50%" stop-color="#7BC440" stop-opacity="1"></stop>
-          <stop offset="100%" stop-color="#7BC440" stop-opacity="0"></stop>
-        </linearGradient>
-      </defs>
-      <path
-        d="M 1050 -10 V 60 Q 1050 110 1000 110 H 720 Q 670 110 670 160 V 200"
-        fill="none"
-        stroke="#d1e7dd"
-        stroke-width="2"
-        class="opacity-50"
-      ></path>
-      <circle r="4" fill="#7BC440" filter="drop-shadow(0 0 4px #7BC440)">
-        <animateMotion
-          dur="2.5s"
-          repeatCount="indefinite"
-          path="M 1050 -10 V 60 Q 1050 110 1000 110 H 720 Q 670 110 670 160 V 200"
-          keyPoints="0;1"
-          keyTimes="0;1"
-          calcMode="linear"
-        ></animateMotion>
-      </circle>
-    </svg>
-    <img
-      src="https://static.izzi.asia/templates/FIVN/svg/circuit-bg.svg"
-      alt=""
-    />
-  </div>
-  <div id="CoreValue_content" class="maxWidth1300 d-column">
-    <h2 binding-name="Giá trị Cốt lõi">Giá trị Cốt lõi</h2>
-    <p binding-name="Bộ quy tắc gen định hình nên những công ty kỳ lân.">
-      Bộ quy tắc gen định hình nên những công ty kỳ lân.
-    </p>
+  <section id="CoreValue" class="relative">
+    <div class="bg absolute">
+      <svg
+        width="100%"
+        height="100%"
+        viewBox="0 0 1440 200"
+        preserveAspectRatio="none"
+      >
+        <defs>
+          <linearGradient
+            id="stream-gradient"
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="0%"
+          >
+            <stop offset="0%" stop-color="#7BC440" stop-opacity="0"></stop>
+            <stop offset="50%" stop-color="#7BC440" stop-opacity="1"></stop>
+            <stop offset="100%" stop-color="#7BC440" stop-opacity="0"></stop>
+          </linearGradient>
+        </defs>
+        <path
+          d="M 1050 -10 V 60 Q 1050 110 1000 110 H 720 Q 670 110 670 160 V 200"
+          fill="none"
+          stroke="#d1e7dd"
+          stroke-width="2"
+          class="opacity-50"
+        ></path>
+        <circle r="4" fill="#7BC440" filter="drop-shadow(0 0 4px #7BC440)">
+          <animateMotion
+            dur="2.5s"
+            repeatCount="indefinite"
+            path="M 1050 -10 V 60 Q 1050 110 1000 110 H 720 Q 670 110 670 160 V 200"
+            keyPoints="0;1"
+            keyTimes="0;1"
+            calcMode="linear"
+          ></animateMotion>
+        </circle>
+      </svg>
+      <img
+        src="https://static.izzi.asia/templates/FIVN/svg/circuit-bg.svg"
+        alt=""
+      />
+    </div>
+    <div id="CoreValue_content" class="maxWidth1300 d-column">
+      <h2 binding-name="Giá trị Cốt lõi">Giá trị Cốt lõi</h2>
+      <p binding-name="Bộ quy tắc gen định hình nên những công ty kỳ lân.">
+        Bộ quy tắc gen định hình nên những công ty kỳ lân.
+      </p>
 
-    <div class="d-row mobileFlexColumn gap-m">
-      <div class="container">
-        <div class="graCoat absolute"></div>
-        <img
-          class="absolute"
-          binding-imgpath="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=800&auto=format&fit=crop"
-          src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=800&auto=format&fit=crop"
-          alt=""
-        />
-        <div class="indicator"></div>
-        <h3 binding-name="Kết nối Thực chất">Kết nối Thực chất</h3>
-        <p
-          binding-subdescription="Thay thế networking hời hợt bằng những mối quan hệ cố vấn (Mentorship) sâu sắc và cam kết dài hạn."
-        >
-          Thay thế networking hời hợt bằng những mối quan hệ cố vấn (Mentorship)
-          sâu sắc và cam kết dài hạn.
-        </p>
-      </div>
-      <div class="container">
-        <div class="graCoat absolute"></div>
-        <img
-          class="absolute"
-          binding-imgpath="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop"
-          src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop"
-          alt=""
-        />
-        <div class="indicator"></div>
-        <h3 binding-name="Tư duy Global">Tư duy Global</h3>
-        <p
-          binding-subdescription="Tiếp cận giáo trình và tiêu chuẩn từ Thung lũng Silicon ngay tại thị trường Việt Nam."
-        >
-          Tiếp cận giáo trình và tiêu chuẩn từ Thung lũng Silicon ngay tại thị
-          trường Việt Nam.
-        </p>
-      </div>
-      <div class="container">
-        <div class="graCoat absolute"></div>
-        <img
-          class="absolute"
-          binding-imgpath="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop"
-          src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop"
-          alt=""
-        />
-        <div class="indicator"></div>
-        <h3 binding-name="Tăng trưởng Bền vững">Tăng trưởng Bền vững</h3>
-        <p
-          binding-subdescription="Tập trung vào giải quyết vấn đề cốt lõi của thị trường thay vì chạy theo xu hướng ngắn hạn."
-        >
-          Tập trung vào giải quyết vấn đề cốt lõi của thị trường thay vì chạy
-          theo xu hướng ngắn hạn.
-        </p>
+      <div class="d-row mobileFlexColumn gap-m">
+        <div class="container">
+          <div class="graCoat absolute"></div>
+          <img
+            class="absolute"
+            binding-imgpath="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=800&auto=format&fit=crop"
+            src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=800&auto=format&fit=crop"
+            alt=""
+          />
+          <div class="indicator"></div>
+          <h3 binding-name="Kết nối Thực chất">Kết nối Thực chất</h3>
+          <p
+            binding-subdescription="Thay thế networking hời hợt bằng những mối quan hệ cố vấn (Mentorship) sâu sắc và cam kết dài hạn."
+          >
+            Thay thế networking hời hợt bằng những mối quan hệ cố vấn
+            (Mentorship) sâu sắc và cam kết dài hạn.
+          </p>
+        </div>
+        <div class="container">
+          <div class="graCoat absolute"></div>
+          <img
+            class="absolute"
+            binding-imgpath="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop"
+            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop"
+            alt=""
+          />
+          <div class="indicator"></div>
+          <h3 binding-name="Tư duy Global">Tư duy Global</h3>
+          <p
+            binding-subdescription="Tiếp cận giáo trình và tiêu chuẩn từ Thung lũng Silicon ngay tại thị trường Việt Nam."
+          >
+            Tiếp cận giáo trình và tiêu chuẩn từ Thung lũng Silicon ngay tại thị
+            trường Việt Nam.
+          </p>
+        </div>
+        <div class="container">
+          <div class="graCoat absolute"></div>
+          <img
+            class="absolute"
+            binding-imgpath="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop"
+            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop"
+            alt=""
+          />
+          <div class="indicator"></div>
+          <h3 binding-name="Tăng trưởng Bền vững">Tăng trưởng Bền vững</h3>
+          <p
+            binding-subdescription="Tập trung vào giải quyết vấn đề cốt lõi của thị trường thay vì chạy theo xu hướng ngắn hạn."
+          >
+            Tập trung vào giải quyết vấn đề cốt lõi của thị trường thay vì chạy
+            theo xu hướng ngắn hạn.
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>

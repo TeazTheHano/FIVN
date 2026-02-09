@@ -1,226 +1,229 @@
-<style>
-  #Network {
-    background-color: var(--color-bg-light);
-  }
+<div>
+  <style>
+    #Network {
+      background-color: var(--color-bg-light);
+    }
 
-  /* ================= Network Content ================= */
+    /* ================= Network Content ================= */
 
-  #Network #Network_content #Network_content_cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 400px));
-    justify-content: center;
-    width: 100%;
-    column-gap: var(--spacing-l);
-    margin-top: var(--spacing-m);
-    --max: 6;
-    overflow: hidden;
-  }
+    #Network #Network_content #Network_content_cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 400px));
+      justify-content: center;
+      width: 100%;
+      column-gap: var(--spacing-l);
+      margin-top: var(--spacing-m);
+      --max: 6;
+      overflow: hidden;
+    }
 
-  /* ================= Card ================= */
+    /* ================= Card ================= */
 
-  #Network #Network_content #Network_content_cards .card {
-    width: 100%;
-    background-color: var(--color-white);
-    padding: var(--spacing-m);
-    border-radius: var(--radius-l);
-    filter: drop-shadow(var(--shadow-xs));
-    gap: var(--spacing-m);
+    #Network #Network_content #Network_content_cards .card {
+      width: 100%;
+      background-color: var(--color-white);
+      padding: var(--spacing-m);
+      border-radius: var(--radius-l);
+      filter: drop-shadow(var(--shadow-xs));
+      gap: var(--spacing-m);
 
-    margin-top: var(--spacing-m);
-    margin-bottom: var(--spacing-xs);
-  }
+      margin-top: var(--spacing-m);
+      margin-bottom: var(--spacing-xs);
+    }
 
-  /* ---------- Card Top ---------- */
+    /* ---------- Card Top ---------- */
 
-  #Network #Network_content #Network_content_cards .card .top {
-    width: 100%;
-  }
+    #Network #Network_content #Network_content_cards .card .top {
+      width: 100%;
+    }
 
-  #Network #Network_content #Network_content_cards .card .top img {
-    width: 100px;
-    height: 100px;
-    border-radius: var(--radius-round);
-    filter: saturate(0);
-  }
+    #Network #Network_content #Network_content_cards .card .top img {
+      width: 100px;
+      height: 100px;
+      border-radius: var(--radius-round);
+      filter: saturate(0);
+    }
 
-  #Network #Network_content #Network_content_cards .card .top .tag {
-    letter-spacing: normal;
-    font-weight: var(--weight-bold);
-    color: var(--color-primary);
-  }
+    #Network #Network_content #Network_content_cards .card .top .tag {
+      letter-spacing: normal;
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+    }
 
-  #Network #Network_content #Network_content_cards .card .top p,
-  #Network #Network_content #Network_content_cards .card .top span {
-    font-size: var(--text-xxs) !important;
-    line-height: var(--lineheight-xxs);
-    color: var(--color-text-muted);
-  }
+    #Network #Network_content #Network_content_cards .card .top p,
+    #Network #Network_content #Network_content_cards .card .top span {
+      font-size: var(--text-xxs) !important;
+      line-height: var(--lineheight-xxs);
+      color: var(--color-text-muted);
+    }
 
-  #Network #Network_content #Network_content_cards .card .top div {
-    flex: 1;
-  }
+    #Network #Network_content #Network_content_cards .card .top div {
+      flex: 1;
+    }
 
-  #Network
-    #Network_content
-    #Network_content_cards
-    .card
-    .top
-    div
-    div:last-child {
-    border-radius: var(--radius-s);
-    background-color: var(--color-text-muted-2);
-    padding: var(--spacing-xxxs) var(--spacing-xs);
-  }
+    #Network
+      #Network_content
+      #Network_content_cards
+      .card
+      .top
+      div
+      div:last-child {
+      border-radius: var(--radius-s);
+      background-color: var(--color-text-muted-2);
+      padding: var(--spacing-xxxs) var(--spacing-xs);
+    }
 
-  #Network
-    #Network_content
-    #Network_content_cards
-    .card
-    .top
-    div
-    div:last-child
-    p {
-    color: var(--color-p-dark);
-    font-weight: var(--weight-semibold);
-  }
+    #Network
+      #Network_content
+      #Network_content_cards
+      .card
+      .top
+      div
+      div:last-child
+      p {
+      color: var(--color-p-dark);
+      font-weight: var(--weight-semibold);
+    }
 
-  #Network
-    #Network_content
-    #Network_content_cards
-    .card
-    .top
-    div
-    div:last-child
-    span {
-    color: var(--color-primary);
-  }
+    #Network
+      #Network_content
+      #Network_content_cards
+      .card
+      .top
+      div
+      div:last-child
+      span {
+      color: var(--color-primary);
+    }
 
-  /* ---------- Card Bottom ---------- */
+    /* ---------- Card Bottom ---------- */
 
-  #Network #Network_content #Network_content_cards .card .bottom p {
-    font-size: var(--text-xs);
-  }
+    #Network #Network_content #Network_content_cards .card .bottom p {
+      font-size: var(--text-xs);
+    }
 
-  #Network #Network_content #Network_content_cards .card .bottom p::before,
-  #Network #Network_content #Network_content_cards .card .bottom p::after {
-    content: '"';
-    padding: 0;
-    margin: 0;
-  }
+    #Network #Network_content #Network_content_cards .card .bottom p::before,
+    #Network #Network_content #Network_content_cards .card .bottom p::after {
+      content: '"';
+      padding: 0;
+      margin: 0;
+    }
 
-  #Network #Network_content #Network_content_cards .card .bottom a {
-    float: right;
-    margin-top: var(--spacing-xxxs);
-  }
+    #Network #Network_content #Network_content_cards .card .bottom a {
+      float: right;
+      margin-top: var(--spacing-xxxs);
+    }
 
-  #Network #Network_content #Network_content_cards .card .bottom a img {
-    width: 20px;
-    height: 20px;
-    filter: saturate(0);
-    opacity: 0.2;
-    transition: var(--transition-fast);
-  }
+    #Network #Network_content #Network_content_cards .card .bottom a img {
+      width: 20px;
+      height: 20px;
+      filter: saturate(0);
+      opacity: 0.2;
+      transition: var(--transition-fast);
+    }
 
-  #Network #Network_content #Network_content_cards .card .bottom a img:hover {
-    opacity: 1;
-    filter: saturate(1);
-  }
+    #Network #Network_content #Network_content_cards .card .bottom a img:hover {
+      opacity: 1;
+      filter: saturate(1);
+    }
 
-  /* ================= Collapse logic ================= */
+    /* ================= Collapse logic ================= */
 
-  #Network #Network_content #Network_content_cards .card:nth-child(n + 7) {
-    max-height: 0;
-    padding: 0;
-    opacity: 0;
-    overflow: hidden;
-    margin-top: 0;
-    margin-bottom: 0;
-  }
+    #Network #Network_content #Network_content_cards .card:nth-child(n + 7) {
+      max-height: 0;
+      padding: 0;
+      opacity: 0;
+      overflow: hidden;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
 
-  /* ================= Toggle label ================= */
+    /* ================= Toggle label ================= */
 
-  #Network label[for="Network_content_toggle_list"] {
-    cursor: pointer;
-    transition: var(--transition-slow);
-  }
+    #Network label[for="Network_content_toggle_list"] {
+      cursor: pointer;
+      transition: var(--transition-slow);
+    }
 
-  #Network label[for="Network_content_toggle_list"]::after {
-    content: "Xem toàn bộ danh sách ";
-  }
+    #Network label[for="Network_content_toggle_list"]::after {
+      content: "Xem toàn bộ danh sách ";
+    }
 
-  /* ================= Checked state ================= */
+    /* ================= Checked state ================= */
 
-  #Network
-    #Network_content_toggle_list:checked
-    ~ #Network_content
-    #Network_content_cards
-    > .card {
-    padding: var(--spacing-m);
-    max-height: 1000px;
-    opacity: 1;
-    margin-top: var(--spacing-m);
-    margin-bottom: var(--spacing-xs);
-  }
+    #Network
+      #Network_content_toggle_list:checked
+      ~ #Network_content
+      #Network_content_cards
+      > .card {
+      padding: var(--spacing-m);
+      max-height: 1000px;
+      opacity: 1;
+      margin-top: var(--spacing-m);
+      margin-bottom: var(--spacing-xs);
+    }
 
-  #Network
-    #Network_content_toggle_list:checked
-    ~ #Network_content
-    label[for="Network_content_toggle_list"]::after {
-    content: "Thu gọn";
-  }
-</style>
+    #Network
+      #Network_content_toggle_list:checked
+      ~ #Network_content
+      label[for="Network_content_toggle_list"]::after {
+      content: "Thu gọn";
+    }
+  </style>
 
-<section id="Network" class="relative">
-  <input type="checkbox" id="Network_content_toggle_list" hidden />
+  <section id="Network" class="relative">
+    <input type="checkbox" id="Network_content_toggle_list" hidden />
 
-  <div id="Network_content" class="d-column-h-center">
-    <div class="d-column-h-center gap-xs">
-      <h3 class="title-bold" binding-name="Mentor Network">Mentor Network</h3>
-      <p binding-name="Được dẫn dắt bởi những CEO công nghệ hàng đầu.">
-        Được dẫn dắt bởi những CEO công nghệ hàng đầu.
-      </p>
-    </div>
+    <div id="Network_content" class="d-column-h-center">
+      <div class="d-column-h-center gap-xs">
+        <h3 class="title-bold" binding-name="Mentor Network">Mentor Network</h3>
+        <p binding-name="Được dẫn dắt bởi những CEO công nghệ hàng đầu.">
+          Được dẫn dắt bởi những CEO công nghệ hàng đầu.
+        </p>
+      </div>
 
-    <div id="Network_content_cards" class="mobileFlexColumn">
-      <div
-        class="card d-column"
-        repeat="article|param:categories.id:e618564c-bdf8-4399-ad7a-5118e6d9b2ba|sort:createdDate:desc|includes:"
-      >
-        <div class="top d-row gap-m">
-          <img src="https://static.izzi.asia/{{images.path}}" alt="{{name}}" />
-          <div class="info d-column gap-xxs">
-            <h4>{{name}}</h4>
-            <p class="tag">
-              {{metaDescription}}
-            </p>
-            <div class="d-row-v-center gap-xxxs">
-              <span class="material-symbols-outlined"> trip </span>
-              <p>{{metaName}}</p>
-            </div>
-            <div class="d-row-v-center gap-xxxs">
-              <span class="material-symbols-outlined"> award_star </span>
-              <p>{{metaKeyword}}</p>
+      <div id="Network_content_cards" class="mobileFlexColumn">
+        <div
+          class="card d-column"
+          repeat="article|param:categories.id:e618564c-bdf8-4399-ad7a-5118e6d9b2ba|sort:createdDate:desc|includes:"
+        >
+          <div class="top d-row gap-m">
+            <img
+              src="https://static.izzi.asia/{{images.path}}"
+              alt="{{name}}"
+            />
+            <div class="info d-column gap-xxs">
+              <h4>{{name}}</h4>
+              <p class="tag">{{metaDescription}}</p>
+              <div class="d-row-v-center gap-xxxs">
+                <span class="material-symbols-outlined"> trip </span>
+                <p>{{metaName}}</p>
+              </div>
+              <div class="d-row-v-center gap-xxxs">
+                <span class="material-symbols-outlined"> award_star </span>
+                <p>{{metaKeyword}}</p>
+              </div>
             </div>
           </div>
-        </div>
-        <hr />
-        <div class="bottom">
-          <p>{{subDescription}}</p>
-          <a href="{{description}}">
-            <img
-              src="https://static.izzi.asia/templates/FIVN/svg/linkedin.svg"
-              alt=""
-            />
-          </a>
+          <hr />
+          <div class="bottom">
+            <p>{{subDescription}}</p>
+            <a href="{{description}}">
+              <img
+                src="https://static.izzi.asia/templates/FIVN/svg/linkedin.svg"
+                alt=""
+              />
+            </a>
+          </div>
         </div>
       </div>
-    </div>
 
-    <label
-      for="Network_content_toggle_list"
-      class="d-row-v-center gap-xxs CTA-button"
-    >
-      <span class="material-symbols-outlined"> arrow_right_alt </span>
-    </label>
-  </div>
-</section>
+      <label
+        for="Network_content_toggle_list"
+        class="d-row-v-center gap-xxs CTA-button"
+      >
+        <span class="material-symbols-outlined"> arrow_right_alt </span>
+      </label>
+    </div>
+  </section>
+</div>

@@ -1,197 +1,201 @@
-<style>
-  header,
-  #header_placeholder,
-  div[scrolled] {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-  }
-
-  /* ===== Base ===== */
-
-  div[scrolled] {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-
-    width: 100dvw;
-    padding: 0 var(--spacing-m);
-
-    color: var(--color-white);
-    transition: var(--transition-base);
-  }
-
-  /* nav + nav > div */
-
-  div[scrolled] nav,
-  div[scrolled] nav > div {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: var(--spacing-m);
-
-    margin: 0 auto;
-  }
-
-  /* links */
-
-  div[scrolled] a {
-    text-decoration: none;
-    color: currentColor;
-    font-weight: 700;
-    font-family: var(--font-main);
-    text-transform: uppercase;
-    font-size: var(--text-xxs);
-    padding: var(--spacing-m) 0;
-  }
-
-  /* logo */
-
-  div[scrolled] #logo {
-    /* flex: 1; */
-    margin-left: 0;
-    
-  }
-
-  div[scrolled] #logo img {
-    height: var(--spacing-xxl);
-    width: auto;
-  }
-
-  div[scrolled] #logo a {
-    padding: 0;
-  }
-
-  /* hamburger icon */
-
-  div[scrolled] #hamburger-menu-icon {
-    position: relative;
-    z-index: 1;
-    display: none;
-  }
-
-  div[scrolled] #hamburger-menu-icon span {
-    color: currentColor;
-  }
-
-  /* ===== TOGGLE (GIỮ NGUYÊN QUAN HỆ SIBLING) ===== */
-
-  div[scrolled] #menu-toggle:checked ~ label .hamburger-open {
-    display: none;
-  }
-
-  div[scrolled] #menu-toggle:checked ~ label .hamburger-close {
-    display: block;
-    color: var(--color-black);
-  }
-
-  div[scrolled] #menu-toggle:not(:checked) ~ label .hamburger-close {
-    display: none;
-  }
-
-  /* ===== MENU OPEN ===== */
-
-  div[scrolled] #menu-toggle:checked ~ #hamburger-menu {
-    width: 100dvw;
-    height: 100dvh;
-
-    display: flex !important;
-    flex-direction: column;
-    gap: var(--spacing-m);
-
-    position: fixed;
-    top: 0;
-    left: 0;
-
-    background-color: rgba(255, 255, 255, 0.8);
-    color: var(--color-black);
-    backdrop-filter: blur(10px);
-    justify-content: center;
-  }
-
-  /* ===== SCROLLED STATE ===== */
-
-  .scrolled div[scrolled] {
-    background-color: rgba(255, 255, 255, 0.9);
-    box-shadow: var(--shadow-m);
-    backdrop-filter: blur(10px);
-    color: var(--color-black);
-  }
-
-  .scrolled div[scrolled] a {
-    padding: var(--spacing-s) 0;
-  }
-
-  .scrolled div[scrolled] span,
-  .scrolled div[scrolled] a,
-  .scrolled div[scrolled] #hamburger-menu-icon {
-    color: var(--color-black);
-  }
-
-  .scrolled div[scrolled] #logo a {
-    color: var(--color-secondary);
-  }
-</style>
-
-<div scrolled>
+<div>
   <style>
-    @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined");
-    @import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+    header,
+    #header_placeholder,
+    div[scrolled] {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9999;
+    }
+
+    /* ===== Base ===== */
+
+    div[scrolled] {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      width: 100dvw;
+      padding: 0 var(--spacing-m);
+
+      color: var(--color-white);
+      transition: var(--transition-base);
+    }
+
+    /* nav + nav > div */
+
+    div[scrolled] nav,
+    div[scrolled] nav > div {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--spacing-m);
+
+      margin: 0 auto;
+    }
+
+    /* links */
+
+    div[scrolled] a {
+      text-decoration: none;
+      color: currentColor;
+      font-weight: 700;
+      font-family: var(--font-main);
+      text-transform: uppercase;
+      font-size: var(--text-xxs);
+      padding: var(--spacing-m) 0;
+    }
+
+    /* logo */
+
+    div[scrolled] #logo {
+      /* flex: 1; */
+      margin-left: 0;
+    }
+
+    div[scrolled] #logo img {
+      height: var(--spacing-xxl);
+      width: auto;
+    }
+
+    div[scrolled] #logo a {
+      padding: 0;
+    }
+
+    /* hamburger icon */
+
+    div[scrolled] #hamburger-menu-icon {
+      position: relative;
+      z-index: 1;
+      display: none;
+    }
+
+    div[scrolled] #hamburger-menu-icon span {
+      color: currentColor;
+    }
+
+    /* ===== TOGGLE (GIỮ NGUYÊN QUAN HỆ SIBLING) ===== */
+
+    div[scrolled] #menu-toggle:checked ~ label .hamburger-open {
+      display: none;
+    }
+
+    div[scrolled] #menu-toggle:checked ~ label .hamburger-close {
+      display: block;
+      color: var(--color-black);
+    }
+
+    div[scrolled] #menu-toggle:not(:checked) ~ label .hamburger-close {
+      display: none;
+    }
+
+    /* ===== MENU OPEN ===== */
+
+    div[scrolled] #menu-toggle:checked ~ #hamburger-menu {
+      width: 100dvw;
+      height: 100dvh;
+
+      display: flex !important;
+      flex-direction: column;
+      gap: var(--spacing-m);
+
+      position: fixed;
+      top: 0;
+      left: 0;
+
+      background-color: rgba(255, 255, 255, 0.8);
+      color: var(--color-black);
+      backdrop-filter: blur(10px);
+      justify-content: center;
+    }
+
+    /* ===== SCROLLED STATE ===== */
+
+    .scrolled div[scrolled] {
+      background-color: rgba(255, 255, 255, 0.9);
+      box-shadow: var(--shadow-m);
+      backdrop-filter: blur(10px);
+      color: var(--color-black);
+    }
+
+    .scrolled div[scrolled] a {
+      padding: var(--spacing-s) 0;
+    }
+
+    .scrolled div[scrolled] span,
+    .scrolled div[scrolled] a,
+    .scrolled div[scrolled] #hamburger-menu-icon {
+      color: var(--color-black);
+    }
+
+    .scrolled div[scrolled] #logo a {
+      color: var(--color-secondary);
+    }
   </style>
-  <nav class="maxWidth1300">
-    <div id="logo">
-      <a href="/" binding-btnhref="/"
-        ><img
-          binding-imgpath=""
-          src="https://static.izzi.asia/templates/FIVN/svg/Logo FIVN-01.svg"
-          alt=""
-      /></a>
-    </div>
 
-    <input type="checkbox" id="menu-toggle" hidden />
-    <label for="menu-toggle" id="hamburger-menu-icon" class="mobileShow">
-      <div class="hamburger-open">
-        <span class="material-symbols-outlined"> menu </span>
+  <div scrolled>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined");
+      @import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+    </style>
+    <nav class="maxWidth1300">
+      <div id="logo">
+        <a href="/" binding-btnhref="/"
+          ><img
+            binding-imgpath=""
+            src="https://static.izzi.asia/templates/FIVN/svg/Logo FIVN-01.svg"
+            alt=""
+        /></a>
       </div>
-      <div class="hamburger-close">
-        <span class="material-symbols-outlined"> close </span>
-      </div>
-    </label>
 
-    <div id="hamburger-menu" class="mobileHide">
-      <a binding-name="Về chúng tôi" href="#AboutUs" binding-btnhref="#AboutUs"
-        >Về chúng tôi
-      </a>
-      <a
-        binding-name="Chương trình"
-        href="#Programme"
-        binding-btnhref="#Programme"
-        >Chương trình
-      </a>
-      <a binding-name="Sự kiện" href="#Event" binding-btnhref="#Event"
-        >Sự kiện
-      </a>
-      <a binding-name="Mạng lưới" href="#Network" binding-btnhref="#Network"
-        >Mạng lưới
-      </a>
-      <a binding-name="Khóa học" href="#Course" binding-btnhref="#Course"
-        >Khóa học
-      </a>
-      <a binding-name="Đối tác" href="#Partner" binding-btnhref="#Partner"
-        >Đối tác
-      </a>
-      <a binding-name="Liên hệ" href="#Contact" binding-btnhref="#Contact"
-        >Liên hệ
-      </a>
-      <!-- <button class="btn-group-primary" binding-btntext="Đăng ký ngay">
+      <input type="checkbox" id="menu-toggle" hidden />
+      <label for="menu-toggle" id="hamburger-menu-icon" class="mobileShow">
+        <div class="hamburger-open">
+          <span class="material-symbols-outlined"> menu </span>
+        </div>
+        <div class="hamburger-close">
+          <span class="material-symbols-outlined"> close </span>
+        </div>
+      </label>
+
+      <div id="hamburger-menu" class="mobileHide">
+        <a
+          binding-name="Về chúng tôi"
+          href="#AboutUs"
+          binding-btnhref="#AboutUs"
+          >Về chúng tôi
+        </a>
+        <a
+          binding-name="Chương trình"
+          href="#Programme"
+          binding-btnhref="#Programme"
+          >Chương trình
+        </a>
+        <a binding-name="Sự kiện" href="#Event" binding-btnhref="#Event"
+          >Sự kiện
+        </a>
+        <a binding-name="Mạng lưới" href="#Network" binding-btnhref="#Network"
+          >Mạng lưới
+        </a>
+        <a binding-name="Khóa học" href="#Course" binding-btnhref="#Course"
+          >Khóa học
+        </a>
+        <a binding-name="Đối tác" href="#Partner" binding-btnhref="#Partner"
+          >Đối tác
+        </a>
+        <a binding-name="Liên hệ" href="#Contact" binding-btnhref="#Contact"
+          >Liên hệ
+        </a>
+        <!-- <button class="btn-group-primary" binding-btntext="Đăng ký ngay">
                 Đăng ký ngay
                 <span class="material-symbols-outlined">
                     arrow_forward
                 </span>
             </button> -->
-    </div>
-  </nav>
+      </div>
+    </nav>
+  </div>
 </div>

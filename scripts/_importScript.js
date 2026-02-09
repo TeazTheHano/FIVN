@@ -69,6 +69,7 @@ const initFind = () => {
         loadHtmlFromFile('#contact-section_placeholder', 'components/contact.html');
         loadHtmlFromFile('#quote-section_placeholder', 'components/quote.html');
         loadHtmlFromFile('#FAQ-section_placeholder', 'components/FAQ.html');
+        loadHtmlFromFile('#news-section_placeholder', 'components/news.html');
         trackMousePosition('#Contact')
         eventQuarterText();
         sliderControl('#Course_content_cards', '#Course_content_cards .card', '#Course_content_cate_list .slider-controller-next', '#Course_content_cate_list .slider-controller-prev');

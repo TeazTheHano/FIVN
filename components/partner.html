@@ -1,289 +1,293 @@
-<style>
-  #Partner #Partner_content {
-    text-align: center;
-  }
-
-  /* ===== Responsive heading ===== */
-  @media screen and (max-width: 768px) {
-    #Partner #Partner_content h2 {
-      font-size: var(--text-h3);
+<div>
+  <style>
+    #Partner #Partner_content {
+      text-align: center;
     }
-  }
 
-  /* ===== Slider viewport ===== */
-  #Partner #Partner_content .slider-viewport {
-    width: 100%;
-    margin: auto;
-    overflow: hidden;
-    position: relative;
-  }
+    /* ===== Responsive heading ===== */
+    @media screen and (max-width: 768px) {
+      #Partner #Partner_content h2 {
+        font-size: var(--text-h3);
+      }
+    }
 
-  #Partner #Partner_content .slider-viewport .slider-track {
-    display: flex;
-    gap: var(--spacing-xxs);
-    transition: transform 0.5s ease-in-out;
-    animation: slide 14s infinite;
-  }
+    /* ===== Slider viewport ===== */
+    #Partner #Partner_content .slider-viewport {
+      width: 100%;
+      margin: auto;
+      overflow: hidden;
+      position: relative;
+    }
 
-  /* ===== Slider page ===== */
-  #Partner #Partner_content .slider-viewport .slider-track .slider-page {
-    flex-shrink: 0;
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(5, minmax(200px, 1fr));
-    gap: var(--spacing-xxs);
-  }
+    #Partner #Partner_content .slider-viewport .slider-track {
+      display: flex;
+      gap: var(--spacing-xxs);
+      transition: transform 0.5s ease-in-out;
+      animation: slide 14s infinite;
+    }
 
-  @media screen and (max-width: 768px) {
+    /* ===== Slider page ===== */
     #Partner #Partner_content .slider-viewport .slider-track .slider-page {
-      grid-template-columns: repeat(2, minmax(100px, 1fr));
+      flex-shrink: 0;
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(200px, 1fr));
+      gap: var(--spacing-xxs);
     }
-  }
 
-  /* ===== Partner item ===== */
-  #Partner #Partner_content .slider-viewport .slider-track .slider-page div {
-    padding: var(--spacing-xs);
-    height: var(--spacing-xxl);
-    filter: saturate(0);
-  }
+    @media screen and (max-width: 768px) {
+      #Partner #Partner_content .slider-viewport .slider-track .slider-page {
+        grid-template-columns: repeat(2, minmax(100px, 1fr));
+      }
+    }
 
-  #Partner
-    #Partner_content
-    .slider-viewport
-    .slider-track
-    .slider-page
-    div:hover {
-    filter: saturate(1);
-  }
+    /* ===== Partner item ===== */
+    #Partner #Partner_content .slider-viewport .slider-track .slider-page div {
+      padding: var(--spacing-xs);
+      height: var(--spacing-xxl);
+      filter: saturate(0);
+    }
 
-  #Partner
-    #Partner_content
-    .slider-viewport
-    .slider-track
-    .slider-page
-    div
-    img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
+    #Partner
+      #Partner_content
+      .slider-viewport
+      .slider-track
+      .slider-page
+      div:hover {
+      filter: saturate(1);
+    }
 
-  /* ===== Pagination ===== */
-  #Partner #Partner_content .pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: var(--spacing-xs);
-    gap: var(--spacing-xxs);
-  }
+    #Partner
+      #Partner_content
+      .slider-viewport
+      .slider-track
+      .slider-page
+      div
+      img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
 
-  #Partner #Partner_content .pagination .dot {
-    display: block;
-    width: var(--spacing-xs);
-    height: var(--spacing-xs);
-    background-color: var(--color-text-muted);
-    border-radius: 50%;
-    animation: dotSync 14s infinite linear;
-  }
+    /* ===== Pagination ===== */
+    #Partner #Partner_content .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: var(--spacing-xs);
+      gap: var(--spacing-xxs);
+    }
 
-  #Partner #Partner_content .pagination .active {
-    background-color: var(--color-primary);
-    animation-delay: 7s;
-  }
+    #Partner #Partner_content .pagination .dot {
+      display: block;
+      width: var(--spacing-xs);
+      height: var(--spacing-xs);
+      background-color: var(--color-text-muted);
+      border-radius: 50%;
+      animation: dotSync 14s infinite linear;
+    }
 
-  /* ===== Pause animation on hover ===== */
-  #Partner #Partner_content:hover .slider-viewport .slider-track,
-  #Partner #Partner_content:hover .pagination .dot {
-    animation-play-state: paused;
-  }
-</style>
+    #Partner #Partner_content .pagination .active {
+      background-color: var(--color-primary);
+      animation-delay: 7s;
+    }
 
-<section id="Partner">
-  <div id="Partner_content" class="maxWidth1300 d-column-h-center gap-xl">
-    <div>
-      <p class="tag" binding-name="Được tin tưởng bởi các đối tác hàng đầu">
-        Được tin tưởng bởi các đối tác hàng đầu
-      </p>
-      <h2 binding-name="Liên minh Chiến lược">Liên minh Chiến lược</h2>
-    </div>
+    /* ===== Pause animation on hover ===== */
+    #Partner #Partner_content:hover .slider-viewport .slider-track,
+    #Partner #Partner_content:hover .pagination .dot {
+      animation-play-state: paused;
+    }
+  </style>
 
-    <!-- Slider Wrapper -->
-    <div class="slider-viewport">
-      <div class="slider-track" id="sliderTrack">
-        <!-- PAGE 1: Tech Giants -->
-        <div class="slider-page">
-          <div class="partner-item">
-            <img
-              binding-imgpath="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
-              src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
-              alt="Google"
-              class="partner-logo"
-            />
-          </div>
-          <div class="partner-item">
-            <img
-              binding-imgpath="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg"
-              src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg"
-              alt="AWS"
-              class="partner-logo"
-            />
-          </div>
-          <div class="partner-item">
-            <img
-              binding-imgpath="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg"
-              src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg"
-              alt="Microsoft"
-              class="partner-logo"
-            />
-          </div>
-          <div class="partner-item">
-            <img
-              binding-imgpath="https://upload.wikimedia.org/wikipedia/commons/2/21/Nvidia_logo.svg"
-              src="https://upload.wikimedia.org/wikipedia/commons/2/21/Nvidia_logo.svg"
-              alt="Nvidia"
-              class="partner-logo"
-            />
-          </div>
-          <div class="partner-item">
-            <img
-              binding-imgpath="https://upload.wikimedia.org/wikipedia/commons/c/c9/Intel-logo.svg"
-              src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Intel-logo.svg"
-              alt="Intel"
-              class="partner-logo"
-            />
-          </div>
-          <div class="partner-item">
-            <img
-              binding-imgpath="https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg"
-              src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg"
-              alt="Salesforce"
-              class="partner-logo"
-            />
-          </div>
-          <div class="partner-item">
-            <img
-              binding-imgpath="https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg"
-              src="https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg"
-              alt="Oracle"
-              class="partner-logo"
-            />
-          </div>
-          <div class="partner-item">
-            <img
-              binding-imgpath="https://upload.wikimedia.org/wikipedia/commons/3/3f/HubSpot_Logo.svg"
-              src="https://upload.wikimedia.org/wikipedia/commons/3/3f/HubSpot_Logo.svg"
-              alt="HubSpot"
-              class="partner-logo"
-            />
-          </div>
-          <div class="partner-item">
-            <img
-              binding-imgpath="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg"
-              src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg"
-              alt="Stripe"
-              class="partner-logo"
-            />
-          </div>
-          <div class="partner-item">
-            <img
-              binding-imgpath="https://upload.wikimedia.org/wikipedia/commons/d/d5/Slack_icon_2019.svg"
-              src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Slack_icon_2019.svg"
-              alt="Slack"
-              class="partner-logo"
-            />
-          </div>
-        </div>
+  <section id="Partner">
+    <div id="Partner_content" class="maxWidth1300 d-column-h-center gap-xl">
+      <div class="d-column-h-center gap-xs">
+        <p class="tag" binding-name="Được tin tưởng bởi các đối tác hàng đầu">
+          Được tin tưởng bởi các đối tác hàng đầu
+        </p>
+        <h3 class="title-bold" binding-name="Liên minh Chiến lược">
+          Liên minh Chiến lược
+        </h3>
+      </div>
 
-        <!-- PAGE 2: VC & Partners -->
-        <div class="slider-page">
-          <div class="partner-item">
-            <img
-              binding-imgpath="https://placehold.co/200x80/ffffff/555555?text=VinaCapital&font=merriweather"
-              src="https://placehold.co/200x80/ffffff/555555?text=VinaCapital&font=merriweather"
-              alt="VinaCapital"
-              class="partner-logo"
-            />
+      <!-- Slider Wrapper -->
+      <div class="slider-viewport">
+        <div class="slider-track" id="sliderTrack">
+          <!-- PAGE 1: Tech Giants -->
+          <div class="slider-page">
+            <div class="partner-item">
+              <img
+                binding-imgpath="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
+                src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
+                alt="Google"
+                class="partner-logo"
+              />
+            </div>
+            <div class="partner-item">
+              <img
+                binding-imgpath="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg"
+                src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg"
+                alt="AWS"
+                class="partner-logo"
+              />
+            </div>
+            <div class="partner-item">
+              <img
+                binding-imgpath="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg"
+                src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg"
+                alt="Microsoft"
+                class="partner-logo"
+              />
+            </div>
+            <div class="partner-item">
+              <img
+                binding-imgpath="https://upload.wikimedia.org/wikipedia/commons/2/21/Nvidia_logo.svg"
+                src="https://upload.wikimedia.org/wikipedia/commons/2/21/Nvidia_logo.svg"
+                alt="Nvidia"
+                class="partner-logo"
+              />
+            </div>
+            <div class="partner-item">
+              <img
+                binding-imgpath="https://upload.wikimedia.org/wikipedia/commons/c/c9/Intel-logo.svg"
+                src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Intel-logo.svg"
+                alt="Intel"
+                class="partner-logo"
+              />
+            </div>
+            <div class="partner-item">
+              <img
+                binding-imgpath="https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg"
+                src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg"
+                alt="Salesforce"
+                class="partner-logo"
+              />
+            </div>
+            <div class="partner-item">
+              <img
+                binding-imgpath="https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg"
+                src="https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg"
+                alt="Oracle"
+                class="partner-logo"
+              />
+            </div>
+            <div class="partner-item">
+              <img
+                binding-imgpath="https://upload.wikimedia.org/wikipedia/commons/3/3f/HubSpot_Logo.svg"
+                src="https://upload.wikimedia.org/wikipedia/commons/3/3f/HubSpot_Logo.svg"
+                alt="HubSpot"
+                class="partner-logo"
+              />
+            </div>
+            <div class="partner-item">
+              <img
+                binding-imgpath="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg"
+                src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg"
+                alt="Stripe"
+                class="partner-logo"
+              />
+            </div>
+            <div class="partner-item">
+              <img
+                binding-imgpath="https://upload.wikimedia.org/wikipedia/commons/d/d5/Slack_icon_2019.svg"
+                src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Slack_icon_2019.svg"
+                alt="Slack"
+                class="partner-logo"
+              />
+            </div>
           </div>
-          <div class="partner-item">
-            <img
-              binding-imgpath="https://placehold.co/200x80/ffffff/555555?text=Do+Ventures&font=montserrat"
-              src="https://placehold.co/200x80/ffffff/555555?text=Do+Ventures&font=montserrat"
-              alt="Do Ventures"
-              class="partner-logo"
-            />
-          </div>
-          <div class="partner-item">
-            <img
-              binding-imgpath="https://placehold.co/200x80/ffffff/555555?text=Golden+Gate&font=playfair"
-              src="https://placehold.co/200x80/ffffff/555555?text=Golden+Gate&font=playfair"
-              alt="Golden Gate"
-              class="partner-logo"
-            />
-          </div>
-          <div class="partner-item">
-            <img
-              binding-imgpath="https://placehold.co/200x80/ffffff/555555?text=500+Global&font=oswald"
-              src="https://placehold.co/200x80/ffffff/555555?text=500+Global&font=oswald"
-              alt="500 Global"
-              class="partner-logo"
-            />
-          </div>
-          <div class="partner-item">
-            <img
-              binding-imgpath="https://placehold.co/200x80/ffffff/555555?text=Zone+Startups&font=roboto"
-              src="https://placehold.co/200x80/ffffff/555555?text=Zone+Startups&font=roboto"
-              alt="Zone Startups"
-              class="partner-logo"
-            />
-          </div>
-          <div class="partner-item">
-            <img
-              binding-imgpath="https://placehold.co/200x80/ffffff/555555?text=CyberAgent&font=opensans"
-              src="https://placehold.co/200x80/ffffff/555555?text=CyberAgent&font=opensans"
-              alt="CyberAgent"
-              class="partner-logo"
-            />
-          </div>
-          <div class="partner-item">
-            <img
-              binding-imgpath="https://placehold.co/200x80/ffffff/555555?text=Monk's+Hill&font=lato"
-              src="https://placehold.co/200x80/ffffff/555555?text=Monk's+Hill&font=lato"
-              alt="Monk's Hill"
-              class="partner-logo"
-            />
-          </div>
-          <div class="partner-item">
-            <img
-              binding-imgpath="https://placehold.co/200x80/ffffff/555555?text=Jungle&font=raleway"
-              src="https://placehold.co/200x80/ffffff/555555?text=Jungle&font=raleway"
-              alt="Jungle"
-              class="partner-logo"
-            />
-          </div>
-          <div class="partner-item">
-            <img
-              binding-imgpath="https://placehold.co/200x80/ffffff/555555?text=Insignia&font=lora"
-              src="https://placehold.co/200x80/ffffff/555555?text=Insignia&font=lora"
-              alt="Insignia"
-              class="partner-logo"
-            />
-          </div>
-          <div class="partner-item">
-            <img
-              binding-imgpath="https://placehold.co/200x80/ffffff/555555?text=Antler&font=rubik"
-              src="https://placehold.co/200x80/ffffff/555555?text=Antler&font=rubik"
-              alt="Antler"
-              class="partner-logo"
-            />
+
+          <!-- PAGE 2: VC & Partners -->
+          <div class="slider-page">
+            <div class="partner-item">
+              <img
+                binding-imgpath="https://placehold.co/200x80/ffffff/555555?text=VinaCapital&font=merriweather"
+                src="https://placehold.co/200x80/ffffff/555555?text=VinaCapital&font=merriweather"
+                alt="VinaCapital"
+                class="partner-logo"
+              />
+            </div>
+            <div class="partner-item">
+              <img
+                binding-imgpath="https://placehold.co/200x80/ffffff/555555?text=Do+Ventures&font=montserrat"
+                src="https://placehold.co/200x80/ffffff/555555?text=Do+Ventures&font=montserrat"
+                alt="Do Ventures"
+                class="partner-logo"
+              />
+            </div>
+            <div class="partner-item">
+              <img
+                binding-imgpath="https://placehold.co/200x80/ffffff/555555?text=Golden+Gate&font=playfair"
+                src="https://placehold.co/200x80/ffffff/555555?text=Golden+Gate&font=playfair"
+                alt="Golden Gate"
+                class="partner-logo"
+              />
+            </div>
+            <div class="partner-item">
+              <img
+                binding-imgpath="https://placehold.co/200x80/ffffff/555555?text=500+Global&font=oswald"
+                src="https://placehold.co/200x80/ffffff/555555?text=500+Global&font=oswald"
+                alt="500 Global"
+                class="partner-logo"
+              />
+            </div>
+            <div class="partner-item">
+              <img
+                binding-imgpath="https://placehold.co/200x80/ffffff/555555?text=Zone+Startups&font=roboto"
+                src="https://placehold.co/200x80/ffffff/555555?text=Zone+Startups&font=roboto"
+                alt="Zone Startups"
+                class="partner-logo"
+              />
+            </div>
+            <div class="partner-item">
+              <img
+                binding-imgpath="https://placehold.co/200x80/ffffff/555555?text=CyberAgent&font=opensans"
+                src="https://placehold.co/200x80/ffffff/555555?text=CyberAgent&font=opensans"
+                alt="CyberAgent"
+                class="partner-logo"
+              />
+            </div>
+            <div class="partner-item">
+              <img
+                binding-imgpath="https://placehold.co/200x80/ffffff/555555?text=Monk's+Hill&font=lato"
+                src="https://placehold.co/200x80/ffffff/555555?text=Monk's+Hill&font=lato"
+                alt="Monk's Hill"
+                class="partner-logo"
+              />
+            </div>
+            <div class="partner-item">
+              <img
+                binding-imgpath="https://placehold.co/200x80/ffffff/555555?text=Jungle&font=raleway"
+                src="https://placehold.co/200x80/ffffff/555555?text=Jungle&font=raleway"
+                alt="Jungle"
+                class="partner-logo"
+              />
+            </div>
+            <div class="partner-item">
+              <img
+                binding-imgpath="https://placehold.co/200x80/ffffff/555555?text=Insignia&font=lora"
+                src="https://placehold.co/200x80/ffffff/555555?text=Insignia&font=lora"
+                alt="Insignia"
+                class="partner-logo"
+              />
+            </div>
+            <div class="partner-item">
+              <img
+                binding-imgpath="https://placehold.co/200x80/ffffff/555555?text=Antler&font=rubik"
+                src="https://placehold.co/200x80/ffffff/555555?text=Antler&font=rubik"
+                alt="Antler"
+                class="partner-logo"
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Pagination -->
-    <div class="pagination" id="pagination">
-      <!-- Dots will be generated or controlled by JS -->
-      <div class="dot active" data-index="0" aria-label="Page 1"></div>
-      <div class="dot" data-index="1" aria-label="Page 2"></div>
+      <!-- Pagination -->
+      <div class="pagination" id="pagination">
+        <!-- Dots will be generated or controlled by JS -->
+        <div class="dot active" data-index="0" aria-label="Page 1"></div>
+        <div class="dot" data-index="1" aria-label="Page 2"></div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>
