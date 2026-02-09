@@ -1,13 +1,198 @@
-<section id="News">
-  
-  <div id="News_content" class="maxWidth1300 d-column-h-center gap-xl">
-    <div class="d-column-h-center gap-xs">
-      <p class="tag" binding-name="Tin tức">Tin tức</p>
-      <h3 binding-name="Các tin tức mới nhất">Các tin tức mới nhất</h3>
+<div>
+  <style>
+    #News {
+      background-color: var(--color-bg-light);
+    }
+
+    /* ================= News Content ================= */
+
+    #News #News_content {
+      gap: var(--spacing-m);
+      padding-bottom: var(--spacing-l);
+    }
+
+    #News #News_content .tag {
+      color: var(--color-primary);
+    }
+
+    /* ================= News Cards ================= */
+
+    #News #News_content_cards {
+      overflow: scroll;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      padding-bottom: var(--spacing-xxxl);
+
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    #News #News_content_cards .card {
+      flex: 0 0 auto;
+      width: 70vw;
+      min-width: 200px;
+      max-width: 400px;
+      height: fit-content;
+
+      border-radius: var(--radius-l);
+      overflow: hidden;
+      filter: drop-shadow(var(--shadow-s));
+      background-color: var(--color-white);
+    }
+
+    /* ---------- Card Top ---------- */
+
+    #News #News_content_cards .card .top {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      position: relative;
+    }
+
+    #News #News_content_cards .card .top img {
+      height: 100%;
+      width: 100%;
+    }
+
+    #News #News_content_cards .card .top .tag {
+      position: absolute;
+      top: var(--spacing-s);
+      right: var(--spacing-s);
+      z-index: 1;
+
+      font-size: var(--text-xxxs);
+      font-weight: var(--weight-bold);
+      letter-spacing: normal;
+
+      color: var(--color-secondary);
+      background-color: var(--color-white);
+
+      padding: var(--spacing-xxxs) var(--spacing-xs);
+      border-radius: var(--radius-round);
+    }
+
+    #News #News_content_cards .card .top .tag::before {
+      content: "";
+    }
+
+    /* ---------- Card Bottom ---------- */
+
+    #News #News_content_cards .card .bottom {
+      padding: var(--spacing-m);
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-s);
+    }
+
+    #News #News_content_cards .card .bottom {
+      font-size: var(--text-xs);
+      color: var(--color-p-dark);
+      font-weight: var(--weight-thin);
+    }
+
+    #News #News_content_cards .card .bottom span {
+      color: var(--color-primary);
+      font-size: var(--text-s) !important;
+    }
+
+    #News #News_content_cards .card .bottom h4 {
+      line-height: 1.5;
+    }
+
+    #News #News_content_cards .card .bottom h4 + div p {
+      font-size: var(--text-xxs);
+    }
+
+    #News #News_content_cards .card .bottom h4 + div div:first-child p {
+      font-weight: var(--weight-semibold);
+    }
+
+    #News #News_content_cards .card .bottom a {
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+
+    /* ---------- Hover ---------- */
+
+    #News #News_content_cards .card:hover {
+      transform: translateY(calc(-1 * var(--spacing-xxxs)));
+      filter: drop-shadow(var(--shadow-xl)) drop-shadow(var(--shadow-m));
+    }
+
+    #News #News_content_cards .card:hover .top img {
+      transform: scale(1.1);
+    }
+
+    /* ================= Scroll padding edges ================= */
+
+    #News #News_content_cards::before,
+    #News #News_content_cards::after {
+      content: "";
+      flex: 0 0 max(0px, calc((100vw - 1300px) / 2));
+    }
+  </style>
+
+  <section id="News" class="relative">
+    <!-- Logic Radio -->
+    <input
+      re
+      type="radio"
+      name="News_content_cate"
+      hidden
+      id="News_content_cate_all"
+      checked
+    />
+    <input
+      repeat="category|param:parentId:7f8ad86d-404d-c0a9-69d2-36aed2d53306|sort:displayOrder:asc|includes:"
+      type="radio"
+      name="News_content_cate"
+      hidden
+      id="{{name}}"
+    />
+
+    <div id="News_content" class="d-column maxWidth1300 gap-xl">
+      <div class="d-column-h-center gap-xs">
+        <p class="tag" binding-name="Kiến thức & Xu hướng">
+          Kiến thức & Xu hướng
+        </p>
+        <h3 class="title-bold" binding-name="Tin tức & Góc nhìn">
+          Tin tức & Góc nhìn
+        </h3>
+      </div>
     </div>
 
-    <div id="News_content_cards" class="d-column gap-m">
-      
+    <div id="News_content_cards" class="d-row gap-m">
+      <div
+        class="card"
+        News-cate="{{metaKeyword}}"
+        repeat="article|size:20|sort:postTime:desc|param:categories.id:62384618-4e7c-0008-18e0-db03370b979d|includes:"
+      >
+        <div class="top">
+          <img src="https://static.izzi.asia/{{images.path}}" alt="{{name}}" />
+          <!-- <div class="tag">{{categories[1].subDescription}}</div> -->
+        </div>
+
+        <div class="bottom">
+          <h4>{{name}}</h4>
+
+          <div class="d-column gap-xxxs">
+            <div class="d-row-v-center gap-xxxs">
+              <span class="material-symbols-outlined"> schedule </span>
+              <p>{{createdDate|formatdatetime:dd-mm-yyyy}}</p>
+            </div>
+          </div>
+
+          <div class="description">{{description}}</div>
+
+          <a
+            class="tag"
+            binding-btntext="Đọc tiếp"
+            href="/{{languageCode}}/post/{{friendlyUrl}}"
+          >
+            Đọc tiếp
+            <span class="material-symbols-outlined"> arrow_right_alt </span>
+          </a>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>
