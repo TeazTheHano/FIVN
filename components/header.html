@@ -33,8 +33,6 @@
       justify-content: space-between;
       align-items: center;
       gap: var(--spacing-m);
-
-      margin: 0 auto;
     }
 
     /* links */
@@ -59,6 +57,10 @@
     div[scrolled] #logo img {
       height: var(--spacing-xxl);
       width: auto;
+    }
+
+    div[scrolled] #logo img:last-child {
+      display: none;
     }
 
     div[scrolled] #logo a {
@@ -133,6 +135,15 @@
 
     .scrolled div[scrolled] #logo a {
       color: var(--color-secondary);
+      padding: var(--spacing-xxxs) 0; 
+    }
+
+    .scrolled div[scrolled] #logo img:first-child {
+      display: none;
+    }
+
+    .scrolled div[scrolled] #logo img:last-child {
+      display: block;
     }
   </style>
 
@@ -143,12 +154,18 @@
     </style>
     <nav class="maxWidth1300">
       <div id="logo">
-        <a href="/" binding-btnhref="/"
-          ><img
-            binding-imgpath=""
-            src="https://static.izzi.asia/templates/FIVN/svg/Logo FIVN-01.svg"
+        <a href="/" binding-btnhref="/">
+          <img
+            binding-imgpath="https://static.izzi.asia/templates/FIVN/svg/FIVN-Logo-02.svg"
+            src="https://static.izzi.asia/templates/FIVN/svg/FIVN-Logo-02.svg"
             alt=""
-        /></a>
+          />
+          <img
+            binding-imgpath="https://static.izzi.asia/templates/FIVN/svg/FIVN-Logo-01.svg"
+            src="https://static.izzi.asia/templates/FIVN/svg/FIVN-Logo-01.svg"
+            alt=""
+          />
+        </a>
       </div>
 
       <input type="checkbox" id="menu-toggle" hidden />

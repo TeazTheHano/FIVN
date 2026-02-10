@@ -27,7 +27,7 @@
     }
 
     #Course #Course_content #Course_content_cate_list label,
-    #Course #Course_content #Course_content_cate_list .btn-2 {
+    #Course .btn-2 {
       border: 1px solid var(--color-text-muted-2);
       color: var(--color-p-dark);
       background-color: var(--color-white);
@@ -35,17 +35,27 @@
     }
 
     #Course #Course_content #Course_content_cate_list label:hover,
-    #Course #Course_content #Course_content_cate_list .btn-2:hover {
+    #Course .btn-2:hover {
       background-color: var(--color-secondary);
       color: var(--color-white);
     }
 
-    #Course
-      #Course_content
-      #Course_content_cate_list
-      .slider-controller
-      .btn-2 {
+    #Course .slider-controller {
+      width: 100%;
+      height: inherit;
+      z-index: 10;
+      left: 0;
+      top: 55%;
+      justify-content: space-between;
+      padding: 0 max(0px, calc((100vw - 1300px - var(--spacing-xl)) / 2));
+      padding-bottom: var(--spacing-xxxl);
+      pointer-events: none;
+    }
+
+    #Course .slider-controller .btn-2 {
       aspect-ratio: 1;
+      pointer-events: all;
+      user-select: none;
     }
 
     /* ================= Course Cards ================= */
@@ -130,15 +140,35 @@
     }
 
     #Course #Course_content_cards .card .bottom h4 {
-      line-height: 1.5;
+      font-size: var(--text-xs);
+      line-height: var(--lineheight-xs);
+      min-height: calc(var(--lineheight-xs) * 2);
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
     }
 
     #Course #Course_content_cards .card .bottom h4 + div p {
       font-size: var(--text-xxs);
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
     }
 
     #Course #Course_content_cards .card .bottom h4 + div div:first-child p {
       font-weight: var(--weight-semibold);
+    }
+
+    #Course #Course_content_cards .card .bottom .description {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      font-size: var(--text-xs);
+      line-height: var(--lineheight-xs);
+      min-height: calc(var(--lineheight-xs) * 2);
     }
 
     #Course #Course_content_cards .card .bottom .btn {
@@ -162,7 +192,7 @@
 
     /* ================= Course category tag content ================= */
 
-    #Course
+    /* #Course
       #Course_content_cards
       .card[course-cate$="finance"]
       .top
@@ -196,7 +226,7 @@
       .top
       .tag::before {
       content: "Management";
-    }
+    } */
 
     /* ================= Scroll padding edges ================= */
 
@@ -287,19 +317,18 @@
             >{{subDescription}}</label
           >
         </div>
-
-        <div class="d-row mobileHide gap-xxs slider-controller">
-          <div class="slider-controller-prev btn-2">
-            <span class="material-symbols-outlined"> chevron_left </span>
-          </div>
-          <div class="slider-controller-next btn-2">
-            <span class="material-symbols-outlined"> chevron_right </span>
-          </div>
-        </div>
       </div>
     </div>
 
     <div id="Course_content_cards" class="d-row gap-m">
+      <div class="d-row-v-center mobileHide gap-xxs slider-controller absolute">
+        <div class="slider-controller-prev btn-2">
+          <span class="material-symbols-outlined"> chevron_left </span>
+        </div>
+        <div class="slider-controller-next btn-2">
+          <span class="material-symbols-outlined"> chevron_right </span>
+        </div>
+      </div>
       <div
         class="card"
         course-cate="{{metaKeyword}}"

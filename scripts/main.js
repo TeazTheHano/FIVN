@@ -125,7 +125,7 @@ function sliderControl(listElementQuery, childElement, nextBtnQuery, prevBtnQuer
     }
 }
 
-sliderControl('#Course_content_cards', '#Course_content_cards .card', '#Course_content_cate_list .slider-controller-next', '#Course_content_cate_list .slider-controller-prev');
+sliderControl('#Course_content_cards', '#Course_content_cards .card', '#Course .slider-controller-next', '#Course .slider-controller-prev');
 trackMousePosition('#Programme')
 trackMousePosition('#Contact')
 trackMousePosition('#hero')

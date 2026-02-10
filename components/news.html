@@ -95,15 +95,35 @@
     }
 
     #News #News_content_cards .card .bottom h4 {
-      line-height: 1.5;
+      font-size: var(--text-xs);
+      line-height: var(--lineheight-xs);
+      min-height: calc(var(--lineheight-xs) * 2);
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
     }
 
     #News #News_content_cards .card .bottom h4 + div p {
       font-size: var(--text-xxs);
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
     }
 
     #News #News_content_cards .card .bottom h4 + div div:first-child p {
       font-weight: var(--weight-semibold);
+    }
+
+    #News #News_content_cards .card .bottom .description {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      font-size: var(--text-xs);
+      line-height: var(--lineheight-xs);
+      min-height: calc(var(--lineheight-xs) * 2);
     }
 
     #News #News_content_cards .card .bottom a {
