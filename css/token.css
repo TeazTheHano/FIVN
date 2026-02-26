@@ -1,34 +1,23 @@
 :root {
     /* FONT */
     --font-main: "Be Vietnam Pro", "Arial", sans-serif;
-    /* --font-body: "Arial", sans-serif; */
+    --font-body: "Be Vietnam Pro", "Arial", sans-serif;
     --font-mono: 'Space Mono', monospace;
 
     /* --- Brand Colors --- */
-    /* Màu xanh chủ đạo (Primary Green) - Dùng cho nút, border, icon, highlight */
-    --color-primary: #7bc440;
-    --color-primary-raw: 123 196 64;
+    --color-primary: #226A40;
+    --color-primary-raw: 34 106 64;
+    --color-secondary: #7BC440;
+    --color-secondary-raw: 123 196 64;
 
-    /* Màu xanh đậm (Secondary/Dark Green) - Dùng cho tiêu đề, nền đậm, text nhấn mạnh */
-    --color-secondary: #216320;
-    --color-secondary-raw: 33 99 32;
-
-    /* --- Interactive States --- */
-    /* Màu hover của Primary Green */
-    --color-primary-hover: rgb(123, 196, 64);
-
-    /* Màu hover/gradient của Secondary Green */
-    --color-secondary-hover: #2d7a2c;
-
-    /* --- Accents & Gradients --- */
-    /* Màu xanh nõn chuối (Lime Accent) - Dùng cho gradient chữ, hiệu ứng đặc biệt */
-    --color-accent-lime: #a3e635;
-
-    /* Màu xanh rất đậm (gần như đen) - Dùng cho text trên nền Lime */
-    --color-dark-contrast: #0F2910;
-
-    /* Màu tối dùng cho gradient overlay ảnh */
-    --color-overlay-dark: #0a1f0a;
+    --color-black: #0A0A0A;
+    --color-gray-1000: #0F151F;
+    --color-gray-800: #555555;
+    --color-gray-600: #7F7F7F;
+    --color-gray-400: #AAAAAA;
+    --color-gray-200: #D4D4D4;
+    --color-gray-100: #F2F2F2;
+    --color-white: #FFFFFF;
 
     /* --- Backgrounds --- */
     /* Màu trắng ngà (Off-white) - Dùng cho nền các section phụ */
@@ -44,48 +33,43 @@
     /* Màu xanh LinkedIn */
     --color-social-linkedin: #0077b5;
 
-    --color-text-muted: #ccc;
-    --color-text-muted-2: #e5e7eb;
-    --color-black: #000;
-    --color-white: #fff;
-    --color-p-light: #c5c5c5;
-    --color-p-dark: #525252;
-
-    /* Font Sizes */
-    --text-h1: 3.5rem;
-    --lineheight-h1: 4rem;
-    /* 56px - Tiêu đề chính Hero */
-    --text-h2: 2.5rem;
-    --lineheight-h2: 3rem;
-    /* 40px - Tiêu đề Section */
-    --text-h3: 1.75rem;
-    --lineheight-h3: 2rem;
-    /* 28px - Tiêu đề phụ/Card */
-    --text-base: 1rem;
-    --lineheight-base: 1.5rem;
-    /* 16px - Văn bản nội dung */
-    --text-xxs: 0.75rem;
-    --lineheight-xs: 1.2rem;
-    /* 12px - Chú thích/Meta */
-    --text-btn: 1.125rem;
-    --lineheight-btn: 1.25rem;
-    /* 18px - Chữ trong nút bấm */
-    --text-xs: 0.875rem;
-    --lineheight-xs: 1.25rem;
-    /* 14px - Văn bản nâng cao */
-    --text-xxxs: 0.625rem;
-    --lineheight-xxxs: 0.875rem;
-
     /* Font Weights */
+    --weight-thin: 300;
     --weight-regular: 400;
     --weight-medium: 500;
     --weight-semibold: 600;
     --weight-bold: 700;
-    --weight-thin: 300;
 
     /* Line Heights */
     --lh-tight: 1.2;
     --lh-base: 1.6;
+
+    /* Text set */
+    --t-h1-size: 72px;
+    --t-h1-lh: 1.3;
+    --t-h1-weight: var(--weight-semibold);
+    --t-h2-size: 48px;
+    --t-h2-lh: 1.3;
+    --t-h2-weight: var(--weight-bold);
+    --t-h3-size: 36px;
+    --t-h3-lh: 1.5;
+    --t-h3-weight: var(--weight-bold);
+    --t-h4-size: 24px;
+    --t-h4-lh: 1.5;
+    --t-h4-weight: var(--weight-bold);
+    --t-body-size: 16px;
+    --t-body-lh: 1.6;
+    --t-body-weight: var(--weight-regular);
+    --t-subbody-size: 14px;
+    --t-subbody-lh: 1.5;
+    --t-subbody-weight: var(--weight-regular);
+    --t-mini-size: 10px;
+    --t-mini-lh: 1.6;
+    --t-mini-weight: var(--weight-regular);
+    --t-button-size: 16px;
+    --t-button-lh: 1.5;
+    --t-button-weight: var(--weight-bold);
+
 
     /* SPACING */
     --spacing-xxxs: 4px;
@@ -106,7 +90,7 @@
     --shadow-xl: 0px 12px 12px rgb(0 0 0/ 0.2);
     --shadow-xxl: 0px 16px 16px rgb(0 0 0/ 0.2);
 
-    --shadow-primary: 0 10px 15px -3px rgb(var(--color-primary) / 0.3);
+    --shadow-primary: 0 10px 15px -3px rgb(var(--color-primary-raw) / 0.3);
     /* --shadow-primary: 0 10px 15px -3px rgba(123, 196, 64, 0.3); */
 
     /* --- Effects & Transitions --- */
@@ -115,9 +99,9 @@
     --transition-slow: 700ms cubic-bezier(0.4, 0, 0.2, 1);
 
     /* --- Border Radius --- */
-    --radius-s: 0.375rem;
-    --radius-m: 0.5rem;
-    --radius-l: 1rem;
-    --radius-xl: 2rem;
+    --radius-s: 4px;
+    --radius-m: 8px;
+    --radius-l: 16px;
+    --radius-xl: 32px;
     --radius-round: 9999px;
 }

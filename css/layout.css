@@ -225,7 +225,7 @@ section {
     }
 
     .bg {
-        background-color: var(--color-text-muted);
+        background-color: var(--color-gray-400);
         opacity: 0.1;
         width: 100%;
         height: 300%;
@@ -548,9 +548,9 @@ section {
                         }
 
                         div .card-subdescription {
-                            border-left: 1px solid var(--color-text-muted);
+                            border-left: 1px solid var(--color-gray-400);
                             padding-left: var(--spacing-xs);
-                            color: var(--color-text-muted);
+                            color: var(--color-gray-400);
                         }
 
                     }
@@ -702,7 +702,7 @@ section {
     }
 
     p {
-        color: var(--color-p-light);
+        color: var(--color-gray-200);
     }
 }
 
@@ -725,12 +725,12 @@ section {
             margin-bottom: var(--spacing-m);
             background-color: var(--color-text-muted-2);
             border-radius: var(--radius-round);
-            border: 1px solid var(--color-text-muted);
+            border: 1px solid var(--color-gray-400);
 
             label {
                 padding: var(--spacing-xxs) var(--spacing-m);
                 border-radius: var(--radius-round);
-                color: var(--color-p-dark);
+                color: var(--color-gray-400);
                 font-size: var(--text-xxxs);
                 font-weight: var(--weight-semibold);
                 text-transform: uppercase;
@@ -797,7 +797,7 @@ section {
                     width: var(--spacing-s);
                     height: var(--spacing-s);
 
-                    background-color: var(--color-text-muted);
+                    background-color: var(--color-gray-400);
 
                     border-radius: var(--radius-round);
                     border: 2px solid rgba(255, 255, 255, 0.2);
@@ -809,7 +809,7 @@ section {
                 .rounded-line {
                     width: 2px;
                     height: 100%;
-                    background-color: var(--color-text-muted);
+                    background-color: var(--color-gray-400);
                     overflow: hidden;
 
                     >div {
@@ -1046,7 +1046,7 @@ section {
                     span {
                         font-size: var(--text-xxs) !important;
                         line-height: var(--lineheight-xxs);
-                        color: var(--color-text-muted);
+                        color: var(--color-gray-400);
                     }
 
                     div {
@@ -1058,7 +1058,7 @@ section {
                             padding: var(--spacing-xxxs) var(--spacing-xs);
 
                             p {
-                                color: var(--color-p-dark);
+                                color: var(--color-gray-400);
                                 font-weight: var(--weight-semibold);
                             }
 
@@ -1162,7 +1162,7 @@ section {
             label,
             .btn-2 {
                 border: 1px solid var(--color-text-muted-2);
-                color: var(--color-p-dark);
+                color: var(--color-gray-400);
                 background-color: var(--color-white);
                 font-size: var(--text-xs);
 
@@ -1241,7 +1241,7 @@ section {
 
                 p {
                     font-size: var(--text-xs);
-                    color: var(--color-p-dark);
+                    color: var(--color-gray-400);
                     font-weight: var(--weight-thin);
                 }
 
@@ -1410,7 +1410,7 @@ section {
                 display: block;
                 width: var(--spacing-xs);
                 height: var(--spacing-xs);
-                background-color: var(--color-text-muted);
+                background-color: var(--color-gray-400);
                 border-radius: 50%;
 
                 animation: dotSync 14s infinite linear;
@@ -1465,7 +1465,7 @@ section {
             padding-top: var(--spacing-l);
 
             p {
-                color: var(--color-p-light);
+                color: var(--color-gray-200);
             }
 
             .tag {
@@ -1535,7 +1535,7 @@ section {
 
             p {
                 font-size: var(--text-xs);
-                color: var(--color-p-dark);
+                color: var(--color-gray-400);
             }
 
             div {
@@ -1549,7 +1549,7 @@ section {
                     font-weight: var(--weight-semibold);
                     text-transform: uppercase;
                     font-size: var(--text-xs);
-                    color: var(--color-p-dark);
+                    color: var(--color-gray-400);
                     margin-top: var(--spacing-l);
                 }
             }
@@ -1562,7 +1562,7 @@ section {
                     font-family: var(--font-main);
                     padding: var(--spacing-xs);
                     border-radius: var(--radius-s);
-                    border: 1px solid var(--color-text-muted);
+                    border: 1px solid var(--color-gray-400);
                     background-color: var(--color-white);
                 }
 
@@ -1578,7 +1578,7 @@ section {
 
             .agreement {
                 font-size: var(--text-xxxs);
-                color: var(--color-text-muted);
+                color: var(--color-gray-400);
                 text-align: center;
             }
         }
@@ -1668,7 +1668,7 @@ footer {
 
         p {
             font-size: var(--text-xxs);
-            color: var(--color-p-light);
+            color: var(--color-gray-200);
             text-align: justify;
         }
 

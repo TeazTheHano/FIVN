@@ -3,10 +3,8 @@
     /* ================= PROGRAMME ================= */
 
     #Programme #Programme_content {
-      color: var(--color-white);
-
       display: grid;
-      grid-template-columns: 1fr calc(50% + calc(var(--spacing-xl) / 2));
+      grid-template-columns: 1fr 50%;
       gap: var(--spacing-xl);
     }
 
@@ -22,7 +20,7 @@
       font-family: var(--font-mono);
       font-size: 0.7rem;
       letter-spacing: 0.1rem;
-      color: var(--color-primary);
+      color: var(--color-secondary);
       text-transform: uppercase;
       font-weight: var(--weight-bold);
 
@@ -37,13 +35,17 @@
       border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
+    #Programme #Programme_content .left h2 p:first-child {
+      color: var(--color-white);
+    }
+
     /* gradient text */
 
     #Programme #Programme_content .left .gradient-text-mainColor {
       background: linear-gradient(
         90deg,
-        var(--color-primary) 0%,
-        var(--color-primary) 30%,
+        var(--color-secondary) 0%,
+        var(--color-secondary) 30%,
         var(--color-white) 60%,
         var(--color-white) 80%
       );
@@ -68,17 +70,17 @@
 
       border-radius: 100%;
       background-color: rgb(255 255 255 / 0.05);
-      color: var(--color-primary);
+      color: var(--color-secondary);
     }
 
     #Programme #Programme_content .left .icon-text p {
       color: var(--color-white);
     }
 
-    #Programme #Programme_content .left .icon-text:hover .icon {
-      background-color: var(--color-primary);
+    /* #Programme #Programme_content .left .icon-text:hover .icon {
+      background-color: var(--color-secondary);
       color: var(--color-white);
-    }
+    } */
 
     /* ---------- RIGHT ---------- */
 
@@ -91,7 +93,9 @@
 
     #Programme #Programme_content .right .card .rounded .rounded-dot {
       position: absolute;
-      top: var(--spacing-m);
+      /* top: var(--spacing-m); */
+      top: calc(((var(--spacing-l)) * 2 + var(--spacing-xxl)) / 2 + 1px);
+      transform: translateY(-50%);
 
       aspect-ratio: 1;
       width: var(--spacing-m);
@@ -101,7 +105,7 @@
       border-radius: var(--radius-round);
       border: 2px solid rgba(255, 255, 255, 0.2);
 
-      outline: 0 solid var(--color-primary);
+      outline: 0 solid var(--color-secondary);
       outline-offset: calc(-1 * var(--spacing-m) / 2);
     }
 
@@ -119,7 +123,7 @@
       background: linear-gradient(
         to top,
         transparent 0%,
-        var(--color-primary) 80%,
+        var(--color-secondary) 80%,
         transparent 100%
       );
     }
@@ -167,7 +171,8 @@
     /* tag inside card */
 
     #Programme #Programme_content .right .card .card-item .tag {
-      color: var(--color-primary);
+      color: var(--color-secondary);
+      text-transform: none;
     }
 
     /* ---------- CARD LABEL ---------- */
@@ -176,7 +181,7 @@
       padding: var(--spacing-l);
     }
 
-    #Programme #Programme_content .right .card .card-item .card-item-label h3 {
+    #Programme #Programme_content .right .card .card-item .card-item-label h4 {
       color: var(--color-white);
     }
 
@@ -192,7 +197,7 @@
       height: var(--spacing-xxl);
 
       background-color: rgba(0, 0, 0, 0.2);
-      color: var(--color-primary);
+      color: var(--color-secondary);
 
       border-radius: var(--radius-m);
       border: 1px solid rgba(255, 255, 255, 0.2);
@@ -214,7 +219,6 @@
       color: var(--color-white);
       opacity: 0.2;
       font-weight: var(--weight-bold);
-      font-size: var(--text-h2);
       line-height: 1;
     }
 
@@ -226,9 +230,53 @@
       .card-item-label
       div
       .card-subdescription {
-      border-left: 1px solid var(--color-text-muted);
       padding-left: var(--spacing-xs);
-      color: var(--color-text-muted);
+      color: var(--color-gray-400);
+      position: relative;
+    }
+
+    #Programme
+      #Programme_content
+      .right
+      .card
+      .card-item
+      .card-item-label
+      div
+      .card-subdescription::before {
+      content: "|";
+      padding-right: var(--spacing-xs);
+      left: 0;
+      top: 2px;
+      position: absolute;
+      align-items: center;
+    }
+
+    #Programme
+      #Programme_content
+      .right
+      .card
+      .card-item
+      .card-item-label
+      div
+      .card-subdescription
+      big {
+        font-size: var(--t-body-size);
+        font-weight: var(--t-body-weight);
+        line-height: var(--t-body-lh);
+    }
+
+    #Programme
+      #Programme_content
+      .right
+      .card
+      .card-item
+      .card-item-label
+      div
+      .card-subdescription
+      i {
+        font-size: var(--t-subbody-size);
+        font-weight: var(--t-subbody-weight);
+        line-height: var(--t-subbody-lh);
     }
 
     /* ---------- CARD CATE ---------- */
@@ -274,8 +322,8 @@
       .card-item-cate
       .card-item-cate-item
       .material-symbols-outlined {
-      color: var(--color-primary);
-      font-size: var(--text-s) !important;
+      color: var(--color-secondary);
+      font-size: var(--t-subbody-size) !important;
       font-variation-settings:
         "FILL" 0,
         "wght" 300,
@@ -284,35 +332,11 @@
       font-weight: thin !important;
     }
 
-    #Programme
-      #Programme_content
-      .right
-      .card
-      .card-item
-      .card-item-cate
-      .card-item-cate-item
-      .tag {
-      font-size: var(--text-xxxs);
-    }
-
-    #Programme
-      #Programme_content
-      .right
-      .card
-      .card-item
-      .card-item-cate
-      .card-item-cate-item
-      p {
-      font-weight: var(--weight-bold);
-      font-size: var(--text-xxs);
-      line-height: var(--lineheight-xxs);
-    }
-
     /* link arrow */
 
     #Programme #Programme_content .right .card .card-item .card-item-cate a {
       text-decoration: none;
-      color: var(--color-primary);
+      color: var(--color-secondary);
     }
 
     #Programme
@@ -346,7 +370,7 @@
     /* ---------- HOVER CARD ---------- */
 
     #Programme #Programme_content .right .card:hover .rounded .rounded-dot {
-      outline: calc(var(--spacing-m) / 2) solid var(--color-primary);
+      outline: calc(var(--spacing-m) / 2) solid var(--color-secondary);
       outline-offset: calc(-1 * var(--spacing-m) / 2);
     }
 
@@ -365,8 +389,13 @@
       border: 1px solid var(--color-secondary);
     }
 
+    #Programme #Programme_content .right .card:hover .card-item .graCoat {
+      opacity: 0.8;
+    }
+
     #Programme #Programme_content .right .card:hover .card-item img {
       opacity: 1;
+      filter: saturate(1);
     }
 
     #Programme
@@ -376,7 +405,7 @@
       .card-item
       .card-item-label
       .icon {
-      background-color: var(--color-primary);
+      background-color: var(--color-secondary);
       color: var(--color-white);
       border: none;
     }
@@ -387,8 +416,8 @@
       .card:hover
       .card-item
       .card-item-label
-      h3 {
-      color: var(--color-primary);
+      h4 {
+      color: var(--color-secondary);
     }
 
     #Programme
@@ -399,7 +428,6 @@
       .card-item-label
       div
       .card-subdescription {
-      border-left: 1px solid var(--color-primary);
       color: var(--color-white);
     }
 
@@ -438,7 +466,7 @@
     /* ---------- TEXT ---------- */
 
     #Programme p {
-      color: var(--color-p-light);
+      color: var(--color-gray-200);
     }
   </style>
 
@@ -453,22 +481,30 @@
 
     <div id="Programme_content" class="maxWidth1300 mobileFlexColumn">
       <div class="left d-column gap-l">
-        <div class="tag" binding-name="Chương trình Flagship">
-          Chương trình Flagship
+        <div
+          class="tag"
+          binding-name="          TĂNG TỐC KHỞI NGHIỆP TOÀN CẦU        "
+        >
+          TĂNG TỐC KHỞI NGHIỆP TOÀN CẦU
         </div>
 
         <div>
-          <h1 binding-name="Lộ trình">Lộ trình</h1>
-          <h1 binding-name="Tăng tốc 4.0" class="gradient-text-mainColor">
-            Tăng tốc 4.0
-          </h1>
+          <h2>
+            <p class="p-ref-h2" binding-name="FI Core">FI Core</p>
+            <p
+              binding-name="Accelerator Program          "
+              class="p-ref-h2 gradient-text-mainColor"
+            >
+              Accelerator Program
+            </p>
+          </h2>
         </div>
 
         <p
-          binding-subdescription='Một hành trình 14 tuần được thiết kế "đo ni đóng giày" để biến ý tưởng sơ khai thành một startup có khả năng gọi vốn triệu đô.'
+          binding-subdescription="Chương trình Tăng tốc Khởi nghiệp Toàn cầu  Founder Institute (FI) Vietnam tuyển sinh Khóa FI Core Mùa Hè 2026 (Vietnam Spring 2026)."
         >
-          Một hành trình 14 tuần được thiết kế "đo ni đóng giày" để biến ý tưởng
-          sơ khai thành một startup có khả năng gọi vốn triệu đô.
+          Chương trình Tăng tốc Khởi nghiệp Toàn cầu Founder Institute (FI)
+          Vietnam tuyển sinh Khóa FI Core Mùa Hè 2026 (Vietnam Spring 2026).
         </p>
 
         <div class="d-column gap-m">
@@ -476,8 +512,11 @@
             <div class="icon">
               <span class="material-symbols-outlined"> schedule </span>
             </div>
-            <p class="text-xs" binding-name="Thời lượng: 14 Tuần">
-              Thời lượng: 14 Tuần
+            <p
+              class="text-xs"
+              binding-name="              Khai giảng: 07.05.2026 - Kết thúc: 13.08.2026"
+            >
+              Khai giảng: 07.05.2026 - Kết thúc: 13.08.2026
             </p>
           </div>
           <div class="icon-text d-row-v-center gap-xs">
@@ -486,15 +525,18 @@
             </div>
             <p
               class="text-xs"
-              binding-name="Hình thức: Hybrid (Online & Offline)"
+              binding-name="              Hình thức: 100% Online"
             >
-              Hình thức: Hybrid (Online & Offline)
+              Hình thức: 100% Online
             </p>
           </div>
         </div>
 
-        <button class="btn btn-primary" binding-name="Ứng tuyển ngay">
-          Ứng tuyển ngay
+        <button
+          class="button-primary-2 button-large"
+          binding-name="          Liên hệ ngay        "
+        >
+          Liên hệ ngay
         </button>
       </div>
 
@@ -511,8 +553,8 @@
           <div class="card-item relative">
             <div class="graCoat absolute"></div>
             <img
-              src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=800&auto=format&fit=crop"
-              binding-imgpath="https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=800&auto=format&fit=crop"
+              src="https://images.unsplash.com/photo-1531403009284-440f080d1e12"
+              binding-imgpath="https://images.unsplash.com/photo-1531403009284-440f080d1e12"
               class="absolute"
               alt=""
             />
@@ -522,15 +564,35 @@
                 <span class="material-symbols-outlined"> target </span>
               </div>
               <div class="d-column gap-xxs">
-                <p class="tag" binding-name="Tháng 1 - Tháng 2">
-                  Tháng 1 - Tháng 2
-                </p>
-                <h3 binding-name="Idea Validation">Idea Validation</h3>
                 <p
-                  class="card-subdescription text-xxs"
-                  binding-subdescription="Kiểm chứng giả thuyết kinh doanh bằng phương pháp 'Fail Fast'."
+                  class="tag"
+                  binding-name="Define Your Vision &amp; Business Foundation​               "
                 >
-                  Kiểm chứng giả thuyết kinh doanh bằng phương pháp 'Fail Fast'.
+                  Define Your Vision &amp; Business Foundation​
+                </p>
+                <h4
+                  binding-name="Nhóm 1 — Khởi Tạo Tầm Nhìn &amp; Nền Tảng Kinh Doanh"
+                >
+                  Nhóm 1 — Khởi Tạo Tầm Nhìn &amp; Nền Tảng Kinh Doanh
+                </h4>
+                <p
+                  class="card-subdescription"
+                  binding-subdescription="&lt;b&gt; Tuần 1 — &lt;big&gt; Vision, Mission &amp; One-Sentence Pitch &lt;/big&gt; &lt;/b&gt; &lt;br&gt; &lt;i&gt; (Tầm nhìn, Sứ mệnh &amp; Bài giới thiệu startup 1 câu) &lt;/i&gt;  &lt;br&gt; &lt;b&gt; Tuần 2 — &lt;big&gt; Customer Development &lt;/big&gt; &lt;/b&gt; &lt;br&gt; &lt;i&gt; (Phát triển khách hàng) &lt;/i&gt; &lt;br&gt; &lt;b&gt; Tuần 3 — &lt;big&gt; Revenue &amp; Business Models &lt;/big&gt; &lt;/b&gt; &lt;br&gt; &lt;i&gt; (Doanh thu &amp; Mô hình kinh doanh)&lt;/i&gt;"
+                >
+                  <b>
+                    Tuần 1 —
+                    <big> Vision, Mission &amp; One-Sentence Pitch </big>
+                  </b>
+                  <br />
+                  <i>
+                    (Tầm nhìn, Sứ mệnh &amp; Bài giới thiệu startup 1 câu)
+                  </i>
+                  <br />
+                  <b> Tuần 2 — <big> Customer Development </big> </b> <br />
+                  <i> (Phát triển khách hàng) </i> <br />
+                  <b> Tuần 3 — <big> Revenue &amp; Business Models </big> </b>
+                  <br />
+                  <i> (Doanh thu &amp; Mô hình kinh doanh)</i>
                 </p>
               </div>
               <p>01</p>
@@ -545,8 +607,8 @@
                     <span class="material-symbols-outlined"> docs </span>
                     <div class="tag" binding-name="Khối lượng">Khối lượng</div>
                   </div>
-                  <p binding-name="15 Bài tập chuyên sâu">
-                    15 Bài tập chuyên sâu
+                  <p class="p-subbody" binding-name="3 Tuần đào tạo cốt lõi">
+                    3 Tuần đào tạo cốt lõi
                   </p>
                 </div>
                 <div class="card-item-cate-item">
@@ -554,8 +616,10 @@
                     <span class="material-symbols-outlined"> add_diamond </span>
                     <div class="tag" binding-name="Giá trị">Giá trị</div>
                   </div>
-                  <p binding-name="Tư duy phản biện & Định hình">
-                    Tư duy phản biện & Định hình
+                  <p class="p-subbody"
+                    binding-name="Kiểm chứng giả thuyết kinh doanh &amp; Định vị thị trường"
+                  >
+                    Kiểm chứng giả thuyết kinh doanh &amp; Định vị thị trường
                   </p>
                 </div>
                 <div class="card-item-cate-item">
@@ -563,8 +627,10 @@
                     <span class="material-symbols-outlined"> task_alt </span>
                     <div class="tag" binding-name="Kết quả">Kết quả</div>
                   </div>
-                  <p binding-name="Hồ sơ ý tưởng (Validated Idea)">
-                    Hồ sơ ý tưởng (Validated Idea)
+                  <p class="p-subbody"
+                    binding-name="Bản thuyết trình 1 câu (One-Sentence Pitch) hoàn chỉnh"
+                  >
+                    Bản thuyết trình 1 câu (One-Sentence Pitch) hoàn chỉnh
                   </p>
                 </div>
               </div>
@@ -590,8 +656,8 @@
           <div class="card-item relative">
             <div class="graCoat absolute"></div>
             <img
-              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop"
-              binding-imgpath="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop"
+              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c"
+              binding-imgpath="https://images.unsplash.com/photo-1522071820081-009f0129c71c"
               class="absolute"
               alt=""
             />
@@ -601,16 +667,27 @@
                 <span class="material-symbols-outlined"> rocket_launch </span>
               </div>
               <div class="d-column gap-xxs">
-                <p class="tag" binding-name="Tháng 3 - Tháng 4">
-                  Tháng 3 - Tháng 4
-                </p>
-                <h3 binding-name="Product Development">Product Development</h3>
                 <p
-                  class="card-subdescription text-xxs"
-                  binding-subdescription="Xây dựng MVP (Sản phẩm khả thi tối thiểu) và kiến trúc công nghệ"
+                  class="tag"
+                  binding-name="Master Your Story &amp; Validate Your Idea"
                 >
-                  Xây dựng MVP (Sản phẩm khả thi tối thiểu) và kiến trúc công
-                  nghệ
+                  Master Your Story &amp; Validate Your Idea
+                </p>
+                <h4
+                  binding-name="Nhóm 2 — Làm Chủ Thông Điệp &amp; Chứng Minh Ý Tưởng"
+                >
+                  Nhóm 2 — Làm Chủ Thông Điệp &amp; Chứng Minh Ý Tưởng
+                </h4>
+                <p
+                  class="card-subdescription"
+                  binding-subdescription="&lt;b&gt; Tuần 4 — &lt;big&gt; Pitch Mastery &lt;/big&gt; &lt;/b&gt; &lt;br&gt; &lt;i&gt; (Kỹ năng trình bày/ Pitch nâng cao) &lt;/i&gt;  &lt;br&gt; &lt;b&gt; Tuần 5 — &lt;big&gt; Mentor Idea Review &lt;/big&gt; &lt;/b&gt; &lt;br&gt; &lt;i&gt; (Đánh giá ý tưởng startup cùng cố vấn) &lt;/i&gt; &lt;br&gt; &lt;b&gt; Tuần 13 — &lt;big&gt; Demo Day - Graduation &lt;/big&gt; &lt;/b&gt; &lt;br&gt; &lt;i&gt; (Tổng kết và thuyết trình tốt nghiệp)&lt;/i&gt;"
+                >
+                  <b> Tuần 4 — <big> Pitch Mastery </big> </b> <br />
+                  <i> (Kỹ năng trình bày/ Pitch nâng cao) </i> <br />
+                  <b> Tuần 5 — <big> Mentor Idea Review </big> </b> <br />
+                  <i> (Đánh giá ý tưởng startup cùng cố vấn) </i> <br />
+                  <b> Tuần 13 — <big> Demo Day - Graduation </big> </b> <br />
+                  <i> (Tổng kết và thuyết trình tốt nghiệp)</i>
                 </p>
               </div>
               <p>02</p>
@@ -625,15 +702,22 @@
                     <span class="material-symbols-outlined"> docs </span>
                     <div class="tag" binding-name="Khối lượng">Khối lượng</div>
                   </div>
-                  <p binding-name="10 Sprint kỹ thuật">10 Sprint kỹ thuật</p>
+                  <p class="p-subbody"
+                    binding-name="3 Phiên đánh giá cùng Mentor (Mentor Reviews)"
+                  >
+                    3 Phiên đánh giá cùng Mentor (Mentor Reviews)
+                  </p>
                 </div>
                 <div class="card-item-cate-item">
                   <div class="d-row-v-center gap-xxs">
                     <span class="material-symbols-outlined"> add_diamond </span>
                     <div class="tag" binding-name="Giá trị">Giá trị</div>
                   </div>
-                  <p binding-name="Kiến trúc hệ thống chuẩn Silicon">
-                    Kiến trúc hệ thống chuẩn Silicon
+                  <p class="p-subbody"
+                    binding-name="Kỹ năng kể chuyện &amp; Thuyết phục nhà đầu tư (Storytelling)"
+                  >
+                    Kỹ năng kể chuyện &amp; Thuyết phục nhà đầu tư
+                    (Storytelling)
                   </p>
                 </div>
                 <div class="card-item-cate-item">
@@ -641,7 +725,11 @@
                     <span class="material-symbols-outlined"> task_alt </span>
                     <div class="tag" binding-name="Kết quả">Kết quả</div>
                   </div>
-                  <p binding-name="Sản phẩm mẫu (MVP)">Sản phẩm mẫu (MVP)</p>
+                  <p class="p-subbody"
+                    binding-name="Sán phẩm mẫu (MVP) &amp; Sự công nhận từ hội đồng chuyên gia"
+                  >
+                    Sán phẩm mẫu (MVP) &amp; Sự công nhận từ hội đồng chuyên gia
+                  </p>
                 </div>
               </div>
               <a
@@ -666,8 +754,8 @@
           <div class="card-item relative">
             <div class="graCoat absolute"></div>
             <img
-              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop"
-              binding-imgpath="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop"
+              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71"
+              binding-imgpath="https://images.unsplash.com/photo-1551288049-bebda4e38f71"
               class="absolute"
               alt=""
             />
@@ -677,14 +765,29 @@
                 <span class="material-symbols-outlined"> trending_up </span>
               </div>
               <div class="d-column gap-xxs">
-                <p class="tag" binding-name="Tháng 5">Tháng 5</p>
-                <h3 binding-name="Growth & Traction">Growth & Traction</h3>
                 <p
-                  class="card-subdescription text-xxs"
-                  binding-subdescription="Chiến lược Go-to-market du kích. Tập trung vào các chỉ số tăng trưởng."
+                  class="tag"
+                  binding-name="Build, Protect &amp; Empower Your Startup"
                 >
-                  Chiến lược Go-to-market du kích. Tập trung vào các chỉ số tăng
-                  trưởng.
+                  Build, Protect &amp; Empower Your Startup
+                </p>
+                <h4
+                  binding-name="Nhóm 3 — Xây Sản Phẩm, Bảo Vệ Startup &amp; Xây Dựng Đội Ngũ"
+                >
+                  Nhóm 3 — Xây Sản Phẩm, Bảo Vệ Startup &amp; Xây Dựng Đội Ngũ
+                </h4>
+                <p
+                  class="card-subdescription"
+                  binding-subdescription="&lt;b&gt; Tuần 6 — &lt;big&gt; Legal &amp; Equity &lt;/big&gt; &lt;/b&gt; &lt;br&gt; &lt;i&gt; (Pháp lý &amp; Cấu trúc vốn sở hữu) &lt;/i&gt;  &lt;br&gt; &lt;b&gt; Tuần 7 — &lt;big&gt; Go-to-Market &amp; Scale &lt;/big&gt; &lt;/b&gt; &lt;br&gt; &lt;i&gt; (Chiến lược ra thị trường &amp; Mở rộng) &lt;/i&gt; &lt;br&gt; &lt;b&gt; Tuần 8 — &lt;big&gt; Product Development &lt;/big&gt; &lt;/b&gt; &lt;br&gt; &lt;i&gt; (Phát triển sản phẩm) &lt;/i&gt;  &lt;br&gt; &lt;b&gt; Tuần 10 — &lt;big&gt; Co-Founder &amp; Team &lt;/big&gt; &lt;/b&gt; &lt;br&gt; &lt;i&gt; (Đồng sáng lập &amp; Xây dựng đội ngũ) &lt;/i&gt;"
+                >
+                  <b> Tuần 6 — <big> Legal &amp; Equity </big> </b> <br />
+                  <i> (Pháp lý &amp; Cấu trúc vốn sở hữu) </i> <br />
+                  <b> Tuần 7 — <big> Go-to-Market &amp; Scale </big> </b> <br />
+                  <i> (Chiến lược ra thị trường &amp; Mở rộng) </i> <br />
+                  <b> Tuần 8 — <big> Product Development </big> </b> <br />
+                  <i> (Phát triển sản phẩm) </i> <br />
+                  <b> Tuần 10 — <big> Co-Founder &amp; Team </big> </b> <br />
+                  <i> (Đồng sáng lập &amp; Xây dựng đội ngũ) </i>
                 </p>
               </div>
               <p>03</p>
@@ -699,8 +802,8 @@
                     <span class="material-symbols-outlined"> docs </span>
                     <div class="tag" binding-name="Khối lượng">Khối lượng</div>
                   </div>
-                  <p binding-name="8 Chiến dịch thực nghiệm">
-                    8 Chiến dịch thực nghiệm
+                  <p class="p-subbody" binding-name="4 Tuần chuyên sâu về Vận hành &amp; Pháp lý">
+                    4 Tuần chuyên sâu về Vận hành &amp; Pháp lý
                   </p>
                 </div>
                 <div class="card-item-cate-item">
@@ -708,8 +811,10 @@
                     <span class="material-symbols-outlined"> add_diamond </span>
                     <div class="tag" binding-name="Giá trị">Giá trị</div>
                   </div>
-                  <p binding-name="User Acquisition Strategies">
-                    User Acquisition Strategies
+                  <p class="p-subbody"
+                    binding-name="Cấu trúc doanh nghiệp chuẩn quốc tế &amp; Chiến lược GTM"
+                  >
+                    Cấu trúc doanh nghiệp chuẩn quốc tế &amp; Chiến lược GTM
                   </p>
                 </div>
                 <div class="card-item-cate-item">
@@ -717,8 +822,10 @@
                     <span class="material-symbols-outlined"> task_alt </span>
                     <div class="tag" binding-name="Kết quả">Kết quả</div>
                   </div>
-                  <p binding-name="1000+ Người dùng đầu tiên">
-                    1000+ Người dùng đầu tiên
+                  <p class="p-subbody"
+                    binding-name="Đội ngũ nòng cốt (Core Team) &amp; Khung pháp lý an toàn"
+                  >
+                    Đội ngũ nòng cốt (Core Team) &amp; Khung pháp lý an toàn
                   </p>
                 </div>
               </div>
@@ -744,8 +851,8 @@
           <div class="card-item relative">
             <div class="graCoat absolute"></div>
             <img
-              src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=800&auto=format&fit=crop"
-              binding-imgpath="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=800&auto=format&fit=crop"
+              src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7"
+              binding-imgpath="https://images.unsplash.com/photo-1556761175-5973dc0f32e7"
               class="absolute"
               alt=""
             />
@@ -755,16 +862,25 @@
                 <span class="material-symbols-outlined"> verified_user </span>
               </div>
               <div class="d-column gap-xxs">
-                <p class="tag" binding-name="Tháng 6 (Demo Day)">
-                  Tháng 6 (Demo Day)
-                </p>
-                <h3 binding-name="Funding & Legal">Funding & Legal</h3>
                 <p
-                  class="card-subdescription text-xxs"
-                  binding-subdescription="Hoàn thiện hồ sơ gọi vốn và cấu trúc pháp lý cho vòng Pitching."
+                  class="tag"
+                  binding-name="Accelerate Growth &amp; Get Fundraising-Ready"
                 >
-                  Hoàn thiện hồ sơ gọi vốn và cấu trúc pháp lý cho vòng
-                  Pitching.
+                  Accelerate Growth &amp; Get Fundraising-Ready
+                </p>
+                <h4 binding-name="Nhóm 4 — Tăng Tốc &amp; Sẵn Sàng Gọi Vốn">
+                  Nhóm 4 — Tăng Tốc &amp; Sẵn Sàng Gọi Vốn
+                </h4>
+                <p
+                  class="card-subdescription"
+                  binding-subdescription="&lt;b&gt; Tuần 9 — &lt;big&gt; Investor Progress Review &lt;/big&gt; &lt;/b&gt; &lt;br&gt; &lt;i&gt; (Đánh giá tiến độ với nhà đầu tư) &lt;/i&gt;  &lt;br&gt; &lt;b&gt; Tuần 11 — &lt;big&gt; Growth &lt;/big&gt; &lt;/b&gt; &lt;br&gt; &lt;i&gt; (Chiến lược tăng trưởng) &lt;/i&gt; &lt;br&gt; &lt;b&gt; Tuần 12 — &lt;big&gt; Funding &lt;/big&gt; &lt;/b&gt; &lt;br&gt; &lt;i&gt; (Chiến lược &amp; Kỹ năng chuẩn bị gọi vốn) &lt;/i&gt;  "
+                >
+                  <b> Tuần 9 — <big> Investor Progress Review </big> </b> <br />
+                  <i> (Đánh giá tiến độ với nhà đầu tư) </i> <br />
+                  <b> Tuần 11 — <big> Growth </big> </b> <br />
+                  <i> (Chiến lược tăng trưởng) </i> <br />
+                  <b> Tuần 12 — <big> Funding </big> </b> <br />
+                  <i> (Chiến lược &amp; Kỹ năng chuẩn bị gọi vốn) </i>
                 </p>
               </div>
               <p>04</p>
@@ -779,8 +895,8 @@
                     <span class="material-symbols-outlined"> docs </span>
                     <div class="tag" binding-name="Khối lượng">Khối lượng</div>
                   </div>
-                  <p binding-name="5 Phiên Pitching giả lập">
-                    5 Phiên Pitching giả lập
+                  <p class="p-subbody" binding-name="13 Tuần tăng tốc toàn diện (Full Program)">
+                    13 Tuần tăng tốc toàn diện (Full Program)
                   </p>
                 </div>
                 <div class="card-item-cate-item">
@@ -788,8 +904,10 @@
                     <span class="material-symbols-outlined"> add_diamond </span>
                     <div class="tag" binding-name="Giá trị">Giá trị</div>
                   </div>
-                  <p binding-name="Định giá & Pháp lý doanh nghiệp">
-                    Định giá & Pháp lý doanh nghiệp
+                  <p class="p-subbody"
+                    binding-name="Mạng lưới 35,000+ Mentors &amp; Nhà đầu tư toàn cầu"
+                  >
+                    Mạng lưới 35,000+ Mentors &amp; Nhà đầu tư toàn cầu
                   </p>
                 </div>
                 <div class="card-item-cate-item">
@@ -797,8 +915,11 @@
                     <span class="material-symbols-outlined"> task_alt </span>
                     <div class="tag" binding-name="Kết quả">Kết quả</div>
                   </div>
-                  <p binding-name="Cam kết đầu tư (Funding)">
-                    Cam kết đầu tư (Funding)
+                  <p class="p-subbody"
+                    binding-name="Sẵn sàng gọi vốn (Fundraising-Ready) &amp; Lễ tốt nghiệp Demo Day"
+                  >
+                    Sẵn sàng gọi vốn (Fundraising-Ready) &amp; Lễ tốt nghiệp
+                    Demo Day
                   </p>
                 </div>
               </div>

@@ -1,7 +1,4 @@
-@layer reset, tokens, base, layout, components;
-
-/* RESET */
-@import "reset.css" layer(reset);
+@layer tokens, base, layout, components;
 
 /* TOKEN */
 @import "token.css" layer(tokens);
@@ -13,7 +10,7 @@
 /* @import "layout.css" layer(layout); */
 
 /* COMPONENT */
-/* @import "components.css" layer(components); */
+@import "components.css" layer(components);
 
 /* RESPONSIVE */
 @import "responsive.css" layer(responsive);

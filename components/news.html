@@ -12,22 +12,41 @@
     }
 
     #News #News_content .tag {
-      color: var(--color-primary);
+      /* color: var(--color-primary); */
     }
+
+    /* .slider-controller {
+      width: 100%;
+      height: inherit;
+      z-index: 10;
+      left: 0;
+      top: 55%;
+      justify-content: space-between;
+      padding: 0 max(0px, calc((100vw - 1300px - var(--spacing-xl)) / 2));
+      padding-bottom: var(--spacing-xxxl);
+      pointer-events: none;
+    }
+
+    .slider-controller .btn-2 {
+      aspect-ratio: 1;
+      pointer-events: all;
+      user-select: none;
+    } */
 
     /* ================= News Cards ================= */
 
-    #News #News_content_cards {
+    /* #News #News_content_cards {
       overflow: scroll;
       scroll-behavior: smooth;
       scroll-snap-type: x mandatory;
+      padding: 0 var(--spacing-l);
       padding-bottom: var(--spacing-xxxl);
 
       scrollbar-width: none;
       -ms-overflow-style: none;
-    }
+    } */
 
-    #News #News_content_cards .card {
+    /* #News #News_content_cards .card {
       flex: 0 0 auto;
       width: 70vw;
       min-width: 200px;
@@ -38,7 +57,7 @@
       overflow: hidden;
       filter: drop-shadow(var(--shadow-s));
       background-color: var(--color-white);
-    }
+    } */
 
     /* ---------- Card Top ---------- */
 
@@ -85,7 +104,7 @@
 
     #News #News_content_cards .card .bottom {
       font-size: var(--text-xs);
-      color: var(--color-p-dark);
+      color: var(--color-gray-400);
       font-weight: var(--weight-thin);
     }
 
@@ -143,12 +162,6 @@
     }
 
     /* ================= Scroll padding edges ================= */
-
-    #News #News_content_cards::before,
-    #News #News_content_cards::after {
-      content: "";
-      flex: 0 0 max(0px, calc((100vw - 1300px) / 2));
-    }
   </style>
 
   <section id="News" class="relative">
@@ -180,7 +193,19 @@
       </div>
     </div>
 
-    <div id="News_content_cards" class="d-row gap-m">
+    <div id="News_content_cards" class="maxWidth1300 cards-slider-container">
+      <!-- Controller -->
+      <div class="cards-slider-controller mobileHide">
+        <div class="cards-slider-controller-prev button-primary-2">
+          <span class="material-symbols-outlined"> chevron_left </span>
+        </div>
+        <div class="cards-slider-controller-next button-primary-2">
+          <span class="material-symbols-outlined"> chevron_right </span>
+        </div>
+      </div>
+
+      <!-- List start -->
+
       <div
         class="card"
         News-cate="{{metaKeyword}}"
@@ -213,6 +238,18 @@
           </a>
         </div>
       </div>
+
+      <!-- List end -->
+    </div>
+
+    <div class="view-all-btn">
+      <button
+        class="button-secondary"
+        binding-btntext="Xem thêm"
+        binding-btnhref=""
+      >
+        Xem thêm
+      </button>
     </div>
   </section>
 </div>

@@ -1,68 +1,98 @@
-/*++++++++++++++ FONT IMPORT ++++++++++++++*/
-/*  */
-/* @font-face {
-    font-family: "NeueMontreal";
-    src: url("../assets/fonts/NeueMontreal-Bold.otf") format("opentype");
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
+/*++++++++++++++ RESET ++++++++++++++*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    transition: all 0.3s ease-in-out;
+
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+
+    -webkit-font-smoothing: antialiased;
+    /* Chrome, Safari */
+    -moz-osx-font-smoothing: grayscale;
+    /* Firefox macOS */
+    text-rendering: optimizeLegibility;
 }
 
-@font-face {
-    font-family: "NeueMontreal";
-    src: url("../assets/fonts/NeueMontreal-Regular.otf") format("opentype");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
-@font-face {
-    font-family: "NeueMontreal";
-    src: url("../assets/fonts/NeueMontreal-Light.otf") format("opentype");
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
+h1,
+.p-ref-h1 {
+    font-family: var(--font-main);
+    font-size: var(--t-h1-size);
+    font-weight: var(--t-h1-weight);
+    line-height: var(--t-h1-lh);
 }
 
-@font-face {
-    font-family: "NeueMontreal";
-    src: url("../assets/fonts/NeueMontreal-Medium.otf") format("opentype");
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
+h2,
+.p-ref-h2 {
+    font-family: var(--font-main);
+    font-size: var(--t-h2-size);
+    font-weight: var(--t-h2-weight);
+    line-height: var(--t-h2-lh);
 }
 
-@font-face {
-    font-family: "NeueMontreal";
-    src: url("../assets/fonts/NeueMontreal-BoldItalic.otf") format("opentype");
-    font-weight: 700;
-    font-style: italic;
-    font-display: swap;
+h3,
+.p-ref-h3 {
+    font-family: var(--font-main);
+    font-size: var(--t-h3-size);
+    font-weight: var(--t-h3-weight);
+    line-height: var(--t-h3-lh);
 }
 
-@font-face {
-    font-family: "NeueMontreal";
-    src: url("../assets/fonts/NeueMontreal-Italic.otf") format("opentype");
-    font-weight: 400;
-    font-style: italic;
-    font-display: swap;
+h4,
+.p-ref-h4 {
+    font-family: var(--font-main);
+    font-size: var(--t-h4-size);
+    font-weight: var(--t-h4-weight);
+    line-height: var(--t-h4-lh);
 }
 
-@font-face {
-    font-family: "NeueMontreal";
-    src: url("../assets/fonts/NeueMontreal-LightItalic.otf") format("opentype");
-    font-weight: 300;
-    font-style: italic;
-    font-display: swap;
+p {
+    font-family: var(--font-body);
+    font-size: var(--t-body-size);
+    font-weight: var(--t-body-weight);
+    line-height: var(--t-body-lh);
+    color: var(--color-gray-600);
 }
 
-@font-face {
-    font-family: "NeueMontreal";
-    src: url("../assets/fonts/NeueMontreal-MediumItalic.otf") format("opentype");
-    font-weight: 500;
-    font-style: italic;
-    font-display: swap;
-} */
+button,
+button>*,
+.button,
+.button>* {
+    font-family: var(--font-main);
+    font-size: var(--t-button-size);
+    font-weight: var(--t-button-weight);
+    line-height: var(--t-button-lh);
+}
+
+button {
+    cursor: pointer;
+}
+
+
+/* Highlight */
+::selection {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+}
+
+/* ------------- end of reset ------------- */
 
 /*++++++++++++++ BASE ++++++++++++++*/
 body {
@@ -77,7 +107,7 @@ body {
     position: absolute;
 }
 
-.displayNone {
+.d-none {
     display: none;
 }
 
@@ -96,10 +126,6 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--spacing-m);
-}
-
-.d-none {
-    display: none;
 }
 
 .d-row {
@@ -130,6 +156,12 @@ body {
     align-items: center;
 }
 
+.d-row-h-between {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .d-column-h-center {
     display: flex;
     flex-direction: column;
@@ -142,24 +174,25 @@ body {
     justify-content: center;
 }
 
-.gap-m {
-    gap: var(--spacing-m);
-}
-
-.gap-s {
-    gap: var(--spacing-s);
-}
-
-.gap-xs {
-    gap: var(--spacing-xs);
+/* GAP */
+.gap-xxxs {
+    gap: var(--spacing-xxxs);
 }
 
 .gap-xxs {
     gap: var(--spacing-xxs);
 }
 
-.gap-xxxs {
-    gap: var(--spacing-xxxs);
+.gap-xs {
+    gap: var(--spacing-xs);
+}
+
+.gap-s {
+    gap: var(--spacing-s);
+}
+
+.gap-m {
+    gap: var(--spacing-m);
 }
 
 .gap-l {
@@ -197,64 +230,73 @@ body {
     margin: auto;
 }
 
+section {
+    margin: auto;
+    overflow: hidden;
+
+    >div[id$="_content"] {
+        padding: var(--spacing-xxxl) var(--spacing-l);
+
+        @media (max-width: 767px) {
+            padding: var(--spacing-xl) var(--spacing-m);
+        }
+    }
+}
 
 /*++++++++++++++ FONT ++++++++++++++*/
 
-.text-l {
-    font-size: var(--text-h3);
-    line-height: var(--lineheight-h3);
-}
-
-.text-m {
-    font-size: var(--text-base);
-    line-height: var(--lineheight-base);
-}
-
-.text-xxs {
-    font-size: var(--text-xxs);
-    line-height: var(--lineheight-xs);
-}
-
-.text-xs {
-    font-size: var(--text-xs);
-    line-height: var(--lineheight-xs);
-}
-
-.title-bold {
-    font-weight: var(--weight-bold);
-    color: var(--color-secondary);
-}
-
 .tag {
     color: var(--color-secondary);
-    font-size: var(--text-xxs);
-    line-height: var(--lineheight-xs);
-    font-weight: var(--weight-semibold);
+    font-size: var(--t-subbody-size);
+    font-weight: var(--t-subbody-weight);
+    line-height: var(--t-subbody-lh);
     letter-spacing: 0.1rem;
     text-transform: uppercase;
+}
 
+.p-subbody {
+    font-size: var(--t-subbody-size);
+    font-weight: var(--t-subbody-weight);
+    line-height: var(--t-subbody-lh);
+}
 
+.p-mini {
+    font-size: var(--t-mini-size);
+    font-weight: var(--t-mini-weight);
+    line-height: var(--t-mini-lh);
 }
 
 .text-justify {
     text-align: justify;
 }
 
+.lineclamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.lineclamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.lineclamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
 hr {
-    border-color: var(--color-text-muted);
+    border-color: var(--color-gray-400);
     opacity: 0.1;
 }
 
 /*++++++++++++++ ANIMATIONS ++++++++++++++*/
-@keyframes progress {
-    0% {
-        width: 0%;
-    }
-
-    100% {
-        width: 100%;
-    }
-}
 
 @keyframes progressV {
     0% {
@@ -276,10 +318,6 @@ hr {
     }
 }
 
-.animate-progress {
-    animation: progress 25s linear infinite;
-}
-
 @keyframes float {
 
     0%,
@@ -293,7 +331,7 @@ hr {
 }
 
 .animate-float {
-    animation: float 6s ease-in-out infinite;
+    animation: float 8s ease-in-out infinite;
 }
 
 @keyframes dash {
@@ -308,22 +346,6 @@ hr {
     animation: dash 3s linear forwards infinite;
 }
 
-/* Glowing Line Animation */
-@keyframes flow {
-    0% {
-        background-position: 0% 0%;
-    }
-
-    100% {
-        background-position: 0% 200%;
-    }
-}
-
-.animate-flow-y {
-    background-size: 100% 200%;
-    animation: flow 3s linear infinite;
-}
-
 /* New Animations for Cyber Grid */
 @keyframes grid-pan {
     0% {
@@ -332,20 +354,6 @@ hr {
 
     100% {
         background-position: 40px 40px;
-    }
-}
-
-.animate-grid-pan {
-    animation: grid-pan 4s linear infinite;
-}
-
-@keyframes breatheState1 {
-    from {
-        background-color: rgb(255 0 0 / 0.9);
-    }
-
-    to {
-        background-color: rgb(255 0 0 / 0.4);
     }
 }
 
@@ -370,7 +378,7 @@ hr {
 
     0%,
     40% {
-        background-color: var(--color-text-muted);
+        background-color: var(--color-gray-400);
     }
 
     50%,
@@ -378,8 +386,6 @@ hr {
         background-color: var(--color-primary);
     }
 }
-
-
 
 /* +++++++++++++++ EFFECTS ++++++++++++++ */
 /* --- Spotlight Effect --- */
@@ -396,64 +402,3 @@ hr {
         --mouse-x 0.3s ease,
         --mouse-y 0.3s ease;
 }
-
-section {
-    margin: auto;
-    overflow: hidden;
-
-    >div[id$="_content"] {
-        padding: var(--spacing-xxxl) var(--spacing-l);
-
-        @media (max-width: 767px) {
-            padding: var(--spacing-xl) var(--spacing-m);
-        }
-    }
-}
-
-
-.CTA-button {
-    background-color: var(--color-white);
-    color: var(--color-secondary);
-
-    padding: var(--spacing-xs) var(--spacing-l);
-    margin: var(--spacing-xs) 0;
-
-    border: 1px solid var(--color-text-muted);
-    border-radius: var(--radius-round);
-
-    font-size: var(--text-xxs);
-    font-weight: var(--weight-bold);
-    text-transform: uppercase;
-    letter-spacing: 0.1rem;
-
-    transition: var(--transition-fast);
-    filter: drop-shadow(var(--shadow-m));
-}
-
-.CTA-button:hover {
-    background-color: var(--color-secondary);
-    color: var(--color-white);
-    border: 1px solid var(--color-secondary);
-}
-
-.lineclamp-3 {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-}
-
-.lineclamp-2 {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-}
-
-.lineclamp-1 {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-}
-

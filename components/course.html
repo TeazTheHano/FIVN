@@ -11,10 +11,6 @@
       padding-bottom: var(--spacing-l);
     }
 
-    #Course #Course_content .tag {
-      color: var(--color-primary);
-    }
-
     /* ---------- Category list ---------- */
 
     #Course #Course_content #Course_content_cate_list {
@@ -29,7 +25,7 @@
     #Course #Course_content #Course_content_cate_list label,
     #Course .btn-2 {
       border: 1px solid var(--color-text-muted-2);
-      color: var(--color-p-dark);
+      color: var(--color-gray-400);
       background-color: var(--color-white);
       font-size: var(--text-xs);
     }
@@ -40,49 +36,8 @@
       color: var(--color-white);
     }
 
-    #Course .slider-controller {
-      width: 100%;
-      height: inherit;
-      z-index: 10;
-      left: 0;
-      top: 55%;
-      justify-content: space-between;
-      padding: 0 max(0px, calc((100vw - 1300px - var(--spacing-xl)) / 2));
-      padding-bottom: var(--spacing-xxxl);
-      pointer-events: none;
-    }
-
-    #Course .slider-controller .btn-2 {
-      aspect-ratio: 1;
-      pointer-events: all;
-      user-select: none;
-    }
-
-    /* ================= Course Cards ================= */
-
-    #Course #Course_content_cards {
-      overflow: scroll;
-      scroll-behavior: smooth;
-      scroll-snap-type: x mandatory;
-      padding-bottom: var(--spacing-xxxl);
-
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-    }
-
     #Course #Course_content_cards .card {
-      flex: 0 0 auto;
-      width: 70vw;
-      min-width: 200px;
-      max-width: 400px;
-      height: fit-content;
-
       display: none;
-
-      border-radius: var(--radius-l);
-      overflow: hidden;
-      filter: drop-shadow(var(--shadow-s));
-      background-color: var(--color-white);
     }
 
     /* ---------- Card Top ---------- */
@@ -130,7 +85,7 @@
 
     #Course #Course_content_cards .card .bottom {
       font-size: var(--text-xs);
-      color: var(--color-p-dark);
+      color: var(--color-gray-400);
       font-weight: var(--weight-thin);
     }
 
@@ -166,9 +121,12 @@
       display: -webkit-box;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
+      min-height: calc(var(--lineheight-xs) * 2);
+    }
+
+    #Course #Course_content_cards .card .bottom .description * {
       font-size: var(--text-xs);
       line-height: var(--lineheight-xs);
-      min-height: calc(var(--lineheight-xs) * 2);
     }
 
     #Course #Course_content_cards .card .bottom .btn {
@@ -188,52 +146,6 @@
 
     #Course #Course_content_cards .card:hover .bottom .btn {
       filter: drop-shadow(var(--shadow-m));
-    }
-
-    /* ================= Course category tag content ================= */
-
-    /* #Course
-      #Course_content_cards
-      .card[course-cate$="finance"]
-      .top
-      .tag::before {
-      content: "Finance";
-    }
-
-    #Course #Course_content_cards .card[course-cate$="tech"] .top .tag::before {
-      content: "Tech";
-    }
-
-    #Course
-      #Course_content_cards
-      .card[course-cate$="product"]
-      .top
-      .tag::before {
-      content: "Product";
-    }
-
-    #Course
-      #Course_content_cards
-      .card[course-cate$="marketing"]
-      .top
-      .tag::before {
-      content: "Marketing";
-    }
-
-    #Course
-      #Course_content_cards
-      .card[course-cate$="management"]
-      .top
-      .tag::before {
-      content: "Management";
-    } */
-
-    /* ================= Scroll padding edges ================= */
-
-    #Course #Course_content_cards::before,
-    #Course #Course_content_cards::after {
-      content: "";
-      flex: 0 0 max(0px, calc((100vw - 1300px) / 2));
     }
   </style>
 
@@ -273,32 +185,36 @@
   <section id="Course" class="relative">
     <!-- Logic Radio -->
     <input
-      re
+      re=""
       type="radio"
       name="Course_content_cate"
-      hidden
+      hidden=""
       id="Course_content_cate_all"
-      checked
+      checked=""
     />
     <input
       repeat="category|param:parentId:7f8ad86d-404d-c0a9-69d2-36aed2d53306|sort:displayOrder:asc|includes:"
       type="radio"
       name="Course_content_cate"
-      hidden
+      hidden=""
       id="{{name}}"
     />
 
-    <div id="Course_content" class="d-column maxWidth1300">
+    <div id="Course_content" class="maxWidth1300">
       <div class="d-column-h-center gap-xs">
-        <p class="tag" binding-name="Đào tạo chuyên sâu">Đào tạo chuyên sâu</p>
-        <h3 class="title-bold" binding-name="Khóa học ngắn hạn">
-          Khóa học ngắn hạn
+        <p class="tag" binding-name="OUR INNOVATIVE PROGRAMS">
+          OUR INNOVATIVE PROGRAMS
+        </p>
+        <h3 class="" binding-name="CÁC CHƯƠNG TRÌNH ĐỔI MỚI SÁNG TẠO">
+          CÁC CHƯƠNG TRÌNH ĐỔI MỚI SÁNG TẠO
         </h3>
         <p
-          binding-subdescription='Kỹ năng thực chiến dành cho Founder bận rộn, tập trung vào những "nút thắt" quan trọng nhất.'
+          binding-subdescription="Founder Institute Vietnam không chỉ cung cấp các chương trình đào tạo, ươm tạo và tăng tốc cho các doanh nhân khởi nghiệp, các doanh nghiệp công nghệ, mà còn tư vấn và triển khai các chương trình đào tạo và đổi mới sáng tạo cho các tổ chức và doanh nghiệp quy mô vừa và lớn."
         >
-          Kỹ năng thực chiến dành cho Founder bận rộn, tập trung vào những "nút
-          thắt" quan trọng nhất.
+          Founder Institute Vietnam không chỉ cung cấp các chương trình đào tạo,
+          ươm tạo và tăng tốc cho các doanh nhân khởi nghiệp, các doanh nghiệp
+          công nghệ, mà còn tư vấn và triển khai các chương trình đào tạo và đổi
+          mới sáng tạo cho các tổ chức và doanh nghiệp quy mô vừa và lớn.
         </p>
       </div>
 
@@ -320,15 +236,18 @@
       </div>
     </div>
 
-    <div id="Course_content_cards" class="d-row gap-m">
-      <div class="d-row-v-center mobileHide gap-xxs slider-controller absolute">
-        <div class="slider-controller-prev btn-2">
+    <div id="Course_content_cards" class="maxWidth1300 cards-slider-container">
+      <!-- Controller -->
+      <div class="cards-slider-controller mobileHide gap-xxs">
+        <div class="cards-slider-controller-prev button-primary-2">
           <span class="material-symbols-outlined"> chevron_left </span>
         </div>
-        <div class="slider-controller-next btn-2">
+        <div class="cards-slider-controller-next button-primary-2">
           <span class="material-symbols-outlined"> chevron_right </span>
         </div>
       </div>
+
+      <!-- List start -->
       <div
         class="card"
         course-cate="{{metaKeyword}}"
@@ -358,13 +277,18 @@
           <div class="description">{{description}}</div>
           <a
             class="btn btn-secondary"
-            binding-btntext="Đăng ký ngay"
             href="/{{languageCode}}/khoa-hoc/{{friendlyUrl}}"
           >
             Đăng ký ngay
           </a>
         </div>
       </div>
+
+      <!-- List end -->
+    </div>
+
+    <div class="view-all-btn">
+      <button class="button-secondary" binding-btntext="Xem thêm" binding-btnhref="">Xem thêm</button>
     </div>
   </section>
 </div>

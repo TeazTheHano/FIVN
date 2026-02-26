@@ -56,35 +56,23 @@
       gap: var(--spacing-m);
     }
 
-    #AboutUs #AboutUs_content .right h2:not(.title-bold) {
+    #AboutUs #AboutUs_content .right h2 p:first-child {
       font-weight: var(--weight-regular);
     }
 
-    /* tag */
-
-    #AboutUs #AboutUs_content .right .tag::before {
-      content: "";
-      display: inline-block;
-      width: 2rem;
-      height: 1px;
-      background-color: var(--color-primary);
-      margin-right: 0.5rem;
-      transform: translateY(-50%);
-      vertical-align: middle;
+    #AboutUs #AboutUs_content .right h2 p:last-child {
+      color: var(--color-primary);
     }
 
     /* d-row */
 
-    #AboutUs #AboutUs_content .right .d-row {
+    #AboutUs #AboutUs_content .right .d-row-h-between {
       column-gap: var(--spacing-l);
       row-gap: var(--spacing-s);
     }
 
-    @media (max-width: 767px) {
-      #AboutUs #AboutUs_content .right .d-row {
-        gap: 0;
-        justify-content: space-between;
-      }
+    #AboutUs #AboutUs_content .right .d-row-h-between .p-ref-h3 {
+      color: var(--color-primary);
     }
 
     /* ---------- CONTENT MOBILE ---------- */
@@ -98,7 +86,7 @@
     /* ---------- BG ---------- */
 
     #AboutUs .bg {
-      background-color: var(--color-text-muted);
+      background-color: var(--color-gray-400);
       opacity: 0.1;
       width: 100%;
       height: 300%;
@@ -118,74 +106,83 @@
         <div class="left-item">
           <div></div>
           <img
-            binding-imgpath="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=800&auto=format&fit=crop"
-            src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=800&auto=format&fit=crop"
+            binding-imgpath="https://static.izzi.asia/images/2026/2/15/2602154946_Aboutus2.jpg"
+            src="https://static.izzi.asia/images/2026/2/15/2602154946_Aboutus2.jpg"
             alt=""
           />
         </div>
         <div class="left-item">
           <div></div>
           <img
-            binding-imgpath="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop"
-            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop"
+            binding-imgpath="https://static.izzi.asia/images/2026/2/15/2602157491_Aboutus3.jpg"
+            src="https://static.izzi.asia/images/2026/2/15/2602157491_Aboutus3.jpg"
             alt=""
           />
         </div>
         <div class="left-item">
           <div></div>
           <img
-            binding-imgpath="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop"
-            src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop"
+            binding-imgpath="https://static.izzi.asia/images/2026/2/15/2602151963_Aboutus.jpg"
+            src="https://static.izzi.asia/images/2026/2/15/2602151963_Aboutus.jpg"
             alt=""
           />
         </div>
         <div class="left-item">
           <div></div>
           <img
-            binding-imgpath="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop"
-            src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop"
+            binding-imgpath="https://static.izzi.asia/images/2026/2/15/2602154138_Aboutus1.JPG"
+            src="https://static.izzi.asia/images/2026/2/15/2602154138_Aboutus1.JPG"
             alt=""
           />
         </div>
       </div>
 
       <div class="right">
-        <div class="tag" binding-name="Hành trình & Tầm nhìn">
-          Hành trình & Tầm nhìn
+        <div class="tag tag-tail" binding-name="Tầm nhìn toàn cầu">
+          Tầm nhìn toàn cầu
         </div>
-        <div class="title-container">
-          <h2 binding-name="Kiến tạo hệ sinh thái">Kiến tạo hệ sinh thái</h2>
-          <h2 binding-name="Khởi nghiệp Công nghệ." class="title-bold">
+        <h2>
+          <p class="p-ref-h2" binding-name="Kiến tạo hệ sinh thái">
+            Kiến tạo hệ sinh thái
+          </p>
+          <p
+            class="p-ref-h2"
+            binding-name="Khởi nghiệp Công nghệ."
+            class="title-bold"
+          >
             Khởi nghiệp Công nghệ.
-          </h2>
-        </div>
+          </p>
+        </h2>
         <p
           class="title-description text-justify"
-          binding-subdescription="Được hình thành từ khát vọng đưa trí tuệ Việt vươn tầm thế giới, Founder Institute Vietnam không chỉ là một bệ phóng startup mà còn là biểu tượng của sự chuyển mình trong nền kinh tế số. Tầm nhìn vĩ mô của chúng tôi là định hình lại bản đồ công nghệ khu vực Đông Nam Á, thông qua việc chuẩn hóa quy trình ươm tạo và kết nối dòng vốn đầu tư mạo hiểm toàn cầu vào những ý tưởng đột phá nhất."
+          binding-subdescription="          Founder Institute Vietnam (FIV) là đối tác và đại diện tại Việt Nam của hệ sinh thái khởi nghiệp toàn cầu Founder Institute (FI). Với quy mô lớn nhất thế giới, FI có mặt ở hơn 100 quốc gia, tại hơn 200 thành phố, cùng hơn 35.000 mentor, với tổng định giá các công ty trong danh mục hơn 20 tỷ USD, trong đó có 4 unicorn. FIV mong muốn định hình lại vị thế của Việt Nam trên bản đồ khởi nghiệp thế giới, thông qua việc chuẩn hóa quy trình đào tạo, ươm tạo và tăng tốc khởi nghiệp, cũng như kết nối dòng vốn đầu tư mạo hiểm toàn cầu vào những ý tưởng đột phá nhất của các founder Việt."
         >
-          Được hình thành từ khát vọng đưa trí tuệ Việt vươn tầm thế giới,
-          Founder Institute Vietnam không chỉ là một bệ phóng startup mà còn là
-          biểu tượng của sự chuyển mình trong nền kinh tế số. Tầm nhìn vĩ mô của
-          chúng tôi là định hình lại bản đồ công nghệ khu vực Đông Nam Á, thông
-          qua việc chuẩn hóa quy trình ươm tạo và kết nối dòng vốn đầu tư mạo
-          hiểm toàn cầu vào những ý tưởng đột phá nhất.
+          Founder Institute Vietnam (FIV) là đối tác và đại diện tại Việt Nam
+          của hệ sinh thái khởi nghiệp toàn cầu Founder Institute (FI). Với quy
+          mô lớn nhất thế giới, FI có mặt ở hơn 100 quốc gia, tại hơn 200 thành
+          phố, cùng hơn 35.000 mentor, với tổng định giá các công ty trong danh
+          mục hơn 20 tỷ USD, trong đó có 4 unicorn. FIV mong muốn định hình lại
+          vị thế của Việt Nam trên bản đồ khởi nghiệp thế giới, thông qua việc
+          chuẩn hóa quy trình đào tạo, ươm tạo và tăng tốc khởi nghiệp, cũng như
+          kết nối dòng vốn đầu tư mạo hiểm toàn cầu vào những ý tưởng đột phá
+          nhất của các founder Việt.
         </p>
         <hr />
-        <div class="d-row">
+        <div class="d-row-h-between">
           <div>
-            <p class="title-bold text-l" binding-name="14+">14+</p>
-            <p class="text-xxs" binding-name="Năm hình thành">Năm hình thành</p>
+            <p class="p-ref-h3" binding-name="100+">100+</p>
+            <p class="p-subbody" binding-name="Quốc gia">Quốc gia</p>
           </div>
           <div>
-            <p class="title-bold text-l" binding-name="200+">200+</p>
-            <p class="text-xxs" binding-name="Thành phố Global">
-              Thành phố Global
+            <p class="p-ref-h3" binding-name="200+">200+</p>
+            <p class="p-subbody" binding-name="              Thành phố">
+              Thành phố
             </p>
           </div>
           <div>
-            <p class="title-bold text-l" binding-name="$1.75B">$1.75B</p>
-            <p class="text-xxs" binding-name="Định giá Portfolio">
-              Định giá Portfolio
+            <p class="p-ref-h3" binding-name="35K+">35K+</p>
+            <p class="p-subbody" binding-name="              Cố vấn            ">
+              Cố vấn
             </p>
           </div>
         </div>

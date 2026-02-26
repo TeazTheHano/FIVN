@@ -49,6 +49,51 @@ function trackMousePosition(elementQuery) {
     reset();
 }
 
+function autoNextSelection({
+    container,
+    itemSelector,
+    interval = 5000,
+    type = 'radio' // 'radio' | 'select'
+}) {
+    const root = document.querySelector(container);
+    if (!root) return;
+
+    let currentIndex = 0;
+    let timerId;
+
+    function getItems() {
+        return document.querySelectorAll(itemSelector);
+    }
+
+    function autoSelect() {
+        const items = getItems();
+        if (!items.length) return;
+
+        const nextIndex = (currentIndex + 1) % items.length;
+
+        if (type === 'radio') {
+            items[nextIndex].checked = true;
+        } else if (type === 'select') {
+            root.selectedIndex = nextIndex;
+        }
+
+        currentIndex = nextIndex;
+    }
+
+    function restartTimer() {
+        clearInterval(timerId);
+        timerId = setInterval(autoSelect, interval);
+    }
+
+    restartTimer();
+
+    document.addEventListener('change', (e) => {
+        if (e.target.matches(itemSelector)) {
+            restartTimer();
+        }
+    });
+}
+
 
 function headerScroll() {
     const header = document.querySelector('header');
@@ -104,30 +149,137 @@ function eventQuarterText() {
     });
 }
 
-function sliderControl(listElementQuery, childElement, nextBtnQuery, prevBtnQuery) {
+function sliderControl({
+    listElementQuery,
+    childElement,
+    nextBtnQuery,
+    prevBtnQuery
+}) {
     const slider = document.querySelector(listElementQuery)
+    const item = slider.querySelector(childElement)
     const nextBtn = document.querySelector(nextBtnQuery)
     const prevBtn = document.querySelector(prevBtnQuery)
-    const itemWidth = document.querySelector(childElement)
-    const sliderGap = getComputedStyle(slider).gap
+    const sliderGap = slider ? getComputedStyle(slider).gap : '0px';
 
-    console.log(slider, nextBtn, prevBtn, itemWidth);
-
-
-    if (slider && nextBtn && prevBtn && itemWidth && sliderGap) {
+    if (slider && nextBtn && prevBtn && item && sliderGap) {
         nextBtn.addEventListener('click', () => {
-            slider.scrollBy({ left: itemWidth.offsetWidth + parseFloat(sliderGap), behavior: 'smooth' })
+            slider.scrollBy({ left: item.offsetWidth + parseFloat(sliderGap), behavior: 'smooth' })
         })
         prevBtn.addEventListener('click', () => {
-            slider.scrollBy({ left: -(itemWidth.offsetWidth + parseFloat(sliderGap)), behavior: 'smooth' })
+            slider.scrollBy({ left: -(item.offsetWidth + parseFloat(sliderGap)), behavior: 'smooth' })
         })
 
+        slider.addEventListener('wheel', event => {
+            const isScrollingDown = event.deltaY > 0
+            const isScrollingUp = event.deltaY < 0
+
+            const isAtStart = slider.scrollLeft === 0
+            const isAtEnd = slider.scrollLeft + slider.clientWidth >= slider.scrollWidth
+
+            if ((isScrollingUp && isAtStart) ||
+                (isScrollingDown && isAtEnd)) {
+                return // cho phép scroll trang
+            }
+
+            event.preventDefault()
+
+            if (isScrollingDown) {
+                nextBtn.click()
+            } else if (isScrollingUp) {
+                prevBtn.click()
+            }
+        }, { passive: false })
     }
 }
 
-sliderControl('#Course_content_cards', '#Course_content_cards .card', '#Course .slider-controller-next', '#Course .slider-controller-prev');
+function autoSlide({
+    listElementQuery,
+    itemQuery,
+    delayTime = 3000
+}) {
+    const slider = document.querySelector(listElementQuery)
+    if (!slider) return
+
+    const items = slider.querySelectorAll(itemQuery)
+    if (!items.length) return
+
+    const item = items[0]
+    const gap = parseFloat(getComputedStyle(slider).columnGap || 0)
+    const step = item.offsetWidth + gap
+
+    let currentIndex = 0
+    let timerId
+
+    function getVisibleCount() {
+        return Math.round(slider.clientWidth / step)
+    }
+
+    function getMaxIndex() {
+        return items.length - getVisibleCount()
+    }
+
+    function slideNext() {
+        const maxIndex = getMaxIndex()
+
+        if (currentIndex >= maxIndex) {
+            currentIndex = 0
+        } else {
+            currentIndex++
+        }
+
+        slider.scrollTo({
+            left: currentIndex * step,
+            behavior: 'smooth'
+        })
+    }
+
+    function start() {
+        timerId = setInterval(slideNext, delayTime)
+    }
+
+    function stop() {
+        clearInterval(timerId)
+    }
+
+    start()
+
+    slider.addEventListener('mouseenter', stop)
+    slider.addEventListener('mouseleave', start)
+
+    window.addEventListener('resize', () => {
+        slider.scrollTo({ left: currentIndex * step })
+    })
+}
+
+
+// CALLING FUNCTIONs
+sliderControl({
+    listElementQuery: '#Course_content_cards',
+    childElement: '.card',
+    nextBtnQuery: '#Course .cards-slider-controller-next',
+    prevBtnQuery: '#Course .cards-slider-controller-prev'
+});
+sliderControl({
+    listElementQuery: '#News_content_cards',
+    childElement: '.card',
+    nextBtnQuery: '#News .cards-slider-controller-next',
+    prevBtnQuery: '#News .cards-slider-controller-prev'
+});
+
 trackMousePosition('#Programme')
 trackMousePosition('#Contact')
 trackMousePosition('#hero')
 eventQuarterText();
 headerScroll();
+autoNextSelection({
+    container: '#hero',
+    itemSelector: 'input[name="hero"]',
+    interval: 5000,
+    type: 'radio'
+});
+
+autoSlide({
+    listElementQuery: '#Feedback_content_cards',
+    itemQuery: '.card',
+    delayTime: 3000
+});

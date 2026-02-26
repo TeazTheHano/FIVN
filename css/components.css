@@ -1,26 +1,195 @@
-/* --- Hero Section Container --- */
-
-.CTA-button {
-    background-color: var(--color-white);
-    color: var(--color-secondary);
-
-    padding: var(--spacing-xs) var(--spacing-l);
-    margin: var(--spacing-xs) 0;
-
-    border: 1px solid var(--color-text-muted);
-    border-radius: var(--radius-round);
-
-    font-size: var(--text-xxs);
-    font-weight: var(--weight-bold);
-    text-transform: uppercase;
-    letter-spacing: 0.1rem;
-
-    transition: var(--transition-fast);
-    filter: drop-shadow(var(--shadow-m));
+/* BUTTON */
+.button-small {
+    width: fit-content;
+    padding: var(--spacing-xxs) var(--spacing-xs);
 }
 
-.CTA-button:hover {
+.button-medium {
+    width: fit-content;
+    padding: var(--spacing-xs) var(--spacing-m);
+}
+
+.button-large {
+    width: 100%;
+    padding: var(--spacing-xs) var(--spacing-m);
+}
+
+.button-primary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-radius: var(--spacing-xxs);
+    border: none;
+    font-weight: var(--weight-semibold);
+    line-height: 1.5;
+    font-size: 1rem;
+}
+
+.button-primary:hover {
     background-color: var(--color-secondary);
     color: var(--color-white);
-    border: 1px solid var(--color-secondary);
+    filter: drop-shadow(var(--shadow-l));
+}
+
+.button-primary:disabled {
+    background-color: var(--color-gray-400);
+    color: var(--color-white);
+}
+
+.button-primary-2 {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    border-radius: var(--spacing-xxs);
+    border: none;
+    font-weight: var(--weight-semibold);
+    line-height: 1.5;
+    font-size: 1rem;
+}
+
+.button-primary-2:hover {
+    background-color: var(--color-white);
+    color: var(--color-secondary);
+}
+
+.button-primary-2:disabled {
+    background-color: var(--color-gray-400);
+    color: var(--color-gray-200);
+}
+
+.button-secondary {
+    background-color: transparent;
+    color: currentColor;
+    border-radius: var(--spacing-xxs);
+    border: 1px solid currentColor;
+    font-weight: var(--weight-semibold);
+    line-height: 1.5;
+    font-size: 1rem;
+}
+
+.button-secondary:hover {
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+}
+
+.button-secondary:disabled {
+    color: var(--color-gray-400);
+    border: 1px solid var(--color-gray-400);
+}
+
+.button-chip {
+    font-size: var(--t-subbody-size);
+    font-weight: var(--weight-light);
+}
+
+.button-chip:has(input:checked) {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    padding: var(--spacing-xxs) var(--);
+}
+
+.button-primary>*,
+.button-primary-2>*,
+.button-secondary>*,
+.button-chip>* {
+    font-family: inherit;
+    font-weight: inherit;
+    color: inherit;
+    line-height: inherit;
+    font-size: inherit;
+}
+
+
+/* End of BUTTON */
+
+/* CARDS SLIDER */
+.cards-slider-controller {
+    width: 100%;
+    height: inherit;
+
+    position: absolute;
+    z-index: 10;
+    left: 0;
+    top: 55%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    gap: var(--spacing-xxs);
+    justify-content: space-between;
+    padding: 0 max(0px, calc((100vw - 1300px - var(--spacing-xl)) / 2));
+    padding-bottom: var(--spacing-xxxl);
+
+    pointer-events: none;
+}
+
+.cards-slider-controller>div {
+    aspect-ratio: 1;
+    pointer-events: all;
+    user-select: none;
+}
+
+.cards-slider-container {
+    overflow: scroll;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    padding: 0 var(--spacing-l);
+    padding-bottom: var(--spacing-l);
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--spacing-m);
+
+    min-height: 20rem;
+}
+
+.cards-slider-container::after {
+    content: "Không còn gì để hiển thị";
+    padding-right: 50vw;
+    white-space: nowrap;
+}
+
+.cards-slider-container .card:last-of-type {
+    margin-right: 50vw;
+}
+
+.cards-slider-container::-webkit-scrollbar {
+    display: none;
+}
+
+.cards-slider-container .card {
+    flex: 0 0 auto;
+    width: 70vw;
+    min-width: 200px;
+    max-width: 400px;
+    height: fit-content;
+
+    border-radius: var(--radius-l);
+    overflow: hidden;
+    filter: drop-shadow(var(--shadow-s));
+    background-color: var(--color-white);
+}
+
+.view-all-btn {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    padding: var(--spacing-l);
+}
+
+/* End of CARDS SLIDER */
+
+.tag-tail::after {
+    content: "";
+    display: inline-block;
+    width: 4rem;
+    height: 2px;
+    background-color: var(--color-secondary);
+    margin-right: 0.5rem;
+    transform: translateY(-50%);
+    vertical-align: middle;
 }

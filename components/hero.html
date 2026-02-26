@@ -5,7 +5,7 @@
       height: 100vh;
       min-height: 600px;
       display: flex;
-      align-items: center;
+      align-items: end;
       overflow: hidden;
       background: var(--color-dark-contrast);
     }
@@ -69,28 +69,17 @@
       z-index: 10;
       pointer-events: none;
       opacity: 0.6;
-
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-
-        50% {
-          transform: translateY(-15px);
-        }
-      }
     }
 
-    #hero .circuit-overlay .animate-float {
-      animation: float 8s infinite ease-in-out;
+    #hero .main-content {
+      display: flex;
+      flex: 1;
+      justify-content: space-between;
+      align-items: end;
+      margin: var(--spacing-xxl);
     }
 
     #hero .content-container {
-      position: relative;
-      z-index: 20;
-
-      margin: 0 auto;
       padding: 0 var(--spacing-m);
       display: grid;
       grid-template-columns: 1fr;
@@ -105,6 +94,7 @@
       display: flex;
       flex-direction: column;
       gap: var(--spacing-m);
+      justify-content: end;
     }
 
     #hero .content-container .hero-content .system-tag {
@@ -147,7 +137,7 @@
     #hero .content-container .hero-content .description {
       border-left: 4px solid var(--color-primary);
       padding-left: 24px;
-      color: var(--color-text-muted);
+      color: var(--color-gray-400);
     }
 
     #hero .content-container .hero-content .btn-group {
@@ -159,13 +149,12 @@
       border-radius: 0;
       color: var(--color-white);
       text-decoration: none;
-      font-weight: bold;
       text-transform: uppercase;
-      font-size: var(--text-xxs);
       display: flex;
       flex-direction: row;
       align-items: center;
       gap: var(--spacing-xxs);
+      padding: var(--spacing-xs) var(--spacing-m);
     }
 
     #hero .content-container .hero-content .btn-group p {
@@ -176,7 +165,7 @@
 
     #hero .content-container .hero-content .btn-group .btn-group-primary {
       clip-path: polygon(0 0, 100% 0, 100% 70%, 90% 100%, 0 100%);
-      background-color: var(--color-primary);
+      background-color: var(--color-secondary);
       border: none;
 
       .material-symbols-outlined {
@@ -202,10 +191,6 @@
     }
 
     #hero .side-nav {
-      position: absolute;
-      right: 40px;
-      top: 50%;
-      transform: translateY(-50%);
       display: flex;
       flex-direction: column;
       gap: 24px;
@@ -224,13 +209,13 @@
     #hero .side-nav .nav-item span {
       font-family: var(--font-mono);
       font-size: 12px;
-      color: var(--color-text-muted);
+      color: var(--color-gray-400);
     }
 
     #hero .side-nav .nav-item .line {
       width: 48px;
       height: 2px;
-      background: var(--color-text-muted);
+      background: var(--color-gray-400);
       position: relative;
     }
 
@@ -249,37 +234,37 @@
       opacity: 0.7;
     }
 
-    #hero #slide1:checked ~ .content-container #content1,
-    #hero #slide2:checked ~ .content-container #content2,
-    #hero #slide3:checked ~ .content-container #content3 {
+    #hero #slide1:checked ~ .main-content .content-container #content1,
+    #hero #slide2:checked ~ .main-content .content-container #content2,
+    #hero #slide3:checked ~ .main-content .content-container #content3 {
       opacity: 1;
       transform: translateY(0);
       visibility: visible;
     }
 
     /* --- Navigation Control Logic --- */
-    #hero #slide1:checked ~ .content-container .side-nav label[for="slide1"],
-    #hero #slide2:checked ~ .content-container .side-nav label[for="slide2"],
-    #hero #slide3:checked ~ .content-container .side-nav label[for="slide3"] {
+    #hero #slide1:checked ~ .main-content .side-nav label[for="slide1"],
+    #hero #slide2:checked ~ .main-content .side-nav label[for="slide2"],
+    #hero #slide3:checked ~ .main-content .side-nav label[for="slide3"] {
       opacity: 1;
     }
 
     /* --- Navigation Control Animation --- */
     #hero
       #slide1:checked
-      ~ .content-container
+      ~ .main-content
       .side-nav
       label[for="slide1"]
       .line::after,
     #hero
       #slide2:checked
-      ~ .content-container
+      ~ .main-content
       .side-nav
       label[for="slide2"]
       .line::after,
     #hero
       #slide3:checked
-      ~ .content-container
+      ~ .main-content
       .side-nav
       label[for="slide3"]
       .line::after {
@@ -317,6 +302,8 @@
     }
 
     #hero .tech-coords {
+      display: none !important;
+
       position: absolute;
       bottom: 30px;
       right: 40px;
@@ -371,8 +358,8 @@
     <!-- 3. Circuit Overlay (SVG) -->
     <div class="circuit-overlay">
       <svg
-        width="100%"
-        height="100%"
+        width="100rem"
+        height="90rem"
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
       >
@@ -387,34 +374,37 @@
             d="M5,10 L8,8 L11,10 L11,14 L8,16 L5,14 Z"
             fill="none"
             stroke="#7BC440"
-            strokewidth="0.2"
+            stroke-width="0.8"
           ></path>
           <circle cx="8" cy="12" r="0.5" fill="#7BC440"></circle>
           <path
             d="M15,20 L18,18 L21,20 L21,24 L18,26 L15,24 Z"
             fill="none"
             stroke="#7BC440"
-            strokewidth="0.2"
+            stroke-width="0.8"
             opacity="0.7"
           ></path>
           <circle cx="18" cy="22" r="0.5" fill="#7BC440"></circle>
           <path
             d="M8,16 L8,18 L12,22 L15,22"
             fill="none"
-            stroke="url(#circuit-gradient)"
-            strokewidth="0.15"
+            stroke="white"
+            stroke-width="0.1"
+            opacity="0.5"
           ></path>
           <path
             d="M11,12 L15,12 L18,15 L18,18"
             fill="none"
-            stroke="url(#circuit-gradient)"
-            strokewidth="0.15"
+            stroke="white"
+            stroke-width="0.1"
+            opacity="0.5"
           ></path>
           <path
             d="M5,12 L2,12"
             fill="none"
-            stroke="url(#circuit-gradient)"
-            strokewidth="0.15"
+            stroke="white"
+            stroke-width="0.1"
+            opacity="0.5"
           ></path>
           <circle
             cx="12"
@@ -436,90 +426,93 @@
     </div>
 
     <!-- 4. Content Container -->
-    <div class="content-container maxWidth1300">
-      <div class="hero-content" id="content1">
-        <div class="system-tag">
-          <div class="dot"></div>
-          <span binding-name="FOUNDER INSTITUTE VIETNAM [FIV]"
-            >FOUNDER INSTITUTE VIETNAM [FIV]</span
+    <div class="d-row main-content">
+      <div class="content-container">
+        <div class="hero-content" id="content1">
+          <div class="system-tag">
+            <div class="dot"></div>
+            <span binding-name="FOUNDER INSTITUTE VIETNAM [FIV]"
+              >FOUNDER INSTITUTE VIETNAM [FIV]</span
+            >
+          </div>
+          <h1 class="p-ref-h2" binding-name="XÂY DỰNG TƯƠNG LAI SỐ">
+            XÂY DỰNG TƯƠNG LAI SỐ
+          </h1>
+          <p
+            class="description"
+            binding-subdescription="Kết nối với mạng lưới khởi nghiệp lớn nhất thế giới.        "
           >
-        </div>
-        <h1 binding-name="XÂY DỰNG TƯƠNG LAI SỐ">XÂY DỰNG TƯƠNG LAI SỐ</h1>
-        <p
-          class="description"
-          binding-subdescription="        Kết nối với mạng lưới khởi nghiệp lớn nhất thế giới.      "
-        >
-          Kết nối với mạng lưới khởi nghiệp lớn nhất thế giới.
-        </p>
-        <div class="btn-group mobileFlexColumn">
-          <button
-            class="btn-group-primary"
-            binding-btntext="          ĐĂNG KÝ NEWSLETTER        "
-          >
-            ĐĂNG KÝ NEWSLETTER
-          </button>
-          <button class="btn-group-secondary">
-            <span class="material-symbols-outlined"> play_arrow </span>
-            <p binding-btntext="CHƯƠNG TRÌNH FI CORE">CHƯƠNG TRÌNH FI CORE</p>
-          </button>
-        </div>
-      </div>
-
-      <div class="hero-content" id="content2">
-        <div class="system-tag">
-          <div class="dot"></div>
-          <span binding-name="SYSTEM: SILICON VALLEY DNA"
-            >SYSTEM: SILICON VALLEY DNA</span
-          >
-        </div>
-        <h1 binding-name="CHUẨN HÓA QUY TRÌNH">CHUẨN HÓA QUY TRÌNH</h1>
-        <p
-          class="description"
-          binding-subdescription="        Giáo trình Hard-core từ Thung lũng Silicon ngay tại Việt Nam.      "
-        >
-          Giáo trình Hard-core từ Thung lũng Silicon ngay tại Việt Nam.
-        </p>
-        <div class="btn-group mobileFlexColumn">
-          <button
-            class="btn-group-primary"
-            binding-btntext="          ĐĂNG KÝ NEWSLETTER        "
-          >
-            ĐĂNG KÝ NEWSLETTER
-          </button>
-          <button class="btn-group-secondary">
-            <span class="material-symbols-outlined"> play_arrow </span>
-            <p binding-btntext="CHƯƠNG TRÌNH FI CORE">CHƯƠNG TRÌNH FI CORE</p>
-          </button>
-        </div>
-      </div>
-
-      <div class="hero-content" id="content3">
-        <div class="system-tag">
-          <div class="dot"></div>
-          <span binding-name="          SYSTEM: VENTURE CAPITAL        ">
-            SYSTEM: VENTURE CAPITAL
-          </span>
-        </div>
-        <h1 binding-name="TIẾP CẬN VỐN ĐẦU TƯ">TIẾP CẬN VỐN ĐẦU TƯ</h1>
-        <p
-          class="description"
-          binding-subdescription="        Cơ hội gọi vốn từ mạng lưới thiên thần và quỹ đầu tư đối tác.      "
-        >
-          Cơ hội gọi vốn từ mạng lưới thiên thần và quỹ đầu tư đối tác.
-        </p>
-        <div class="btn-group mobileFlexColumn">
-          <button
-            class="btn-group-primary"
-            binding-btntext="CHƯƠNG TRÌNH FI CORE"
-          >
-            CHƯƠNG TRÌNH FI CORE
-          </button>
-          <button class="btn-group-secondary">
-            <span class="material-symbols-outlined"> play_arrow </span>
-            <p binding-btntext="          ĐĂNG KÝ NEWSLETTER        ">
+            Kết nối với mạng lưới khởi nghiệp lớn nhất thế giới.
+          </p>
+          <div class="btn-group mobileFlexColumn">
+            <button
+              class="btn-group-primary"
+              binding-btntext="  ĐĂNG KÝ NEWSLETTER"
+            >
               ĐĂNG KÝ NEWSLETTER
-            </p>
-          </button>
+            </button>
+            <button class="btn-group-secondary">
+              <p binding-btntext="CHƯƠNG TRÌNH FI CORE">CHƯƠNG TRÌNH FI CORE</p>
+            </button>
+          </div>
+        </div>
+
+        <div class="hero-content" id="content2">
+          <div class="system-tag">
+            <div class="dot"></div>
+            <span binding-name="SYSTEM: SILICON VALLEY DNA"
+              >SYSTEM: SILICON VALLEY DNA</span
+            >
+          </div>
+          <h1 class="p-ref-h2" binding-name="CHUẨN HÓA QUY TRÌNH">
+            CHUẨN HÓA QUY TRÌNH
+          </h1>
+          <p
+            class="description"
+            binding-subdescription="Giáo trình Hard-core từ Thung lũng Silicon ngay tại Việt Nam.        "
+          >
+            Giáo trình Hard-core từ Thung lũng Silicon ngay tại Việt Nam.
+          </p>
+          <div class="btn-group mobileFlexColumn">
+            <button
+              class="btn-group-primary"
+              binding-btntext="ĐĂNG KÝ NEWSLETTER"
+            >
+              ĐĂNG KÝ NEWSLETTER
+            </button>
+            <button class="btn-group-secondary">
+              <p binding-btntext="CHƯƠNG TRÌNH FI CORE">CHƯƠNG TRÌNH FI CORE</p>
+            </button>
+          </div>
+        </div>
+
+        <div class="hero-content" id="content3">
+          <div class="system-tag">
+            <div class="dot"></div>
+            <span binding-name="SYSTEM: VENTURE CAPITAL">
+              SYSTEM: VENTURE CAPITAL
+            </span>
+          </div>
+          <h1 class="p-ref-h2" binding-name="TIẾP CẬN VỐN ĐẦU TƯ">
+            TIẾP CẬN VỐN ĐẦU TƯ
+          </h1>
+          <p
+            class="description"
+            binding-subdescription="Cơ hội gọi vốn từ mạng lưới thiên thần và quỹ đầu tư đối tác."
+          >
+            Cơ hội gọi vốn từ mạng lưới thiên thần và quỹ đầu tư đối tác.
+          </p>
+          <div class="btn-group mobileFlexColumn">
+            <button
+              class="btn-group-primary"
+              binding-btntext="ĐĂNG KÝ NEWSLETTER"
+            >
+              ĐĂNG KÝ NEWSLETTER
+            </button>
+            <button class="btn-group-secondary">
+              <p binding-btntext="CHƯƠNG TRÌNH FI CORE">CHƯƠNG TRÌNH FI CORE</p>
+            </button>
+          </div>
         </div>
       </div>
 

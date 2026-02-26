@@ -5,9 +5,24 @@
       text-align: center;
     }
 
+    #Feedback #Feedback_content #Feedback_content_cards {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: calc((100% - var(--spacing-l) * 2) / 3);
+      /* justify-content: center; */
+      width: 100%;
+      column-gap: var(--spacing-l);
+      margin-top: var(--spacing-m);
+      /* --max: 3; */
+      /* overflow: hidden; */
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-behavior: smooth;
+    }
+
     /* ===== Cards ===== */
     #Feedback #Feedback_content #Feedback_content_cards .card {
-      flex:1;
+      flex: 1;
       height: fit-content;
 
       position: relative;
@@ -66,12 +81,12 @@
     <div id="Feedback_content" class="maxWidth1300 d-column-h-center gap-xl">
       <div class="d-column-h-center gap-xs">
         <p class="tag" binding-name="Chia sẻ từ Founder">Chia sẻ từ Founder</p>
-        <h3 class="title-bold" binding-name="Người trong cuộc nói gì?">
+        <h3 class="" binding-name="Người trong cuộc nói gì?">
           Người trong cuộc nói gì?
         </h3>
       </div>
 
-      <div id="Feedback_content_cards" class="d-row gap-m mobileFlexColumn">
+      <div id="Feedback_content_cards" class="scrollbar-hide">
         <div
           class="card relative d-column gap-s"
           repeat="article|param:categories.id:32115ce4-0705-2bc7-3a52-be44c6533d94|sort:createdDate:desc|includes:"

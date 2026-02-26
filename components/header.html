@@ -12,10 +12,7 @@
     /* ===== Base ===== */
 
     div[scrolled] {
-      display: flex;
-      flex-direction: row;
       justify-content: space-between;
-      align-items: center;
 
       width: 100dvw;
       padding: 0 var(--spacing-m);
@@ -25,6 +22,13 @@
     }
 
     /* nav + nav > div */
+
+    nav {
+      /* width: 100%; */
+      /* max-width: calc(100% - var(--spacing-xxl) * 2); */
+      max-width: 1300px;
+      margin: auto;
+    }
 
     div[scrolled] nav,
     div[scrolled] nav > div {
@@ -40,10 +44,6 @@
     div[scrolled] a {
       text-decoration: none;
       color: currentColor;
-      font-weight: 700;
-      font-family: var(--font-main);
-      text-transform: uppercase;
-      font-size: var(--text-xxs);
       padding: var(--spacing-m) 0;
     }
 
@@ -123,6 +123,11 @@
       color: var(--color-black);
     }
 
+    .scrolled div[scrolled] nav {
+      max-width: 1300px;
+      margin: auto;
+    }
+
     .scrolled div[scrolled] a {
       padding: var(--spacing-s) 0;
     }
@@ -135,7 +140,7 @@
 
     .scrolled div[scrolled] #logo a {
       color: var(--color-secondary);
-      padding: var(--spacing-xxxs) 0; 
+      padding: var(--spacing-xxxs) 0;
     }
 
     .scrolled div[scrolled] #logo img:first-child {
@@ -147,12 +152,12 @@
     }
   </style>
 
-  <div scrolled>
+  <div scrolled class="d-row-v-center">
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined");
       @import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
     </style>
-    <nav class="maxWidth1300">
+    <nav>
       <div id="logo">
         <a href="/" binding-btnhref="/">
           <img
@@ -181,37 +186,56 @@
       <div id="hamburger-menu" class="mobileHide">
         <a
           binding-name="Về chúng tôi"
+          class="button"
           href="#AboutUs"
           binding-btnhref="#AboutUs"
           >Về chúng tôi
         </a>
         <a
           binding-name="Chương trình"
+          class="button"
           href="#Programme"
           binding-btnhref="#Programme"
           >Chương trình
         </a>
-        <a binding-name="Sự kiện" href="#Event" binding-btnhref="#Event"
+        <a
+          binding-name="Sự kiện"
+          class="button"
+          href="#Event"
+          binding-btnhref="#Event"
           >Sự kiện
         </a>
-        <a binding-name="Mạng lưới" href="#Network" binding-btnhref="#Network"
+        <a
+          binding-name="Mạng lưới"
+          class="button"
+          href="#Network"
+          binding-btnhref="#Network"
           >Mạng lưới
         </a>
-        <a binding-name="Khóa học" href="#Course" binding-btnhref="#Course"
+        <a
+          binding-name="Khóa học"
+          class="button"
+          href="#Course"
+          binding-btnhref="#Course"
           >Khóa học
         </a>
-        <a binding-name="Đối tác" href="#Partner" binding-btnhref="#Partner"
+        <a
+          binding-name="Đối tác"
+          class="button"
+          href="#Partner"
+          binding-btnhref="#Partner"
           >Đối tác
         </a>
-        <a binding-name="Liên hệ" href="#Contact" binding-btnhref="#Contact"
+        <a
+          binding-name="Liên hệ"
+          class="button"
+          href="#Contact"
+          binding-btnhref="#Contact"
           >Liên hệ
         </a>
-        <!-- <button class="btn-group-primary" binding-btntext="Đăng ký ngay">
-                Đăng ký ngay
-                <span class="material-symbols-outlined">
-                    arrow_forward
-                </span>
-            </button> -->
+        <button class="button-secondary button-small" binding-name="Đăng nhập">
+          Đăng nhập
+        </button>
       </div>
     </nav>
   </div>

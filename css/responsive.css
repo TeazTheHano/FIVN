@@ -49,4 +49,8 @@
         }
     }
 
+    #Feedback #Feedback_content #Feedback_content_cards {
+        grid-auto-columns: 100% !important;
+    }
+
 }

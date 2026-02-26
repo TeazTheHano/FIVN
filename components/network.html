@@ -8,7 +8,7 @@
 
     #Network #Network_content #Network_content_cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 400px));
+      grid-template-columns: repeat(3, minmax(200px, 400px));
       justify-content: center;
       width: 100%;
       column-gap: var(--spacing-l);
@@ -54,7 +54,7 @@
     #Network #Network_content #Network_content_cards .card .top span {
       font-size: var(--text-xxs) !important;
       line-height: var(--lineheight-xxs);
-      color: var(--color-text-muted);
+      color: var(--color-gray-400);
     }
 
     #Network #Network_content #Network_content_cards .card .top div {
@@ -81,7 +81,7 @@
       div
       div:last-child
       p {
-      color: var(--color-p-dark);
+      color: var(--color-gray-400);
       font-weight: var(--weight-semibold);
     }
 
@@ -178,26 +178,18 @@
   </style>
 
   <section id="Network" class="relative">
-    <input type="checkbox" id="Network_content_toggle_list" hidden />
+    <input type="checkbox" id="Network_content_toggle_list" hidden="">
 
     <div id="Network_content" class="d-column-h-center">
       <div class="d-column-h-center gap-xs">
-        <h3 class="title-bold" binding-name="Mentor Network">Mentor Network</h3>
-        <p binding-name="Được dẫn dắt bởi những CEO công nghệ hàng đầu.">
-          Được dẫn dắt bởi những CEO công nghệ hàng đầu.
-        </p>
+        <h3 class="" binding-name="Our Mentors">Our Mentors</h3>
+        <p binding-name="Mạng lưới cố vấn khởi nghiệp cho Việt Nam và toàn cầu.">Mạng lưới cố vấn khởi nghiệp cho Việt Nam và toàn cầu.</p>
       </div>
 
       <div id="Network_content_cards" class="mobileFlexColumn">
-        <div
-          class="card d-column"
-          repeat="article|param:categories.id:e618564c-bdf8-4399-ad7a-5118e6d9b2ba|sort:createdDate:desc|includes:"
-        >
+        <div class="card d-column" repeat="article|param:categories.id:e618564c-bdf8-4399-ad7a-5118e6d9b2ba|sort:createdDate:desc|includes:">
           <div class="top d-row gap-m">
-            <img
-              src="https://static.izzi.asia/{{images.path}}"
-              alt="{{name}}"
-            />
+            <img src="https://static.izzi.asia/{{images.path}}" alt="{{name}}">
             <div class="info d-column gap-xxs">
               <h4 class="lineclamp-2">{{name}}</h4>
               <p class="tag lineclamp-1">{{metaDescription}}</p>
@@ -211,23 +203,17 @@
               </div>
             </div>
           </div>
-          <hr />
+          <hr>
           <div class="bottom">
             <p class="lineclamp-3">{{subDescription}}</p>
             <a href="{{description}}">
-              <img
-                src="https://static.izzi.asia/templates/FIVN/svg/linkedin.svg"
-                alt=""
-              />
+              <img src="https://static.izzi.asia/templates/FIVN/svg/linkedin.svg" alt="">
             </a>
           </div>
         </div>
       </div>
 
-      <label
-        for="Network_content_toggle_list"
-        class="d-row-v-center gap-xxs CTA-button"
-      >
+      <label for="Network_content_toggle_list" class="d-row-v-center gap-xxs CTA-button">
   
       </label>
     </div>
