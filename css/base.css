@@ -266,6 +266,10 @@ section {
     line-height: var(--t-mini-lh);
 }
 
+.text-bold {
+    font-weight: var(--weight-bold);
+}
+
 .text-justify {
     text-align: justify;
 }

@@ -6,7 +6,7 @@
 
     /* ================= Network Content ================= */
 
-    #Network #Network_content #Network_content_cards {
+    #Network #Network_content_cards {
       display: grid;
       grid-template-columns: repeat(3, minmax(200px, 400px));
       justify-content: center;
@@ -19,7 +19,7 @@
 
     /* ================= Card ================= */
 
-    #Network #Network_content #Network_content_cards .card {
+    #Network #Network_content_cards .card {
       width: 100%;
       background-color: var(--color-white);
       padding: var(--spacing-m);
@@ -33,49 +33,35 @@
 
     /* ---------- Card Top ---------- */
 
-    #Network #Network_content #Network_content_cards .card .top {
+    #Network #Network_content_cards .card .top {
       width: 100%;
     }
 
-    #Network #Network_content #Network_content_cards .card .top img {
+    #Network #Network_content_cards .card .top img {
       width: 100px;
       height: 100px;
       border-radius: var(--radius-round);
       filter: saturate(0);
     }
 
-    #Network #Network_content #Network_content_cards .card .top .tag {
+    #Network #Network_content_cards .card .top .tag {
       letter-spacing: normal;
       font-weight: var(--weight-bold);
       color: var(--color-primary);
     }
 
-    #Network #Network_content #Network_content_cards .card .top p,
-    #Network #Network_content #Network_content_cards .card .top span {
-      font-size: var(--text-xxs) !important;
-      line-height: var(--lineheight-xxs);
+
+    #Network #Network_content_cards .card .top span {
+      /* font-size: var(--t-mini-size) !important; */
+      /* line-height: var(--lineheight-xxs); */
       color: var(--color-gray-400);
     }
 
-    #Network #Network_content #Network_content_cards .card .top div {
+    #Network #Network_content_cards .card .top div {
       flex: 1;
     }
 
     #Network
-      #Network_content
-      #Network_content_cards
-      .card
-      .top
-      div
-      div:last-child {
-      border-radius: var(--radius-s);
-      background-color: var(--color-text-muted-2);
-      padding: var(--spacing-xxxs) var(--spacing-xs);
-    }
-
-    #Network
-      #Network_content
-      #Network_content_cards
       .card
       .top
       div
@@ -86,8 +72,6 @@
     }
 
     #Network
-      #Network_content
-      #Network_content_cards
       .card
       .top
       div
@@ -98,29 +82,27 @@
 
     /* ---------- Card Bottom ---------- */
 
-    #Network #Network_content #Network_content_cards .card .bottom p {
-      font-size: var(--text-xs);
-      line-height: var(--lineheight-xs);
-      min-height: calc(var(--lineheight-xs) * 2);
+    #Network #Network_content_cards .card .bottom p {
+      min-height: calc(var(--t-body-size) * var(--t-body-lh) * 2);
       overflow: hidden;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
     }
 
-    #Network #Network_content #Network_content_cards .card .bottom p::before,
-    #Network #Network_content #Network_content_cards .card .bottom p::after {
+    #Network #Network_content_cards .card .bottom p::before,
+    #Network #Network_content_cards .card .bottom p::after {
       content: '"';
       padding: 0;
       margin: 0;
     }
 
-    #Network #Network_content #Network_content_cards .card .bottom a {
+    #Network #Network_content_cards .card .bottom a {
       float: right;
       margin-top: var(--spacing-xxxs);
     }
 
-    #Network #Network_content #Network_content_cards .card .bottom a img {
+    #Network #Network_content_cards .card .bottom a img {
       width: 20px;
       height: 20px;
       filter: saturate(0);
@@ -128,14 +110,14 @@
       transition: var(--transition-fast);
     }
 
-    #Network #Network_content #Network_content_cards .card:hover img {
+    #Network #Network_content_cards .card:hover img {
       opacity: 1;
       filter: saturate(1);
     }
 
     /* ================= Collapse logic ================= */
 
-    #Network #Network_content #Network_content_cards .card:nth-child(n + 7) {
+    #Network #Network_content_cards .card:nth-child(n + 7) {
       max-height: 0;
       padding: 0;
       opacity: 0;
@@ -182,7 +164,7 @@
 
     <div id="Network_content" class="d-column-h-center">
       <div class="d-column-h-center gap-xs">
-        <h3 class="" binding-name="Our Mentors">Our Mentors</h3>
+        <h2 class="" binding-name="Our Mentors">Our Mentors</h2>
         <p binding-name="Mạng lưới cố vấn khởi nghiệp cho Việt Nam và toàn cầu.">Mạng lưới cố vấn khởi nghiệp cho Việt Nam và toàn cầu.</p>
       </div>
 
@@ -191,16 +173,16 @@
           <div class="top d-row gap-m">
             <img src="https://static.izzi.asia/{{images.path}}" alt="{{name}}">
             <div class="info d-column gap-xxs">
-              <h4 class="lineclamp-2">{{name}}</h4>
-              <p class="tag lineclamp-1">{{metaDescription}}</p>
+              <p class="lineclamp-2">{{name}}</p>
+              <p class="tag lineclamp-1 p-subbody">{{metaDescription}}</p>
               <div class="d-row-v-center gap-xxxs">
                 <span class="material-symbols-outlined"> trip </span>
-                <p class="lineclamp-1">{{metaName}}</p>
+                <p class="lineclamp-1 p-mini">{{metaName}}</p>
               </div>
-              <div class="d-row-v-center gap-xxxs">
+              <!-- <div class="d-row-v-center gap-xxxs">
                 <span class="material-symbols-outlined"> award_star </span>
                 <p class="lineclamp-1">{{metaKeyword}}</p>
-              </div>
+              </div> -->
             </div>
           </div>
           <hr>
@@ -213,9 +195,7 @@
         </div>
       </div>
 
-      <label for="Network_content_toggle_list" class="d-row-v-center gap-xxs CTA-button">
-  
-      </label>
+      <label for="Network_content_toggle_list" class="button-secondary button-medium"></label>
     </div>
   </section>
 </div>

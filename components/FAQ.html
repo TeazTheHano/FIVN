@@ -9,7 +9,7 @@
       display: flex;
       flex-direction: column;
       /* gap: var(--spacing-s); */
-      border: 1px solid var(--color-text-muted-2);
+      border: 1px solid var(--color-gray-400);
       border-radius: var(--radius-m);
     }
 
@@ -19,7 +19,7 @@
       padding: var(--spacing-m) var(--spacing-l);
     }
 
-    #FAQ_content_cards .FAQ_content_card > label > div h4 {
+    #FAQ_content_cards .FAQ_content_card > label > div p {
       flex: 1;
     }
 
@@ -88,14 +88,14 @@
 
           <label for="{{id}}">
             <div class="d-row-v-center gap-s">
-              <h4>{{name}}</h4>
+              <p>{{name}}</p>
               <div class="relative">
                 <span class="material-symbols-outlined"> add </span>
                 <span class="material-symbols-outlined absolute"> remove </span>
               </div>
             </div>
 
-            <div class="FAQ_content_card_answer">{{description}}</div>
+            <div class="FAQ_content_card_answer p.subbody">{{description}}</div>
           </label>
         </div>
       </div>

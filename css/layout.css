@@ -37,7 +37,7 @@ div[scrolled] {
         font-weight: 700;
         font-family: var(--font-main);
         text-transform: uppercase;
-        font-size: var(--text-xxs);
+        font-size: var(--t-mini-size);
 
         padding: var(--spacing-m) 0;
     }
@@ -577,7 +577,7 @@ section {
 
                             .material-symbols-outlined {
                                 color: var(--color-primary);
-                                font-size: var(--text-s) !important;
+                                font-size: var(--t-body-size) !important;
                                 font-variation-settings:
                                     'FILL' 0,
                                     'wght' 300,
@@ -587,12 +587,12 @@ section {
                             }
 
                             .tag {
-                                font-size: var(--text-xxxs);
+                                font-size: var(--t-mini-size);
                             }
 
                             p {
                                 font-weight: var(--weight-bold);
-                                font-size: var(--text-xxs);
+                                font-size: var(--t-mini-size);
                                 line-height: var(--lineheight-xxs);
                             }
 
@@ -723,7 +723,7 @@ section {
             padding: var(--spacing-xxxs);
             margin-top: var(--spacing-xs);
             margin-bottom: var(--spacing-m);
-            background-color: var(--color-text-muted-2);
+            background-color: var(--color-gray-400);
             border-radius: var(--radius-round);
             border: 1px solid var(--color-gray-400);
 
@@ -731,7 +731,7 @@ section {
                 padding: var(--spacing-xxs) var(--spacing-m);
                 border-radius: var(--radius-round);
                 color: var(--color-gray-400);
-                font-size: var(--text-xxxs);
+                font-size: var(--t-mini-size);
                 font-weight: var(--weight-semibold);
                 text-transform: uppercase;
                 cursor: pointer;
@@ -862,7 +862,7 @@ section {
                         top: var(--spacing-s);
                         right: var(--spacing-s);
                         z-index: 1;
-                        font-size: var(--text-xxxs);
+                        font-size: var(--t-mini-size);
                     }
 
                     div[state='0']::after {
@@ -917,12 +917,12 @@ section {
                     gap: var(--spacing-xs);
 
                     p {
-                        font-size: var(--text-xxs);
+                        font-size: var(--t-mini-size);
                     }
 
                     span {
                         font-weight: var(--weight-regular);
-                        font-size: var(--text-xxs) !important;
+                        font-size: var(--t-mini-size) !important;
                         color: var(--color-primary);
                     }
 
@@ -937,7 +937,7 @@ section {
 
                             span {
                                 font-weight: var(--weight-regular);
-                                font-size: var(--text-xxs) !important;
+                                font-size: var(--t-mini-size) !important;
                                 color: var(--color-primary);
                             }
 
@@ -1044,7 +1044,7 @@ section {
 
                     p,
                     span {
-                        font-size: var(--text-xxs) !important;
+                        font-size: var(--t-mini-size) !important;
                         line-height: var(--lineheight-xxs);
                         color: var(--color-gray-400);
                     }
@@ -1054,7 +1054,7 @@ section {
 
                         div:last-child {
                             border-radius: var(--radius-s);
-                            background-color: var(--color-text-muted-2);
+                            background-color: var(--color-gray-400);
                             padding: var(--spacing-xxxs) var(--spacing-xs);
 
                             p {
@@ -1073,7 +1073,7 @@ section {
 
                 .bottom {
                     p {
-                        font-size: var(--text-xs);
+                        font-size: var(--t-subbody-size);
 
                         &::before,
                         &::after {
@@ -1161,10 +1161,10 @@ section {
 
             label,
             .btn-2 {
-                border: 1px solid var(--color-text-muted-2);
+                border: 1px solid var(--color-gray-400);
                 color: var(--color-gray-400);
                 background-color: var(--color-white);
-                font-size: var(--text-xs);
+                font-size: var(--t-subbody-size);
 
                 &:hover {
                     background-color: var(--color-secondary);
@@ -1217,7 +1217,7 @@ section {
                     right: var(--spacing-s);
                     z-index: 1;
 
-                    font-size: var(--text-xxxs);
+                    font-size: var(--t-mini-size);
                     font-weight: var(--weight-bold);
                     letter-spacing: normal;
 
@@ -1240,14 +1240,14 @@ section {
                 gap: var(--spacing-s);
 
                 p {
-                    font-size: var(--text-xs);
+                    font-size: var(--t-subbody-size);
                     color: var(--color-gray-400);
                     font-weight: var(--weight-thin);
                 }
 
                 span {
                     color: var(--color-primary);
-                    font-size: var(--text-s) !important;
+                    font-size: var(--t-body-size) !important;
                 }
 
                 h4 {
@@ -1255,7 +1255,7 @@ section {
 
                     &+div {
                         p {
-                            font-size: var(--text-xxs);
+                            font-size: var(--t-mini-size);
                         }
 
                         div:first-child p {
@@ -1534,7 +1534,7 @@ section {
 
 
             p {
-                font-size: var(--text-xs);
+                font-size: var(--t-subbody-size);
                 color: var(--color-gray-400);
             }
 
@@ -1548,7 +1548,7 @@ section {
                 label {
                     font-weight: var(--weight-semibold);
                     text-transform: uppercase;
-                    font-size: var(--text-xs);
+                    font-size: var(--t-subbody-size);
                     color: var(--color-gray-400);
                     margin-top: var(--spacing-l);
                 }
@@ -1577,7 +1577,7 @@ section {
             }
 
             .agreement {
-                font-size: var(--text-xxxs);
+                font-size: var(--t-mini-size);
                 color: var(--color-gray-400);
                 text-align: center;
             }
@@ -1596,7 +1596,7 @@ section {
                 position: relative;
                 padding: var(--spacing-m);
                 border-radius: var(--radius-l);
-                background-color: var(--color-text-muted-2);
+                background-color: var(--color-gray-400);
                 padding-top: var(--spacing-xl);
 
                 span {
@@ -1609,7 +1609,7 @@ section {
                 }
 
                 p {
-                    font-size: var(--text-xs);
+                    font-size: var(--t-subbody-size);
                 }
 
                 >p {
@@ -1667,7 +1667,7 @@ footer {
         gap: var(--spacing-m);
 
         p {
-            font-size: var(--text-xxs);
+            font-size: var(--t-mini-size);
             color: var(--color-gray-200);
             text-align: justify;
         }
@@ -1681,7 +1681,7 @@ footer {
 
                 >p:first-child {
                     font-weight: var(--weight-bold);
-                    font-size: var(--text-s);
+                    font-size: var(--t-body-size);
                 }
 
                 span {

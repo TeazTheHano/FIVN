@@ -32,11 +32,32 @@
         flex-direction: column !important;
     }
 
-    h1 {
-        font-size: 2.5rem !important;
+    h1,
+    .p-ref-h1 {
+        font-size: var(--t-h1-size) !important;
+        line-height: var(--t-h1-lh) !important;
     }
 
+    h2,
+    .p-ref-h2 {
+        font-size: var(--t-h3-size) !important;
+        line-height: var(--t-h3-lh) !important;
+    }
 
+    h3,
+    .p-ref-h3 {
+        font-size: var(--t-h4-size) !important;
+        line-height: var(--t-h4-lh) !important;
+    }
+
+    nav {
+        width: 100%;
+    }
+
+    #hero .main-content {
+        margin: auto !important;
+        margin-bottom: var(--spacing-xl) !important;
+    }
 
     #Event_content {
         .card {
