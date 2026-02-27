@@ -67,11 +67,9 @@
       display: flex;
       flex-direction: column;
       gap: var(--spacing-s);
-    }
-
-    #Course #Course_content_cards .card .bottom {
+    
       font-size: var(--t-subbody-size);
-      color: var(--color-gray-400);
+      color: var(--color-gray-800);
       font-weight: var(--weight-thin);
     }
 
@@ -83,31 +81,14 @@
     #Course #Course_content_cards .card .bottom h4 {
       font-size: var(--t-subbody-size);
       line-height: var(--t-subbody-lh);
-      min-height: calc(var(--t-subbody-lh) * 2);
-      overflow: hidden;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
     }
 
     #Course #Course_content_cards .card .bottom h4 + div p {
       font-size: var(--t-mini-size);
-      overflow: hidden;
-      display: -webkit-box;
-      -webkit-line-clamp: 1;
-      -webkit-box-orient: vertical;
     }
 
     #Course #Course_content_cards .card .bottom h4 + div div:first-child p {
       font-weight: var(--weight-semibold);
-    }
-
-    #Course #Course_content_cards .card .bottom .description {
-      overflow: hidden;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      min-height: calc(var(--t-subbody-lh) * 2);
     }
 
     #Course #Course_content_cards .card .bottom .description * {
@@ -116,6 +97,14 @@
     }
 
     #Course #Course_content_cards .card .bottom .btn {
+      text-decoration: none;
+    }
+
+    #Course #Course_content_cards .card .goto-button {
+      color: var(--color-black);
+      font-size: var(--t-subbody-size);
+      font-weight: var(--weight-semibold);
+      line-height: var(--t-subbody-lh);
       text-decoration: none;
     }
 
@@ -130,8 +119,8 @@
       transform: scale(1.1);
     }
 
-    #Course #Course_content_cards .card:hover .bottom .btn {
-      filter: drop-shadow(var(--shadow-m));
+    #Course #Course_content_cards .card:hover .goto-button {
+      color: var(--color-secondary);
     }
   </style>
 
@@ -140,87 +129,73 @@
   >
     /* ================= Active category button ================= */
 
-    #Course
-      input[name="Course_content_cate"][id="Course_content_cate_all"]:checked
-      ~ #Course_content
-      #Course_content_cate_list
-      label[for="Course_content_cate_all"],
-    #Course
-      input[name="Course_content_cate"][id="{{name}}"]:checked
-      ~ #Course_content
-      #Course_content_cate_list
-      label[for="{{name}}"] {
+    #Course #Course_content_cate_list .button-chip:has(input:checked) {
       background-color: var(--color-secondary);
       color: var(--color-white);
     }
 
     /* ================= Show cards by category ================= */
 
-    #Course
-      input[name="Course_content_cate"][id="Course_content_cate_all"]:checked
-      ~ #Course_content_cards
-      > div[course-cate],
-    #Course
-      input[name="Course_content_cate"][id="{{name}}"]:checked
-      ~ #Course_content_cards
-      > div[course-cate="{{name}}"] {
+    /* ALL */
+    #Course:has(#Course_content_cate_all:checked)
+      #Course_content_cards
+      > .card {
+      display: block;
+    }
+
+    /* CATEGORY */
+    #Course:has(input[name="Course_content_cate"][id="{{name}}"]:checked)
+      #Course_content_cards
+      > .card[course-cate="{{name}}"] {
       display: block;
     }
   </style>
 
   <section id="Course" class="relative">
-    <!-- Logic Radio -->
-    <input
-      re=""
-      type="radio"
-      name="Course_content_cate"
-      hidden=""
-      id="Course_content_cate_all"
-      checked=""
-    />
-    <input
-      repeat="category|param:parentId:7f8ad86d-404d-c0a9-69d2-36aed2d53306|sort:displayOrder:asc|includes:"
-      type="radio"
-      name="Course_content_cate"
-      hidden=""
-      id="{{name}}"
-    />
-
     <div id="Course_content" class="maxWidth1300">
       <div class="d-column-h-center gap-xs">
-        <p class="tag" binding-name="OUR INNOVATIVE PROGRAMS">
-          OUR INNOVATIVE PROGRAMS
-        </p>
-        <h2 class="" binding-name="CÁC CHƯƠNG TRÌNH ĐỔI MỚI SÁNG TẠO">
-          CÁC CHƯƠNG TRÌNH ĐỔI MỚI SÁNG TẠO
-        </h2>
-        <p
-          binding-subdescription="Founder Institute Vietnam không chỉ cung cấp các chương trình đào tạo, ươm tạo và tăng tốc cho các doanh nhân khởi nghiệp, các doanh nghiệp công nghệ, mà còn tư vấn và triển khai các chương trình đào tạo và đổi mới sáng tạo cho các tổ chức và doanh nghiệp quy mô vừa và lớn."
-        >
+        <p class="tag">OUR INNOVATIVE PROGRAMS</p>
+        <h3>CÁC CHƯƠNG TRÌNH ĐỔI MỚI SÁNG TẠO</h3>
+        <p>
           Founder Institute Vietnam không chỉ cung cấp các chương trình đào tạo,
-          ươm tạo và tăng tốc cho các doanh nhân khởi nghiệp, các doanh nghiệp
-          công nghệ, mà còn tư vấn và triển khai các chương trình đào tạo và đổi
-          mới sáng tạo cho các tổ chức và doanh nghiệp quy mô vừa và lớn.
+          ươm tạo và tăng tốc...
         </p>
       </div>
+
+      <!-- ================= Category list ================= -->
 
       <div class="d-row-v-center gap-m" id="Course_content_cate_list">
         <div class="d-row gap-xxs">
-          <label
-            class="button-chip"
-            for="Course_content_cate_all"
-            binding-name="Tất cả"
-            >Tất cả</label
-          >
+          <!-- ALL -->
+          <label class="button-chip">
+            <input
+              type="radio"
+              name="Course_content_cate"
+              hidden
+              id="Course_content_cate_all"
+              checked
+            />
+            Tất cả
+          </label>
+
+          <!-- CATEGORY -->
           <label
             repeat="category|param:parentId:7f8ad86d-404d-c0a9-69d2-36aed2d53306|sort:displayOrder:asc|includes:"
             class="button-chip"
-            for="{{name}}"
-            >{{subDescription}}</label
           >
+            <input
+              type="radio"
+              name="Course_content_cate"
+              hidden
+              id="{{name}}"
+            />
+            {{subDescription}}
+          </label>
         </div>
       </div>
     </div>
+
+    <!-- ================= Cards ================= -->
 
     <div id="Course_content_cards" class="maxWidth1300 cards-slider-container">
       <!-- Controller -->
@@ -245,24 +220,24 @@
         </div>
 
         <div class="bottom">
-          <h4>{{name}}</h4>
+          <h4 class="lineclamp-keep-height-2">{{name}}</h4>
           <div class="d-column gap-xxxs">
             <div class="d-row-v-center gap-xxxs">
               <span class="material-symbols-outlined"> person </span>
-              <p>{{subDescription}}</p>
+              <p class="lineclamp-keep-height-1">{{subDescription}}</p>
             </div>
             <div class="d-row-v-center gap-xxxs">
               <span class="material-symbols-outlined"> schedule </span>
-              <p>{{metaDescription}}</p>
+              <p class="lineclamp-keep-height-1">{{metaDescription}}</p>
             </div>
             <div class="d-row-v-center gap-xxxs">
               <span class="material-symbols-outlined"> location_on </span>
-              <p>{{metaName}}</p>
+              <p class="lineclamp-keep-height-1">{{metaName}}</p>
             </div>
           </div>
-          <div class="description">{{description}}</div>
+          <div class="description lineclamp-keep-height-3">{{description}}</div>
           <a
-            class="btn btn-secondary"
+            class="goto-button"
             href="/{{languageCode}}/khoa-hoc/{{friendlyUrl}}"
           >
             Đăng ký ngay
@@ -273,8 +248,16 @@
       <!-- List end -->
     </div>
 
+    <!-- ================= View all button ================= -->
+
     <div class="view-all-btn">
-      <button class="button-secondary button-medium" binding-btntext="Xem thêm" binding-btnhref="">Xem thêm</button>
+      <button
+        class="button-secondary button-medium"
+        binding-btntext="Xem thêm"
+        binding-btnhref=""
+      >
+        Xem thêm
+      </button>
     </div>
   </section>
 </div>

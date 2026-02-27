@@ -278,6 +278,7 @@ section {
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
     -webkit-box-orient: vertical;
 }
 
@@ -285,6 +286,7 @@ section {
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
 }
 
@@ -292,7 +294,50 @@ section {
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 1;
+    line-clamp: 1;
     -webkit-box-orient: vertical;
+}
+
+.lineclamp-keep-height-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.lineclamp-keep-height-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
+    min-height: calc(2 * 1lh);
+}
+
+@supports not (height: 1lh) {
+    .lineclamp-keep-height-2 {
+        min-height: calc(2 * 1.4em);
+        /* fallback */
+    }
+}
+
+.lineclamp-keep-height-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
+    min-height: calc(2 * 1lh);
+}
+
+@supports not (height: 1lh) {
+    .lineclamp-keep-height-3 {
+        min-height: calc(2 * 1.4em);
+        /* fallback */
+    }
 }
 
 hr {

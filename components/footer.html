@@ -30,6 +30,7 @@
     footer .maxWidth1300 {
       padding: var(--spacing-xxxl) var(--spacing-l);
       gap: var(--spacing-m);
+      color: var(--color-white);
     }
 
     footer img {
@@ -58,6 +59,8 @@
 
     footer .top {
       gap: var(--spacing-m);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr) 1.75fr;
     }
 
     footer .top div {
@@ -83,6 +86,18 @@
       color: var(--color-primary);
     }
 
+    footer .top form {
+      flex-wrap: wrap;
+    }
+    footer .top form input {
+      padding: var(--spacing-xs);
+      border-radius: var(--radius-m);
+      border: 1px solid var(--color-gray-400);
+      background-color: var(--color-white);
+      color: var(--color-gray-800);
+      flex: 1;
+    }
+
     /* ---------- Bottom ---------- */
 
     footer .bottom {
@@ -100,20 +115,43 @@
     />
   </div>
   <div class="maxWidth1300 d-column">
-    <div class="top d-row mobileFlexColumn">
+    <div class="d-row-v-center mobileFlexColumn" style="color: currentColor">
+      <img
+        binding-imgpath="https://static.izzi.asia/templates/FIVN/svg/FIVN-Logo-02.svg"
+        src="https://static.izzi.asia/templates/FIVN/svg/FIVN-Logo-02.svg"
+        alt=""
+      />
+      <span
+        class="p-subbody"
+        style="color: currentColor"
+        binding-subdescription="FIVN là đối tác địa phương của Founder Institute - Mạng lưới tăng tốc khởi nghiệp lớn nhất thế giới, giúp các founder xây dựng doanh nghiệp công nghệ bền vững."
+      >
+        FIVN là đối tác địa phương của Founder Institute - Mạng lưới tăng tốc
+        khởi nghiệp lớn nhất thế giới, giúp các founder xây dựng doanh nghiệp
+        công nghệ bền vững.
+      </span>
+    </div>
+    <div class="top mobileFlexColumn">
       <div class="d-column">
-        <img
-          binding-imgpath="https://static.izzi.asia/templates/FIVN/svg/FIVN-Logo-02.svg"
-          src="https://static.izzi.asia/templates/FIVN/svg/FIVN-Logo-02.svg"
-          alt=""
-        />
-        <p
-          binding-subdescription="FIVN là đối tác địa phương của Founder Institute - Mạng lưới tăng tốc khởi nghiệp lớn nhất thế giới, giúp các founder xây dựng doanh nghiệp công nghệ bền vững."
-        >
-          FIVN là đối tác địa phương của Founder Institute - Mạng lưới tăng tốc
-          khởi nghiệp lớn nhất thế giới, giúp các founder xây dựng doanh nghiệp
-          công nghệ bền vững.
-        </p>
+        <p binding-name="Liên hệ">Liên hệ</p>
+        <div class="d-row-v-center">
+          <span class="material-symbols-outlined"> location_on </span>
+          <p binding-name="Tầng 3, Toà nhà Innovation, Quận 1, TP. Hồ Chí Minh">
+            Tầng 3, Toà nhà Innovation, Quận 1, TP. Hồ Chí Minh
+          </p>
+        </div>
+        <div class="d-row-v-center">
+          <span class="material-symbols-outlined"> phone </span>
+          <p binding-name="(+84) 909 123 456">(+84) 909 123 456</p>
+        </div>
+        <div class="d-row-v-center">
+          <span class="material-symbols-outlined"> mail </span>
+          <p binding-name="vietnam@fi.co">vietnam@fi.co</p>
+        </div>
+        <div class="d-row-v-center">
+          <span class="material-symbols-outlined"> language </span>
+          <p binding-name="www.fi.co/vietnam">www.fi.co/vietnam</p>
+        </div>
       </div>
 
       <div class="d-column">
@@ -156,37 +194,52 @@
       </div>
 
       <div class="d-column">
-        <p binding-name="Liên hệ">Liên hệ</p>
-        <div class="d-row-v-center">
-          <span class="material-symbols-outlined"> location_on </span>
-          <p binding-name="Tầng 3, Toà nhà Innovation, Quận 1, TP. Hồ Chí Minh">
-            Tầng 3, Toà nhà Innovation, Quận 1, TP. Hồ Chí Minh
-          </p>
-        </div>
-        <div class="d-row-v-center">
-          <span class="material-symbols-outlined"> phone </span>
-          <p binding-name="(+84) 909 123 456">(+84) 909 123 456</p>
-        </div>
-        <div class="d-row-v-center">
-          <span class="material-symbols-outlined"> mail </span>
-          <p binding-name="vietnam@fi.co">vietnam@fi.co</p>
-        </div>
-        <div class="d-row-v-center">
-          <span class="material-symbols-outlined"> language </span>
-          <p binding-name="www.fi.co/vietnam">www.fi.co/vietnam</p>
-        </div>
+        <p binding-name="Theo dõi tin tức về FIVN">Theo dõi tin tức về FIVN</p>
+
+        <form action="" class="d-row-v-center gap-xxxs">
+          <input
+            type="email"
+            placeholder="Nhập email của bạn"
+            binding-name="Nhập email của bạn"
+          />
+          <button
+            type="submit"
+            class="button-primary-2 button-small"
+            binding-name="Đăng ký"
+          >
+            Đăng ký
+          </button>
+        </form>
+
+        <!-- <div class="d-row gap-s">
+            <a href="" binding-btnhref="" binding-btntext="">
+              <img binding-imgpath="" src="" alt="" />
+            </a>
+            <a href="" binding-btnhref="" binding-btntext="">
+              <img binding-imgpath="" src="" alt="" />
+            </a>
+            <a href="" binding-btnhref="" binding-btntext="">
+              <img binding-imgpath="" src="" alt="" />
+            </a>
+            <a href="" binding-btnhref="" binding-btntext="">
+              <img binding-imgpath="" src="" alt="" />
+            </a>
+            <a href="" binding-btnhref="" binding-btntext="">
+              <img binding-imgpath="" src="" alt="" />
+            </a>
+          </div> -->
       </div>
     </div>
     <hr />
-    <div class="bottom d-row-v-center mobileFlexColumn gap-s">
-      <p binding-name="© 2024 Founder Institute Vietnam. All rights reserved.">
-        © 2024 Founder Institute Vietnam. All rights reserved.
-      </p>
-      <div class="d-row gap-s">
-        <p binding-name="Chính sách bảo mật">Chính sách bảo mật</p>
-        <p binding-name="Điều khoản sử dụng">Điều khoản sử dụng</p>
-        <p binding-name="Cookie Policy">Cookie Policy</p>
-      </div>
+  </div>
+  <div style="padding: var(--spacing-xxs) var(--spacing-l); margin: 0; background-color: black" class=" bottom d-row-v-center mobileFlexColumn gap-s">
+    <p binding-name="© 2024 Founder Institute Vietnam. All rights reserved.">
+      © 2024 Founder Institute Vietnam. All rights reserved.
+    </p>
+    <div class="d-row gap-s">
+      <p binding-name="Chính sách bảo mật">Chính sách bảo mật</p>
+      <p binding-name="Điều khoản sử dụng">Điều khoản sử dụng</p>
+      <p binding-name="Cookie Policy">Cookie Policy</p>
     </div>
   </div>
 </div>
