@@ -203,28 +203,70 @@ function loadHtmlFromFile(elementQuery, filePath, fncWhenLoaded, elementQuery2) 
     }
     loadHtml();
 }
-//
-// function routeController() {
-//     const path = window.location.pathname;
 
-//     // landing page
-//     if (path.includes('/index.html') || path === '/') {
-//         fetch('pages/landing.html')
-//             .then(response => response.text())
-//             .then(data => {
-//                 document.querySelector('#main_placeholder').innerHTML = data;
-//             })
-//             .catch(error => console.error('Error loading landing page:', error));
-//     }
-// }
+const routes = [
+    {
+        path: '#/landing',
+        view: 'pages/landing.html',
+        afterLoad: landingFetchComponents
+    },
+    {
+        path: '#/course-list',
+        view: 'pages/course-list.html'
+    },
+    {
+        path: /^#\/course-detail\/(.+)$/,
+        view: 'pages/course-detail.html',
+        afterLoad: (match) => loadCourseDetail(match[1])
+    }
+];
 
-// routeController();
+async function loadPage(path) {
+    const res = await fetch(path);
+    const html = await res.text();
+    document.querySelector('#main_placeholder').innerHTML = html;
+}
 
-const initFind = () => {
-    loadHtmlFromFile('#header_placeholder', 'components/header.html');
-    loadHtmlFromFile('#footer_placeholder', 'components/footer.html');
-    // 
-    loadHtmlFromFile('#main_placeholder', 'pages/landing.html');
+async function routeController() {
+
+    // Load layout only once
+    if (!document.querySelector('#header_placeholder').innerHTML.trim()) {
+        loadHtmlFromFile('#header_placeholder', 'components/header.html');
+    }
+
+    if (!document.querySelector('#footer_placeholder').innerHTML.trim()) {
+        loadHtmlFromFile('#footer_placeholder', 'components/footer.html');
+    }
+
+    const hash = window.location.hash || '#/landing';
+
+    for (const route of routes) {
+
+        // Static route
+        if (typeof route.path === 'string' && route.path === hash) {
+            await loadPage(route.view);
+            route.afterLoad?.();
+            return;
+        }
+
+        // Dynamic route
+        if (route.path instanceof RegExp) {
+            const match = hash.match(route.path);
+            if (match) {
+                await loadPage(route.view);
+                route.afterLoad?.(match);
+                return;
+            }
+        }
+    }
+
+    await loadPage('pages/404.html');
+}
+
+window.addEventListener('hashchange', routeController);
+window.addEventListener('load', routeController);
+
+function landingFetchComponents() {
     // add section
     setTimeout(() => {
         headerScroll();
@@ -272,14 +314,13 @@ const initFind = () => {
 
     }, 100);
 }
-initFind();
 
-setTimeout(() => {
-    analyzeCSSVariables();
-    // check CSS variables
+// setTimeout(() => {
+//     analyzeCSSVariables();
+//     // check CSS variables
 
-    setTimeout(() => {
-        analyzeCSSClasses();
-        // check CSS classes
-    }, 3000);
-}, 3000);
+//     setTimeout(() => {
+//         analyzeCSSClasses();
+//         // check CSS classes
+//     }, 3000);
+// }, 3000);
