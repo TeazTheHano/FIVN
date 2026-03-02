@@ -330,12 +330,12 @@ section {
     -webkit-box-orient: vertical;
     overflow: hidden;
 
-    min-height: calc(2 * 1lh);
+    min-height: calc(3 * 1lh);
 }
 
 @supports not (height: 1lh) {
     .lineclamp-keep-height-3 {
-        min-height: calc(2 * 1.4em);
+        min-height: calc(3 * 1.4em);
         /* fallback */
     }
 }
@@ -434,20 +434,4 @@ hr {
     100% {
         background-color: var(--color-primary);
     }
-}
-
-/* +++++++++++++++ EFFECTS ++++++++++++++ */
-/* --- Spotlight Effect --- */
-.spotlight {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 5;
-    background: radial-gradient(circle 600px at var(--mouse-x, 50%) var(--mouse-y, 50%),
-            rgb(var(--color-primary-raw) / 0.1),
-            transparent 40%);
-
-    transition:
-        --mouse-x 0.3s ease,
-        --mouse-y 0.3s ease;
 }

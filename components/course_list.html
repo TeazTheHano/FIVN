@@ -1,0 +1,238 @@
+<div>
+  <style>
+    #Course {
+      background-color: var(--color-bg-light);
+    }
+
+    /* ================= Course Content ================= */
+
+    #Course #Course_content {
+      gap: var(--spacing-m);
+      padding-bottom: var(--spacing-l);
+    }
+
+    /* ---------- Category list ---------- */
+
+    #Course #Course_content #Course_content_cate_list {
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    #Course #Course_content #Course_content_cate_list div:first-child {
+      flex-wrap: wrap;
+    }
+
+    #Course #Course_content_cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 400px));
+      gap: var(--spacing-s);
+      justify-content: center;
+      --max: 9;
+      overflow: hidden;
+      padding: var(--spacing-l);
+    }
+
+    /* #Course #Course_content_cards .card {
+      display: none;
+    } */
+
+    /* ---------- Card Top ---------- */
+
+    #Course #Course_content_cards .card .top {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      position: relative;
+    }
+
+    #Course #Course_content_cards .card .top img {
+      height: 100%;
+      width: 100%;
+    }
+
+    #Course #Course_content_cards .card .top .tag {
+      position: absolute;
+      top: var(--spacing-s);
+      right: var(--spacing-s);
+      z-index: 1;
+
+      font-size: var(--t-mini-size);
+      font-weight: var(--weight-bold);
+      letter-spacing: normal;
+
+      color: var(--color-secondary);
+      background-color: var(--color-white);
+
+      padding: var(--spacing-xxxs) var(--spacing-xs);
+      border-radius: var(--radius-round);
+    }
+
+    #Course #Course_content_cards .card .top .tag::before {
+      content: "";
+    }
+
+    /* ---------- Card Bottom ---------- */
+
+    #Course #Course_content_cards .card .bottom {
+      padding: var(--spacing-m);
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-s);
+
+      font-size: var(--t-subbody-size);
+      color: var(--color-gray-800);
+      font-weight: var(--weight-thin);
+    }
+
+    #Course #Course_content_cards .card .bottom span {
+      color: var(--color-primary);
+      font-size: var(--t-body-size) !important;
+    }
+
+    #Course #Course_content_cards .card .bottom h4 {
+      font-size: var(--t-subbody-size);
+      line-height: var(--t-subbody-lh);
+    }
+
+    #Course #Course_content_cards .card .bottom h4 + div p {
+      font-size: var(--t-mini-size);
+    }
+
+    #Course #Course_content_cards .card .bottom h4 + div div:first-child p {
+      font-weight: var(--weight-semibold);
+    }
+
+    #Course #Course_content_cards .card .bottom .description * {
+      font-size: var(--t-subbody-size);
+      line-height: var(--t-subbody-lh);
+    }
+
+    #Course #Course_content_cards .card .bottom .btn {
+      text-decoration: none;
+    }
+
+    #Course #Course_content_cards .card .goto-button {
+      color: var(--color-black);
+      font-size: var(--t-subbody-size);
+      font-weight: var(--weight-semibold);
+      line-height: var(--t-subbody-lh);
+      text-decoration: none;
+    }
+
+    /* ---------- Hover ---------- */
+
+    #Course #Course_content_cards .card:hover {
+      transform: translateY(calc(-1 * var(--spacing-xxxs)));
+      filter: drop-shadow(var(--shadow-xl)) drop-shadow(var(--shadow-m));
+    }
+
+    #Course #Course_content_cards .card:hover .top img {
+      transform: scale(1.1);
+    }
+
+    #Course #Course_content_cards .card:hover .goto-button {
+      color: var(--color-secondary);
+    }
+  </style>
+
+  <style
+    repeat="category|param:parentId:7f8ad86d-404d-c0a9-69d2-36aed2d53306|sort:displayOrder:asc|includes:"
+  >
+    /* ================= Active category button ================= */
+
+    #Course #Course_content_cate_list .button-chip:has(input:checked) {
+      background-color: var(--color-secondary);
+      color: var(--color-white);
+    }
+  </style>
+
+  <section id="Course" class="relative">
+    <div id="Course_content" class="maxWidth1300">
+      <div class="d-column-h-center gap-xs">
+        <p class="tag">OUR INNOVATIVE PROGRAMS</p>
+        <h3>CÁC CHƯƠNG TRÌNH ĐỔI MỚI SÁNG TẠO</h3>
+        <p>
+          Founder Institute Vietnam không chỉ cung cấp các chương trình đào tạo,
+          ươm tạo và tăng tốc...
+        </p>
+      </div>
+
+      <!-- ================= Category list ================= -->
+
+      <div class="d-row-v-center gap-m" id="Course_content_cate_list">
+        <div class="d-row gap-xxs">
+          <!-- ALL -->
+          <label class="button-chip">
+            <input
+              type="radio"
+              name="Course_content_cate"
+              hidden=""
+              value="all"
+              checked=""
+            />
+            Tất cả
+          </label>
+
+          <!-- CATEGORY -->
+          <label
+            repeat="category|param:parentId:7f8ad86d-404d-c0a9-69d2-36aed2d53306|sort:displayOrder:asc|includes:"
+            class="button-chip"
+          >
+            <input
+              type="radio"
+              name="Course_content_cate"
+              hidden=""
+              value="{{name}}"
+            />
+            {{subDescription}}
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= Cards ================= -->
+
+    <div id="Course_content_cards" class="maxWidth1300">
+      <!-- List start -->
+      <div
+        class="card"
+        course-cate="{{metaKeyword}}"
+        repeat="article|size:100|sort:postTime:desc|param:categories.id:89a3995d-a667-ff2b-0527-e1fb836557b3|includes:"
+      >
+        <div class="top">
+          <img src="https://static.izzi.asia/{{images.path}}" alt="{{name}}" />
+          <!-- <div class="tag">{{categories[1].subDescription}}</div> -->
+        </div>
+
+        <div class="bottom">
+          <h4 class="lineclamp-keep-height-2">{{name}}</h4>
+          <div class="d-column gap-xxxs">
+            <div class="d-row-v-center gap-xxxs">
+              <span class="material-symbols-outlined"> person </span>
+              <p class="lineclamp-keep-height-1">{{subDescription}}</p>
+            </div>
+            <div class="d-row-v-center gap-xxxs">
+              <span class="material-symbols-outlined"> schedule </span>
+              <p class="lineclamp-keep-height-1">{{metaDescription}}</p>
+            </div>
+            <div class="d-row-v-center gap-xxxs">
+              <span class="material-symbols-outlined"> location_on </span>
+              <p class="lineclamp-keep-height-1">{{metaName}}</p>
+            </div>
+          </div>
+          <div class="description lineclamp-keep-height-3">{{description}}</div>
+          <a
+            class="goto-button"
+            href="/{{languageCode}}/khoa-hoc/{{friendlyUrl}}"
+            binding-btntext="Đăng ký ngay"
+            binding-btnhref=""
+          >
+            Đăng ký ngay
+          </a>
+        </div>
+      </div>
+      <!-- List end -->
+    </div>
+
+    <div id="Course_pagination" class="d-row-h-center gap-xs"></div>
+  </section>
+</div>

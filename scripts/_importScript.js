@@ -208,16 +208,17 @@ const routes = [
     {
         path: '#/landing',
         view: 'pages/landing.html',
-        afterLoad: landingFetchComponents
+        afterLoad: landingFetchComponents,
     },
     {
         path: '#/course-list',
-        view: 'pages/course-list.html'
+        view: 'pages/course-list.html',
+        afterLoad: courseListFetchComponents,
     },
     {
         path: /^#\/course-detail\/(.+)$/,
         view: 'pages/course-detail.html',
-        afterLoad: (match) => loadCourseDetail(match[1])
+        afterLoad: (match) => loadCourseDetail(match[1]),
     }
 ];
 
@@ -232,6 +233,7 @@ async function routeController() {
     // Load layout only once
     if (!document.querySelector('#header_placeholder').innerHTML.trim()) {
         loadHtmlFromFile('#header_placeholder', 'components/header.html');
+        headerScroll();
     }
 
     if (!document.querySelector('#footer_placeholder').innerHTML.trim()) {
@@ -268,51 +270,61 @@ window.addEventListener('load', routeController);
 
 function landingFetchComponents() {
     // add section
-    setTimeout(() => {
-        headerScroll();
-        loadHtmlFromFile('#hero-section_placeholder', 'components/hero.html', () => {
-            trackMousePosition('#hero'); autoNextSelection({
-                container: '#hero',
-                itemSelector: 'input[name="hero"]',
-                interval: 5000,
-                type: 'radio'
-            });
-        }, '#hero');
-        loadHtmlFromFile('#event-section_placeholder', 'components/event.html', eventQuarterText);
-        loadHtmlFromFile('#about_us-section_placeholder', 'components/about_us.html');
-        loadHtmlFromFile('#core_value-section_placeholder', 'components/core_value.html');
-        loadHtmlFromFile('#programme-section_placeholder', 'components/programme.html', trackMousePosition, '#Programme');
-        loadHtmlFromFile('#network-section_placeholder', 'components/network.html', trackMousePosition, '#Contact');
-        loadHtmlFromFile('#course-section_placeholder', 'components/course.html', () => {
-            sliderControl({
-                listElementQuery: '#Course_content_cards',
-                childElement: '.card',
-                nextBtnQuery: '#Course .cards-slider-controller-next',
-                prevBtnQuery: '#Course .cards-slider-controller-prev'
-            });
-        });
-        loadHtmlFromFile('#partner-section_placeholder', 'components/partner.html');
-        loadHtmlFromFile('#contact-section_placeholder', 'components/contact.html');
-        loadHtmlFromFile('#quote-section_placeholder', 'components/quote.html', () => {
-            autoSlide({
-                listElementQuery: '#Feedback_content_cards',
-                itemQuery: '.card',
-                delayTime: 3000
-            });
-        });
-        loadHtmlFromFile('#FAQ-section_placeholder', 'components/FAQ.html');
-        loadHtmlFromFile('#news-section_placeholder', 'components/news.html', () => {
-            sliderControl({
-                listElementQuery: '#News_content_cards',
-                childElement: '.card',
-                nextBtnQuery: '#News .cards-slider-controller-next',
-                prevBtnQuery: '#News .cards-slider-controller-prev'
-            });
-        });
-        trackMousePosition('#Contact')
-        eventQuarterText();
 
-    }, 100);
+    loadHtmlFromFile('#hero-section_placeholder', 'components/hero.html', () => {
+        trackMousePosition('#hero'); autoNextSelection({
+            container: '#hero',
+            itemSelector: 'input[name="hero"]',
+            interval: 5000,
+            type: 'radio'
+        });
+    }, '#hero');
+    loadHtmlFromFile('#event-section_placeholder', 'components/event.html', eventQuarterText);
+    loadHtmlFromFile('#about_us-section_placeholder', 'components/about_us.html');
+    loadHtmlFromFile('#core_value-section_placeholder', 'components/core_value.html');
+    loadHtmlFromFile('#programme-section_placeholder', 'components/programme.html', trackMousePosition, '#Programme');
+    loadHtmlFromFile('#network-section_placeholder', 'components/network.html', trackMousePosition, '#Contact');
+    loadHtmlFromFile('#course-section_placeholder', 'components/course.html', () => {
+        sliderControl({
+            listElementQuery: '#Course_content_cards',
+            childElement: '.card',
+            nextBtnQuery: '#Course .cards-slider-controller-next',
+            prevBtnQuery: '#Course .cards-slider-controller-prev'
+        });
+    });
+    loadHtmlFromFile('#partner-section_placeholder', 'components/partner.html');
+    loadHtmlFromFile('#contact-section_placeholder', 'components/contact.html');
+    loadHtmlFromFile('#quote-section_placeholder', 'components/quote.html', () => {
+        autoSlide({
+            listElementQuery: '#Feedback_content_cards',
+            itemQuery: '.card',
+            delayTime: 3000
+        });
+    });
+    loadHtmlFromFile('#FAQ-section_placeholder', 'components/FAQ.html');
+    loadHtmlFromFile('#news-section_placeholder', 'components/news.html', () => {
+        sliderControl({
+            listElementQuery: '#News_content_cards',
+            childElement: '.card',
+            nextBtnQuery: '#News .cards-slider-controller-next',
+            prevBtnQuery: '#News .cards-slider-controller-prev'
+        });
+    });
+    trackMousePosition('#Contact')
+    eventQuarterText();
+}
+
+function courseListFetchComponents() {
+    loadHtmlFromFile('#sectorHero_placeholder', 'components/sector_hero_with_button.html');
+    loadHtmlFromFile('#CourseList_placeholder', 'components/course_list.html', () => {
+        PagingContent({
+            containerQuery: '#Course_content_cards',
+            itemsQuery: '.card',
+            paginationContainerQuery: '#Course_pagination',
+            itemsPerPage: 6,
+            filtersQuery: 'input[name="Course_content_cate"]'
+        })
+    });
 }
 
 // setTimeout(() => {

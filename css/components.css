@@ -143,8 +143,7 @@
     overflow: scroll;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
-    padding: 0 var(--spacing-l);
-    padding-bottom: var(--spacing-l);
+    padding: var(--spacing-l);
 
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -172,7 +171,8 @@
     display: none;
 }
 
-.cards-slider-container .card {
+.cards-slider-container .card,
+#Course .card{
     flex: 0 0 auto;
     width: 70vw;
     min-width: 200px;
@@ -203,4 +203,34 @@
     margin-right: 0.5rem;
     transform: translateY(-50%);
     vertical-align: middle;
+}
+
+.tag-before {
+    padding-left: var(--spacing-xxs);
+    position: relative;
+}
+
+.tag-before::before {
+    content: "|";
+    left: 0;
+    position: absolute;
+    align-items: center;
+    color: var(--color-secondary);
+    font-weight: var(--weight-bold);
+}
+
+/* +++++++++++++++ EFFECTS ++++++++++++++ */
+/* --- Spotlight Effect --- */
+.spotlight {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;
+    background: radial-gradient(circle 600px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+            rgb(var(--color-secondary-raw) / 0.1),
+            transparent 40%);
+
+    transition:
+        --mouse-x 0.3s ease,
+        --mouse-y 0.3s ease;
 }

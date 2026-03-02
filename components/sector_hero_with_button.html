@@ -1,0 +1,71 @@
+<div>
+  <style>
+    /* ---------- Container ---------- */
+
+    #SectorHero {
+      position: relative;
+      min-height: 70dvh;
+      overflow: hidden;
+
+      justify-content: end;
+
+      color: var(--color-white);
+    }
+
+    #SectorHero .bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    #SectorHero .bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 1;
+    }
+
+    #SectorHero .bg .graCoat-primary {
+      z-index: 1;
+      background-image: linear-gradient(to left, #0a1f134d, #0a1f13);
+      opacity: 1;
+      width: 100%;
+      height: 100%;
+    }
+
+    #SectorHero #SectionHero_content {
+      width: 100%;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+  </style>
+
+  <section id="SectorHero" class="d-column gap-xxs">
+    <div class="bg">
+      <div class="graCoat-primary absolute"></div>
+      <img
+        binding-imgpath="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
+        src="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
+      />
+    </div>
+
+    <div id="SectionHero_content" class="d-column gap-s">
+      <p class="tag tag-tail" binding-name="Fouder instittute vietnam">
+        Fouder instittute vietnam
+      </p>
+      <h2 binding-name="Chi tiết khóa học">Chi tiết khóa học</h2>
+      <p binding-name="Trang chủ > Khóa học" class="tag-before">
+        Trang chủ > Khóa học
+      </p>
+      <button
+        binding-name="Đăng ký ngay"
+        class="button-primary-2 button-medium"
+      >
+        Đăng ký ngay
+      </button>
+    </div>
+  </section>
+</div>

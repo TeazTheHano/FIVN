@@ -156,6 +156,7 @@ function sliderControl({
     prevBtnQuery
 }) {
     const slider = document.querySelector(listElementQuery)
+    if (!slider) return
     const item = slider.querySelector(childElement)
     const nextBtn = document.querySelector(nextBtnQuery)
     const prevBtn = document.querySelector(prevBtnQuery)
@@ -251,35 +252,134 @@ function autoSlide({
     })
 }
 
+function PagingContent({
+    containerQuery,
+    itemsQuery,
+    paginationContainerQuery,
+    itemsPerPage = 6,
+    filtersQuery = null,
+}) {
+    const container = document.querySelector(containerQuery)
+    const paginationContainer = document.querySelector(paginationContainerQuery)
+
+    if (!container || !paginationContainer) return
+
+    const allItems = Array.from(container.querySelectorAll(itemsQuery))
+    if (!allItems.length) return
+
+    let filteredItems = [...allItems]
+    let currentPage = 1
+
+    function renderPage() {
+        const totalPages = Math.ceil(filteredItems.length / itemsPerPage)
+        const start = (currentPage - 1) * itemsPerPage
+        const end = start + itemsPerPage
+
+        // Ẩn toàn bộ
+        allItems.forEach(item => item.classList.add('d-none'))
+
+        // Hiển thị items của page hiện tại
+        filteredItems.slice(start, end).forEach(item => {
+            item.classList.remove('d-none')
+        })
+
+        // Render pagination
+        paginationContainer.innerHTML = ''
+
+        for (let i = 1; i <= totalPages; i++) {
+            const btn = document.createElement('button')
+            btn.innerText = i
+            btn.classList.toggle('active', i === currentPage)
+
+            btn.addEventListener('click', () => {
+                currentPage = i
+                renderPage()
+            })
+
+            paginationContainer.appendChild(btn)
+        }
+    }
+
+    // FILTER
+    if (filtersQuery) {
+        const filters = document.querySelectorAll(filtersQuery)
+
+        filters.forEach(filter => {
+            filter.addEventListener('change', () => {
+                const value = filter.value?.trim().toLowerCase()
+
+                if (!value || value === 'all') {
+                    filteredItems = [...allItems]
+                } else {
+                    filteredItems = allItems.filter(item => {
+                        const cate = (item.getAttribute('course-cate') || '')
+                            .trim()
+                            .toLowerCase()
+
+                        return cate === value
+                    })
+                }
+
+                currentPage = 1
+                renderPage()
+            })
+        })
+    }
+
+    renderPage()
+}
 
 // CALLING FUNCTIONs
-sliderControl({
-    listElementQuery: '#Course_content_cards',
-    childElement: '.card',
-    nextBtnQuery: '#Course .cards-slider-controller-next',
-    prevBtnQuery: '#Course .cards-slider-controller-prev'
-});
-sliderControl({
-    listElementQuery: '#News_content_cards',
-    childElement: '.card',
-    nextBtnQuery: '#News .cards-slider-controller-next',
-    prevBtnQuery: '#News .cards-slider-controller-prev'
-});
-
-trackMousePosition('#Programme')
-trackMousePosition('#Contact')
-trackMousePosition('#hero')
-eventQuarterText();
 headerScroll();
-autoNextSelection({
-    container: '#hero',
-    itemSelector: 'input[name="hero"]',
-    interval: 5000,
-    type: 'radio'
-});
 
-autoSlide({
-    listElementQuery: '#Feedback_content_cards',
-    itemQuery: '.card',
-    delayTime: 3000
-});
+function landingPageCall() {
+    sliderControl({
+        listElementQuery: '#Course_content_cards',
+        childElement: '.card',
+        nextBtnQuery: '#Course .cards-slider-controller-next',
+        prevBtnQuery: '#Course .cards-slider-controller-prev'
+    });
+    sliderControl({
+        listElementQuery: '#News_content_cards',
+        childElement: '.card',
+        nextBtnQuery: '#News .cards-slider-controller-next',
+        prevBtnQuery: '#News .cards-slider-controller-prev'
+    });
+
+    trackMousePosition('#Programme')
+    trackMousePosition('#Contact')
+    trackMousePosition('#hero')
+    eventQuarterText();
+    autoNextSelection({
+        container: '#hero',
+        itemSelector: 'input[name="hero"]',
+        interval: 5000,
+        type: 'radio'
+    });
+
+    autoSlide({
+        listElementQuery: '#Feedback_content_cards',
+        itemQuery: '.card',
+        delayTime: 3000
+    });
+}
+
+function courseListPageCall() {
+    PagingContent({
+        containerQuery: '#Course_content_cards',
+        itemsQuery: '.card',
+        paginationContainerQuery: '#Course_pagination',
+        itemsPerPage: 6,
+        filtersQuery: 'input[name="Course_content_cate"]'
+    })
+}
+
+switch (true) {
+    case window.location.pathname.includes('/pages/danh-sach-khoa-hoc'):
+        console.log('adsfasdf');
+        courseListPageCall();
+        break;
+    default:
+        landingPageCall();
+        break;
+}
