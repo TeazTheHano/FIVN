@@ -290,7 +290,8 @@ function PagingContent({
             const btn = document.createElement('button')
             btn.innerText = i
             btn.classList.toggle('active', i === currentPage)
-
+            
+            btn.classList.add('button-chip')
             btn.addEventListener('click', () => {
                 currentPage = i
                 renderPage()

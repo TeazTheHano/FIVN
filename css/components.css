@@ -89,9 +89,11 @@
     padding: var(--spacing-xxs) var(--spacing-xs);
     border-radius: var(--radius-round);
     color: var(--color-black);
+    border: none;
 }
 
-.button-chip:has(input:checked) {
+.button-chip:has(input:checked),
+.button-chip.active {
     background-color: var(--color-secondary);
     color: var(--color-white);
     font-weight: var(--weight-semibold);
