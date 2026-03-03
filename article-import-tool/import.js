@@ -11,11 +11,8 @@ const COURSE_CATE_ID = "89a3995d-a667-ff2b-0527-e1fb836557b3"
 const LANGUAGE_ID = "838aef56-78bb-11e6-b5a6-00155d582814"
 const ADMIN_CREATE_ID = "8597b32b-7c62-bea2-11e0-fa185758c3b6"
 
-const articlesToCreate = [
-    { Name: "Bài viết test hàng loạt 21222", SubDescription: "1231231212312", Description: "hehehehe", MetaName: "", MetaKeyword: "", MetaDescription: "", MetaImage: "", CateId: POST_CATE_ID, },
-    { Name: "Bài viết test hàng loạt 22222", SubDescription: "123123453251", Description: "123123", MetaName: "", MetaKeyword: "", MetaDescription: "", MetaImage: "", CateId: POST_CATE_ID, },
-    { Name: "Bài viết test hàng loạt 23222", SubDescription: "132512341234123412345", Description: "542546", MetaName: "", MetaKeyword: "", MetaDescription: "", MetaImage: "", CateId: POST_CATE_ID, }
-]
+// const articlesToCreate = []
+
 const formatDate = (date) => {
     // format to dd-mm-yyyy hh:mm:ss
     const pad = (n) => n.toString().padStart(2, '0')
