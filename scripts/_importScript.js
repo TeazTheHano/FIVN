@@ -316,7 +316,7 @@ function landingFetchComponents() {
 
 function courseListFetchComponents() {
     loadHtmlFromFile('#sectorHero_placeholder', 'components/sector_hero_with_button.html');
-    loadHtmlFromFile('#CourseList_placeholder', 'components/course_list.html', () => {
+    loadHtmlFromFile('#courseList_placeholder', 'components/course_list.html', () => {
         PagingContent({
             containerQuery: '#Course_content_cards',
             itemsQuery: '.card',
@@ -325,6 +325,10 @@ function courseListFetchComponents() {
             filtersQuery: 'input[name="Course_content_cate"]'
         })
     });
+}
+
+function courseDetailFetchComponents() {
+    loadHtmlFromFile('#sectorHero_placeholder', 'components/sector_hero.html');
 }
 
 // setTimeout(() => {

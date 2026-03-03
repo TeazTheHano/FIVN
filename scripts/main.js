@@ -153,43 +153,72 @@ function sliderControl({
     listElementQuery,
     childElement,
     nextBtnQuery,
-    prevBtnQuery
+    prevBtnQuery,
+    filtersQuery = null
 }) {
     const slider = document.querySelector(listElementQuery)
     if (!slider) return
-    const item = slider.querySelector(childElement)
+
     const nextBtn = document.querySelector(nextBtnQuery)
     const prevBtn = document.querySelector(prevBtnQuery)
-    const sliderGap = slider ? getComputedStyle(slider).gap : '0px';
 
-    if (slider && nextBtn && prevBtn && item && sliderGap) {
-        nextBtn.addEventListener('click', () => {
-            slider.scrollBy({ left: item.offsetWidth + parseFloat(sliderGap), behavior: 'smooth' })
+    if (!nextBtn || !prevBtn) return
+
+    function getVisibleItems() {
+        return [...slider.querySelectorAll(childElement)]
+            .filter(el => getComputedStyle(el).display !== 'none')
+    }
+
+    function getStep() {
+        const visible = getVisibleItems()
+        if (visible.length < 2) return 0
+
+        return visible[1].offsetLeft - visible[0].offsetLeft
+    }
+
+    function scrollNext(direction = 1) {
+        const step = getStep()
+        if (!step) return
+
+        slider.scrollBy({
+            left: step * direction,
+            behavior: 'smooth'
         })
-        prevBtn.addEventListener('click', () => {
-            slider.scrollBy({ left: -(item.offsetWidth + parseFloat(sliderGap)), behavior: 'smooth' })
+    }
+
+    nextBtn.addEventListener('click', () => scrollNext(1))
+    prevBtn.addEventListener('click', () => scrollNext(-1))
+
+    slider.addEventListener('wheel', event => {
+        const step = getStep()
+        if (!step) return
+
+        const isDown = event.deltaY > 0
+        const isUp = event.deltaY < 0
+
+        const isAtStart = slider.scrollLeft <= 0
+        const isAtEnd = slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 1
+
+        if ((isUp && isAtStart) || (isDown && isAtEnd)) {
+            return
+        }
+
+        event.preventDefault()
+        scrollNext(isDown ? 1 : -1)
+
+    }, { passive: false })
+
+    // ✅ Reset scroll khi filter thay đổi
+    if (filtersQuery) {
+        const filters = document.querySelectorAll(filtersQuery)
+
+        filters.forEach(filter => {
+            filter.addEventListener('change', () => {
+                requestAnimationFrame(() => {
+                    slider.scrollTo({ left: 0, behavior: 'smooth' })
+                })
+            })
         })
-
-        slider.addEventListener('wheel', event => {
-            const isScrollingDown = event.deltaY > 0
-            const isScrollingUp = event.deltaY < 0
-
-            const isAtStart = slider.scrollLeft === 0
-            const isAtEnd = slider.scrollLeft + slider.clientWidth >= slider.scrollWidth
-
-            if ((isScrollingUp && isAtStart) ||
-                (isScrollingDown && isAtEnd)) {
-                return // cho phép scroll trang
-            }
-
-            event.preventDefault()
-
-            if (isScrollingDown) {
-                nextBtn.click()
-            } else if (isScrollingUp) {
-                prevBtn.click()
-            }
-        }, { passive: false })
     }
 }
 
@@ -290,7 +319,7 @@ function PagingContent({
             const btn = document.createElement('button')
             btn.innerText = i
             btn.classList.toggle('active', i === currentPage)
-            
+
             btn.classList.add('button-chip')
             btn.addEventListener('click', () => {
                 currentPage = i
@@ -338,7 +367,8 @@ function landingPageCall() {
         listElementQuery: '#Course_content_cards',
         childElement: '.card',
         nextBtnQuery: '#Course .cards-slider-controller-next',
-        prevBtnQuery: '#Course .cards-slider-controller-prev'
+        prevBtnQuery: '#Course .cards-slider-controller-prev',
+        filtersQuery: 'input[name="Course_content_cate"]'
     });
     sliderControl({
         listElementQuery: '#News_content_cards',

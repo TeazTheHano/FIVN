@@ -145,11 +145,12 @@
       gap: 20px;
     }
 
-    #hero .content-container .hero-content .btn-group button {
+    #hero .content-container .hero-content .btn-group a {
       border-radius: 0;
       color: var(--color-white);
       text-decoration: none;
       text-transform: uppercase;
+      font-weight: var(--weight-semibold);
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -177,6 +178,11 @@
       }
     }
 
+    #hero .content-container .hero-content .btn-group .btn-group-primary:hover {
+      background-color: var(--color-white);
+      color: var(--color-primary);
+    }
+
     #hero .content-container .hero-content .btn-group .btn-group-secondary {
       background-color: transparent;
       border: 1px solid var(--color-white);
@@ -188,6 +194,11 @@
           "GRAD" 0,
           "opsz" 16;
       }
+    }
+
+    #hero .content-container .hero-content .btn-group .btn-group-secondary:hover {
+      color: var(--color-secondary);
+      border-color: var(--color-secondary);
     }
 
     #hero .side-nav {
@@ -445,15 +456,21 @@
             Kết nối với mạng lưới khởi nghiệp lớn nhất thế giới.
           </p>
           <div class="btn-group mobileFlexColumn">
-            <button
+            <a
               class="btn-group-primary"
-              binding-btntext="  ĐĂNG KÝ NEWSLETTER"
+              binding-btntext="ĐĂNG KÝ NEWSLETTER"
+              href="#Contact"
+              binding-btnhref="#Contact"
             >
               ĐĂNG KÝ NEWSLETTER
-            </button>
-            <button class="btn-group-secondary">
-              <p binding-btntext="CHƯƠNG TRÌNH FI CORE">CHƯƠNG TRÌNH FI CORE</p>
-            </button>
+            </a>
+            <a
+              class="btn-group-secondary"
+              href="#Programme"
+              binding-btnhref="#Programme"
+              binding-btntext="CHƯƠNG TRÌNH FI CORE"
+              >CHƯƠNG TRÌNH FI CORE
+            </a>
           </div>
         </div>
 
@@ -474,15 +491,21 @@
             Giáo trình Hard-core từ Thung lũng Silicon ngay tại Việt Nam.
           </p>
           <div class="btn-group mobileFlexColumn">
-            <button
+            <a
               class="btn-group-primary"
               binding-btntext="ĐĂNG KÝ NEWSLETTER"
+              href="#Contact"
+              binding-btnhref="#Contact"
             >
               ĐĂNG KÝ NEWSLETTER
-            </button>
-            <button class="btn-group-secondary">
-              <p binding-btntext="CHƯƠNG TRÌNH FI CORE">CHƯƠNG TRÌNH FI CORE</p>
-            </button>
+            </a>
+            <a
+              class="btn-group-secondary"
+              href="#Programme"
+              binding-btnhref="#Programme"
+              binding-btntext="CHƯƠNG TRÌNH FI CORE"
+              >CHƯƠNG TRÌNH FI CORE
+            </a>
           </div>
         </div>
 
@@ -503,15 +526,21 @@
             Cơ hội gọi vốn từ mạng lưới thiên thần và quỹ đầu tư đối tác.
           </p>
           <div class="btn-group mobileFlexColumn">
-            <button
+            <a
               class="btn-group-primary"
               binding-btntext="ĐĂNG KÝ NEWSLETTER"
+              href="#Contact"
+              binding-btnhref="#Contact"
             >
               ĐĂNG KÝ NEWSLETTER
-            </button>
-            <button class="btn-group-secondary">
-              <p binding-btntext="CHƯƠNG TRÌNH FI CORE">CHƯƠNG TRÌNH FI CORE</p>
-            </button>
+            </a>
+            <a
+              class="btn-group-secondary"
+              href="#Programme"
+              binding-btnhref="#Programme"
+              binding-btntext="CHƯƠNG TRÌNH FI CORE"
+              >CHƯƠNG TRÌNH FI CORE
+            </a>
           </div>
         </div>
       </div>
