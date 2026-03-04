@@ -8,6 +8,8 @@ const { randomUUID } = require('crypto')
 
 const POST_CATE_ID = "62384618-4e7c-0008-18e0-db03370b979d"
 const COURSE_CATE_ID = "89a3995d-a667-ff2b-0527-e1fb836557b3"
+const MENTOR_CATE_ID = "e618564c-bdf8-4399-ad7a-5118e6d9b2ba"
+
 const LANGUAGE_ID = "838aef56-78bb-11e6-b5a6-00155d582814"
 const ADMIN_CREATE_ID = "8597b32b-7c62-bea2-11e0-fa185758c3b6"
 
@@ -57,7 +59,7 @@ async function retryRequest(fn, retries = 3, delayMs = 5000) {
     throw lastError
 }
 
-async function createArticles() {
+async function createArticles({domainToCreate = "Article", articlesToCreate = []} = {}) {
     for (const [index, item] of articlesToCreate.entries()) {
         const now = new Date()
 
@@ -72,13 +74,11 @@ async function createArticles() {
             MetaKeyword: item.MetaKeyword,
             MetaDescription: item.MetaDescription,
             MetaImage: item.MetaImage,
-            Categories: [
-                {
-                    Id: item.CateId,
-                    IsFeatured: true,
-                    DisplayOrder: 0
-                }
-            ],
+            Categories: item.CateId.map((cateId, index) => ({
+                Id: cateId,
+                IsFeatured: true,
+                DisplayOrder: 0
+            })),
             Images: [],
             Authors: [],
             PostTime: item.PostTime || now.toISOString(),
@@ -127,4 +127,5 @@ async function createArticles() {
         }
     }
 }
+
 createArticles()
