@@ -1,0 +1,93 @@
+<div>
+  <style>
+    #CourseDetailDescription #CourseDetailDescription_content_purchase_box {
+            padding: var(--spacing-m);
+    }
+
+    #CourseDetailDescription .description {
+      flex: 1;
+    }
+
+    #CourseDetailDescription
+      #CourseDetailDescription_content_purchase_box
+      .CourseDetailDescription_img_holder {
+      max-width: 400px;
+      width: 100%;
+      aspect-ratio: 16/9;
+    }
+
+    #CourseDetailDescription #CourseDetailDescription_content_purchase_box a {
+      text-align: center;
+    }
+  </style>
+
+  <section
+    id="CourseDetailDescription"
+    repeat="detaildata"
+    class="maxWidth1300"
+  >
+    <div id="CourseDetailDescription_content" class="d-column gap-m">
+      <div>
+        <p class="tag tag-tail" binding-name="Khóa học">Khóa học"></p>
+        <h1 class="p-ref-h2">{{name}}</h1>
+      </div>
+
+      <div class="CourseDetailDescription_img_holder mobileShow">
+        <img
+          src="{{images|getthumbnailbyindex:0|getPath:?mode"
+          ="crop&amp;width"
+          ="370&amp;height"
+          ="260}}"
+          alt=""
+        />
+      </div>
+
+      <!-- basic info -->
+      <div class="d-row gap-m">
+        <div class="description">{{description}}</div>
+        <div
+          id="CourseDetailDescription_content_purchase_box"
+          class="d-column gap-m padding-m"
+        >
+          <div class="CourseDetailDescription_img_holder mobileHide">
+            <img
+              src="{{images|getthumbnailbyindex:0|getPath:?mode"
+              ="crop&amp;width"
+              ="370&amp;height"
+              ="260}}"
+              alt=""
+            />
+          </div>
+
+          <div class="d-column">
+            <p class="p-subbody">Phí tham gia</p>
+            <p class="p-ref-h4"> {{price|formatmoney}}</p>
+          </div>
+
+          <a
+            binding-btnhref="#Contact"
+            binding-btntext="Đăng ký ngay"
+            href="#Contact"
+            class="button-primary button-large"
+          >
+            Đăng ký ngay
+          </a>
+        </div>
+      </div>
+
+      <!-- time and location -->
+      <div class="d-column gap-m">
+        <h3>Thông tin khóa học</h3>
+        <div class="d-row-v-center gap-xs">
+          <span class="material-symbols-outlined"> schedule </span>
+          <p>{{courses.period}} phút</p>
+        </div>
+
+        <div class="d-row-v-center gap-xs">
+          <span class="material-symbols-outlined"> location_on </span>
+          <p>{{location}}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

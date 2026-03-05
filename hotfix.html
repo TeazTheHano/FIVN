@@ -1,0 +1,175 @@
+<div
+  repeat="product|param:categories.id:9bf6c4ae-a758-6cfd-1706-0ca4d70e5e19,e7007ae4-15a3-2a57-fa6f-1a12ade81cdb,a28fdd5f-275a-70d6-aff1-4d8b0db60296,df8961ca-c9f8-934a-9983-fa770eb36c12,7bb954ab-39dc-3296-4399-2dce2aa49031preParamIds|sort:createdDate:desc|includes:"
+  class="modal fade"
+  id="2d9fc875-1bff-afa6-07ed-4e04e0841688"
+>
+  <div class="modal-dialog" style="max-width: 650px">
+    <div class="modal-content no-border">
+      <div class="modal-header text-center bg-vpass">
+        <h4 class="modal-title text-white">{{name}}</h4>
+        <button
+          type="button"
+          class="close text-white popup-modal-dismiss"
+          data-dismiss="modal"
+        >
+          ×
+        </button>
+      </div>
+      <div class="modal-body" style="background-color: #eeeeee">
+        <div class="contact-form">
+          <form
+            class="customForm"
+            id="8e206d62-8964-c028-274c-323511cb741e"
+            action="javascript:void(0)"
+            method="post"
+          >
+            <div class="row">
+              <div class="col-md-12">
+                <h3 access="false">Thông tin cá nhân</h3>
+              </div>
+              <div class="col-md-12">
+                <div class="input-group mb-30">
+                  <label
+                    for="name"
+                    class="formbuilder-text-label"
+                    style="display: none"
+                    >Họ tên<span class="formbuilder-required">*</span></label
+                  >
+                  <span class="icon"><i class="far fa-user"></i></span>
+                  <input
+                    type="text"
+                    placeholder="Họ tên"
+                    name="name"
+                    access="true"
+                    id="name-{{name|rewrite}}"
+                    required="required"
+                    aria-required="true"
+                  />
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="input-group mb-30">
+                  <span class="icon"><i class="far fa-envelope"></i></span>
+                  <input
+                    type="email"
+                    placeholder="Địa chỉ e-mail"
+                    name="email"
+                    access="true"
+                    id="email-{{name|rewrite}}"
+                    required="required"
+                    aria-required="true"
+                  />
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="input-group mb-30">
+                  <span class="icon"><i class="far fa-phone"></i></span>
+                  <input
+                    type="text"
+                    placeholder="Số điện thoại"
+                    name="mobile"
+                    access="true"
+                    id="mobile-{{name|rewrite}}"
+                    required="required"
+                    aria-required="true"
+                  />
+                </div>
+              </div>
+              <div class="col-md-12">
+                <h3 access="false">Thông tin dịch vụ</h3>
+              </div>
+              <div class="col-md-12">
+                <div class="input-group mb-30">
+                  <span class="icon"
+                    ><i class="far fa-hand-holding-usd"></i
+                  ></span>
+                  <input
+                    type="text"
+                    name="sevices"
+                    access="false"
+                    id="sevices-{{name|rewrite}}"
+                    readonly=""
+                    placeholder="{{name}}"
+                    value="{{name}}"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="date-start" class="formbuilder-text-label"
+                  >Từ ngày<span class="formbuilder-required">*</span></label
+                >
+                <div class="input-group mb-30">
+                  <span class="icon"><i class="far fa-calendar"></i></span>
+                  <input
+                    type="date"
+                    name="date-start"
+                    placeholder="Từ ngày..."
+                    access="false"
+                    id="date-start-{{name|rewrite}}"
+                    required=""
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="date-end" class="formbuilder-text-label"
+                  >Đến ngày<span class="formbuilder-required">*</span></label
+                >
+                <div class="input-group mb-30">
+                  <span class="icon"><i class="far fa-calendar"></i></span>
+                  <input
+                    type="date"
+                    name="date-end"
+                    placeholder="Đến ngày..."
+                    access="false"
+                    id="date-end-{{name|rewrite}}"
+                    required=""
+                  />
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="input-group mb-30">
+                  <span class="icon"><i class="far fa-users"></i></span>
+                  <input
+                    type="number"
+                    name="so-nguoi"
+                    placeholder="Số người"
+                    access="false"
+                    id="so-nguoi-{{name|rewrite}}"
+                    required=""
+                  />
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="input-group textarea mb-30">
+                  <span class="icon"><i class="far fa-pen"></i></span>
+                  <textarea
+                    type="text"
+                    placeholder="Yêu cầu khác"
+                    name="yeu-cau-khac"
+                    access="true"
+                    id="yeu-cau-khac-{{name|rewrite}}"
+                  ></textarea>
+                </div>
+              </div>
+              <div class="col-12 text-center">
+                <button
+                  type="submit"
+                  class="main-btn btn-filled"
+                  access="false"
+                  id="button-service-submit"
+                >
+                  Đăng ký
+                </button>
+              </div>
+            </div>
+          </form>
+          <p class="returnMessage"></p>
+        </div>
+      </div>
+
+      <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div> -->
+    </div>
+  </div>
+</div>
