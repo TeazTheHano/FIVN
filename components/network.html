@@ -169,16 +169,16 @@
       </div>
 
       <div id="Network_content_cards" class="mobileFlexColumn">
-        <div class="card d-column" repeat="article|param:categories.id:e618564c-bdf8-4399-ad7a-5118e6d9b2ba|sort:createdDate:desc|includes:">
+        <div class="card d-column" repeat="article|param:categories.id:e618564c-bdf8-4399-ad7a-5118e6d9b2ba|sort:createdDate:asc|size:100|includes:">
           <div class="top d-row gap-m">
             <img src="https://static.izzi.asia/{{images.path}}" alt="{{name}}">
             <div class="info d-column gap-xxs">
               <p class="lineclamp-2">{{name}}</p>
-              <p class="tag lineclamp-1 p-subbody">{{metaDescription}}</p>
+              <!-- <p class="tag lineclamp-1 p-subbody">{{metaDescription}}</p>
               <div class="d-row-v-center gap-xxxs">
                 <span class="material-symbols-outlined"> trip </span>
                 <p class="lineclamp-1 p-mini">{{metaName}}</p>
-              </div>
+              </div> -->
               <!-- <div class="d-row-v-center gap-xxxs">
                 <span class="material-symbols-outlined"> award_star </span>
                 <p class="lineclamp-1">{{metaKeyword}}</p>
@@ -187,8 +187,8 @@
           </div>
           <hr>
           <div class="bottom">
-            <p class="lineclamp-3">{{subDescription}}</p>
-            <a href="{{description}}">
+            <p class="lineclamp-3">{{description}}</p>
+            <a href="{{subDescription}}" target="_blank">
               <img src="https://static.izzi.asia/templates/FIVN/svg/linkedin.svg" alt="">
             </a>
           </div>
