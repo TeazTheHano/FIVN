@@ -132,14 +132,14 @@
     #Course #Course_content_cards .card:hover .goto-button {
       color: var(--color-secondary);
     }
-    
+
     #Course #Course_pagination {
-        padding: var(--spacing-m);
+      padding: var(--spacing-m);
     }
   </style>
 
   <style
-    repeat="category|param:parentId:7f8ad86d-404d-c0a9-69d2-36aed2d53306|sort:displayOrder:asc|includes:"
+    repeat="category|param:parentId:344b2464-7aa3-3089-ac04-fe240adcfee2|sort:displayOrder:asc|includes:"
   >
     /* ================= Active category button ================= */
 
@@ -178,7 +178,7 @@
 
           <!-- CATEGORY -->
           <label
-            repeat="category|param:parentId:7f8ad86d-404d-c0a9-69d2-36aed2d53306|sort:displayOrder:asc|includes:"
+            repeat="category|param:parentId:344b2464-7aa3-3089-ac04-fe240adcfee2|sort:displayOrder:asc|includes:"
             class="button-chip"
           >
             <input
@@ -187,7 +187,7 @@
               hidden=""
               value="{{name}}"
             />
-            {{subDescription}}
+            {{name}}
           </label>
         </div>
       </div>
@@ -199,8 +199,8 @@
       <!-- List start -->
       <div
         class="card"
-        course-cate="{{metaKeyword}}"
-        repeat="article|size:100|sort:postTime:desc|param:categories.id:89a3995d-a667-ff2b-0527-e1fb836557b3|includes:"
+        course-cate="{{subDescription}}"
+        repeat="product|size:20|param:type:32|includes:"
       >
         <div class="top">
           <img src="https://static.izzi.asia/{{images.path}}" alt="{{name}}" />
@@ -209,7 +209,7 @@
 
         <div class="bottom">
           <h4 class="lineclamp-keep-height-2">{{name}}</h4>
-          <div class="d-column gap-xxxs">
+          <!-- <div class="d-column gap-xxxs">
             <div class="d-row-v-center gap-xxxs">
               <span class="material-symbols-outlined"> person </span>
               <p class="lineclamp-keep-height-1">{{subDescription}}</p>
@@ -222,13 +222,11 @@
               <span class="material-symbols-outlined"> location_on </span>
               <p class="lineclamp-keep-height-1">{{metaName}}</p>
             </div>
-          </div>
+          </div> -->
           <div class="description lineclamp-keep-height-3">{{description}}</div>
           <a
             class="goto-button"
-            href="/{{languageCode}}/khoa-hoc/{{friendlyUrl}}"
-            binding-btntext="Đăng ký ngay"
-            binding-btnhref=""
+            href="/{{languageCode}}/san-pham/{{friendlyUrl}}"
           >
             Đăng ký ngay
           </a>

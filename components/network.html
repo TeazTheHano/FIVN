@@ -41,7 +41,7 @@
       width: 100px;
       height: 100px;
       border-radius: var(--radius-round);
-      filter: saturate(0);
+      /* filter: saturate(1); */
     }
 
     #Network #Network_content_cards .card .top .tag {
@@ -169,9 +169,9 @@
       </div>
 
       <div id="Network_content_cards" class="mobileFlexColumn">
-        <div class="card d-column" repeat="article|param:categories.id:e618564c-bdf8-4399-ad7a-5118e6d9b2ba|sort:createdDate:asc|size:100|includes:">
+        <div class="card d-column" repeat="user|param:allType:64|sort:createdDate:asc|size:100|includes:">
           <div class="top d-row gap-m">
-            <img src="https://static.izzi.asia/{{images.path}}" alt="{{name}}">
+            <img src="https://static.izzi.asia{{images.path}}" alt="{{name}}">
             <div class="info d-column gap-xxs">
               <p class="lineclamp-2">{{name}}</p>
               <!-- <p class="tag lineclamp-1 p-subbody">{{metaDescription}}</p>

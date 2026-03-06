@@ -1,7 +1,7 @@
 <div>
   <style>
     #CourseDetailDescription #CourseDetailDescription_content_purchase_box {
-            padding: var(--spacing-m);
+      padding: var(--spacing-m);
     }
 
     #CourseDetailDescription .description {
@@ -61,7 +61,7 @@
 
           <div class="d-column">
             <p class="p-subbody">Phí tham gia</p>
-            <p class="p-ref-h4"> {{price|formatmoney}}</p>
+            <p class="p-ref-h4">{{price|formatmoney}}</p>
           </div>
 
           <a
@@ -85,7 +85,22 @@
 
         <div class="d-row-v-center gap-xs">
           <span class="material-symbols-outlined"> location_on </span>
-          <p>{{location}}</p>
+          <p>Online</p>
+        </div>
+      </div>
+
+      <!-- Author -->
+      <div class="d-column gap-m">
+        <h3>Thông tin giảng viên</h3>
+
+        <div class="d-row-v-center gap-s author_box">
+          <div class="author_img_holder">
+            <img src="https://static.izzi.asia{{authors.images[0].path}}" alt="" />
+          </div>
+          <div class="d-column gap-xxxs">
+            <p class="p-ref-h4">{{authors.name}}</p>
+            <p class="p-subbody">{{authors.description}}</p>
+          </div>
         </div>
       </div>
     </div>
