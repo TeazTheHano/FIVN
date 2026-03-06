@@ -9,10 +9,12 @@ const variable_1 = require("../variable");
 async function sendCommand(payload) {
     try {
         const res = await (0, retryRequest_1.default)(() => axios_1.default.post(variable_1.COMMAND_LINK, payload, { timeout: 35000 }));
+        console.log("✔ Tạo bài thành công:", res.data);
         return res.data;
     }
     catch (error) {
         if (axios_1.default.isAxiosError(error)) {
+            console.error("✖ Lỗi:", error.response?.data);
             throw error.response?.data;
         }
         throw error;

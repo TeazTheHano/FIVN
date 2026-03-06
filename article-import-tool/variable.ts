@@ -12,7 +12,9 @@ export const DOMAIN_USER_CONSTANT = {
     COMMAND_NAME_CREATE: "CreateCustomerWithAttributes",
     COMMAND_NAME_UPDATE: "UpdateCustomerWithAttributes",
 
-    Type_Author: 64
+    CHECK_EMAIL_COMMAND_LINK: "https://apicommand.izzi.asia/User/CheckUserExist",
+
+    Type_Author: 64,
 }
 
 export const DOMAIN_ARTICLE_CONSTANT = {

@@ -20,7 +20,7 @@ export default async function runImport<T>({
 
         console.log(`\n[${index + 1}/${data.length}]`)
 
-        const entity = buildPayload(item, option)
+        const entity = await buildPayload(item, option)
 
         const payload = buildCommand(
             commandName,
