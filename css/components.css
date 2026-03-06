@@ -160,7 +160,7 @@
 }
 
 .cards-slider-container::after {
-    content: "Không còn gì để hiển thị";
+    /* content: "Không còn gì để hiển thị"; */
     padding-right: 50vw;
     white-space: nowrap;
 }
