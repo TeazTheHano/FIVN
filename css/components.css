@@ -174,7 +174,7 @@
 }
 
 .cards-slider-container .card,
-#Course .card{
+#Course .card {
     flex: 0 0 auto;
     width: 70vw;
     min-width: 200px;
@@ -219,6 +219,40 @@
     align-items: center;
     color: var(--color-secondary);
     font-weight: var(--weight-bold);
+}
+
+/* MODAL */
+dialog {
+    width: 100vw;
+    height: 100vh;
+    max-width: unset !important;
+    max-height: unset !important;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background-color: transparent;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+   
+    max-width: 70vw;
+    max-height: 90vh;
+
+    min-width: 350px;
+
+    padding: var(--spacing-m);
+    border-radius: var(--radius-l);
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-l);
+    z-index: 9999;
+}
+
+.modal-dialog::backdrop {
+    backdrop-filter: blur(4px) brightness(0.5);
 }
 
 /* +++++++++++++++ EFFECTS ++++++++++++++ */

@@ -73,7 +73,6 @@
       position: relative;
       z-index: 1;
       display: none;
-      
     }
 
     div[scrolled] #hamburger-menu-icon span {
@@ -150,6 +149,31 @@
 
     .scrolled div[scrolled] #logo img:last-child {
       display: block;
+    }
+
+    #authModal #formLogin {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-m);
+      justify-content: center;
+      align-items: center;
+    }
+
+    #authModal #formLogin > div {
+      width: 100%;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--spacing-s);
+      align-items: center;
+    }
+
+    #authModal #formLogin input {
+      color: var(--color-black);
+      font-family: var(--font-main);
+      padding: var(--spacing-xs);
+      border-radius: var(--radius-s);
+      border: 1px solid var(--color-gray-400);
+      background-color: var(--color-white);
     }
   </style>
 
@@ -234,10 +258,64 @@
           binding-btnhref="#Contact"
           >Liên hệ
         </a>
-        <button class="button-secondary button-small" binding-name="Đăng nhập">
+        <button
+          class="button-secondary button-small"
+          binding-name="Đăng nhập"
+          id="openAuthModal"
+          onclick="authModal.showModal()"
+        >
           Đăng nhập
         </button>
       </div>
     </nav>
   </div>
+
+  <!-- Auth Modal -->
+  <dialog id="authModal" class="modal-dialog">
+    <div class="modal-content d-column gap-m">
+      <div class="d-row-h-between d-row-v-center">
+        <h3 binding-name="Đăng nhập">Đăng nhập</h3>
+        <button
+          class="modal-close button-secondary button-rounded"
+          onclick="authModal.close()"
+          aria-label="Đóng"
+        >
+          <span class="material-symbols-outlined"> close </span>
+        </button>
+      </div>
+      <div class="login-section">
+        <form id="formLogin" action="javascript:void(0)" method="post">
+          <div>
+            <label for="loginEmail">Email</label>
+            <input
+              type="text"
+              name="name"
+              placeholder="example@email.com"
+              required=""
+              id="nameLogin"
+            />
+
+            <label for="loginPassword"> Mật khẩu</label>
+            <input
+              name="password"
+              type="password"
+              id="passwordLogin"
+              placeholder="••••••••"
+              required=""
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="button-primary button-large"
+            id="submitLogin"
+          >
+            Đăng nhập ngay
+          </button>
+
+          <p class="p-subbody">Nếu chưa có tài khoản, vui lòng <a href="" binding-btnhref="" binding-btntext="Đăng ký">Đăng ký</a></p>
+        </form>
+      </div>
+    </div>
+  </dialog>
 </div>

@@ -216,9 +216,9 @@ const routes = [
         afterLoad: courseListFetchComponents,
     },
     {
-        path: /^#\/course-detail\/(.+)$/,
+        path: '#/course-detail',
         view: 'pages/course-detail.html',
-        afterLoad: (match) => loadCourseDetail(match[1]),
+        afterLoad: courseDetailFetchComponents,
     }
 ];
 
@@ -329,6 +329,16 @@ function courseListFetchComponents() {
 
 function courseDetailFetchComponents() {
     loadHtmlFromFile('#sectorHero_placeholder', 'components/sector_hero.html');
+    loadHtmlFromFile('#courseDetailDescription_placeholder', 'components/course_detail_description.html');
+    loadHtmlFromFile('#courseDetailRelateCourse_placeholder', 'components/course.html', () => {
+        sliderControl({
+            listElementQuery: '#Course_content_cards',
+            childElement: '.card',
+            nextBtnQuery: '#Course .cards-slider-controller-next',
+            prevBtnQuery: '#Course .cards-slider-controller-prev',
+            filtersQuery: 'input[name="Course_content_cate"]'
+        });
+    });
 }
 
 // setTimeout(() => {
