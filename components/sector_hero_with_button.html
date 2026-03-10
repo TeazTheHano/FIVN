@@ -1,73 +1,498 @@
 <div>
   <style>
-    /* ---------- Container ---------- */
-
-    #SectorHero {
+    #hero {
       position: relative;
-      min-height: 70dvh;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: end;
       overflow: hidden;
-
-      justify-content: end;
-
-      color: var(--color-white);
+      background: var(--color-dark-contrast);
     }
 
-    #SectorHero .bg {
+    #hero #slide1:checked ~ .bg-slides .bg-slide:nth-child(1),
+    #hero #slide2:checked ~ .bg-slides .bg-slide:nth-child(2),
+    #hero #slide3:checked ~ .bg-slides .bg-slide:nth-child(3) {
+      opacity: 1;
+    }
+
+    #hero .bg-slides {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
+      inset: 0;
+      z-index: 0;
     }
 
-    #SectorHero .bg img {
+    #hero .bg-slides .bg-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity var(--transition-slow);
+      transform: scale(1.05);
+    }
+
+    #hero .bg-slides .bg-slide img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 1;
     }
 
-    #SectorHero .bg .graCoat-primary {
-      z-index: 1;
-      background-image: linear-gradient(to left, #0a1f134d, #0a1f13);
-      opacity: 1;
-      width: 100%;
+    /* Overlays - Carbon & Gradient */
+    #hero .bg-slides .overlay-carbon {
+      position: absolute;
+      inset: 0;
+      background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
+      opacity: 0.2;
+      mix-blend-mode: overlay;
+    }
+
+    #hero .bg-slides .overlay-gradient {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.95),
+          rgba(0, 0, 0, 0.7),
+          transparent
+        ),
+        linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.8),
+          transparent,
+          rgba(0, 0, 0, 0.5)
+        );
+    }
+
+    #hero .circuit-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      pointer-events: none;
+      opacity: 0.6;
+    }
+
+    #hero .main-content {
+      display: flex;
+      flex: 1;
+      justify-content: space-between;
+      align-items: end;
+      margin: var(--spacing-xxl);
+    }
+
+    #hero .content-container {
+      padding: 0 var(--spacing-m);
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    #hero .content-container .hero-content {
+      grid-area: 1 / 1;
+      opacity: 0;
+      transform: translateY(30px);
+      visibility: hidden;
+      transition: all 0.7s ease-out;
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-m);
+      justify-content: end;
+    }
+
+    #hero .content-container .hero-content .system-tag {
+      font-family: var(--font-mono);
+      color: var(--color-primary);
+      font-size: var(--t-mini-size);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      gap: var(--spacing-xs);
+
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    #hero .content-container .hero-content .system-tag .dot {
+      width: 8px;
+      height: 8px;
+      background: var(--color-primary);
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    #hero .content-container .hero-content .system-tag::after {
+      content: "";
+      display: inline-block;
+      width: 3rem;
+      height: 0.5px;
+      background-color: var(--color-primary);
+      transform: translateY(-50%);
+      vertical-align: middle;
+    }
+
+    #hero .content-container .hero-content h1 {
+      line-height: 1.1;
+      text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      color: var(--color-white);
+    }
+
+    #hero .content-container .hero-content .description {
+      border-left: 4px solid var(--color-primary);
+      padding-left: 24px;
+      color: var(--color-gray-400);
+    }
+
+    #hero .content-container .hero-content .btn-group {
+      display: flex;
+      gap: 20px;
+      color: var(--color-white);
+    }
+
+    #hero .content-container .hero-content .btn-group a {
+      text-decoration: none;
+      /* border-radius: 0;
+      color: var(--color-white);
+      text-transform: uppercase;
+      font-weight: var(--weight-semibold);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: var(--spacing-xxs);
+      padding: var(--spacing-xs) var(--spacing-m); */
+    }
+
+    #hero .content-container .hero-content .btn-group p {
+      font-size: inherit;
+      color: inherit;
+      font-weight: inherit;
+    }
+
+    #hero .content-container .hero-content .btn-group .btn-group-primary {
+      clip-path: polygon(0 0, 100% 0, 100% 70%, 90% 100%, 0 100%);
+      background-color: var(--color-secondary);
+      border: none;
+
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 16;
+      }
+    }
+
+    #hero .content-container .hero-content .btn-group .btn-group-primary:hover {
+      background-color: var(--color-white);
+      color: var(--color-primary);
+    }
+
+    #hero .content-container .hero-content .btn-group .btn-group-secondary {
+      background-color: transparent;
+      border: 1px solid var(--color-white);
+
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 1,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 16;
+      }
+    }
+
+    #hero
+      .content-container
+      .hero-content
+      .btn-group
+      .btn-group-secondary:hover {
+      color: var(--color-secondary);
+      border-color: var(--color-secondary);
+    }
+
+    #hero .side-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      z-index: 30;
+    }
+
+    #hero .side-nav .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      cursor: pointer;
+      opacity: 0.4;
+      transition: 0.3s;
+    }
+
+    #hero .side-nav .nav-item span {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--color-gray-400);
+    }
+
+    #hero .side-nav .nav-item .line {
+      width: 48px;
+      height: 2px;
+      background: var(--color-gray-400);
+      position: relative;
+    }
+
+    #hero .side-nav .nav-item .line::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
       height: 100%;
+      width: 0;
+      background: var(--color-primary);
+      transition: 0.3s;
     }
 
-    #SectorHero #SectionHero_content {
+    #hero .side-nav .nav-item:hover {
+      opacity: 0.7;
+    }
+
+    #hero #slide1:checked ~ .main-content .content-container #content1,
+    #hero #slide2:checked ~ .main-content .content-container #content2,
+    #hero #slide3:checked ~ .main-content .content-container #content3 {
+      opacity: 1;
+      transform: translateY(0);
+      visibility: visible;
+    }
+
+    /* --- Navigation Control Logic --- */
+    #hero #slide1:checked ~ .main-content .side-nav label[for="slide1"],
+    #hero #slide2:checked ~ .main-content .side-nav label[for="slide2"],
+    #hero #slide3:checked ~ .main-content .side-nav label[for="slide3"] {
+      opacity: 1;
+    }
+
+    /* --- Navigation Control Animation --- */
+    #hero
+      #slide1:checked
+      ~ .main-content
+      .side-nav
+      label[for="slide1"]
+      .line::after,
+    #hero
+      #slide2:checked
+      ~ .main-content
+      .side-nav
+      label[for="slide2"]
+      .line::after,
+    #hero
+      #slide3:checked
+      ~ .main-content
+      .side-nav
+      label[for="slide3"]
+      .line::after {
       width: 100%;
-      max-width: 1300px;
-      margin: 0 auto;
+    }
+
+    #hero .bottom-progress {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      z-index: 40;
+    }
+    #hero .bottom-progress .progress-fill {
+      height: 100%;
+      background: var(--color-primary);
+      width: 0%;
+    }
+
+    /* Simple auto-animation for bar (visual only) */
+    @keyframes progress {
+      from {
+        width: 0;
+      }
+
+      to {
+        width: 100%;
+      }
+    }
+
+    #hero .bottom-progress .animate-bar {
+      animation: progress 5s linear infinite;
+    }
+
+    #hero .tech-coords {
+      display: none !important;
+
+      position: absolute;
+      bottom: 30px;
+      right: 40px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.4);
+      text-align: right;
+      z-index: 40;
     }
   </style>
 
-  <section id="SectorHero" class="d-column gap-xxs">
-    <div class="bg">
-      <div class="graCoat-primary absolute"></div>
-      <img
-        binding-imgpath="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
-        src="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
-      />
+  <section class="hero-section mouse-parallax" id="hero">
+    <!-- 1. Slider Backgrounds -->
+    <div class="bg-slides">
+      <div class="bg-slide">
+        <img
+          binding-imgpath="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
+          src="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
+          alt="Tech 1"
+        />
+        <div class="overlay-carbon"></div>
+        <div class="overlay-gradient"></div>
+      </div>
+      <div class="bg-slide">
+        <img
+          binding-imgpath="https://images.unsplash.com/photo-1518770660439-4636190af475"
+          src="https://images.unsplash.com/photo-1518770660439-4636190af475"
+          alt="Tech 2"
+        />
+        <div class="overlay-carbon"></div>
+        <div class="overlay-gradient"></div>
+      </div>
+      <div class="bg-slide">
+        <img
+          binding-imgpath="https://images.unsplash.com/photo-1504384308090-c894fdcc538d"
+          src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d"
+          alt="Tech 3"
+        />
+        <div class="overlay-carbon"></div>
+        <div class="overlay-gradient"></div>
+      </div>
     </div>
 
-    <div id="SectionHero_content" class="d-column gap-s">
-      <p class="tag tag-tail" binding-name="Fouder instittute vietnam">
-        Fouder instittute vietnam
-      </p>
-      <h2 binding-name="Chi tiết khóa học">Chi tiết khóa học</h2>
-      <p binding-name="Trang chủ > Khóa học" class="tag-before">
-        Trang chủ > Khóa học
-      </p>
-      <a
-        href="#Contact"
-        binding-btnhref="#Contact"
-        binding-btntext="Đăng ký ngay"
-        class="button-primary-2 button-medium"
+    <!-- 2. Spotlight -->
+    <div class="spotlight"></div>
+
+    <!-- 3. Circuit Overlay (SVG) -->
+    <div class="circuit-overlay">
+      <svg
+        width="100rem"
+        height="90rem"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
       >
-        Đăng ký ngay
-      </a>
+        <defs>
+          <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#7BC440" stop-opacity="0.8"></stop>
+            <stop offset="100%" stop-color="#216320" stop-opacity="0.2"></stop>
+          </linearGradient>
+        </defs>
+        <g class="animate-float">
+          <path
+            d="M5,10 L8,8 L11,10 L11,14 L8,16 L5,14 Z"
+            fill="none"
+            stroke="#7BC440"
+            stroke-width="0.8"
+          ></path>
+          <circle cx="8" cy="12" r="0.5" fill="#7BC440"></circle>
+          <path
+            d="M15,20 L18,18 L21,20 L21,24 L18,26 L15,24 Z"
+            fill="none"
+            stroke="#7BC440"
+            stroke-width="0.8"
+            opacity="0.7"
+          ></path>
+          <circle cx="18" cy="22" r="0.5" fill="#7BC440"></circle>
+          <path
+            d="M8,16 L8,18 L12,22 L15,22"
+            fill="none"
+            stroke="white"
+            stroke-width="0.1"
+            opacity="0.5"
+          ></path>
+          <path
+            d="M11,12 L15,12 L18,15 L18,18"
+            fill="none"
+            stroke="white"
+            stroke-width="0.1"
+            opacity="0.5"
+          ></path>
+          <path
+            d="M5,12 L2,12"
+            fill="none"
+            stroke="white"
+            stroke-width="0.1"
+            opacity="0.5"
+          ></path>
+          <circle
+            cx="12"
+            cy="22"
+            r="0.3"
+            fill="#fff"
+            classname="animate-pulse"
+          ></circle>
+        </g>
+
+        <circle r="0.3" fill="#fff">
+          <animateMotion
+            dur="5s"
+            repeatCount="indefinite"
+            path="M11,12 L20,12 L25,20"
+          ></animateMotion>
+        </circle>
+      </svg>
+    </div>
+
+    <!-- 4. Content Container -->
+    <div class="d-row main-content">
+      <div class="content-container">
+        <div class="hero-content" id="content1" repeat="product|size:20|param:type:32|param:categories.id:622e7baa-e0b9-2da6-25d6-260e37769e34|includes:">
+          <div class="system-tag">
+            <div class="dot"></div>
+            <span binding-name="FOUNDER INSTITUTE VIETNAM [FIV]"
+              >FOUNDER INSTITUTE VIETNAM [FIV]</span
+            >
+          </div>
+          <h1 class="p-ref-h2" binding-name="XÂY DỰNG TƯƠNG LAI SỐ">
+            XÂY DỰNG TƯƠNG LAI SỐ
+          </h1>
+          <p
+            class="description"
+            binding-subdescription="Kết nối với mạng lưới khởi nghiệp lớn nhất thế giới.        "
+          >
+            Kết nối với mạng lưới khởi nghiệp lớn nhất thế giới.
+          </p>
+          <div class="btn-group mobileFlexColumn">
+            <a
+              class="button-medium button-primary"
+              binding-btntext="ĐĂNG KÝ NEWSLETTER"
+              href="#Contact"
+              binding-btnhref="#Contact"
+            >
+              ĐĂNG KÝ NEWSLETTER
+            </a>
+            <a
+              class="button-medium button-secondary"
+              href="#Programme"
+              binding-btnhref="#Programme"
+              binding-btntext="CHƯƠNG TRÌNH FI CORE"
+              >CHƯƠNG TRÌNH FI CORE
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Navigation Side -->
+      <div class="side-nav mobileHide">
+        <label for="slide1" class="nav-item">
+          <span>01</span>
+          <div class="line"></div>
+          <input hidden type="radio" name="hero" id="slide1" />
+        </label>
+      </div>
+    </div>
+
+    <!-- 6. Coords & Progress -->
+    <div class="tech-coords">
+      <div>COORDS: 10.7626° N, 106.6602° E</div>
+      <div>STATUS: OPERATIONAL</div>
+      <div class="tech-coords-value"></div>
+    </div>
+    <div class="bottom-progress">
+      <div class="progress-fill animate-bar"></div>
     </div>
   </section>
 </div>

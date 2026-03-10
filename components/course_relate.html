@@ -1,55 +1,41 @@
 <div>
   <style>
-    #Course {
+    #Related {
       background-color: var(--color-bg-light);
     }
 
-    /* ================= Course Content ================= */
+    /* ================= Related Content ================= */
 
-    #Course #Course_content {
+    #Related #Related_content {
       gap: var(--spacing-m);
       padding-bottom: var(--spacing-l);
     }
 
     /* ---------- Category list ---------- */
 
-    #Course #Course_content #Course_content_cate_list {
+    #Related #Related_content #Related_content_cate_list {
       justify-content: space-between;
       width: 100%;
     }
 
-    #Course #Course_content #Course_content_cate_list div:first-child {
+    #Related #Related_content #Related_content_cate_list div:first-child {
       flex-wrap: wrap;
     }
 
-    #Course #Course_content_cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 400px));
-      gap: var(--spacing-s);
-      justify-content: center;
-      --max: 9;
-      overflow: hidden;
-      padding: var(--spacing-l);
-    }
-
-    /* #Course #Course_content_cards .card {
-      display: none;
-    } */
-
     /* ---------- Card Top ---------- */
 
-    #Course #Course_content_cards .card .top {
+    #Related #Related_content_cards .card .top {
       width: 100%;
       aspect-ratio: 16 / 9;
       position: relative;
     }
 
-    #Course #Course_content_cards .card .top img {
+    #Related #Related_content_cards .card .top img {
       height: 100%;
       width: 100%;
     }
 
-    #Course #Course_content_cards .card .top .tag {
+    #Related #Related_content_cards .card .top .tag {
       position: absolute;
       top: var(--spacing-s);
       right: var(--spacing-s);
@@ -66,13 +52,13 @@
       border-radius: var(--radius-round);
     }
 
-    #Course #Course_content_cards .card .top .tag::before {
+    #Related #Related_content_cards .card .top .tag::before {
       content: "";
     }
 
     /* ---------- Card Bottom ---------- */
 
-    #Course #Course_content_cards .card .bottom {
+    #Related #Related_content_cards .card .bottom {
       padding: var(--spacing-m);
       display: flex;
       flex-direction: column;
@@ -83,34 +69,34 @@
       font-weight: var(--weight-thin);
     }
 
-    #Course #Course_content_cards .card .bottom span {
+    #Related #Related_content_cards .card .bottom span {
       color: var(--color-primary);
       font-size: var(--t-body-size) !important;
     }
 
-    #Course #Course_content_cards .card .bottom h4 {
+    #Related #Related_content_cards .card .bottom h4 {
       font-size: var(--t-body-size);
       line-height: var(--t-subbody-lh);
     }
 
-    #Course #Course_content_cards .card .bottom h4 + div p {
+    #Related #Related_content_cards .card .bottom h4 + div p {
       font-size: var(--t-mini-size);
     }
 
-    #Course #Course_content_cards .card .bottom h4 + div div:first-child p {
+    #Related #Related_content_cards .card .bottom h4 + div div:first-child p {
       font-weight: var(--weight-semibold);
     }
 
-    #Course #Course_content_cards .card .bottom .description * {
+    #Related #Related_content_cards .card .bottom .description * {
       font-size: var(--t-subbody-size);
       line-height: var(--t-subbody-lh);
     }
 
-    #Course #Course_content_cards .card .bottom .btn {
+    #Related #Related_content_cards .card .bottom .btn {
       text-decoration: none;
     }
 
-    #Course #Course_content_cards .card .goto-button {
+    #Related #Related_content_cards .card .goto-button {
       color: var(--color-black);
       font-size: var(--t-subbody-size);
       font-weight: var(--weight-semibold);
@@ -120,89 +106,66 @@
 
     /* ---------- Hover ---------- */
 
-    #Course #Course_content_cards .card:hover {
+    #Related #Related_content_cards .card:hover {
       transform: translateY(calc(-1 * var(--spacing-xxxs)));
       filter: drop-shadow(var(--shadow-xl)) drop-shadow(var(--shadow-m));
     }
 
-    #Course #Course_content_cards .card:hover .top img {
+    #Related #Related_content_cards .card:hover .top img {
       transform: scale(1.1);
     }
 
-    #Course #Course_content_cards .card .goto-button:hover {
+    #Related #Related_content_cards .card .goto-button:hover {
       color: var(--color-secondary);
-    }
-
-    #Course #Course_pagination {
-      padding: var(--spacing-m);
+      
     }
   </style>
 
- 
-
-  <section id="Course" class="relative">
-    <div id="Course_content" class="maxWidth1300">
+  <section id="Related" class="relative">
+    <div id="Related_content" class="maxWidth1300 d-column-h-center gap-m">
       <div class="d-column-h-center gap-xs">
-        <p class="tag">OUR INNOVATIVE PROGRAMS</p>
-        <h3>CÁC CHƯƠNG TRÌNH ĐỔI MỚI SÁNG TẠO</h3>
-        <p>
-          Founder Institute Vietnam không chỉ cung cấp các chương trình đào tạo,
-          ươm tạo và tăng tốc...
+        <p class="tag" binding-name="Đào tạo chuyên sâu">
+          Đào tạo chuyên sâu
+        </p>
+        <h3 binding-name="Khóa học liên quan">
+          Khóa học liên quan
+        </h3>
+        <p
+          binding-name='Kỹ năng thực chiến dành cho Founder bận rộn, tập trung vào những "nút thắt" quan trọng nhất.''
+        >
+            Kỹ năng thực chiến dành cho Founder bận rộn, tập trung vào những "nút thắt" quan trọng nhất.
         </p>
       </div>
 
       <!-- ================= Category list ================= -->
-
-      <div class="d-row-v-center gap-m" id="Course_content_cate_list">
-        <div class="d-row gap-xxs">
-          <!-- ALL -->
-          <label class="button-chip">
-            <input
-              type="radio"
-              name="Course_content_cate"
-              hidden=""
-              value="all"
-              checked=""
-            />
-            Tất cả
-          </label>
-
-          <!-- CATEGORY -->
-          <label
-            repeat="category|param:parentId:344b2464-7aa3-3089-ac04-fe240adcfee2|sort:displayOrder:asc|includes:"
-            class="button-chip"
-          >
-            <input
-              type="radio"
-              name="Course_content_cate"
-              hidden=""
-              value="{{name}}"
-            />
-            {{name}}
-          </label>
-        </div>
-      </div>
     </div>
 
     <!-- ================= Cards ================= -->
 
-    <div id="Course_content_cards" class="maxWidth1300">
+    <div id="Related_content_cards" class="maxWidth1300 cards-slider-container">
+      <!-- Controller -->
+      <div class="cards-slider-controller mobileHide gap-xxs">
+        <div class="cards-slider-controller-prev button-primary button-rounded">
+          <span class="material-symbols-outlined"> chevron_left </span>
+        </div>
+        <div class="cards-slider-controller-next button-primary button-rounded">
+          <span class="material-symbols-outlined"> chevron_right </span>
+        </div>
+      </div>
+
       <!-- List start -->
       <div
         class="card"
-        course-cate="{{subDescription}}"
-        repeat="product|size:20|param:type:32|includes:"
+        Related-cate="{{subDescription}}"
+        repeat="product|param:categories.id:dataSection|size:5|sort:createdDate:desc|includes:"
       >
         <div class="top">
-          <img src="https://static.izzi.asia/{{images.path}}" alt="{{name}}" />
+          <img src="https://static.izzi.asia{{images.path}}" alt="{{name}}" />
           <!-- <div class="tag">{{categories[1].subDescription}}</div> -->
         </div>
 
         <div class="bottom">
-          <a
-            href="/{{languageCode}}/san-pham/{{friendlyUrl}}"
-            class="goto-button"
-          >
+          <a href="/{{languageCode}}/san-pham/{{friendlyUrl}}" class="goto-button">
             <h4 class="lineclamp-keep-height-2">{{name}}</h4>
           </a>
           <!-- <div class="d-column gap-xxxs">
@@ -221,16 +184,28 @@
           </div> -->
           <div class="description lineclamp-keep-height-3">{{description}}</div>
           <a
-            class="goto-button btn-buynow course-grid-cart-btn buyNow createOrder"
+            class="goto-button btn-buynow Related-grid-cart-btn buyNow createOrder"
             data-id="{{id}}"
           >
             Đăng ký ngay
           </a>
         </div>
       </div>
+
       <!-- List end -->
     </div>
 
-    <div id="Course_pagination" class="d-row-h-center gap-xs"></div>
+    <!-- ================= View all button ================= -->
+
+    <div class="view-all-btn">
+      <a
+        class="button-secondary button-medium"
+        href="/danh-sach-khoa-hoc"
+        binding-btntext="        Xem thêm    "
+        binding-btnhref=""
+      >
+        Xem thêm
+      </a>
+    </div>
   </section>
 </div>

@@ -80,10 +80,7 @@
     class="maxWidth1300"
   >
     <div id="CourseDetailDescription_content" class="d-column gap-m">
-      <div>
-        <p class="tag tag-tail" binding-name="Khóa học">Khóa học></p>
-        <h1 class="p-ref-h2">{{name}}</h1>
-      </div>
+      <h1 class="p-ref-h2">{{name}}</h1>
 
       <div class="CourseDetailDescription_img_holder mobileShow">
         <img
@@ -169,10 +166,9 @@
           </div>
 
           <a
-            binding-btnhref="#Contact"
             binding-btntext="Đăng ký ngay"
-            href="#Contact"
-            class="button-primary button-large"
+            data-id="{{id}}"
+            class="button-primary button-large btn-buynow course-grid-cart-btn buyNow createOrder"
           >
             Đăng ký ngay
           </a>

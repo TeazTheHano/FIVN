@@ -175,6 +175,12 @@
       border: 1px solid var(--color-gray-400);
       background-color: var(--color-white);
     }
+
+    #AfterLogin:hover #logoutFb {
+      display: block;
+      position: absolute;
+      width: 100%;
+    }
   </style>
 
   <div scrolled class="d-row-v-center">
@@ -188,12 +194,12 @@
           <img
             binding-imgpath="https://static.izzi.asia/templates/FIVN/svg/FIVN-Logo-02.svg"
             src="https://static.izzi.asia/templates/FIVN/svg/FIVN-Logo-02.svg"
-            alt=""
+            alt
           />
           <img
             binding-imgpath="https://static.izzi.asia/templates/FIVN/svg/FIVN-Logo-01.svg"
             src="https://static.izzi.asia/templates/FIVN/svg/FIVN-Logo-01.svg"
-            alt=""
+            alt
           />
         </a>
       </div>
@@ -258,14 +264,40 @@
           binding-btnhref="#Contact"
           >Liên hệ
         </a>
+        <div></div>
         <button
-          class="button-secondary button-small"
+          class="button-secondary button-small userNotLogin"
           binding-name="Đăng nhập"
           id="openAuthModal"
           onclick="authModal.showModal()"
         >
           Đăng nhập
         </button>
+        <div
+          class="btn-user-logged userLogin d-none"
+          aria-label="User Profile"
+          id="AfterLogin"
+        >
+          <div class="relative d-column gap-xs">
+            <div class="d-row-v-center button-primary-2 button-small">
+              <span class="user-logged-text displayName"></span>
+              <span class="material-symbols-outlined"> stat_minus_1 </span>
+            </div>
+
+            <!-- <div id="LogoutButton" class="d-none button-primary-2 button-small"> -->
+            <button
+              href="javascript:void(0);"
+              class="user-menu-item logoutFb d-none button-primary-2 button-small"
+              id="logoutFb"
+            >
+              <div class="d-center">
+                <span class="material-symbols-outlined"> logout </span>
+                <span>Đăng Xuất</span>
+              </div>
+            </button>
+            <!-- </div> -->
+          </div>
+        </div>
       </div>
     </nav>
   </div>
@@ -291,7 +323,7 @@
               type="text"
               name="name"
               placeholder="example@email.com"
-              required=""
+              required
               id="nameLogin"
             />
 
@@ -301,7 +333,7 @@
               type="password"
               id="passwordLogin"
               placeholder="••••••••"
-              required=""
+              required
             />
           </div>
 
@@ -313,7 +345,10 @@
             Đăng nhập ngay
           </button>
 
-          <p class="p-subbody">Nếu chưa có tài khoản, vui lòng <a href="" binding-btnhref="" binding-btntext="Đăng ký">Đăng ký</a></p>
+          <p class="p-subbody">
+            Nếu chưa có tài khoản, vui lòng
+            <a href binding-btnhref binding-btntext="Đăng ký">Đăng ký</a>
+          </p>
         </form>
       </div>
     </div>

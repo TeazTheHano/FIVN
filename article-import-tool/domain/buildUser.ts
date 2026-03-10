@@ -82,6 +82,7 @@ export default async function buildUser(
     let userId = await checkUserExist(item.Email)
     if (userId) {
         console.log("⚠ User đã tồn tại:", item.Email)
+        return null
     } else {
         userId = randomUUID()
     }

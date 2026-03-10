@@ -289,6 +289,7 @@ function PagingContent({
     filtersQuery = null,
     autoNextTime = 0,
 }) {
+
     const container = document.querySelector(containerQuery)
     const paginationContainer = document.querySelector(paginationContainerQuery)
 
@@ -301,7 +302,9 @@ function PagingContent({
     let currentPage = 1
 
     function renderPage() {
+
         const totalPages = Math.ceil(filteredItems.length / itemsPerPage)
+
         const start = (currentPage - 1) * itemsPerPage
         const end = start + itemsPerPage
 
@@ -316,18 +319,20 @@ function PagingContent({
         // Render pagination
         paginationContainer.innerHTML = ''
 
+        if (totalPages === 0) return
         for (let i = 1; i <= totalPages; i++) {
             const btn = document.createElement('button')
             btn.innerText = i
-            btn.classList.toggle('active', i === currentPage)
 
             btn.classList.add('button-chip', 'button-rounded')
+            if (i === currentPage) {
+                btn.classList.add('active')
+            }
             btn.style.lineHeight = '1'
             btn.addEventListener('click', () => {
                 currentPage = i
                 renderPage()
             })
-
             paginationContainer.appendChild(btn)
         }
     }
@@ -335,7 +340,9 @@ function PagingContent({
     // AUTO NEXT
     function autoNext() {
         setTimeout(() => {
-            if (currentPage < Math.ceil(filteredItems.length / itemsPerPage)) {
+            const totalPages = Math.ceil(filteredItems.length / itemsPerPage)
+            if (totalPages === 0) return
+            if (currentPage < totalPages) {
                 currentPage++
             } else {
                 currentPage = 1
@@ -351,9 +358,8 @@ function PagingContent({
         const filters = document.querySelectorAll(filtersQuery)
 
         filters.forEach(filter => {
-            filter.addEventListener('change', () => {
-                const value = filter.value?.trim().toLowerCase()
-
+            filter.addEventListener('change', (e) => {
+                const value = e.target.value?.trim().toLowerCase()
                 if (!value || value === 'all') {
                     filteredItems = [...allItems]
                 } else {
@@ -361,21 +367,22 @@ function PagingContent({
                         const cate = (item.getAttribute('course-cate') || '')
                             .trim()
                             .toLowerCase()
-
-                        return cate === value
+                        return cate.includes(value)
                     })
                 }
-
                 currentPage = 1
                 renderPage()
             })
+
         })
     }
 
     renderPage()
+
     if (autoNextTime > 0) {
         autoNext()
     }
+
 }
 
 // CALLING FUNCTIONs
@@ -426,13 +433,26 @@ function courseListPageCall() {
         containerQuery: '#Course_content_cards',
         itemsQuery: '.card',
         paginationContainerQuery: '#Course_pagination',
-        itemsPerPage: 6,
+        itemsPerPage: 9,
         filtersQuery: 'input[name="Course_content_cate"]'
     })
+    sliderControl({
+        listElementQuery: '#Related_content_cards',
+        childElement: '.card',
+        nextBtnQuery: '#Related .cards-slider-controller-next',
+        prevBtnQuery: '#Related .cards-slider-controller-prev'
+    });
 }
 
 switch (true) {
-    case window.location.pathname.includes('/pages/danh-sach-khoa-hoc'):
+    case window.location.pathname.includes('/pages/danh-sach-khoa-hoc') ||
+        window.location.pathname.includes('/danh-sach-khoa-hoc') ||
+        window.location.pathname.includes('/danh-sach-bai-viet/') ||
+        window.location.pathname.includes('/pages/danh-sach-bai-viet/') ||
+        window.location.pathname.includes('/bai-viet/') ||
+        window.location.pathname.includes('/pages/bai-viet/') ||
+        window.location.pathname.includes('/pages/san-pham/') ||
+        window.location.pathname.includes('/san-pham/'):
         console.log('adsfasdf');
         courseListPageCall();
         break;
