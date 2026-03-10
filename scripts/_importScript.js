@@ -295,10 +295,12 @@ function landingFetchComponents() {
     loadHtmlFromFile('#partner-section_placeholder', 'components/partner.html');
     loadHtmlFromFile('#contact-section_placeholder', 'components/contact.html');
     loadHtmlFromFile('#quote-section_placeholder', 'components/quote.html', () => {
-        autoSlide({
-            listElementQuery: '#Feedback_content_cards',
-            itemQuery: '.card',
-            delayTime: 3000
+        PagingContent({
+            containerQuery: '#Partner_content_cards',
+            itemsQuery: '.card',
+            paginationContainerQuery: '#Partner_pagination',
+            itemsPerPage: 10,
+            autoNextTime: 5000,
         });
     });
     loadHtmlFromFile('#FAQ-section_placeholder', 'components/FAQ.html');

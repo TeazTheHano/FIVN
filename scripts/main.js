@@ -287,6 +287,7 @@ function PagingContent({
     paginationContainerQuery,
     itemsPerPage = 6,
     filtersQuery = null,
+    autoNextTime = 0,
 }) {
     const container = document.querySelector(containerQuery)
     const paginationContainer = document.querySelector(paginationContainerQuery)
@@ -320,7 +321,8 @@ function PagingContent({
             btn.innerText = i
             btn.classList.toggle('active', i === currentPage)
 
-            btn.classList.add('button-chip')
+            btn.classList.add('button-chip', 'button-rounded')
+            btn.style.lineHeight = '1'
             btn.addEventListener('click', () => {
                 currentPage = i
                 renderPage()
@@ -328,6 +330,20 @@ function PagingContent({
 
             paginationContainer.appendChild(btn)
         }
+    }
+
+    // AUTO NEXT
+    function autoNext() {
+        setTimeout(() => {
+            if (currentPage < Math.ceil(filteredItems.length / itemsPerPage)) {
+                currentPage++
+            } else {
+                currentPage = 1
+            }
+
+            renderPage()
+            autoNext()
+        }, autoNextTime)
     }
 
     // FILTER
@@ -357,6 +373,9 @@ function PagingContent({
     }
 
     renderPage()
+    if (autoNextTime > 0) {
+        autoNext()
+    }
 }
 
 // CALLING FUNCTIONs
@@ -392,6 +411,13 @@ function landingPageCall() {
         listElementQuery: '#Feedback_content_cards',
         itemQuery: '.card',
         delayTime: 3000
+    });
+    PagingContent({
+        containerQuery: '#Partner_content_cards',
+        itemsQuery: '.card',
+        paginationContainerQuery: '#Partner_pagination',
+        itemsPerPage: 10,
+        autoNextTime: 5000,
     });
 }
 

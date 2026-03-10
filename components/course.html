@@ -79,7 +79,7 @@
     }
 
     #Course #Course_content_cards .card .bottom h4 {
-      font-size: var(--t-subbody-size);
+      font-size: var(--t-body-size);
       line-height: var(--t-subbody-lh);
     }
 
@@ -119,7 +119,7 @@
       transform: scale(1.1);
     }
 
-    #Course #Course_content_cards .card:hover .goto-button {
+    #Course #Course_content_cards .card .goto-button:hover {
       color: var(--color-secondary);
     }
   </style>
@@ -226,7 +226,9 @@
         </div>
 
         <div class="bottom">
-          <h4 class="lineclamp-keep-height-2">{{name}}</h4>
+          <a href="/{{languageCode}}/san-pham/{{friendlyUrl}}" class="goto-button">
+            <h4 class="lineclamp-keep-height-2">{{name}}</h4>
+          </a>
           <!-- <div class="d-column gap-xxxs">
             <div class="d-row-v-center gap-xxxs">
               <span class="material-symbols-outlined"> person </span>
