@@ -400,7 +400,8 @@ function landingPageCall() {
         listElementQuery: '#News_content_cards',
         childElement: '.card',
         nextBtnQuery: '#News .cards-slider-controller-next',
-        prevBtnQuery: '#News .cards-slider-controller-prev'
+        prevBtnQuery: '#News .cards-slider-controller-prev',
+        filtersQuery: 'input[name="News_content_cate"]'
     });
 
     trackMousePosition('#Programme')

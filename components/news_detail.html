@@ -1,0 +1,111 @@
+<div>
+  <style>
+    #NewsDetail_Thumb {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16/9;
+    }
+
+    h1 {
+      font-family: var(--font-main);
+      font-size: var(--t-h2-size);
+      font-weight: var(--t-h2-weight);
+      line-height: var(--t-h2-lh);
+    }
+
+    h2 {
+      font-family: var(--font-main);
+      font-size: var(--t-h3-size);
+      font-weight: var(--t-h3-weight);
+      line-height: var(--t-h3-lh);
+    }
+
+    h3 {
+      font-family: var(--font-main);
+      font-size: var(--t-h4-size);
+      font-weight: var(--t-h4-weight);
+      line-height: var(--t-h4-lh);
+    }
+
+    p {
+      font-family: var(--font-main);
+      font-size: var(--t-body-size);
+      font-weight: var(--t-body-weight);
+      line-height: var(--t-body-lh);
+      color: var(--color-gray-800);
+      margin: var(--spacing-xs) 0;
+    }
+
+    ul,
+    ol,
+    li,
+    table,
+    tr,
+    td {
+      color: var(--color-gray-600);
+    }
+
+    ul,
+    ol {
+      margin-left: var(--spacing-s);
+    }
+
+    .share-icon {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+  </style>
+
+  <section id="NewsDetail" repeat="detaildata">
+    <div id="NewsDetail_content" class="maxWidth1300">
+      <h1>{{name}}</h1>
+      <div class="d-row-v-center gap-xxxs">
+        <span class="material-symbols-outlined"> schedule </span>
+        <p class="p-subbody">{{createdDate|formatdatetime:dd-mm-yyyy}}</p>
+      </div>
+
+      <div id="NewsDetail_Thumb">
+        <img src="https://static.izzi.asia/{{images.path}}" alt="{{name}}" />
+      </div>
+
+      <div>{{description}}</div>
+
+      <br />
+      <hr />
+
+      <div class="d-row-v-center gap-xxs">
+        <p>Chia sẻ bài viết:</p>
+        <a
+          target="_blank"
+          href="https://www.facebook.com/sharer/sharer.php?u=https://fivietnam.labo.io/vi-VN/bai-viet/{{friendlyUrl}}"
+        >
+          <img
+            src="https://static.izzi.asia/images/2026/3/11/2603113493_2021Facebookicon.svg.png"
+            alt="Facebook"
+            class="share-icon"
+          />
+        </a>
+        <a
+          target="_blank"
+          href="https://www.linkedin.com/sharing/share-offsite/?url=https://fivietnam.labo.io/vi-VN/bai-viet/{{friendlyUrl}}"
+        >
+          <img
+            src="https://static.izzi.asia/images/2026/3/11/2603118488_LinkedInicon.svg.png"
+            alt="Facebook"
+            class="share-icon"
+          />
+        </a>
+        <a
+          target="_blank"
+          href="https://twitter.com/intent/tweet?text=https://fivietnam.labo.io/vi-VN/bai-viet/{{friendlyUrl}}"
+        >
+          <img
+            src="https://static.izzi.asia/images/2026/3/11/2603113787_Xicon.svg.png"
+            alt="Twitter"
+            class="share-icon"
+          />
+        </a>
+      </div>
+    </div>
+  </section>
+</div>

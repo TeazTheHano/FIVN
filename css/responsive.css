@@ -34,8 +34,8 @@
 
     h1,
     .p-ref-h1 {
-        font-size: var(--t-h1-size) !important;
-        line-height: var(--t-h1-lh) !important;
+        font-size: var(--t-h2-size) !important;
+        line-height: var(--t-h2-lh) !important;
     }
 
     h2,
@@ -46,6 +46,25 @@
 
     h3,
     .p-ref-h3 {
+        font-size: var(--t-h4-size) !important;
+        line-height: var(--t-h4-lh) !important;
+    }
+
+
+    #NewsDetail h1,
+    #NewsDetail .p-ref-h1 {
+        font-size: var(--t-h3-size) !important;
+        line-height: var(--t-h3-lh) !important;
+    }
+
+    #NewsDetail h2,
+    #NewsDetail .p-ref-h2 {
+        font-size: var(--t-h4-size) !important;
+        line-height: var(--t-h4-lh) !important;
+    }
+
+    #NewsDetail h3,
+    #NewsDetail .p-ref-h3 {
         font-size: var(--t-h4-size) !important;
         line-height: var(--t-h4-lh) !important;
     }

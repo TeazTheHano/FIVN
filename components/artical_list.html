@@ -139,7 +139,7 @@
   </style>
 
   <style
-    repeat="category|param:parentId:344b2464-7aa3-3089-ac04-fe240adcfee2|sort:displayOrder:asc|includes:"
+    repeat="category|param:parentId:32268aae-7506-94dd-1bae-850a60f2e3d2|sort:displayOrder:asc|includes:"
   >
     /* ================= Active category button ================= */
 
@@ -152,12 +152,10 @@
   <section id="Course" class="relative">
     <div id="Course_content" class="maxWidth1300">
       <div class="d-column-h-center gap-xs">
-        <p class="tag">OUR INNOVATIVE PROGRAMS</p>
-        <h3>CÁC CHƯƠNG TRÌNH ĐỔI MỚI SÁNG TẠO</h3>
-        <p>
-          Founder Institute Vietnam không chỉ cung cấp các chương trình đào tạo,
-          ươm tạo và tăng tốc...
+        <p class="tag" binding-name="Kiến thức & Xu hướng">
+          Kiến thức & Xu hướng
         </p>
+        <h3 binding-name="Tin tức & Góc nhìn">Tin tức & Góc nhìn</h3>
       </div>
 
       <!-- ================= Category list ================= -->
@@ -178,7 +176,7 @@
 
           <!-- CATEGORY -->
           <label
-            repeat="category|param:parentId:344b2464-7aa3-3089-ac04-fe240adcfee2|sort:displayOrder:asc|includes:"
+            repeat="category|param:parentId:32268aae-7506-94dd-1bae-850a60f2e3d2|sort:displayOrder:asc|includes:"
             class="button-chip"
           >
             <input
@@ -200,32 +198,30 @@
       <div
         class="card"
         course-cate="{{subDescription}}"
-        repeat="product|size:20|param:type:32|includes:"
+        repeat="article|size:150|sort:postTime:desc|param:categories.id:62384618-4e7c-0008-18e0-db03370b979d|includes:"
       >
         <div class="top">
-          <img src="https://static.izzi.asia/{{images.path}}" alt="{{name}}" />
+          <img src="https://static.izzi.asia{{images.path}}" alt="{{name}}" />
           <!-- <div class="tag">{{categories[1].subDescription}}</div> -->
         </div>
 
         <div class="bottom">
-          <h4 class="lineclamp-keep-height-2">{{name}}</h4>
-          <!-- <div class="d-column gap-xxxs">
-            <div class="d-row-v-center gap-xxxs">
-              <span class="material-symbols-outlined"> person </span>
-              <p class="lineclamp-keep-height-1">{{subDescription}}</p>
-            </div>
-            <div class="d-row-v-center gap-xxxs">
-              <span class="material-symbols-outlined"> schedule </span>
-              <p class="lineclamp-keep-height-1">{{metaDescription}}</p>
-            </div>
-            <div class="d-row-v-center gap-xxxs">
-              <span class="material-symbols-outlined"> location_on </span>
-              <p class="lineclamp-keep-height-1">{{metaName}}</p>
-            </div>
-          </div> -->
+          <a
+            href="/{{languageCode}}/bai-viet/{{friendlyUrl}}"
+            class="goto-button"
+          >
+            <h4 class="lineclamp-keep-height-2">{{name}}</h4>
+          </a>
+          <div class="d-row-v-center gap-xxxs">
+            <span class="material-symbols-outlined"> schedule </span>
+            <p class="lineclamp-keep-height-1">
+              {{createdDate|formatdatetime:dd-mm-yyyy}}
+            </p>
+          </div>
           <div class="description lineclamp-keep-height-3">{{description}}</div>
           <a
             class="goto-button"
+            binding-btntext="Xem chi tiết"
             href="/{{languageCode}}/bai-viet/{{friendlyUrl}}"
           >
             Xem chi tiết

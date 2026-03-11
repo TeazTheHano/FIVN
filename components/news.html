@@ -11,53 +11,20 @@
       padding-bottom: var(--spacing-l);
     }
 
-    #News #News_content .tag {
-      /* color: var(--color-primary); */
-    }
+    /* ---------- Category list ---------- */
 
-    /* .slider-controller {
-      width: 100%;
-      height: inherit;
-      z-index: 10;
-      left: 0;
-      top: 55%;
+    #News #News_content #News_content_cate_list {
       justify-content: space-between;
-      padding: 0 max(0px, calc((100vw - 1300px - var(--spacing-xl)) / 2));
-      padding-bottom: var(--spacing-xxxl);
-      pointer-events: none;
+      width: 100%;
     }
 
-    .slider-controller .btn-2 {
-      aspect-ratio: 1;
-      pointer-events: all;
-      user-select: none;
-    } */
+    #News #News_content #News_content_cate_list div:first-child {
+      flex-wrap: wrap;
+    }
 
-    /* ================= News Cards ================= */
-
-    /* #News #News_content_cards {
-      overflow: scroll;
-      scroll-behavior: smooth;
-      scroll-snap-type: x mandatory;
-      padding: 0 var(--spacing-l);
-      padding-bottom: var(--spacing-xxxl);
-
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-    } */
-
-    /* #News #News_content_cards .card {
-      flex: 0 0 auto;
-      width: 70vw;
-      min-width: 200px;
-      max-width: 400px;
-      height: fit-content;
-
-      border-radius: var(--radius-l);
-      overflow: hidden;
-      filter: drop-shadow(var(--shadow-s));
-      background-color: var(--color-white);
-    } */
+    #News #News_content_cards .card {
+      display: none;
+    }
 
     /* ---------- Card Top ---------- */
 
@@ -100,7 +67,7 @@
       display: flex;
       flex-direction: column;
       gap: var(--spacing-s);
- 
+
       font-size: var(--t-subbody-size);
       color: var(--color-gray-800);
       font-weight: var(--weight-thin);
@@ -112,7 +79,7 @@
     }
 
     #News #News_content_cards .card .bottom h4 {
-      font-size: var(--t-subbody-size);
+      font-size: var(--t-body-size);
       line-height: var(--t-subbody-lh);
     }
 
@@ -124,12 +91,16 @@
       font-weight: var(--weight-semibold);
     }
 
-    #News #News_content_cards .card .bottom .description {
+    #News #News_content_cards .card .bottom .description * {
       font-size: var(--t-subbody-size);
       line-height: var(--t-subbody-lh);
     }
 
-    #News .card .goto-button {
+    #News #News_content_cards .card .bottom .btn {
+      text-decoration: none;
+    }
+
+    #News #News_content_cards .card .goto-button {
       color: var(--color-black);
       font-size: var(--t-subbody-size);
       font-weight: var(--weight-semibold);
@@ -148,32 +119,40 @@
       transform: scale(1.1);
     }
 
-    #News #News_content_cards .card:hover .goto-button {
+    #News #News_content_cards .card .goto-button:hover {
       color: var(--color-secondary);
     }
 
-    /* ================= Scroll padding edges ================= */
+    /* ALL */
+    #News:has(input[name="News_content_cate"][value="all"]:checked)
+      #News_content_cards
+      > .card {
+      display: block;
+    }
+  </style>
+
+  <style
+    repeat="category|param:parentId:32268aae-7506-94dd-1bae-850a60f2e3d2|sort:displayOrder:asc|includes:"
+  >
+    /* ================= Active category button ================= */
+
+    #News #News_content_cate_list .button-chip:has(input:checked) {
+      background-color: var(--color-secondary);
+      color: var(--color-white);
+    }
+
+    /* ================= Show cards by category ================= */
+
+    /* CATEGORY */
+    #News:has(input[name="News_content_cate"][value="{{name}}"]:checked)
+      #News_content_cards
+      > .card[course-cate*="{{name}}"] {
+      display: block;
+    }
   </style>
 
   <section id="News" class="relative">
-    <!-- Logic Radio -->
-    <input
-      re
-      type="radio"
-      name="News_content_cate"
-      hidden
-      id="News_content_cate_all"
-      checked
-    />
-    <input
-      repeat="category|param:parentId:7f8ad86d-404d-c0a9-69d2-36aed2d53306|sort:displayOrder:asc|includes:"
-      type="radio"
-      name="News_content_cate"
-      hidden
-      id="{{name}}"
-    />
-
-    <div id="News_content" class="d-column maxWidth1300 gap-xl">
+    <div id="News_content" class="maxWidth1300 d-column-h-center gap-m">
       <div class="d-column-h-center gap-xs">
         <p class="tag" binding-name="Kiến thức & Xu hướng">
           Kiến thức & Xu hướng
@@ -182,11 +161,45 @@
           Tin tức & Góc nhìn
         </h2>
       </div>
+
+      <!-- ================= Category list ================= -->
+
+      <div class="d-row-v-center gap-m" id="News_content_cate_list">
+        <div class="d-row gap-xxs">
+          <!-- ALL -->
+          <label class="button-chip">
+            <input
+              type="radio"
+              name="News_content_cate"
+              hidden
+              value="all"
+              checked
+            />
+            Tất cả
+          </label>
+
+          <!-- CATEGORY -->
+          <label
+            repeat="category|param:parentId:32268aae-7506-94dd-1bae-850a60f2e3d2|sort:displayOrder:asc|includes:"
+            class="button-chip"
+          >
+            <input
+              type="radio"
+              name="News_content_cate"
+              hidden
+              value="{{name}}"
+            />
+            {{name}}
+          </label>
+        </div>
+      </div>
     </div>
+
+    <!-- ================= Cards ================= -->
 
     <div id="News_content_cards" class="maxWidth1300 cards-slider-container">
       <!-- Controller -->
-      <div class="cards-slider-controller mobileHide">
+      <div class="cards-slider-controller mobileHide gap-xxs">
         <div class="cards-slider-controller-prev button-primary button-rounded">
           <span class="material-symbols-outlined"> chevron_left </span>
         </div>
@@ -196,35 +209,36 @@
       </div>
 
       <!-- List start -->
-
       <div
         class="card"
-        News-cate="{{metaKeyword}}"
+        course-cate="{{subDescription}}"
         repeat="article|size:20|sort:postTime:desc|param:categories.id:62384618-4e7c-0008-18e0-db03370b979d|includes:"
       >
         <div class="top">
-          <img src="https://static.izzi.asia/{{images.path}}" alt="{{name}}" />
+          <img src="https://static.izzi.asia{{images.path}}" alt="{{name}}" />
           <!-- <div class="tag">{{categories[1].subDescription}}</div> -->
         </div>
 
         <div class="bottom">
-          <h4 class="lineclamp-keep-height-2">{{name}}</h4>
-
-          <div class="d-column gap-xxxs">
-            <div class="d-row-v-center gap-xxxs">
-              <span class="material-symbols-outlined"> schedule </span>
-              <p class="lineclamp-keep-height-1">{{createdDate|formatdatetime:dd-mm-yyyy}}</p>
-            </div>
+          <a
+            href="/{{languageCode}}/bai-viet/{{friendlyUrl}}"
+            class="goto-button"
+          >
+            <h4 class="lineclamp-keep-height-2">{{name}}</h4>
+          </a>
+          <div class="d-row-v-center gap-xxxs">
+            <span class="material-symbols-outlined"> schedule </span>
+            <p class="lineclamp-keep-height-1">
+              {{createdDate|formatdatetime:dd-mm-yyyy}}
+            </p>
           </div>
-
           <div class="description lineclamp-keep-height-3">{{description}}</div>
-
           <a
             class="goto-button"
-            binding-btntext="Đọc tiếp"
-            href="/{{languageCode}}/post/{{friendlyUrl}}"
+            binding-btntext="Xem chi tiết"
+            href="/{{languageCode}}/bai-viet/{{friendlyUrl}}"
           >
-            Đọc tiếp
+            Xem chi tiết
           </a>
         </div>
       </div>
@@ -232,14 +246,17 @@
       <!-- List end -->
     </div>
 
+    <!-- ================= View all button ================= -->
+
     <div class="view-all-btn">
-      <button
+      <a
         class="button-secondary button-medium"
-        binding-btntext="Xem thêm"
+        href="pages/danh-sach-bai-viet"
+        binding-btntext="        Xem thêm    "
         binding-btnhref=""
       >
         Xem thêm
-      </button>
+      </a>
     </div>
   </section>
 </div>
