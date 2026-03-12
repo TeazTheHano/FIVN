@@ -13,6 +13,10 @@ export interface UserInput {
     Mobile?: string
     AllType?: number
     ImgLink?: string
+    // Supplier
+    CateId?: string[],
+    Code?: string,
+    IdentifyAddress?: string
 }
 const CHECK_USER_ENDPOINT = "https://apicommand.izzi.asia/User/CheckUserExist"
 /**
@@ -74,17 +78,25 @@ async function processImage(imgLink?: string): Promise<string | null> {
 }
 export default async function buildUser(
     item: UserInput,
-    options?: { passwordDefault: string, typeDefault: number }
+    options?: {
+        passwordDefault: string,
+        useTypeOrCategoryOrNone: "type" | "category" | "none",
+        typeDefault: number,
+        cateIdForAll?: string,
+        useDummyEmailWithRandomAndPrefix?: string,
+    }
 ) {
     /**
  * 1️⃣ Check user exist
  */
-    let userId = await checkUserExist(item.Email)
-    if (userId) {
-        console.log("⚠ User đã tồn tại:", item.Email)
-        return null
+    let existingUserId = await checkUserExist(item.Email);
+    let userId = existingUserId;
+    if (existingUserId && options?.useDummyEmailWithRandomAndPrefix) {
+        userId = randomUUID();
+    } else if (!existingUserId) {
+        userId = randomUUID();
     } else {
-        userId = randomUUID()
+        return null;
     }
     /**
  * 2️⃣ Upload image nếu có
@@ -93,36 +105,61 @@ export default async function buildUser(
     /**
  * 3️⃣ Build payload
  */
-    return {
+    const user: any = {
         Id: userId,
-        MerchantId: MERCHANT_ID,
+        // MerchantId: MERCHANT_ID,
+
+        MerchantId: '494ffd32-c6a4-4a9f-a68a-e9d8bbf8a80e',
+
         Name: item.Name,
-        Password:
-            item.Password ??
-            options?.passwordDefault ??
-            "123456",
+        Password: item.Password ?? options?.passwordDefault ?? "123456",
         LanguageId: LANGUAGE_ID,
-        Email: item.Email,
+        Email: item.Email ? item.Email : `${options?.useDummyEmailWithRandomAndPrefix}_${userId}@example.com`,
         Mobile: item.Mobile || "0123456789",
         SubDescription: item.SubDescription,
         Description: item.Description,
-        AllType:
-            item.AllType ??
-            options?.typeDefault ??
-            1,
-        Categories: [],
-        Images:
-            imageId
-                ? [
-                    {
-                        Id: imageId,
-                        IsFeatured: true,
-                        DisplayOrder: 1
-                    }
-                ]
-                : [],
+
+
+        Images: imageId
+            ? [
+                {
+                    Id: imageId,
+                    IsFeatured: true,
+                    DisplayOrder: 1
+                }
+            ]
+            : [],
         AttributeValues: [],
         CreatedDate: new Date(),
-        CreatedBy: ADMIN_CREATE_ID
+        CreatedBy: ADMIN_CREATE_ID,
+
+        ...(item.Code && {
+            Code: item.Code
+        }),
+
+        ...(item.IdentifyAddress && {
+            IdentifyAddress: item.IdentifyAddress
+        }),
     }
+
+    // xử lý type/category
+    if (options?.useTypeOrCategoryOrNone === "type") {
+        user.AllType = item.AllType ?? options?.typeDefault ?? 1
+    }
+
+    if (options?.useTypeOrCategoryOrNone === "category") {
+        const cateIds = item.CateId?.length
+            ? item.CateId
+            : options?.cateIdForAll
+                ? [options.cateIdForAll]
+                : []
+
+        user.Categories = cateIds.map(id => ({
+            Id: id,
+            IsFeatured: true,
+            DisplayOrder: 0
+        }))
+    }
+
+    return user
 }

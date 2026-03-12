@@ -22,9 +22,11 @@ async function run() {
         buildPayload: buildUser,
         data: data,
         option: {
-            typeDefault: DOMAIN_USER_CONSTANT.Type_Author
+            useTypeOrCategoryOrNone: "category",
+            useDummyEmailWithRandomAndPrefix: "NCC"
         },
-        commandName: DOMAIN_USER_CONSTANT.COMMAND_NAME_CREATE,
+        // commandName: DOMAIN_USER_CONSTANT.COMMAND_NAME_CREATE,
+        commandName: "CreateSupplierUser",
         domain: DOMAIN_USER_CONSTANT.DOMAIN
     })
 
