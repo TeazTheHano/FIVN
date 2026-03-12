@@ -1,196 +1,262 @@
-<section id="coursesSection"
-    class="section-course section-course-2 gradient-hero ">
-    <div class="gradient-bg"></div>
+<div>
+  <style>
+    #News {
+      background-color: var(--color-bg-light);
+    }
 
-    <div class="grid-bg"></div>
-    <div class="container">
-        <div class="section-header">
-            <div class="hero-section-badge">
-                <i class="fas fa-gift"></i>
-                <span binding-name="Knowledge &amp; Skill Development">Knowledge
-                    &amp;
-                    Skill Development</span>
-            </div>
+    /* ================= News Content ================= */
 
-            <h2 class="hero-title"
-                binding-name="Phát triển Kiến thức &amp; Kỹ năng">Phát triển
-                Kiến thức
-                &amp; Kỹ năng</h2>
-            <p class="hero-description text-center "
-                binding-description="Hệ thống khóa học tuyển chọn giúp người học phát triển tư duy                lãnh đạo, năng lực ra quyết định và khả năng thích ứng trước các                thay đổi của môi trường kinh tế – công nghệ hiện đại.            ">Hệ
-                thống khóa học tuyển chọn giúp người học phát triển tư duy lãnh
-                đạo,
-                năng lực ra quyết định và khả năng thích ứng trước các thay đổi
-                của môi
-                trường kinh tế – công nghệ hiện đại. </p>
+    #News #News_content {
+      gap: var(--spacing-m);
+      padding-bottom: var(--spacing-l);
+    }
+
+    /* ---------- Category list ---------- */
+
+    #News #News_content #News_content_cate_list {
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    #News #News_content #News_content_cate_list div:first-child {
+      flex-wrap: wrap;
+    }
+
+    #News #News_content_cards .card {
+      display: none;
+    }
+
+    /* ---------- Card Top ---------- */
+
+    #News #News_content_cards .card .top {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      position: relative;
+    }
+
+    #News #News_content_cards .card .top img {
+      height: 100%;
+      width: 100%;
+    }
+
+    #News #News_content_cards .card .top .tag {
+      position: absolute;
+      top: var(--spacing-s);
+      right: var(--spacing-s);
+      z-index: 1;
+
+      font-size: var(--t-mini-size);
+      font-weight: var(--weight-bold);
+      letter-spacing: normal;
+
+      color: var(--color-secondary);
+      background-color: var(--color-white);
+
+      padding: var(--spacing-xxxs) var(--spacing-xs);
+      border-radius: var(--radius-round);
+    }
+
+    #News #News_content_cards .card .top .tag::before {
+      content: "";
+    }
+
+    /* ---------- Card Bottom ---------- */
+
+    #News #News_content_cards .card .bottom {
+      padding: var(--spacing-m);
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-s);
+
+      font-size: var(--t-subbody-size);
+      color: var(--color-gray-800);
+      font-weight: var(--weight-thin);
+    }
+
+    #News #News_content_cards .card .bottom span {
+      color: var(--color-primary);
+      font-size: var(--t-body-size) !important;
+    }
+
+    #News #News_content_cards .card .bottom h4 {
+      font-size: var(--t-body-size);
+      line-height: var(--t-subbody-lh);
+    }
+
+    #News #News_content_cards .card .bottom h4 + div p {
+      font-size: var(--t-mini-size);
+    }
+
+    #News #News_content_cards .card .bottom h4 + div div:first-child p {
+      font-weight: var(--weight-semibold);
+    }
+
+    #News #News_content_cards .card .bottom .description * {
+      font-size: var(--t-subbody-size);
+      line-height: var(--t-subbody-lh);
+    }
+
+    #News #News_content_cards .card .bottom .btn {
+      text-decoration: none;
+    }
+
+    #News #News_content_cards .card .goto-button {
+      color: var(--color-black);
+      font-size: var(--t-subbody-size);
+      font-weight: var(--weight-semibold);
+      line-height: var(--t-subbody-lh);
+      text-decoration: none;
+    }
+
+    /* ---------- Hover ---------- */
+
+    #News #News_content_cards .card:hover {
+      transform: translateY(calc(-1 * var(--spacing-xxxs)));
+      filter: drop-shadow(var(--shadow-xl)) drop-shadow(var(--shadow-m));
+    }
+
+    #News #News_content_cards .card:hover .top img {
+      transform: scale(1.1);
+    }
+
+    #News #News_content_cards .card .goto-button:hover {
+      color: var(--color-secondary);
+    }
+
+    /* ALL */
+    #News:has(input[name="News_content_cate"][value="all"]:checked)
+      #News_content_cards
+      > .card {
+      display: block;
+    }
+  </style>
+
+  <style
+    repeat="category|param:parentId:32268aae-7506-94dd-1bae-850a60f2e3d2|sort:displayOrder:asc|includes:"
+  >
+    /* ================= Active category button ================= */
+
+    #News #News_content_cate_list .button-chip:has(input:checked) {
+      background-color: var(--color-secondary);
+      color: var(--color-white);
+    }
+
+    /* ================= Show cards by category ================= */
+
+    /* CATEGORY */
+    #News:has(input[name="News_content_cate"][value="{{name}}"]:checked)
+      #News_content_cards
+      > .card[course-cate*="{{name}}"] {
+      display: block;
+    }
+  </style>
+
+  <section id="News" class="relative">
+    <div id="News_content" class="maxWidth1300 d-column-h-center gap-m">
+      <div class="d-column-h-center gap-xs">
+        <p class="tag" binding-name="Kiến thức & Xu hướng">
+          Kiến thức & Xu hướng
+        </p>
+        <h2 class="title-bold" binding-name="Tin tức & Góc nhìn">
+          Tin tức & Góc nhìn
+        </h2>
+      </div>
+
+      <!-- ================= Category list ================= -->
+
+      <div class="d-row-v-center gap-m" id="News_content_cate_list">
+        <div class="d-row gap-xxs">
+          <!-- ALL -->
+          <label class="button-chip">
+            <input
+              type="radio"
+              name="News_content_cate"
+              hidden
+              value="all"
+              checked
+            />
+            Tất cả
+          </label>
+
+          <!-- CATEGORY -->
+          <label
+            repeat="category|param:parentId:32268aae-7506-94dd-1bae-850a60f2e3d2|sort:displayOrder:asc|includes:"
+            class="button-chip"
+          >
+            <input
+              type="radio"
+              name="News_content_cate"
+              hidden
+              value="{{name}}"
+            />
+            {{name}}
+          </label>
         </div>
-        <!-- Tabs -->
-        <div class="courses-tabs-wrapper">
-
-            <!-- Tabs Container với Scroll Buttons -->
-            <div class="courses-tabs-container">
-                <button type="button" class="tabs-scroll-btn tabs-scroll-left "
-                    aria-label="Scroll left">
-                    <svg class="tabs-scroll-icon" fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                    </svg>
-                </button>
-                <div class="courses-tabs-scrollable">
-                    <label
-                        repeat="category|type:3|param:id:f8fd41a1-f4a4-a410-0662-2b956f9e2f8f,b9e306f7-f6a3-a912-4489-6d30d5153578,bb5e39b7-a1d5-23a1-66d9-adf8c64e18a5,94cf5a91-7dd7-6eaf-14af-4eb44a5ec486,d20a703f-9141-2557-c430-fc1a848bbee7,48970ea7-f2f7-26f9-7dee-f60c4bc24422|size:1"
-                        class="tab-label active" data-tab="{{id}}">
-                        {{name}}
-                    </label>
-
-                    <label
-                        repeat="category|type:3|param:id:f8fd41a1-f4a4-a410-0662-2b956f9e2f8f,b9e306f7-f6a3-a912-4489-6d30d5153578,bb5e39b7-a1d5-23a1-66d9-adf8c64e18a5,94cf5a91-7dd7-6eaf-14af-4eb44a5ec486,d20a703f-9141-2557-c430-fc1a848bbee7,48970ea7-f2f7-26f9-7dee-f60c4bc24422|from:1"
-                        class="tab-label" data-tab="{{id}}">
-                        {{name}}
-                    </label>
-
-                </div>
-                <button type="button"
-                    class="tabs-scroll-btn tabs-scroll-right flex-shrink-0"
-                    aria-label="Scroll right">
-                    <svg class="tabs-scroll-icon" fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                </button>
-
-            </div>
-        </div>
-        <div
-            repeat="category|type:3|param:id:f8fd41a1-f4a4-a410-0662-2b956f9e2f8f,b9e306f7-f6a3-a912-4489-6d30d5153578,bb5e39b7-a1d5-23a1-66d9-adf8c64e18a5,94cf5a91-7dd7-6eaf-14af-4eb44a5ec486,d20a703f-9141-2557-c430-fc1a848bbee7,48970ea7-f2f7-26f9-7dee-f60c4bc24422|size:1"
-            id="course-tab-{{id}}" class="course-section active"
-            data-tab="{{id}}">
-            <!-- Courses Grid -->
-            <div class="courses-grid">
-                <!-- Course item -->
-                <div class="course-grid-item"
-                    repeat="product|param:categories.id:parentId|includes:">
-                    <div class="course-grid-card">
-                        <div class="course-grid-image">
-                            <img loading="lazy"
-                                src="{{images|getthumbnailbyindex:0|getPath:?mode=crop&amp;width=600&amp;height=400}}"
-                                alt="{{name}}" class="course-card-image">
-                            <div class="course-grid-overlay"></div>
-
-                        </div>
-
-                        <div class="course-grid-content">
-                            <h3> <a
-                                    href="/san-pham/{{friendlyUrl}}">{{name}}</a>
-
-                            </h3>
-                            <p class="course-grid-desc">
-                                {{subDescription}}
-                            </p>
-
-                            <div class="course-grid-stats">
-                                <div><i class="fa-solid fa-star"></i>
-                                    4.9 (1250)</div>
-                                <div><i class="fa-solid fa-users"></i>
-                                    8,500</div>
-                                <div><i class="fa-solid fa-clock"></i>
-                                    {{courses.period}}</div>
-                            </div>
-
-                            <div class="course-grid-footer">
-                                <div class="course-grid-price">
-                                    <p class="course-grid-price-new">
-                                        {{price|formatNumber}} VND</p>
-
-                                </div>
-                            </div>
-                            <div class="course-grid-buttons">
-                                <a href="javascript:;"
-                                    class="btn-primary-add-to-cart course-grid-cart-btn addCart"
-                                    data-id="{{id}}">
-                                    <i class="fas fa-shopping-cart"></i>
-                                    Thêm vào giỏ hàng
-                                </a>
-                                <a
-                                    class="btn-buynow course-grid-cart-btn buyNow createOrder"
-                                    data-id="{{id}}">
-                                    <i class="fa-solid fa-wallet"></i>
-                                    Mua Ngay
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <div
-            repeat="category|type:3|param:id:f8fd41a1-f4a4-a410-0662-2b956f9e2f8f,b9e306f7-f6a3-a912-4489-6d30d5153578,bb5e39b7-a1d5-23a1-66d9-adf8c64e18a5,94cf5a91-7dd7-6eaf-14af-4eb44a5ec486,d20a703f-9141-2557-c430-fc1a848bbee7,48970ea7-f2f7-26f9-7dee-f60c4bc24422|from:1"
-            id="course-tab-{{id}}" class="course-section" data-tab="{{id}}">
-
-            <div class="courses-grid">
-
-                <div class="course-grid-item"
-                    repeat="product|param:categories.id:parentId|includes:">
-                    <div class="course-grid-card">
-                        <div class="course-grid-image">
-                            <img loading="lazy"
-                                src="{{images|getthumbnailbyindex:0|getPath:?mode=crop&amp;width=600&amp;height=400}}"
-                                alt="{{name}}" class="course-card-image">
-                            <div class="course-grid-overlay"></div>
-
-                        </div>
-
-                        <div class="course-grid-content">
-                            <h3> <a
-                                    href="/san-pham/{{friendlyUrl}}">{{name}}</a>
-
-                            </h3>
-                            <p class="course-grid-desc">
-                                {{subDescription}}
-                            </p>
-
-                            <div class="course-grid-stats">
-                                <div><i class="fa-solid fa-star"></i>
-                                    4.9 (1250)</div>
-                                <div><i class="fa-solid fa-users"></i>
-                                    8,500</div>
-                                <div><i class="fa-solid fa-clock"></i>
-                                    {{courses.period}}</div>
-                            </div>
-
-                            <div class="course-grid-footer">
-                                <div class="course-grid-price">
-                                    <p class="course-grid-price-new">
-                                        {{price|formatNumber}} VND</p>
-
-                                </div>
-                            </div>
-                            <div class="course-grid-buttons">
-                                <a href="javascript:;"
-                                    class="btn-primary-add-to-cart course-grid-cart-btn addCart"
-                                    data-id="{{id}}">
-                                    <i class="fas fa-shopping-cart"></i>
-                                    Thêm vào giỏ hàng
-                                </a>
-                                <a
-                                    class="btn-buynow course-grid-cart-btn buyNow createOrder"
-                                    data-id="{{id}}">
-                                    <i class="fa-solid fa-wallet"></i>
-                                    Mua Ngay
-                                </a>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
+      </div>
     </div>
-</section>
+
+    <!-- ================= Cards ================= -->
+
+    <div id="News_content_cards" class="maxWidth1300 cards-slider-container">
+      <!-- Controller -->
+      <div class="cards-slider-controller mobileHide gap-xxs">
+        <div class="cards-slider-controller-prev button-primary button-rounded">
+          <span class="material-symbols-outlined"> chevron_left </span>
+        </div>
+        <div class="cards-slider-controller-next button-primary button-rounded">
+          <span class="material-symbols-outlined"> chevron_right </span>
+        </div>
+      </div>
+
+      <!-- List start -->
+      <div
+        class="card"
+        course-cate="{{subDescription}}"
+        repeat="article|size:20|sort:postTime:desc|param:categories.id:62384618-4e7c-0008-18e0-db03370b979d|includes:"
+      >
+        <div class="top">
+          <img src="https://static.izzi.asia{{images.path}}" alt="{{name}}" />
+          <!-- <div class="tag">{{categories[1].subDescription}}</div> -->
+        </div>
+
+        <div class="bottom">
+          <a
+            href="/{{languageCode}}/bai-viet/{{friendlyUrl}}"
+            class="goto-button"
+          >
+            <h4 class="lineclamp-keep-height-2">{{name}}</h4>
+          </a>
+          <div class="d-row-v-center gap-xxxs">
+            <span class="material-symbols-outlined"> schedule </span>
+            <p class="lineclamp-keep-height-1">
+              {{createdDate|formatdatetime:dd-mm-yyyy}}
+            </p>
+          </div>
+          <div class="description lineclamp-keep-height-3">{{description}}</div>
+          <a
+            class="goto-button"
+            binding-btntext="Xem chi tiết"
+            href="/{{languageCode}}/bai-viet/{{friendlyUrl}}"
+          >
+            Xem chi tiết
+          </a>
+        </div>
+      </div>
+
+      <!-- List end -->
+    </div>
+
+    <!-- ================= View all button ================= -->
+
+    <div class="view-all-btn">
+      <a
+        class="button-secondary button-medium"
+        href="/pages/danh-sach-bai-viet"
+        binding-btntext="        Xem thêm    "
+        binding-btnhref=""
+      >
+        Xem thêm
+      </a>
+    </div>
+  </section>
+</div>

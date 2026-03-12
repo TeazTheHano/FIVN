@@ -4,34 +4,34 @@
       text-align: center;
     }
 
-    #Partner #Partner_content_cards {
+    #Partner #Partner_content_cards_page {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: var(--spacing-m);
+      gap: var(--spacing-l);
       justify-content: center;
       overflow: hidden;
       padding: var(--spacing-l);
     }
 
     @media (max-width: 768px) {
-      #Partner #Partner_content_cards {
+      #Partner #Partner_content_cards_page {
         grid-template-columns: repeat(2, 1fr);
       }
     }
 
-    #Partner #Partner_content_cards .partner-item {
+    #Partner #Partner_content_cards_page .partner-item {
       width: 100%;
       height: 100px;
     }
 
-    #Partner #Partner_content_cards .partner-item img {
+    #Partner #Partner_content_cards_page .partner-item img {
       display: block;
       width: 100%;
       height: 100%;
       object-fit: contain;
     }
 
-    #Partner #Partner_content_cards .partner-item:hover {
+    #Partner #Partner_content_cards_page .partner-item:hover {
       transform: scale(1.1);
     }
   </style>
@@ -44,7 +44,7 @@
       </div>
 
       <!-- Slider Wrapper -->
-      <div id="Partner_content_cards" class="maxWidth1300">
+      <div id="Partner_content_cards_page" class="maxWidth1300">
         <!-- List start -->
         <a target="_blank" class="partner-item card" href="https://www.loyal.vc/" binding-btnhref="">
           <img binding-imgpath="https://cdn.prod.website-files.com/628e6647a47e67666dc69a12/64234171d85fe0e4e2d6ce91_Loyal%20Logo%20No%20Icon.svg" src="https://cdn.prod.website-files.com/628e6647a47e67666dc69a12/64234171d85fe0e4e2d6ce91_Loyal%20Logo%20No%20Icon.svg" alt="Google" class="partner-logo">
@@ -170,7 +170,7 @@
       </div>
 
       <!-- Pagination -->
-      <div id="Partner_pagination" class="d-row-h-center gap-xs"></div>
+      <div id="Partner_pagination_page" class="d-row-h-center gap-xs"></div>
     </div>
   </section>
 </div>

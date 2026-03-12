@@ -306,16 +306,16 @@
   }
 
   /* Hiện đúng category */
-  #Event:has(input[value="openning"]:checked) .card[event-cate="openning"],
-  #Event:has(input[value="event"]:checked) .card[event-cate="event"],
-  #Event:has(input[value="lunchup"]:checked) .card[event-cate="lunchup"],
-  #Event:has(input[value="online"]:checked) .card[event-cate="online"],
-  #Event:has(input[value="offline"]:checked) .card[event-cate="offline"] {
+  #Event:has(input[value="Lunchup"]:checked) .card[event-cate="Lunchup"],
+  #Event:has(input[value="Sự kiện"]:checked) .card[event-cate="Sự kiện"],
+  #Event:has(input[value="Lunchup"]:checked) .card[event-cate="Lunchup"],
+  #Event:has(input[value="Online"]:checked) .card[event-cate="Online"],
+  #Event:has(input[value="Offline"]:checked) .card[event-cate="Offline"] {
     display: grid;
   }
 
   /* ALL = hiện tất cả */
-  #Event:has(input[value="all"]:checked) .card[event-cate] {
+  #Event:has(input[value="Tất cả"]:checked) .card[event-cate] {
     display: grid;
   }
 </style>
@@ -370,7 +370,7 @@
     <div id="Event_content_cards">
       <div
         class="card relative d-row gap-m"
-        repeat="event|size:8|sort:startDateTime:desc|param:type:1|includes:"
+        repeat="event|size:4|sort:startDateTime:desc|param:type:1|includes:"
         data-aos="fade-up"
         event-cate="{{metaName}}"
       >
@@ -422,7 +422,8 @@
       </div>
 
           <button
-            binding-btnhref=""
+            binding-btnhref="/pages/su-kien"
+            href="/pages/su-kien"
             binding-btntext="Xem lịch trình đầy đủ"
             class="button-secondary button-medium"
           >

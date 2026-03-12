@@ -13,7 +13,6 @@
       width: 100%;
       column-gap: var(--spacing-l);
       margin-top: var(--spacing-m);
-      --max: 6;
       overflow: hidden;
     }
 
@@ -113,19 +112,18 @@
     #Network #Network_content_cards .card:hover img {
       opacity: 1;
       filter: saturate(1);
-      transform: scale(1.2);
     }
 
     /* ================= Collapse logic ================= */
 
-    #Network #Network_content_cards .card:nth-child(n + 7) {
+    /* #Network #Network_content_cards .card:nth-child(n + 7) {
       max-height: 0;
       padding: 0;
       opacity: 0;
       overflow: hidden;
       margin-top: 0;
       margin-bottom: 0;
-    }
+    } */
 
     /* ================= Toggle label ================= */
 
@@ -170,7 +168,7 @@
       </div>
 
       <div id="Network_content_cards" class="mobileFlexColumn">
-        <div class="card d-column" repeat="user|param:allType:64|sort:createdDate:asc|size:6|includes:">
+        <div class="card d-column" repeat="user|param:allType:64|sort:createdDate:asc|size:500|includes:">
           <div class="top d-row gap-m">
             <img src="https://static.izzi.asia{{images.path}}" alt="{{name}}">
             <div class="info d-column gap-xxs">
@@ -196,7 +194,7 @@
         </div>
       </div>
 
-      <a href="/pages/mang-luoi" class="button-secondary button-medium">Xem thêm</a>
+      <!-- <label for="Network_content_toggle_list" class="button-secondary button-medium"></label> -->
     </div>
   </section>
 </div>
