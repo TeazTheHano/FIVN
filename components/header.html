@@ -151,7 +151,7 @@
       display: block;
     }
 
-    #authModal #formLogin {
+    .headerForm {
       display: flex;
       flex-direction: column;
       gap: var(--spacing-m);
@@ -159,7 +159,7 @@
       align-items: center;
     }
 
-    #authModal #formLogin > div {
+    .headerForm > div {
       width: 100%;
       display: grid;
       grid-template-columns: auto 1fr;
@@ -167,7 +167,7 @@
       align-items: center;
     }
 
-    #authModal #formLogin input {
+    .headerForm input {
       color: var(--color-black);
       font-family: var(--font-main);
       padding: var(--spacing-xs);
@@ -196,13 +196,13 @@
       <div id="logo">
         <a href="/" binding-btnhref="/">
           <img
-            binding-imgpath="https://static.izzi.asia/templates/FIVN/svg/FIVN-Logo-02.svg"
-            src="https://static.izzi.asia/templates/FIVN/svg/FIVN-Logo-02.svg"
+            binding-imgpath="https://static.izzi.asia/images/2026/3/13/2603130611_FIVlogowhite.png"
+            src="https://static.izzi.asia/images/2026/3/13/2603130611_FIVlogowhite.png"
             alt=""
           />
           <img
-            binding-imgpath="https://static.izzi.asia/templates/FIVN/svg/FIVN-Logo-01.svg"
-            src="https://static.izzi.asia/templates/FIVN/svg/FIVN-Logo-01.svg"
+            binding-imgpath="https://static.izzi.asia/images/2026/3/13/2603137540_FIVlogoblack.png"
+            src="https://static.izzi.asia/images/2026/3/13/2603137540_FIVlogoblack.png"
             alt=""
           />
         </a>
@@ -220,62 +220,62 @@
 
       <div id="hamburger-menu" class="mobileHide">
         <a
-          binding-name="Về chúng tôi        "
+          binding-name="About us"
           class="button"
           href="/pages/ve-chung-toi"
           binding-btnhref="#AboutUs"
-          >Về chúng tôi
-        </a>
+          >About us</a
+        >
         <a
-          binding-name="Chương trình        "
-          class="button"
-          href="/pages/chuong-trinh"
-          binding-btnhref="#Programme"
-          >Chương trình
-        </a>
-        <a
-          binding-name="Sự kiện        "
+          binding-name="Event"
           class="button"
           href="/pages/su-kien"
-          binding-btnhref="#Event"
-          >Sự kiện
-        </a>
+          binding-btnhref="#Programme"
+          >Event</a
+        >
         <a
-          binding-name="Mạng lưới        "
+          binding-name="Mentor  "
           class="button"
           href="/pages/mang-luoi"
-          binding-btnhref="#Network"
-          >Mạng lưới
+          binding-btnhref="#Event"
+          >Mentor
         </a>
         <a
-          binding-name="Khóa học        "
+          binding-name="Program"
           class="button"
           href="/pages/danh-sach-khoa-hoc"
-          binding-btnhref="#Course"
-          >Khóa học
-        </a>
+          binding-btnhref="#Network"
+          >Program</a
+        >
         <a
-          binding-name="Đối tác        "
+          binding-name="Blog"
+          class="button"
+          href="/pages/danh-sach-bai-viet"
+          binding-btnhref="#Course"
+          >Blog</a
+        >
+        <a
+          binding-name="Partner"
           class="button"
           href="/pages/doi-tac"
           binding-btnhref="#Partner"
-          >Đối tác
-        </a>
+          >Partner</a
+        >
         <a
-          binding-name="Liên hệ        "
+          binding-name="Contact        "
           class="button"
           href="/pages/lien-he"
           binding-btnhref="#Contact"
-          >Liên hệ
+          >Contact
         </a>
         <div></div>
         <button
           class="button-secondary button-small userNotLogin"
-          binding-name="          Đăng nhập        "
+          binding-name="          Login        "
           id="openAuthModal"
           onclick="authModal.showModal()"
         >
-          Đăng nhập
+          Login
         </button>
         <div
           class="btn-user-logged userLogin d-none"
@@ -298,7 +298,7 @@
               id="logoutFb"
             >
               <div class="d-center gap-xxs">
-                <span>Đăng Xuất</span>
+                <span binding-name="Logout">Logout</span>
                 <span class="material-symbols-outlined"> logout </span>
               </div>
             </button>
@@ -313,7 +313,7 @@
   <dialog id="authModal" class="modal-dialog">
     <div class="modal-content d-column gap-m">
       <div class="d-row-h-between d-row-v-center">
-        <h3 binding-name="Đăng nhập">Đăng nhập</h3>
+        <h3 binding-name="Log in">Log in</h3>
         <button
           class="modal-close button-secondary button-rounded"
           onclick="authModal.close()"
@@ -323,39 +323,151 @@
         </button>
       </div>
       <div class="login-section">
-        <form id="formLogin" action="javascript:void(0)" method="post">
+        <form
+          class="headerForm"
+          id="formLogin"
+          action="javascript:void(0)"
+          method="post"
+        >
           <div>
-            <label for="loginEmail">Email</label>
+            <label for="loginEmail" binding-name="Email">Email</label>
             <input
               type="text"
               name="name"
               placeholder="example@email.com"
               required=""
-              id="nameLogin"
+              id="loginEmail"
             />
 
-            <label for="loginPassword"> Mật khẩu</label>
+            <label for="loginPassword" binding-name="Password">Password</label>
             <input
               name="password"
               type="password"
-              id="passwordLogin"
+              id="loginPassword"
               placeholder="••••••••"
               required=""
             />
           </div>
 
           <button
+            binding-btntext="Login"
             type="submit"
             class="button-primary button-large"
             id="submitLogin"
           >
-            Đăng nhập ngay
+            Login
           </button>
 
-          <p class="p-subbody">
-            Nếu chưa có tài khoản, vui lòng
-            <a href="" binding-btnhref="" binding-btntext="Đăng ký">Đăng ký</a>
-          </p>
+          <span>
+            <span class="p-subbody"> Nếu chưa có tài khoản, vui lòng</span>
+            <a
+              onclick="
+                authModal.close();
+                signinModal.showModal();
+              "
+              binding-btntext="Đăng ký"
+            >
+              Đăng ký
+            </a>
+          </span>
+        </form>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Signin Modal -->
+  <dialog id="signinModal" class="modal-dialog">
+    <div class="modal-content d-column gap-m">
+      <div class="d-row-h-between d-row-v-center">
+        <h3 binding-name="Sign in">Sign in</h3>
+        <button
+          class="modal-close button-secondary button-rounded"
+          onclick="signinModal.close()"
+          aria-label="Đóng"
+        >
+          <span class="material-symbols-outlined"> close </span>
+        </button>
+      </div>
+
+      <div class="login-section">
+        <!-- Message -->
+        <div style="width: inherit; white-space: wrap">
+          <h4
+            style="width: inherit; white-space: wrap"
+            class="duplicateMessage"
+          ></h4>
+          <h4
+            style="width: inherit; white-space: wrap"
+            class="returnMessage mt-3"
+          ></h4>
+        </div>
+        <!-- Form -->
+        <form
+          class="customForm headerForm"
+          id="81a61e28-0c2b-ae4d-ac2c-1d121b17ded2"
+          action="javascript:void(0)"
+          method="post"
+          data-check-email="true"
+          data-check-mobile="true"
+        >
+          <div>
+            <label for="fullName" binding-name="Họ và tên">Họ và tên</label>
+            <input
+              type="text"
+              id="fullName"
+              name="name"
+              placeholder="Nhập họ và tên của bạn"
+              required
+            />
+
+            <label for="phone" binding-name="Số điện thoại"
+              >Số điện thoại</label
+            >
+            <input
+              type="tel"
+              id="phone"
+              name="mobile"
+              placeholder="0909090909"
+              required
+            />
+
+            <label for="email" binding-name="Email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="example@email.com"
+              required
+            />
+          </div>
+
+          <button
+            binding-btntext="Sign in"
+            type="submit"
+            class="button-primary button-large btn-register-submit"
+            id="button-service-submit"
+            access="false"
+          >
+            Sign in
+          </button>
+
+          <span>
+            <span
+              class="p-subbody"
+              binding-name="Nếu đã có tài khoản, vui lòng"
+            >
+              Nếu đã có tài khoản, vui lòng</span
+            >
+            <a
+              onclick="
+                signinModal.close();
+                authModal.showModal();
+              "
+              binding-btntext="Login"
+            >
+              Login
+            </a>
+          </span>
         </form>
       </div>
     </div>

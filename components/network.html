@@ -8,101 +8,91 @@
 
     #Network #Network_content_cards {
       display: grid;
-      grid-template-columns: repeat(3, minmax(200px, 400px));
+      grid-template-columns: repeat(auto-fill, 240px);
       justify-content: center;
       width: 100%;
-      column-gap: var(--spacing-l);
-      margin-top: var(--spacing-m);
-      --max: 6;
+      gap: var(--spacing-l);
       overflow: hidden;
+
+      padding-bottom: var(--spacing-xs);
     }
 
     /* ================= Card ================= */
 
     #Network #Network_content_cards .card {
       width: 100%;
+      height: 100%;
       background-color: var(--color-white);
       padding: var(--spacing-m);
       border-radius: var(--radius-l);
       filter: drop-shadow(var(--shadow-xs));
       gap: var(--spacing-m);
-
-      margin-top: var(--spacing-m);
-      margin-bottom: var(--spacing-xs);
     }
 
     /* ---------- Card Top ---------- */
 
-    #Network #Network_content_cards .card .top {
+    #Network #Network_content_cards .card {
       width: 100%;
     }
 
-    #Network #Network_content_cards .card .top img {
+    #Network #Network_content_cards .card > img {
       width: 100px;
       height: 100px;
       border-radius: var(--radius-round);
       /* filter: saturate(1); */
     }
 
-    #Network #Network_content_cards .card .top .tag {
+    #Network #Network_content_cards .card .tag {
       letter-spacing: normal;
       font-weight: var(--weight-bold);
       color: var(--color-primary);
     }
 
-
-    #Network #Network_content_cards .card .top span {
+    #Network #Network_content_cards .card span {
       /* font-size: var(--t-mini-size) !important; */
       /* line-height: var(--lineheight-xxs); */
       color: var(--color-gray-400);
     }
 
-    #Network #Network_content_cards .card .top div {
+    #Network #Network_content_cards .card div {
       flex: 1;
     }
 
-    #Network
-      .card
-      .top
-      div
-      div:last-child
-      p {
+    #Network .card div div:last-child p {
       color: var(--color-gray-400);
       font-weight: var(--weight-semibold);
     }
 
-    #Network
-      .card
-      .top
-      div
-      div:last-child
-      span {
+    #Network .card div div:last-child span {
       color: var(--color-primary);
     }
 
-    /* ---------- Card Bottom ---------- */
-
-    #Network #Network_content_cards .card .bottom p {
-      min-height: calc(var(--t-body-size) * var(--t-body-lh) * 2);
-      overflow: hidden;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
+    #Network #Network_content_cards .card .lineclamp-3 {
+      text-align: center;
+      font-family: var(--font-body);
+      font-size: var(--t-body-size);
+      font-weight: var(--t-body-weight);
+      line-height: var(--t-body-lh);
+      color: var(--color-gray-600);
     }
 
-    #Network #Network_content_cards .card .bottom p::before,
-    #Network #Network_content_cards .card .bottom p::after {
+    #Network #Network_content_cards .card p::before,
+    #Network #Network_content_cards .card p::after {
       content: '"';
       padding: 0;
       margin: 0;
     }
 
-    #Network #Network_content_cards .card .bottom a {
-      float: right;
-      margin-top: var(--spacing-xxxs);
+    #Network #Network_content_cards .card p:empty {
+      display: none;
     }
 
-    #Network #Network_content_cards .card .bottom a img {
+    #Network #Network_content_cards .card .linkedinButton {
+      top: var(--spacing-s);
+      right: var(--spacing-s);
+    }
+
+    #Network #Network_content_cards .card .linkedinButton img {
       width: 20px;
       height: 20px;
       filter: saturate(0);
@@ -110,93 +100,59 @@
       transition: var(--transition-fast);
     }
 
-    #Network #Network_content_cards .card:hover img {
+    #Network #Network_content_cards .card .linkedinButton img:hover {
+      filter: saturate(1);
+      opacity: 1;
+    }
+
+    #Network #Network_content_cards .card:hover > img {
       opacity: 1;
       filter: saturate(1);
       transform: scale(1.2);
     }
-
-    /* ================= Collapse logic ================= */
-
-    #Network #Network_content_cards .card:nth-child(n + 7) {
-      max-height: 0;
-      padding: 0;
-      opacity: 0;
-      overflow: hidden;
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-
-    /* ================= Toggle label ================= */
-
-    #Network label[for="Network_content_toggle_list"] {
-      cursor: pointer;
-      transition: var(--transition-slow);
-    }
-
-    #Network label[for="Network_content_toggle_list"]::after {
-      content: "Xem toàn bộ danh sách ";
-    }
-
-    /* ================= Checked state ================= */
-
-    #Network
-      #Network_content_toggle_list:checked
-      ~ #Network_content
-      #Network_content_cards
-      > .card {
-      padding: var(--spacing-m);
-      max-height: 1000px;
-      opacity: 1;
-      margin-top: var(--spacing-m);
-      margin-bottom: var(--spacing-xs);
-    }
-
-    #Network
-      #Network_content_toggle_list:checked
-      ~ #Network_content
-      label[for="Network_content_toggle_list"]::after {
-      content: "Thu gọn";
-    }
   </style>
 
   <section id="Network" class="relative">
-    <input type="checkbox" id="Network_content_toggle_list" hidden="">
+    <input type="checkbox" id="Network_content_toggle_list" hidden="" />
 
-    <div id="Network_content" class="d-column-h-center">
+    <div id="Network_content" class="d-column-h-center gap-m">
       <div class="d-column-h-center gap-xs">
         <h2 class="" binding-name="Our Mentors">Our Mentors</h2>
-        <p binding-name="Mạng lưới cố vấn khởi nghiệp cho Việt Nam và toàn cầu.">Mạng lưới cố vấn khởi nghiệp cho Việt Nam và toàn cầu.</p>
+        <p
+          binding-name="Mạng lưới cố vấn khởi nghiệp cho Việt Nam và toàn cầu."
+        >
+          Mạng lưới cố vấn khởi nghiệp cho Việt Nam và toàn cầu.
+        </p>
       </div>
 
-      <div id="Network_content_cards" class="mobileFlexColumn">
-        <div class="card d-column" repeat="user|param:allType:64|sort:createdDate:asc|size:6|includes:">
-          <div class="top d-row gap-m">
-            <img src="https://static.izzi.asia{{images.path}}" alt="{{name}}">
-            <div class="info d-column gap-xxs">
-              <p class="lineclamp-2">{{name}}</p>
-              <!-- <p class="tag lineclamp-1 p-subbody">{{metaDescription}}</p>
-              <div class="d-row-v-center gap-xxxs">
-                <span class="material-symbols-outlined"> trip </span>
-                <p class="lineclamp-1 p-mini">{{metaName}}</p>
-              </div> -->
-              <!-- <div class="d-row-v-center gap-xxxs">
-                <span class="material-symbols-outlined"> award_star </span>
-                <p class="lineclamp-1">{{metaKeyword}}</p>
-              </div> -->
-            </div>
-          </div>
-          <hr>
-          <div class="bottom">
-            <p class="lineclamp-3">{{description}}</p>
-            <a href="{{subDescription}}" target="_blank">
-              <img src="https://static.izzi.asia/templates/FIVN/svg/linkedin.svg" alt="">
+      <div id="Network_content_cards">
+        <div
+          repeat="selectionusers|param:categoryIds:79ed2162-6fd9-3e8c-5348-413ac7bd87ec|sort:createdDate:asc|size:12|includes:id"
+        >
+          <div
+            class="card d-column-h-center gap-xxs relative"
+            repeat="user|param:id:parent.id|size:1|includes:"
+          >
+            <img src="https://static.izzi.asia{{images.path}}" alt="{{name}}" />
+            <p class="lineclamp-keep-height-2">{{name}}</p>
+            <div class="lineclamp-keep-height-3">{{description}}</div>
+            <a
+              href="{{subDescription}}"
+              target="_blank"
+              class="linkedinButton absolute"
+            >
+              <img
+                src="https://static.izzi.asia/templates/FIVN/svg/linkedin.svg"
+                alt=""
+              />
             </a>
           </div>
         </div>
       </div>
 
-      <a href="/pages/mang-luoi" class="button-secondary button-medium">Xem thêm</a>
+      <a href="pages/mang-luoi" class="button-secondary button-medium"
+        >Xem toàn bộ danh sách</a
+      >
     </div>
   </section>
 </div>

@@ -50,6 +50,9 @@
         line-height: var(--t-h4-lh) !important;
     }
 
+    #Network_content_cards {
+        grid-template-columns: repeat(2, auto) !important;
+    }
 
     #NewsDetail h1,
     #NewsDetail .p-ref-h1 {

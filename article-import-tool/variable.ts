@@ -1,4 +1,5 @@
-export const MERCHANT_ID = "5845210a-c1f3-4699-b6ad-eefc96d23e8f"
+// export const MERCHANT_ID = "5845210a-c1f3-4699-b6ad-eefc96d23e8f"
+export const MERCHANT_ID = '494ffd32-c6a4-4a9f-a68a-e9d8bbf8a80e'
 
 export const COMMAND_LINK = "https://apicommand.izzi.asia/Command/SendSync"
 

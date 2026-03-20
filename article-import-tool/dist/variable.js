@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DOMAIN_IMAGE_CONSTANT = exports.DOMAIN_ARTICLE_CONSTANT = exports.DOMAIN_USER_CONSTANT = exports.ADMIN_CREATE_ID = exports.LANGUAGE_ID = exports.COMMAND_LINK = exports.MERCHANT_ID = void 0;
-exports.MERCHANT_ID = "5845210a-c1f3-4699-b6ad-eefc96d23e8f";
+// export const MERCHANT_ID = "5845210a-c1f3-4699-b6ad-eefc96d23e8f"
+exports.MERCHANT_ID = '494ffd32-c6a4-4a9f-a68a-e9d8bbf8a80e';
 exports.COMMAND_LINK = "https://apicommand.izzi.asia/Command/SendSync";
 exports.LANGUAGE_ID = "838aef56-78bb-11e6-b5a6-00155d582814";
 exports.ADMIN_CREATE_ID = "8597b32b-7c62-bea2-11e0-fa185758c3b6";

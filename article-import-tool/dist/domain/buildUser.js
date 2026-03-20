@@ -68,16 +68,7 @@ async function buildUser(item, options) {
  * 1️⃣ Check user exist
  */
     let existingUserId = await checkUserExist(item.Email);
-    let userId = existingUserId;
-    if (existingUserId && options?.useDummyEmailWithRandomAndPrefix) {
-        userId = (0, crypto_1.randomUUID)();
-    }
-    else if (!existingUserId) {
-        userId = (0, crypto_1.randomUUID)();
-    }
-    else {
-        return null;
-    }
+    let userId = (0, crypto_1.randomUUID)();
     /**
  * 2️⃣ Upload image nếu có
  */
@@ -88,12 +79,14 @@ async function buildUser(item, options) {
     const user = {
         Id: userId,
         // MerchantId: MERCHANT_ID,
-        MerchantId: '494ffd32-c6a4-4a9f-a68a-e9d8bbf8a80e',
+        MerchantId: variable_1.MERCHANT_ID,
         Name: item.Name,
         Password: item.Password ?? options?.passwordDefault ?? "123456",
         LanguageId: variable_1.LANGUAGE_ID,
-        Email: item.Email ? item.Email : `${options?.useDummyEmailWithRandomAndPrefix}_${userId}@example.com`,
-        Mobile: item.Mobile || "0123456789",
+        Email: existingUserId && options?.useDummyEmailWithRandomAndPrefix
+            ? `${options?.useDummyEmailWithRandomAndPrefix}_${userId}@example.com`
+            : item.Email ?? `${options?.useDummyEmailWithRandomAndPrefix}_${userId}@example.com`,
+        Mobile: item.Mobile?.split(" ").join("") || "0123456789",
         SubDescription: item.SubDescription,
         Description: item.Description,
         Images: imageId
@@ -131,5 +124,7 @@ async function buildUser(item, options) {
             DisplayOrder: 0
         }));
     }
+    console.log("existingUserId: ", existingUserId);
+    console.log("user email: ", user.Email);
     return user;
 }

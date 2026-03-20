@@ -189,7 +189,9 @@
               <span class="material-symbols-outlined"> group </span>
             </div>
             <div class="d-column gap-xxxs">
-              <p class="text-bold" binding-name="Bền vững Nội địa">Bền vững Nội địa</p>
+              <p class="text-bold" binding-name="Bền vững Nội địa">
+                Bền vững Nội địa
+              </p>
               <p
                 class="p-subbody"
                 binding-name=" FIV không chỉ đồng hành giúp bạn phát triển kinh doanh thành công tại thị trường Việt Nam"
@@ -204,7 +206,9 @@
               <span class="material-symbols-outlined"> bolt </span>
             </div>
             <div class="d-column gap-xxxs">
-              <p class="text-bold" binding-name="Mở rộng Toàn cầu">Mở rộng Toàn cầu</p>
+              <p class="text-bold" binding-name="Mở rộng Toàn cầu">
+                Mở rộng Toàn cầu
+              </p>
               <p
                 class="p-subbody"
                 binding-name="FIV còn là cầu nối và bệ phóng giúp bạn xây dựng và triển khai mô hình kinh doanh toàn cầu"
@@ -219,8 +223,12 @@
         <hr />
         <div class="d-row gap-s">
           <div class="d-column gap-xxs">
-            <p class="p-subbody" binding-name="Hotline tư vấn">Hotline tư vấn</p>
-            <p class="text-bold" class="" binding-name="(+84) 934 613 969">(+84) 934 613 969</p>
+            <p class="p-subbody" binding-name="Hotline tư vấn">
+              Hotline tư vấn
+            </p>
+            <p class="text-bold" class="" binding-name="(+84) 934 613 969">
+              (+84) 934 613 969
+            </p>
           </div>
           <div class="d-column gap-xxs">
             <p class="p-subbody" binding-name="Email hỗ trợ">Email hỗ trợ</p>
@@ -240,15 +248,32 @@
           </p>
         </div>
 
-        <form action="" id="Contact_form" method="post">
+        <!-- Message -->
+        <div style="width: inherit; white-space: wrap">
+          <h4
+            style="width: inherit; white-space: wrap"
+            class="duplicateMessage"
+          ></h4>
+          <h4
+            style="width: inherit; white-space: wrap"
+            class="returnMessage mt-3"
+          ></h4>
+        </div>
+        <form
+          action="javascript:void(0)"
+          class="customForm"
+          id="54eff29c-70e8-4765-bd2b-55f6bec0e323"
+          method="post"
+        >
           <div class="d-row mobileFlexColumn">
             <div>
-              <label for="name" binding-name="Họ và tên">Họ và tên</label>
+              <label for="fullName" binding-name="Họ và tên">Họ và tên</label>
               <input
                 type="text"
+                id="fullName"
                 name="name"
-                id="name"
-                placeholder="Nguyen Van A"
+                placeholder="Nhập họ và tên của bạn"
+                required
               />
             </div>
             <div>
@@ -256,11 +281,12 @@
                 >Số điện thoại</label
               >
               <input
-                type="text"
-                name="phone"
+                type="tel"
                 id="phone"
-                placeholder="Nhập số điện thoại của bạn"
+                name="mobile"
                 pattern="[0-9]{10}"
+                placeholder="Nhập số điện thoại của bạn"
+                required
               />
             </div>
           </div>
@@ -274,6 +300,7 @@
               name="email"
               id="email"
               placeholder="founder@startup.com"
+              required
             />
           </div>
 
