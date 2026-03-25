@@ -42,12 +42,6 @@
       /* filter: saturate(1); */
     }
 
-    #Network #Network_content_cards .card .tag {
-      letter-spacing: normal;
-      font-weight: var(--weight-bold);
-      color: var(--color-primary);
-    }
-
     #Network #Network_content_cards .card span {
       /* font-size: var(--t-mini-size) !important; */
       /* line-height: var(--lineheight-xxs); */
@@ -58,29 +52,19 @@
       flex: 1;
     }
 
-    #Network .card div div:last-child p {
-      color: var(--color-gray-400);
-      font-weight: var(--weight-semibold);
+    #Network #Network_content_cards .card > .lineclamp-keep-height-2 {
+      color: var(--color-gray-800);
+      font-weight: var(--weight-medium);
     }
 
-    #Network .card div div:last-child span {
-      color: var(--color-primary);
-    }
-
-    #Network #Network_content_cards .card .lineclamp-3 {
+    #Network #Network_content_cards .card > .lineclamp-keep-height-3,
+    #Network #Network_content_cards .card > .lineclamp-keep-height-3 p {
       text-align: center;
       font-family: var(--font-body);
-      font-size: var(--t-body-size);
-      font-weight: var(--t-body-weight);
-      line-height: var(--t-body-lh);
+      font-size: var(--t-mini-size);
+      font-weight: var(--t-mini-weight);
+      line-height: var(--t-mini-lh);
       color: var(--color-gray-600);
-    }
-
-    #Network #Network_content_cards .card p::before,
-    #Network #Network_content_cards .card p::after {
-      content: '"';
-      padding: 0;
-      margin: 0;
     }
 
     #Network #Network_content_cards .card p:empty {
@@ -115,7 +99,7 @@
   <section id="Network" class="relative">
     <input type="checkbox" id="Network_content_toggle_list" hidden="" />
 
-    <div id="Network_content" class="d-column-h-center gap-m">
+    <div id="Network_content" class="d-column-h-center gap-m maxWidth1300">
       <div class="d-column-h-center gap-xs">
         <h2 class="" binding-name="Our Mentors">Our Mentors</h2>
         <p
@@ -127,26 +111,22 @@
 
       <div id="Network_content_cards">
         <div
-          repeat="selectionusers|param:categoryIds:79ed2162-6fd9-3e8c-5348-413ac7bd87ec|sort:createdDate:asc|size:12|includes:id"
+          class="card d-column-h-center gap-xxs relative"
+          repeat="user|param:categories.id:79ed2162-6fd9-3e8c-5348-413ac7bd87ec|size:12|includes:"
         >
-          <div
-            class="card d-column-h-center gap-xxs relative"
-            repeat="user|param:id:parent.id|size:1|includes:"
+          <img src="https://static.izzi.asia{{images.path}}" alt="{{name}}" />
+          <p class="lineclamp-keep-height-2">{{name}}</p>
+          <div class="lineclamp-keep-height-3">{{description}}</div>
+          <a
+            href="{{subDescription}}"
+            target="_blank"
+            class="linkedinButton absolute"
           >
-            <img src="https://static.izzi.asia{{images.path}}" alt="{{name}}" />
-            <p class="lineclamp-keep-height-2">{{name}}</p>
-            <div class="lineclamp-keep-height-3">{{description}}</div>
-            <a
-              href="{{subDescription}}"
-              target="_blank"
-              class="linkedinButton absolute"
-            >
-              <img
-                src="https://static.izzi.asia/templates/FIVN/svg/linkedin.svg"
-                alt=""
-              />
-            </a>
-          </div>
+            <img
+              src="https://static.izzi.asia/templates/FIVN/svg/linkedin.svg"
+              alt=""
+            />
+          </a>
         </div>
       </div>
 

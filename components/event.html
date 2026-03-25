@@ -300,6 +300,14 @@
 
   }
 
+   #Event #Event_content .goto-button {
+        color: var(--color-black);
+   }
+
+   #Event #Event_content .goto-button:hover {
+    color: var(--color-secondary);
+   }
+
   /* Ẩn tất cả khi chọn 1 category cụ thể */
   #Event:has(input[value]:checked) .card[event-cate] {
     display: none;
@@ -308,7 +316,7 @@
   /* Hiện đúng category */
   #Event:has(input[value="Lunchup"]:checked) .card[event-cate="Lunchup"],
   #Event:has(input[value="Sự kiện"]:checked) .card[event-cate="Sự kiện"],
-  #Event:has(input[value="Lunchup"]:checked) .card[event-cate="Lunchup"],
+  #Event:has(input[value="Programs"]:checked) .card[event-cate="Programs"],
   #Event:has(input[value="Online"]:checked) .card[event-cate="Online"],
   #Event:has(input[value="Offline"]:checked) .card[event-cate="Offline"] {
     display: grid;
@@ -341,8 +349,8 @@
       </label>
 
       <label class="button-chip">
-        <input type="radio" name="Event_content_cate" value="Khai giảng" hidden>
-        Khai giảng
+        <input type="radio" name="Event_content_cate" value="Chương trình" hidden>
+        Chương trình
       </label>
 
       <label class="button-chip">
@@ -350,12 +358,12 @@
         Sự kiện
       </label>
 
-      <label class="button-chip">
+      <!-- <label class="button-chip">
         <input type="radio" name="Event_content_cate" value="Lunchup" hidden>
         Lunchup
-      </label>
+      </label> -->
 
-      <label class="button-chip">
+      <!-- <label class="button-chip">
         <input type="radio" name="Event_content_cate" value="Online" hidden>
         Online
       </label>
@@ -363,7 +371,7 @@
       <label class="button-chip">
         <input type="radio" name="Event_content_cate" value="Offline" hidden>
         Offline
-      </label>
+      </label> -->
 
     </div>
 
@@ -395,7 +403,14 @@
           </div>
 
             <div class="bottom">
-              <h4>{{name}}</h4>
+               
+              <a
+                href="/{{languageCode}}/su-kien/{{friendlyUrl}}"
+                class="goto-button"
+              >
+                <h4 class="lineclamp-keep-height-3">{{name}}</h4>
+              </a>
+        
               <div class="time">
                 <p class="d-none startDateTimeUtc">{{startDateTimeUtc}}</p>
                 <p class="d-none endDateTimeUtc">{{endDateTimeUtc}}</p>
@@ -421,14 +436,15 @@
         </div>
       </div>
 
-          <button
-            binding-btnhref="/pages/su-kien"
-            href="/pages/su-kien"
+          <a
+            binding-btnhref="/pages/danh-sach-su-kien"
+            href="/pages/danh-sach-su-kien"
             binding-btntext="Xem lịch trình đầy đủ"
             class="button-secondary button-medium"
+            target="_blank"
           >
             Xem lịch trình đầy đủ
-          </button>
+    </a>
         </div>
         </section>
           </div>

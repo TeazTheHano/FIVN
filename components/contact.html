@@ -31,12 +31,12 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--spacing-xl);
-      color: var(--color-white);
     }
 
     /* ===== Left ===== */
     #Contact #Contact_content .left {
       padding-top: var(--spacing-l);
+      color: var(--color-white);
     }
 
     #Contact #Contact_content .left p {
@@ -138,8 +138,8 @@
       justify-content: space-between;
     }
 
-    #Contact #Contact_content .right form .btn {
-      width: 100%;
+    #Contact #Contact_content .right form button {
+      margin-top: var(--spacing-l);
     }
 
     /* ===== Agreement ===== */
@@ -249,21 +249,14 @@
         </div>
 
         <!-- Message -->
-        <div style="width: inherit; white-space: wrap">
-          <h4
-            style="width: inherit; white-space: wrap"
-            class="duplicateMessage"
-          ></h4>
-          <h4
-            style="width: inherit; white-space: wrap"
-            class="returnMessage mt-3"
-          ></h4>
-        </div>
+
         <form
           action="javascript:void(0)"
-          class="customForm"
           id="54eff29c-70e8-4765-bd2b-55f6bec0e323"
+          class="customForm membership-form"
           method="post"
+          data-check-email="false"
+          data-check-mobile="false"
         >
           <div class="d-row mobileFlexColumn">
             <div>
@@ -305,13 +298,13 @@
           </div>
 
           <div>
-            <label for="stage" binding-name="Giai đoạn startup"
+            <label for="startup-stage" binding-name="Giai đoạn startup"
               >Giai đoạn startup</label
             >
             <input
               list="Contact_form_dl"
-              name="stage"
-              id="stage"
+              name="startup-stage"
+              id="startup-stage"
               placeholder="Giai đoạn startup"
             />
             <datalist id="Contact_form_dl">
@@ -323,23 +316,36 @@
           </div>
 
           <div>
-            <label for="message" binding-name="Lời nhắn (tùy chọn)"
+            <label for="startup-message" binding-name="Lời nhắn (tùy chọn)"
               >Lời nhắn (tùy chọn)</label
             >
             <textarea
-              name="message"
-              id="message"
+              name="startup-message"
+              id="startup-message"
               rows="4"
               placeholder="Chia sẻ ngắn gọn về dự án"
             ></textarea>
           </div>
+
+          <button
+            binding-name="Đăng ký tư vấn"
+            type="submit"
+            class="button-primary button-large form-submit-btn"
+          >
+            Đăng ký tư vấn
+          </button>
         </form>
-        <button
-          class="button-primary button-large"
-          binding-name="Đăng ký tư vấn"
-        >
-          Đăng ký tư vấn
-        </button>
+
+        <div style="width: inherit; white-space: wrap">
+          <h4
+            style="width: inherit; white-space: wrap"
+            class="duplicateMessage"
+          ></h4>
+          <h4
+            style="width: inherit; white-space: wrap"
+            class="returnMessage mt-3"
+          ></h4>
+        </div>
 
         <p class="agreement p-mini">
           <span

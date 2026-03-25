@@ -1,0 +1,209 @@
+<div>
+  <style>
+    section#CourseDetailDescription.maxWidth1300 {
+      overflow: visible !important;
+    }
+
+    #CourseDetailDescription #CourseDetailDescription_content_basic_info {
+      flex: 1;
+      width: 100%;
+    }
+
+    #CourseDetailDescription #CourseDetailDescription_content_purchase_box {
+      padding: var(--spacing-s);
+      position: sticky;
+      top: var(--spacing-xxxl);
+      align-self: flex-start;
+      background-color: var(--color-white);
+      border-radius: var(--radius-m);
+      border: 1px solid var(--color-primary);
+    }
+
+    #CourseDetailDescription .description {
+      flex: 1;
+    }
+
+    #CourseDetailDescription
+      #CourseDetailDescription_content_purchase_box
+      .CourseDetailDescription_img_holder {
+      max-width: 400px;
+      width: 100%;
+      aspect-ratio: 16/9;
+      border-radius: var(--radius-m);
+      overflow: hidden;
+    }
+
+    #CourseDetailDescription #CourseDetailDescription_content_purchase_box a {
+      text-align: center;
+    }
+
+    #CourseDetailDescription .author_img_holder {
+      width: var(--spacing-xxxl);
+      height: auto;
+      aspect-ratio: 1;
+      border-radius: 100%;
+      overflow: hidden;
+    }
+
+    #CourseDetailDescription .author_img_holder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    #CourseDetailDescription .author_box {
+      color: var(--color-gray-800);
+      font-weight: var(--font-weight-bold);
+      padding: var(--spacing-s);
+      border-radius: var(--radius-m);
+      border: 1px solid var(--color-primary);
+    }
+
+    #CourseDetailDescription .schedule_item_box {
+      color: var(--color-gray-800);
+      border-radius: var(--radius-m);
+      border: 1px solid var(--color-gray-400);
+      padding: var(--radius-m) var(--spacing-xs);
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    #CourseDetailDescription .schedule_item_box span ~ p {
+      min-width: var(--spacing-m);
+      text-align: right;
+    }
+
+    #CourseDetailDescription .schedule_item_box:has(> p:empty) {
+      display: none;
+    }
+  </style>
+
+  <section
+    id="CourseDetailDescription"
+    repeat="detaildata"
+    class="maxWidth1300"
+  >
+    <div id="CourseDetailDescription_content" class="d-column gap-m">
+      <h1 class="p-ref-h2">{{name}}</h1>
+
+      <div class="CourseDetailDescription_img_holder mobileShow">
+        <img
+          src="{{images|getthumbnailbyindex:0|getPath:?mode"
+          ="crop&amp;width"
+          ="370&amp;height"
+          ="260}}"
+          alt=""
+        />
+      </div>
+
+      <!-- basic info -->
+      <div class="d-row gap-m">
+        <div
+          class="d-column gap-xl"
+          id="CourseDetailDescription_content_basic_info"
+        >
+          <div class="description">{{description}}</div>
+          <!-- time and location -->
+          <div class="d-column gap-s">
+            <h4>Thông tin sự kiện</h4>
+            <div class="d-row-v-center gap-xs">
+              <span class="material-symbols-outlined"> calendar_today </span>
+              <p>Bắt đầu: {{startDateTime|formatdatetime:HH:mm}}</p>
+            </div>
+
+            <div class="d-row-v-center gap-xs">
+              <span class="material-symbols-outlined"> calendar_today </span>
+              <p>Kết thúc: {{endDateTime|formatdatetime:HH:mm}}</p>
+            </div>
+
+            <div class="d-row-v-center gap-xs">
+              <span class="material-symbols-outlined"> location_on </span>
+              <span repeat="address|param:id:parent.addressIds|includes:"
+                ><p>{{name}} {{detailAddress}}</p></span
+              >
+            </div>
+          </div>
+
+          <!-- Author -->
+          <div class="d-column gap-s">
+            <h4>Thông tin diễn giả</h4>
+
+            <div class="d-row-v-center gap-s author_box">
+              <div class="author_img_holder" repeat="authors">
+                <img
+                  src="{{images|getthumbnailbyindex:0|getPath:?mode=crop&amp}}"
+                  alt
+                />
+              </div>
+              <div class="d-column gap-xxxs">
+                <p class="p-ref-h4">{{authors.name}}</p>
+                <p class="p-subbody">{{authors.description}}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Schedule -->
+          <div class="d-column gap-s">
+            <h4>Lịch trình sự kiện</h4>
+            <hr />
+            <div class="d-row gap-xs schedule_item_box" repeat="eventSchedules">
+              <p style="width: 100%">{{name}}</p>
+
+              <div class="d-row-v-center gap-xxs" style="width: 100%">
+                <span class="material-symbols-outlined">
+                  line_start_circle
+                </span>
+                <p>{{startDateTime|formatdatetime:HH:mm}}</p>
+              </div>
+              <div class="d-row-v-center gap-xxs" style="width: 100%">
+                <span class="material-symbols-outlined"> line_end_circle </span>
+                <p>{{endDateTime|formatdatetime:HH:mm}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          id="CourseDetailDescription_content_purchase_box"
+          class="d-column gap-m padding-m"
+        >
+          <div class="CourseDetailDescription_img_holder mobileHide">
+            <img
+              src="{{images|getthumbnailbyindex:0|getPath:?mode"
+              ="crop&amp;width"
+              ="370&amp;height"
+              ="260}}"
+              alt=""
+            />
+          </div>
+
+          <div repeat="product|param:id:parent.productIds|includes:">
+            <div class="d-column">
+              <p class="p-subbody">Phí tham gia</p>
+              <p class="p-ref-h4">{{price|formatmoney}}</p>
+            </div>
+
+            <a
+              href="javascript:void(0);"
+              binding-btntext="Đăng ký ngay"
+              data-id="{{id}}"
+              class="button-primary button-large btn-buynow course-grid-cart-btn buyNow createOrder userLogin"
+            >
+              Đăng ký ngay
+            </a>
+            <a
+              onclick="
+                signinModal.close();
+                authModal.showModal();
+              "
+              binding-btntext="Đăng ký ngay"
+              class="button-primary button-large btn-buynow course-grid-cart-btn buyNow userNotLogin"
+            >
+              Đăng ký ngay
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

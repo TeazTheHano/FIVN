@@ -1,0 +1,335 @@
+<div>
+  <style>
+    #Course {
+      background-color: var(--color-bg-light);
+    }
+
+    /* ================= Course Content ================= */
+
+    #Course #Course_content {
+      gap: var(--spacing-m);
+      padding-bottom: var(--spacing-l);
+    }
+
+    /* ---------- Category list ---------- */
+
+    #Course #Course_content #Course_content_cate_list {
+      max-width: 100%;
+      width: fit-content;
+      padding: var(--spacing-xxxs);
+      margin: auto;
+      margin-top: var(--spacing-xs);
+      margin-bottom: var(--spacing-m);
+      background-color: var(--color-gray-200);
+      border-radius: var(--radius-round);
+      border: 1px solid var(--color-gray-400);
+      overflow-x: scroll;
+      align-self: center;
+    }
+
+    #Course #Course_content #Course_content_cate_list div:first-child {
+      flex-wrap: wrap;
+    }
+
+    #Course #Course_content_cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 400px));
+      gap: var(--spacing-s);
+      justify-content: center;
+      --max: 9;
+      overflow: hidden;
+      padding: var(--spacing-l);
+    }
+
+    /* #Course #Course_content_cards .card {
+      display: none;
+    } */
+
+    /* ---------- Card Top ---------- */
+
+    #Course #Course_content_cards .card .top {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      position: relative;
+    }
+
+    #Course #Course_content_cards .card .top img {
+      height: 100%;
+      width: 100%;
+    }
+
+    #Course #Course_content_cards .card .top .tag {
+      position: absolute;
+      top: var(--spacing-s);
+      right: var(--spacing-s);
+      z-index: 1;
+
+      font-size: var(--t-mini-size);
+      font-weight: var(--weight-bold);
+      letter-spacing: normal;
+
+      color: var(--color-secondary);
+      background-color: var(--color-white);
+
+      padding: var(--spacing-xxxs) var(--spacing-xs);
+      border-radius: var(--radius-round);
+    }
+
+    #Course #Course_content_cards .card .top .tag::before {
+      content: "";
+    }
+
+    #Course #Course_content_cards .card .top .tag:empty {
+      display: none;
+    }
+
+    /* ---------- STATE ---------- */
+
+    #Course .card .top div[state="ended"]::after {
+      content: "Ended";
+      background-color: var(--color-social-linkedin);
+      padding: var(--spacing-xxxs) var(--spacing-xs);
+      border-radius: var(--radius-round);
+      color: var(--color-white);
+    }
+
+    #Course .card .top div[state="ongoing"]::after {
+      content: "Ongoing";
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      color: #fff;
+      animation: breatheState1 1.2s ease-in-out infinite alternate;
+    }
+
+    #Course .card .top div[state="upcoming"]::after {
+      content: "Upcoming";
+      background-color: var(--color-primary);
+      padding: var(--spacing-xxxs) var(--spacing-xs);
+      border-radius: var(--radius-round);
+      color: var(--color-white);
+    }
+
+    #Course .card .top div[state="registration open"]::after {
+      content: "Registration open";
+      background-color: var(--color-secondary);
+      padding: var(--spacing-xxxs) var(--spacing-xs);
+      border-radius: var(--radius-round);
+      color: var(--color-white);
+    }
+
+    #Course .card .top div[state="scheduled"]::after {
+      content: "Scheduled";
+      background-color: var(--color-secondary);
+      padding: var(--spacing-xxxs) var(--spacing-xs);
+      border-radius: var(--radius-round);
+      color: var(--color-white);
+    }
+
+    /* ---------- Card Bottom ---------- */
+
+    #Course #Course_content_cards .card .bottom {
+      padding: var(--spacing-m);
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-s);
+
+      font-size: var(--t-subbody-size);
+      color: var(--color-gray-800);
+      font-weight: var(--weight-thin);
+    }
+
+    #Course #Course_content_cards .card .bottom span {
+      color: var(--color-primary);
+      font-size: var(--t-body-size) !important;
+    }
+
+    #Course #Course_content_cards .card .bottom h4 {
+      font-size: var(--t-body-size);
+      line-height: var(--t-subbody-lh);
+    }
+
+    #Course #Course_content_cards .card .bottom h4 + div p {
+      font-size: var(--t-mini-size);
+    }
+
+    #Course #Course_content_cards .card .bottom h4 + div div:first-child p {
+      font-weight: var(--weight-semibold);
+    }
+
+    #Course #Course_content_cards .card .bottom .description * {
+      font-size: var(--t-subbody-size);
+      line-height: var(--t-subbody-lh);
+    }
+
+    #Course #Course_content_cards .card .bottom .btn {
+      text-decoration: none;
+    }
+
+    #Course #Course_content_cards .card .goto-button {
+      color: var(--color-black);
+      font-size: var(--t-subbody-size);
+      font-weight: var(--weight-semibold);
+      line-height: var(--t-subbody-lh);
+      text-decoration: none;
+    }
+
+    #Course .card .card-item .bottom span {
+      font-weight: var(--weight-regular);
+      font-size: var(--t-subbody-size) !important;
+      color: var(--color-primary);
+    }
+
+    #Course .time {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-xs);
+      align-items: flex-start;
+    }
+
+    #Course .time div {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xxxs);
+    }
+
+    #Course .time div span {
+      font-weight: var(--weight-regular);
+      font-size: var(--t-subbody-size) !important;
+      color: var(--color-primary);
+    }
+
+    #Course .time div p {
+      font-weight: var(--weight-semibold);
+      text-transform: uppercase;
+    }
+
+    #Course .card .card-item .bottom div {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xxxs);
+    }
+
+    /* ---------- Hover ---------- */
+
+    #Course #Course_content_cards .card:hover {
+      transform: translateY(calc(-1 * var(--spacing-xxxs)));
+      filter: drop-shadow(var(--shadow-xl)) drop-shadow(var(--shadow-m));
+    }
+
+    #Course #Course_content_cards .card:hover .top img {
+      transform: scale(1.1);
+    }
+
+    #Course #Course_content_cards .card .goto-button:hover {
+      color: var(--color-secondary);
+    }
+
+    #Course #Course_pagination {
+      padding: var(--spacing-m);
+    }
+  </style>
+
+  <section id="Course" class="relative">
+    <div id="Course_content" class="maxWidth1300">
+      <div class="d-column-h-center gap-xs">
+        <p class="tag" binding-name="Lịch trình">Lịch trình</p>
+        <h3 binding-name="Sự kiện & Hoạt động">Sự kiện & Hoạt động</h3>
+      </div>
+
+      <!-- ================= Category list ================= -->
+
+      <div class="d-row scrollbar-hide" id="Course_content_cate_list">
+        <label class="button-chip">
+          <input
+            type="radio"
+            name="Course_content_cate"
+            value="all"
+            hidden
+            checked
+          />
+          Tất cả
+        </label>
+
+        <label class="button-chip">
+          <input
+            type="radio"
+            name="Course_content_cate"
+            value="Chương trình"
+            hidden
+          />
+          Chương trình
+        </label>
+
+        <label class="button-chip">
+          <input
+            type="radio"
+            name="Course_content_cate"
+            value="Sự kiện"
+            hidden
+          />
+          Sự kiện
+        </label>
+      </div>
+    </div>
+
+    <!-- ================= Cards ================= -->
+
+    <div id="Course_content_cards" class="maxWidth1300">
+      <!-- List start -->
+      <div
+        class="card"
+        course-cate="{{metaName}}"
+        repeat="event|size:500|sort:startDateTime:desc|param:type:1|includes:"
+        data-aos="fade-up"
+        event-cate="{{metaName}}"
+      >
+        <div class="top relative">
+          <!-- TODO: sync state with schedule -->
+          <div class="tag absolute" state=""></div>
+          <img
+            class="absolute"
+            src="https://static.izzi.asia/{{images.path}}"
+            alt=""
+          />
+          <p class="tag">{{metaKeyword}}</p>
+        </div>
+
+        <div class="bottom">
+          <a
+            href="/{{languageCode}}/su-kien/{{friendlyUrl}}"
+            class="goto-button"
+          >
+            <h4 class="lineclamp-keep-height-3">{{name}}</h4>
+          </a>
+          <div class="time">
+            <p class="d-none startDateTimeUtc">{{startDateTimeUtc}}</p>
+            <p class="d-none endDateTimeUtc">{{endDateTimeUtc}}</p>
+            <div>
+              <span class="material-symbols-outlined"> calendar_today </span>
+              <p class="card-date lineclamp-keep-height-1"></p>
+            </div>
+            <div>
+              <span class="material-symbols-outlined"> schedule </span>
+              <p class="card-time lineclamp-keep-height-1"></p>
+            </div>
+            <div>
+              <span class="material-symbols-outlined"> location_on </span>
+              <span repeat="address|param:id:parent.addressIds|includes:"
+                ><p class="lineclamp-keep-height-1">
+                  {{name}} {{detailAddress}}
+                </p></span
+              >
+            </div>
+          </div>
+
+          <hr />
+          <p class="lineclamp-keep-height-3">{{subDescription}}</p>
+        </div>
+      </div>
+      <!-- List end -->
+    </div>
+
+    <div id="Course_pagination" class="d-row-h-center gap-xs"></div>
+  </section>
+</div>

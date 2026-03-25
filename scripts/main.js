@@ -104,8 +104,8 @@ function headerScroll() {
 }
 
 
-function eventQuarterText() {
-    const eventlist = document.querySelectorAll('#Event_content_cards .card');
+function eventQuarterText(cardsSelector) {
+    const eventlist = document.querySelectorAll(cardsSelector);
 
     function quarterText(event, startDateTime) {
         if (!startDateTime) return;
@@ -118,10 +118,10 @@ function eventQuarterText() {
     }
 
     eventlist.forEach(event => {
-        const startDateTimeUtc = event.querySelector('.bottom .time .startDateTimeUtc');
-        const endDateTimeUtc = event.querySelector('.bottom .time .endDateTimeUtc');
-        const dateP = event.querySelector('.bottom .time .card-date');
-        const timeP = event.querySelector('.bottom .time .card-time');
+        const startDateTimeUtc = event.querySelector('.startDateTimeUtc');
+        const endDateTimeUtc = event.querySelector('.endDateTimeUtc');
+        const dateP = event.querySelector('.card-date');
+        const timeP = event.querySelector('.card-time');
         const eventSchedules = event.querySelector('.event-schedule');
 
         if (!startDateTimeUtc || !endDateTimeUtc || !dateP || !timeP) return;
@@ -407,7 +407,7 @@ function landingPageCall() {
     trackMousePosition('#Programme')
     trackMousePosition('#Contact')
     trackMousePosition('#hero')
-    eventQuarterText();
+    eventQuarterText('#Event_content_cards .card');
     autoNextSelection({
         container: '#hero',
         itemSelector: 'input[name="hero"]',
@@ -445,17 +445,36 @@ function courseListPageCall() {
     });
 }
 
+function eventListPageCall() {
+    PagingContent({
+        containerQuery: '#Course_content_cards',
+        itemsQuery: '.card',
+        paginationContainerQuery: '#Course_pagination',
+        itemsPerPage: 9,
+        filtersQuery: 'input[name="Course_content_cate"]'
+    })
+    eventQuarterText('#Course_content_cards .card');
+}
+
 switch (true) {
     case window.location.pathname.includes('/pages/danh-sach-khoa-hoc') ||
         window.location.pathname.includes('/danh-sach-khoa-hoc') ||
-        window.location.pathname.includes('/danh-sach-bai-viet/') ||
         window.location.pathname.includes('/pages/danh-sach-bai-viet/') ||
-        window.location.pathname.includes('/bai-viet/') ||
+        window.location.pathname.includes('/danh-sach-bai-viet/') ||
         window.location.pathname.includes('/pages/bai-viet/') ||
+        window.location.pathname.includes('/bai-viet/') ||
         window.location.pathname.includes('/pages/san-pham/') ||
-        window.location.pathname.includes('/san-pham/'):
-        console.log('adsfasdf');
+        window.location.pathname.includes('/san-pham/')
+        :
         courseListPageCall();
+        break;
+
+    case window.location.pathname.includes('/pages/danh-sach-su-kien/') ||
+        window.location.pathname.includes('/danh-sach-su-kien') ||
+        window.location.pathname.includes('/pages/su-kien') ||
+        window.location.pathname.includes('/su-kien')
+        :
+        eventListPageCall();
         break;
     default:
         landingPageCall();
