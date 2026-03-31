@@ -10,12 +10,21 @@ export interface CommandPayload {
     TimeOutSecond?: number
 }
 
+
 async function sendCommand(payload: CommandPayload) {
     try {
+
+        console.log(payload);
+        
+        const curlCmd = `curl -X POST '${COMMAND_LINK}' -H 'Content-Type: application/json' -d '${JSON.stringify(payload)}'`
+        console.log(curlCmd)
+
         const res = await retryRequest(() =>
             axios.post(COMMAND_LINK, payload, { timeout: 35000 })
         )
-        console.log("✔ Tạo bài thành công:", res.data)
+
+
+        console.log("✔ Đã push:", res.data)
         return res.data
     } catch (error: unknown) {
         if (axios.isAxiosError(error)) {

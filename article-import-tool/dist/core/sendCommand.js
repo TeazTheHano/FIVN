@@ -8,8 +8,11 @@ const retryRequest_1 = __importDefault(require("./retryRequest"));
 const variable_1 = require("../variable");
 async function sendCommand(payload) {
     try {
+        console.log(payload);
+        const curlCmd = `curl -X POST '${variable_1.COMMAND_LINK}' -H 'Content-Type: application/json' -d '${JSON.stringify(payload)}'`;
+        console.log(curlCmd);
         const res = await (0, retryRequest_1.default)(() => axios_1.default.post(variable_1.COMMAND_LINK, payload, { timeout: 35000 }));
-        console.log("✔ Tạo bài thành công:", res.data);
+        console.log("✔ Đã push:", res.data);
         return res.data;
     }
     catch (error) {

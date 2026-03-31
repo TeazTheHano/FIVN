@@ -235,7 +235,6 @@
   }
 
   #Event .card .card-item .bottom .time div p {
-    font-weight: var(--weight-semibold);
     text-transform: uppercase;
   }
 
@@ -410,23 +409,25 @@
               >
                 <h4 class="lineclamp-keep-height-3">{{name}}</h4>
               </a>
-        
-              <div class="time">
-                <p class="d-none startDateTimeUtc">{{startDateTimeUtc}}</p>
-                <p class="d-none endDateTimeUtc">{{endDateTimeUtc}}</p>
-                <div>
-                  <span class="material-symbols-outlined"> calendar_today </span>
-                  <p class="card-date"></p>
-                </div>
-                <div>
-                  <span class="material-symbols-outlined"> schedule </span>
-                  <p class="card-time"></p>
-                </div>
-                <div>
-                  <span class="material-symbols-outlined"> location_on </span>
-                  <span repeat="address|param:id:parent.addressIds|includes:"><p>{{name}} {{detailAddress}}</p></span>
-                </div>
+
+            <div class="time">
+              <p class="d-none startDateTimeUtc">{{startDateTimeUtc}}</p>
+              <p class="d-none endDateTimeUtc">{{endDateTimeUtc}}</p>
+              <div>
+              <span class="material-symbols-outlined"> calendar_today </span>
+              <p class="card-date p-subbody lineclamp-keep-height-1"></p>
               </div>
+              <div>
+              <span class="material-symbols-outlined"> schedule </span>
+              <p class="card-time p-subbody lineclamp-keep-height-1"></p>
+              </div>
+              <div>
+              <span class="material-symbols-outlined"> location_on </span>
+              <span repeat="address|param:id:parent.addressIds|includes:"
+              ><p class="p-subbody">{{detailAddress}}</p></span
+              >
+              </div>
+            </div>
 
               <hr />
               <p>{{subDescription}}</p>
