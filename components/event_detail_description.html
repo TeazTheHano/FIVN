@@ -76,6 +76,14 @@
     #CourseDetailDescription .schedule_item_box:has(> p:empty) {
       display: none;
     }
+
+    /* Hide AfterLogin form before login */
+    #CourseDetailDescription
+      form.customForm.after-login-show
+      span.user-logged-text:empty
+      + button.form-submit-btn {
+      display: none;
+    }
   </style>
 
   <section
@@ -117,6 +125,13 @@
             </div>
 
             <div class="d-row-v-center gap-xs">
+              <span class="material-symbols-outlined"> link_2 </span>
+              <a href="{{externalLink}}" target="_blank"
+                >Link: {{externalLink}}</a
+              >
+            </div>
+
+            <div class="d-row-v-center gap-xs">
               <span class="material-symbols-outlined"> location_on </span>
               <span repeat="address|param:id:parent.addressIds|includes:"
                 ><p>{{detailAddress}}</p></span
@@ -128,7 +143,7 @@
           <div class="d-column gap-s">
             <h4>Thông tin diễn giả</h4>
 
-            <div class="d-row-v-center gap-s author_box">
+            <!-- <div class="d-row-v-center gap-s author_box">
               <div class="author_img_holder" repeat="authors">
                 <img
                   src="{{images|getthumbnailbyindex:0|getPath:?mode=crop&amp}}"
@@ -139,11 +154,29 @@
                 <p class="p-ref-h4">{{authors.name}}</p>
                 <p class="p-subbody">{{authors.description}}</p>
               </div>
+            </div> -->
+
+            <div class="d-column gap-s author_box">
+              <div
+                class="d-row-v-center gap-s"
+                repeat="user|param:esId:parent.esUserIds|param:allType:64|sort:mobile:asc|includes:"
+              >
+                <div class="author_img_holder">
+                  <img
+                    src="{{images|getthumbnailbyindex:0|getPath:?mode=crop&amp}}"
+                    alt
+                  />
+                </div>
+                <div class="d-column gap-xxxs">
+                  <p class="p-ref-h4">{{name}}</p>
+                  <p class="p-subbody">{{description}}</p>
+                </div>
+              </div>
             </div>
           </div>
 
           <!-- Schedule -->
-          <div class="d-column gap-s">
+          <!-- <div class="d-column gap-s">
             <h4>Lịch trình sự kiện</h4>
             <hr />
             <div class="d-row gap-xs schedule_item_box" repeat="eventSchedules">
@@ -160,7 +193,7 @@
                 <p>{{endDateTime|formatdatetime:HH:mm}}</p>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
 
         <div
@@ -177,7 +210,7 @@
             />
           </div>
 
-          <div repeat="product|param:id:parent.productIds|includes:">
+          <!-- <div repeat="product|param:id:parent.productIds|includes:">
             <div class="d-column">
               <p class="p-subbody">Phí tham gia</p>
               <p class="p-ref-h4">{{price|formatmoney}}</p>
@@ -201,9 +234,117 @@
             >
               Đăng ký ngay
             </a>
-          </div>
+          </div> -->
 
-          
+          <div>
+            <form
+              action="javascript:void(0)"
+              id={{externalLink}}
+              class="customForm after-login-show"
+              method="post"
+              data-check-email="false"
+              data-check-mobile="false"
+            >
+              <!-- displayName -->
+              <div id="AfterLogin" class="AfterLogin">
+                <div class="d-none">
+                  <span class="d-none user-logged-text displayName"></span>
+                  <span class="d-none user-logged-text displayMobile"></span>
+                  <span class="d-none user-logged-text displayEmail"></span>
+                  <input
+                    type="tel"
+                    id="mobile"
+                    name="mobile"
+                    class="displayMobile"
+                    required
+                  />
+                  <input
+                    type="text"
+                    id="fullName"
+                    name="fullName"
+                    class="displayName"
+                    required
+                  />
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="displayEmail"
+                    required
+                  />
+                  <input
+                    type="text"
+                    id="eventName"
+                    name="eventName"
+                    value="{{name}}"
+                    required
+                  />
+                  <input
+                    type="text"
+                    id="eventId"
+                    name="eventId"
+                    value="{{id}}"
+                    required
+                  />
+                  <input
+                    type="text"
+                    id="eventStartTime"
+                    name="eventStartTime"
+                    value="{{startDateTime|formatdatetime:HH:mm}}"
+                  />
+                  <input
+                    type="text"
+                    id="eventEndTime"
+                    name="eventEndTime"
+                    value="{{endDateTime|formatdatetime:HH:mm}}"
+                  />
+                  <span repeat="address|param:id:parent.addressIds|includes:">
+                    <input
+                      type="text"
+                      id="eventLocation"
+                      name="eventLocation"
+                      value="{{detailAddress}}"
+                    />
+                  </span>
+                  <input
+                    type="text"
+                    id="eventExternalLink"
+                    name="eventExternalLink"
+                    value="{{externalLink}}"
+                  />
+
+                  <input
+                    type="text"
+                    id="eventInternalLink"
+                    name="eventInternalLink"
+                    value="fivietnam.vn/{{languageCode}}/su-kien/{{friendlyUrl}}"
+                  />
+                </div>
+                <span class="d-none user-logged-text displayName"></span>
+                <button
+                  type="submit"
+                  binding-btntext="Đăng ký ngay"
+                  id="button-service-submit"
+                  access="false"
+                  class="button-primary button-large form-submit-btn"
+                >
+                  Đăng ký ngay
+                </button>
+              </div>
+            </form>
+
+            <!-- not logged in -->
+            <a
+              onclick="
+                signinModal.close();
+                authModal.showModal();
+              "
+              binding-btntext="Đăng ký ngay"
+              class="button-primary button-large userNotLogin"
+            >
+              Đăng ký ngay
+            </a>
+          </div>
         </div>
       </div>
     </div>

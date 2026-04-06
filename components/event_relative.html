@@ -1,0 +1,232 @@
+<div>
+  <style>
+    #Related {
+      background-color: var(--color-bg-light);
+    }
+
+    /* ================= Related Content ================= */
+
+    #Related #Related_content {
+      gap: var(--spacing-m);
+      padding-bottom: var(--spacing-l);
+    }
+
+    /* ---------- Category list ---------- */
+
+    #Related #Related_content #Related_content_cate_list {
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    #Related #Related_content #Related_content_cate_list div:first-child {
+      flex-wrap: wrap;
+    }
+
+    /* ---------- Card Top ---------- */
+
+    #Related #Course_content_cards .card .top {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      position: relative;
+    }
+
+    #Related #Course_content_cards .card .top img {
+      height: 100%;
+      width: 100%;
+    }
+
+    #Related #Course_content_cards .card .top .tag {
+      position: absolute;
+      top: var(--spacing-s);
+      right: var(--spacing-s);
+      z-index: 1;
+
+      font-size: var(--t-mini-size);
+      font-weight: var(--weight-bold);
+      letter-spacing: normal;
+
+      color: var(--color-secondary);
+      background-color: var(--color-white);
+
+      padding: var(--spacing-xxxs) var(--spacing-xs);
+      border-radius: var(--radius-round);
+    }
+
+    #Related #Course_content_cards .card .top .tag::before {
+      content: "";
+    }
+
+    /* ---------- Card Bottom ---------- */
+
+    #Related #Course_content_cards .card .bottom {
+      padding: var(--spacing-m);
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-s);
+
+      font-size: var(--t-subbody-size);
+      color: var(--color-gray-800);
+      font-weight: var(--weight-thin);
+    }
+
+    #Related #Course_content_cards .card .bottom span {
+      color: var(--color-primary);
+      font-size: var(--t-body-size) !important;
+    }
+
+    #Related .card .bottom .time {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-xs);
+      align-items: flex-start;
+    }
+
+    #Related .card .bottom .time div {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xxxs);
+    }
+
+    #Related .card .bottom .time div span {
+      font-weight: var(--weight-regular);
+      font-size: var(--t-subbody-size) !important;
+      color: var(--color-primary);
+    }
+
+    #Related .card .bottom h4 {
+      font-size: var(--t-body-size);
+      line-height: var(--t-subbody-lh);
+    }
+
+    #Related .card .bottom .time div p {
+      text-transform: uppercase;
+    }
+
+    #Related #Course_content_cards .card .bottom .btn {
+      text-decoration: none;
+    }
+
+    #Related #Course_content_cards .card .goto-button {
+      color: var(--color-black);
+      font-size: var(--t-subbody-size);
+      font-weight: var(--weight-semibold);
+      line-height: var(--t-subbody-lh);
+      text-decoration: none;
+    }
+
+    /* ---------- Hover ---------- */
+
+    #Related #Course_content_cards .card:hover {
+      transform: translateY(calc(-1 * var(--spacing-xxxs)));
+      filter: drop-shadow(var(--shadow-xl)) drop-shadow(var(--shadow-m));
+    }
+
+    #Related #Course_content_cards .card:hover .top img {
+      transform: scale(1.1);
+    }
+
+    #Related #Course_content_cards .card .goto-button:hover {
+      color: var(--color-secondary);
+    }
+  </style>
+
+  <section id="Related" class="relative">
+    <div id="Related_content" class="maxWidth1300 d-column-h-center gap-m">
+      <div class="d-column-h-center gap-xs">
+        <p class="tag" binding-name="Có thể bạn quan tâm">
+          Có thể bạn quan tâm
+        </p>
+        <h3 binding-name="Sự kiện hấp dẫn có liên quan">
+          Sự kiện hấp dẫn có liên quan
+        </h3>
+        <p
+          binding-name='Kỹ năng thực chiến dành cho Founder bận rộn, tập trung vào những "nút thắt" quan trọng nhất.'
+        >
+          Kỹ năng thực chiến dành cho Founder bận rộn, tập trung vào những "nút
+          thắt" quan trọng nhất.
+        </p>
+      </div>
+
+      <!-- ================= Category list ================= -->
+    </div>
+
+    <!-- ================= Cards ================= -->
+
+    <div id="Course_content_cards" class="maxWidth1300 cards-slider-container">
+      <!-- Controller -->
+      <div class="cards-slider-controller mobileHide gap-xxs">
+        <div class="cards-slider-controller-prev button-primary button-rounded">
+          <span class="material-symbols-outlined"> chevron_left </span>
+        </div>
+        <div class="cards-slider-controller-next button-primary button-rounded">
+          <span class="material-symbols-outlined"> chevron_right </span>
+        </div>
+      </div>
+
+      <!-- List start -->
+      <div
+        class="card"
+        course-cate="{{metaName}}"
+        repeat="event|size:6|sort:startDateTime:desc|param:type:1|includes:"
+        data-aos="fade-up"
+        event-cate="{{metaName}}"
+      >
+        <div class="top relative">
+          <!-- TODO: sync state with schedule -->
+          <div class="tag absolute" state=""></div>
+          <img
+            class="absolute"
+            src="https://static.izzi.asia/{{images.path}}"
+            alt=""
+          />
+          <p class="tag">{{metaKeyword}}</p>
+        </div>
+
+        <div class="bottom">
+          <a
+            href="/{{languageCode}}/su-kien/{{friendlyUrl}}"
+            class="goto-button"
+          >
+            <h4 class="lineclamp-keep-height-3">{{name}}</h4>
+          </a>
+          <div class="time">
+            <p class="d-none startDateTimeUtc">{{startDateTimeUtc}}</p>
+            <p class="d-none endDateTimeUtc">{{endDateTimeUtc}}</p>
+            <div>
+              <span class="material-symbols-outlined"> calendar_today </span>
+              <p class="card-date p-subbody lineclamp-keep-height-1"></p>
+            </div>
+            <div>
+              <span class="material-symbols-outlined"> schedule </span>
+              <p class="card-time p-subbody lineclamp-keep-height-1"></p>
+            </div>
+            <div>
+              <span class="material-symbols-outlined"> location_on </span>
+              <span repeat="address|param:id:parent.addressIds|includes:"
+                ><p class="p-subbody">{{detailAddress}}</p></span
+              >
+            </div>
+          </div>
+
+          <hr />
+          <p class="lineclamp-keep-height-3">{{subDescription}}</p>
+        </div>
+      </div>
+
+      <!-- List end -->
+    </div>
+
+    <!-- ================= View all button ================= -->
+
+    <div class="view-all-btn">
+      <a
+        class="button-secondary button-medium"
+        href="/pages/danh-sach-su-kien"
+        binding-btntext="        Xem thêm    "
+        binding-btnhref=""
+      >
+        Xem thêm
+      </a>
+    </div>
+  </section>
+</div>

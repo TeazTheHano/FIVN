@@ -1,375 +1,632 @@
-<header class="header">
-  <div class="header-container">
-    <div class="header-logo">
-      <a href="/">
-        <img
-          binding-imgpath="https://static.izzi.asia/images/2026/3/12/2603124877_z76128026163479c0ae5f97cad1ab983d7553ac3302a50.jpg"
-          src="https://static.izzi.asia/images/2026/3/12/2603124877_z76128026163479c0ae5f97cad1ab983d7553ac3302a50.jpg"
-          alt="Lunchup Logo"
-          class="logo-image"
-        />
-      </a>
-    </div>
+<div>
+    <style>
+        #Timeline {
+            background: var(--color-gray-900);
+            color: var(--color-white);
+        }
 
-    <!-- Search bar -->
-    <!-- <div class="header-search is-hidden">
-            <button>
-                <i class="fas fa-search"></i>
-            </button>
-            <input type="text" placeholder="Search topics..." class="search-input">
-        </div> -->
+        /* ===============================
+   CONTENT WRAPPER
+================================ */
+        #Timeline #Timeline_content {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-m);
+        }
+        #Timeline  #Timeline_content .timeline-card-content {
+            padding: var(--spacing-m);
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xs);
+            justify-content: center;
+        }
 
-    <!-- Actions -->
-    <div class="header-actions">
-      <!-- <button class="header-search-btn" aria-label="Search">
-                <i class="fas fa-search"></i>
-            </button> -->
+        /* ===============================
+   HEADER
+================================ */
+        #Timeline .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: var(--spacing-m);
+        }
 
-      <button class="header-notification" aria-label="Notifications">
-        <i class="far fa-bell"></i>
-        <span class="notification-dot"></span>
-      </button>
-      <button
-        usernotlogin
-        class="btn-user-login userNotLogin show-login-section"
-      >
-        <div style="display: flex; align-items: center; gap: 5px">
-          <div class="header-avatar">
-            <span>
-              <i class="fas fa-user" style="color: var(--color-white)"></i
-            ></span>
-          </div>
-          <span class>Đăng Nhập</span>
+        #Timeline .timeline-header-left {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xxs);
+        }
+
+        #Timeline .timeline-title {
+            font-size: var(--text-h3);
+            font-weight: var(--weight-bold);
+            color: var(--color-white);
+            margin: 0;
+        }
+
+
+        #Timeline .timeline-subtitle {
+            color: var(--color-white);
+            opacity: 0.8;
+            margin: 0;
+        }
+
+        #Timeline .timeline-view-all {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xxs);
+            background: transparent;
+            border: none;
+            color: var(--color-white);
+            font-size: var(--text-base);
+            font-weight: var(--weight-semibold);
+            cursor: pointer;
+            transition: var(--transition-fast);
+            padding: var(--spacing-xs);
+        }
+
+        #Timeline .timeline-view-all:hover {
+            opacity: 0.8;
+        }
+
+        #Timeline .timeline-view-all svg {
+            width: 14px;
+            height: 14px;
+            stroke: currentColor;
+        }
+
+        /* ===============================
+   TIMELINE WRAPPER
+================================ */
+        #Timeline .timeline-wrapper {
+            position: relative;
+            width: 100%;
+            height: 60px;
+            margin: var(--spacing-m) 0;
+        }
+
+        #Timeline .timeline-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--color-gray-700);
+            transform: translateY(-50%);
+        }
+
+        #Timeline .timeline-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: var(--color-primary);
+            transition: width var(--transition-base), left var(--transition-base);
+            width: 0%;
+        }
+
+        /* ===============================
+   TIMELINE MARKS
+================================ */
+        #Timeline .timeline-marks {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 var(--spacing-xs);
+        }
+
+        #Timeline .timeline-mark {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            z-index: 10;
+            flex: 1;
+        }
+
+        #Timeline .timeline-mark-label {
+            position: absolute;
+            top: -28px;
+            padding: 2px var(--spacing-xxs);
+            background: var(--color-primary);
+            color: var(--color-white);
+            font-size: var(--text-xxxs);
+            font-weight: var(--weight-semibold);
+            white-space: nowrap;
+            border-radius: var(--radius-s);
+            transition: var(--transition-fast);
+            opacity: 0;
+            transform: translateY(-10px);
+            pointer-events: none;
+        }
+
+        #Timeline .timeline-mark:hover .timeline-mark-label,
+        #Timeline .timeline-mark.active .timeline-mark-label {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #Timeline .timeline-mark-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--color-gray-600);
+            border: 2px solid var(--color-gray-700);
+            transition: var(--transition-fast);
+            position: relative;
+            z-index: 2;
+        }
+
+        #Timeline .timeline-mark:hover .timeline-mark-dot,
+        #Timeline .timeline-mark.active .timeline-mark-dot {
+            background: var(--color-primary);
+            border-color: var(--color-primary);
+            transform: scale(1.2);
+            box-shadow: 0 0 0 3px rgba(10, 102, 194, 0.2);
+        }
+
+        /* ===============================
+   CONTENT CARD
+================================ */
+        #Timeline .timeline-content-card {
+            display: none;
+            grid-template-columns: 1fr 1fr;
+            background: var(--color-gray-100);
+            border-radius: var(--radius-m);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            min-height: 250px;
+            opacity: 0;
+            transition: opacity var(--transition-base);
+        }
+
+        #Timeline .timeline-content-card.active {
+            display: grid;
+            opacity: 1;
+        }
+
+        #Timeline .timeline-card-image {
+            width: 100%;
+            min-height: 250px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Lớp ảnh nền - blur, cover toàn bộ */
+        #Timeline .timeline-card-image-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover !important;
+            filter: blur(8px);
+            transform: scale(1.05);
+        }
+
+        /* Lớp ảnh chính - contain, không bị cắt */
+        #Timeline .timeline-card-image-main {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            object-fit: contain !important;
+            object-position: center;
+            z-index: 1;
+        }
+
+        #Timeline .event-hero-content {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        #Timeline .timeline-card-content {
+            padding: var(--spacing-m);
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-l);
+            justify-content: center;
+        }
+
+        #Timeline .meta-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        #Timeline .meta-item > i {
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        #Timeline .timeline-card-date {
+            display: inline-block;
+            padding: var(--spacing-xxs) var(--spacing-xs);
+            background: var(--color-primary);
+            color: var(--color-white);
+            font-size: var(--text-xxs);
+            font-weight: var(--weight-semibold);
+            border-radius: var(--radius-s);
+            width: fit-content;
+        }
+
+        /* ===============================
+   COUNTDOWN
+================================ */
+
+        .entry-countdown {
+            display: flex;
+            width: 100%;
+        }
+
+        .pro-countdown-1 {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .single-countdown-box-1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-primary, #2993d0);
+            border: none;
+            border-radius: 12px;
+            width: 68px;
+            height: 68px;
+        }
+
+        .single-countdown-box-1 span {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .countdown-label {
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--color-gray-600, #555);
+            letter-spacing: 0.3px;
+        }
+
+        @media (max-width: 767px) {
+            .pro-countdown-1 {
+                gap: 5px;
+            }
+
+            .countdown-item {
+                gap: 4px;
+            }
+
+            .single-countdown-box-1 {
+                width: 44px;
+                height: 44px;
+                border-radius: 8px;
+            }
+
+            .single-countdown-box-1 span {
+                font-size: 1rem;
+            }
+
+            .countdown-label {
+                font-size: 9px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .single-countdown-box-1 {
+                width: 38px;
+                height: 38px;
+                border-radius: 7px;
+            }
+
+            .single-countdown-box-1 span {
+                font-size: 0.9rem;
+            }
+
+            .countdown-label {
+                font-size: 8px;
+            }
+        }
+
+        /* ===============================
+   RESPONSIVE
+================================ */
+        @media (max-width: 767px) {
+            #Timeline .timeline-wrapper {
+                height: 50px;
+                margin: var(--spacing-s) 0;
+            }
+
+            #Timeline .timeline-content-card {
+                grid-template-columns: 1fr;
+            }
+
+            #Timeline .timeline-card-image {
+                min-height: 180px;
+            }
+
+            #Timeline .timeline-card-content {
+                padding: var(--spacing-s);
+                gap: var(--spacing-s);
+            }
+        }
+
+        /* Wrapper cho danh sách speaker - cho phép xuống dòng khi nhiều người */
+        .speakers-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px 8px;
+            align-items: center;
+            flex: 1;
+            min-width: 0;
+        }
+
+        /* Speaker avatar tròn - gọn ngang */
+        .single-speaker {
+            display: inline-flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .single-speaker .content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .single-speaker .speaker-name {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .single-speaker .speaker-description {
+            display: none;
+        }
+
+        .timeline-card-actions {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            gap: var(--spacing-s);
+        }
+
+        .timeline-card-btn-detail {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s, border-color 0.2s;
+            white-space: nowrap;
+        }
+
+        .timeline-card-btn-detail:first-child {
+            flex: 1;
+            background: #fff;
+            color: var(--color-gray-900, #111);
+            border: 1.5px solid var(--color-gray-300, #ccc);
+        }
+
+        .timeline-card-btn-detail:first-child:hover {
+            border-color: var(--color-primary, #2993d0);
+            color: var(--color-primary, #2993d0);
+        }
+
+        .timeline-card-btn-detail:last-child {
+            flex-shrink: 0;
+            background: var(--color-primary, #2993d0);
+            color: #fff;
+            border: 1.5px solid transparent;
+            text-align: center;
+        }
+
+        .timeline-card-btn-detail:last-child:hover {
+            background: var(--color-primary-hover, #1f7ab8);
+        }
+
+        @media (max-width: 480px) {
+            .timeline-card-actions {
+                flex-direction: column;
+            }
+
+            .timeline-card-btn-detail:first-child,
+            .timeline-card-btn-detail:last-child {
+                flex: unset;
+                width: 100%;
+            }
+        }
+
+        .event-locations {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .event-locations div:not(:last-child)::after {
+            content: ", ";
+        }
+
+        .single-speaker:not(:last-child) .speaker-name::after {
+    content: ", ";
+}
+
+    </style>
+    <section id="Timeline" class="timeline-section relative">
+        <div id="Timeline_content" class="timeline-container">
+            <!-- Header -->
+            <div class="timeline-header">
+                <div class="timeline-header-left">
+                    <h2 >Sự kiện</h2>
+                    <p class="timeline-subtitle">Khám phá chuỗi sự kiện của
+                        Lunchup</p>
+                </div>
+                <button class="timeline-view-all">
+                    <a href="/pages/events"> Xem tất cả </a>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14"></path>
+                        <path d="m12 5 7 7-7 7"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Timeline Component -->
+            <div class="timeline-wrapper">
+                <div class="timeline-line">
+                    <div class="timeline-progress" id="timelineProgress"></div>
+                </div>
+                <div class="timeline-marks" id="timelineMarks">
+                    <!-- Timeline Mark 1 -->
+                    <div class="timeline-mark active"
+                        repeat="event|range:endDateTime:gte:now/d|param:type:1|from:0|size:1|sort:startDateTimeUtc:asc|includes:"
+                        data-event-id="{{friendlyUrl}}">
+                        <div class="timeline-mark-label">
+                            {{startDateTimeUtc|formatdatetime:DD}}/{{startDateTimeUtc|formatdatetime:MM}}/{{startDateTimeUtc|formatdatetime:YYYY}}-{{startDateTimeUtc|formatdatetime:hh}}:{{startDateTimeUtc|formatdatetime:mm}}
+                        </div>
+                        <div class="timeline-mark-dot"></div>
+                    </div>
+                    <div class="timeline-mark "
+                        repeat="event|range:endDateTime:gte:now/d|param:type:1|from:1|size:6|sort:startDateTimeUtc:asc|includes:"
+                        data-event-id="{{friendlyUrl}}">
+
+                        <div class="timeline-mark-label">
+                            {{startDateTimeUtc|formatdatetime:DD}}/{{startDateTimeUtc|formatdatetime:MM}}/{{startDateTimeUtc|formatdatetime:YYYY}}-{{startDateTimeUtc|formatdatetime:hh}}:{{startDateTimeUtc|formatdatetime:mm}}
+                        </div>
+                        <div class="timeline-mark-dot"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Cards -->
+            <div>
+                <!-- Event 1 -->
+                <div class="timeline-content-card active" data-event-id="{{friendlyUrl}}"
+                    repeat="event|range:endDateTime:gte:now/d|param:type:1|size:6|sort:startDateTimeUtc:asc|includes:">
+                    <div class="timeline-card-image">
+                        <!-- Lớp 1: Ảnh nền blur -->
+                        <img class="timeline-card-image-bg" loading="lazy" decoding="async"
+                            src="{{images|getthumbnailbyindex:0|getPath:}}" alt="">
+                        <!-- Lớp 2: Ảnh chính contain -->
+                        <img class="timeline-card-image-main" loading="lazy" decoding="async"
+                            src="{{images|getthumbnailbyindex:0|getPath:}}" alt="{{name}}">
+                    </div>
+                    <div class="timeline-card-content">
+
+                        <div class="entry-countdown">
+                            <div class="pro-countdown-1" data-lang="vi"
+                                data-countdown="{{startDateTime|formatdatetime:yyyy-mm-dd}} {{startDateTime|formatdatetime:hh-mm-ss}}">
+                            </div>
+
+                        </div>
+                        <h2 style="color: var(--color-black);">{{metaName}}</h2>
+                        <h3 class="title-all ">{{name}}</h3>
+                        <div class="timeline-card-meta">
+                            <p class="d-none startDateTimeUtc">{{startDateTimeUtc}}</p>
+                            <p class="d-none endDateTimeUtc">{{endDateTimeUtc}}</p>
+
+                            <!-- DATE -->
+                            <div class="meta-item">
+                                <i class="fas fa-calendar"></i>
+
+                                <span class="card-date">
+                                    {{startDateTimeUtc|formatdatetime:DD}}/{{startDateTimeUtc|formatdatetime:MM}}/{{startDateTimeUtc|formatdatetime:YYYY}}
+
+                                </span>
+                            </div>
+
+                            <!-- TIME -->
+                            <!-- <div class="meta-item">
+                            <i class="fas fa-clock"></i>
+                            <span class="card-time">
+                                {{startDateTimeUtc|formatdatetime:hh}}:{{startDateTimeUtc|formatdatetime:mm}},
+                                GMT
+                                {{startDateTimeUtc|formatdatetime:timezone}}
+                                -
+                                {{endDateTimeUtc|formatdatetime:hh}}:{{endDateTimeUtc|formatdatetime:mm}},
+                                GMT
+                                {{endDateTimeUtc|formatdatetime:timezone}}
+
+                            </span>
+                        </div> -->
+
+                            <!-- LOCATION -->
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div class="event-locations">
+                                    <div repeat="address|param:id:parent.addressIds|includes:">
+                                        {{name}}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="meta-item">
+                                <i class="fas fa-user-tie"></i>
+                                <div class="speakers-list">
+                                    <div class="single-speaker"
+                                        repeat="user|param:esId:parent.esUserIds|param:allType:64|sort:mobile:asc|includes:">
+                                        <!-- <div class="image speaker-avatar">
+                                            <a href="#{{name|rewrite}}" data-toggle="modal"
+                                                data-target="#{{name|rewrite}}"><img
+                                                    src="{{images|getthumbnailbyindex:0|getPath:?mode=crop&amp;width=200&amp;height=200}}"
+                                                    alt="speaker"></a>
+                                        </div> -->
+                                        <div class="speaker-name">{{name}}</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class="timeline-card-description text-justify">
+                                {{subDescription}}
+                            </p>
+                            <div class="timeline-card-actions">
+                                <a href="/{{languageCode}}/event/{{friendlyUrl}}" class="timeline-card-btn-detail">
+                                    Xem chi tiết →
+                                </a>
+                                <a class="timeline-card-btn-detail userLogin createOrder" href="javascript:void(0);"
+                                    data-id="{{productIds}}">
+                                    Đăng ký ngay
+                                </a>
+                                <a class="timeline-card-btn-detail userNotLogin btn-user-login   show-login-section"
+                                    href="javascript:void(0);">
+                                    Đăng ký ngay
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
         </div>
-      </button>
 
-      <!-- Button khi đã đăng nhập -->
-      <button
-        userlogin
-        class="btn-user-logged userLogin"
-        aria-label="User Profile"
-      >
-        <div style="display: flex; align-items: center; gap: 5px">
-          <div class="header-avatar">
-            <span>
-              <span>
-                <i class="fas fa-user" style="color: var(--color-white)"></i>
-              </span>
-            </span>
-          </div>
-          <span class="user-logged-text displayName">Bảo Bảo</span>
-          <i class="fas fa-chevron-down"></i>
-        </div>
-      </button>
-      <div class="user-menu-wrapper hidden" id="userMenuMobile">
-        <div class="user-menu-dropdown">
-          <div class="user-menu-title">
-            Hội viên: <span id="userNameDesktop " class="displayName"></span>
-          </div>
-          <div class="user-menu-divider"></div>
-          <!-- <a href="#" class="user-menu-item">
-                            <i class="fas fa-user-circle"></i>
-                            <span>Thông Tin Tài Khoản</span>
-                        </a>
-                        <a href="#" class="user-menu-item">
-                            <i class="fas fa-truck"></i>
-                            <span>Theo Dõi Đơn Hàng</span>
-                        </a>
-                        <a href="#" class="user-menu-item">
-                            <i class="far fa-heart"></i>
-                            <span>Sản Phẩm Yêu Thích</span>
-                        </a>
-                        <a href="#" class="user-menu-item">
-                            <i class="far fa-eye"></i>
-                            <span>Sản Phẩm Đã Xem</span>
-                        </a> -->
-          <a href="#" class="user-menu-item" id="logoutFb">
-            <i class="fas fa-sign-out-alt"></i>
-            <span>Đăng Xuất</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div id="authModal" class="auth-modal hidden">
-    <div class="auth-modal-overlay"></div>
-    <div class="auth-modal-content">
-      <button class="auth-modal-close" id="closeAuthModal" aria-label="Đóng">
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path d="M18 6L6 18M6 6l12 12"></path>
-        </svg>
-      </button>
-      <div class="login-section">
-        <div class="login-card">
-          <div style="text-align: center">
-            <h2 class="form-title">Đăng nhập</h2>
-          </div>
-
-          <form id="formLogin" action="javascript:void(0)" method="post">
-            <div class="form-group">
-              <label for="loginEmail"
-                ><i class="fas fa-envelope"></i> Email</label
-              >
-              <input
-                type="email"
-                id="loginEmail"
-                name="name"
-                placeholder="example@email.com"
-                required
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="loginPassword"
-                ><i class="fas fa-key"></i> Mật khẩu</label
-              >
-              <input
-                type="password"
-                id="loginPassword"
-                name="password"
-                placeholder="••••••••"
-                required
-              />
-            </div>
-
-            <div class="checkbox-group">
-              <div class="remember-me">
-                <input type="checkbox" />
-                <span>Ghi nhớ đăng nhập</span>
-              </div>
-              <a href="#" class="forgot-link">Quên mật khẩu?</a>
-            </div>
-
-            <button type="submit" class="btn-login-mobile" id="submitLogin">
-              Đăng nhập ngay
-            </button>
-
-            <p class="register-link">
-              Chưa có tài khoản?
-              <a href="#" class="toggle-to-register">Đăng ký ngay</a>
-            </p>
-          </form>
-        </div>
-      </div>
-      <div class="register-section">
-        <div class="register-card">
-          <div style="text-align: center">
-            <h2 class="form-title">Tạo tài khoản mới</h2>
-          </div>
-
-          <form
-            class="customForm"
-            id="1bb90723-f930-5f7c-a3b0-83dad61f39a2"
-            action="javascript:void(0)"
-            method="post"
-            data-check-email="true"
-            data-check-mobile="true"
-          >
-            <div class="form-row">
-              <div class="form-group">
-                <label for="fullName"
-                  ><i class="fas fa-user"></i> Họ và tên</label
-                >
-                <input
-                  type="text"
-                  id="fullName"
-                  name="name"
-                  placeholder="Nguyễn Văn A"
-                  required
-                />
-              </div>
-              <div class="form-group">
-                <label for="phone"
-                  ><i class="fas fa-phone"></i> Số điện thoại</label
-                >
-                <input
-                  type="tel"
-                  id="phone"
-                  name="mobile"
-                  placeholder="0909090909"
-                  required
-                />
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="email"
-                ><i class="fas fa-envelope"></i> Linkedin</label
-              >
-              <input
-                type="url"
-                id="linkedin"
-                name="linkedin"
-                class="form-input"
-                placeholder="linkedin.com/in/..."
-                required
-              />
-            </div>
-            <div class="form-group">
-              <label for="email"
-                ><i class="fas fa-envelope"></i> Facebook</label
-              >
-              <input
-                type="url"
-                id="facebook"
-                name="facebook"
-                placeholder="https://www.facebook.com/lunchup.asia"
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="email"><i class="fas fa-envelope"></i> Email</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="example@email.com"
-                required
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="email"><i class="fas fa-envelope"></i> Công ty</label>
-              <input
-                type="text"
-                id="company"
-                name="company"
-                placeholder="Linkcare"
-                required
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="email"
-                ><i class="fas fa-envelope"></i> Chức danh</label
-              >
-              <input
-                type="text"
-                id="title"
-                name="title"
-                placeholder="CEOCEO"
-                required
-              />
-            </div>
-            <button
-              type="submit"
-              access="false"
-              id="button-service-submit"
-              class="btn-register-submit"
-            >
-              Đăng ký ngay
-            </button>
-
-            <p class="login-link">
-              Đã có tài khoản?
-              <a href="#" class="toggle-to-login">Đăng nhập ngay</a>
-            </p>
-          </form>
-          <div class="duplicateMessage"></div>
-
-          <p class="returnMessage mt-3"></p>
-        </div>
-      </div>
-    </div>
-  </div>
-</header>
-<aside class="sidebar visible">
-  <nav class="sidebar-nav">
-    <a href="/" class="nav-item" data-nav-id="home" aria-label="Home">
-      <img
-        src="https://static.izzi.asia/images/2026/2/25/2602258995_housechimney.png"
-        alt="Home"
-      />
-      <span class="nav-tooltip">Home</span>
-    </a>
-
-    <a
-      href="/pages/events"
-      class="nav-item"
-      data-nav-id="events"
-      aria-label="Events"
-    >
-      <img
-        src="https://static.izzi.asia/images/2026/2/25/2602254271_calendar.png"
-        alt="Events"
-      />
-      <span class="nav-tooltip">Events</span>
-    </a>
-    <a
-      href="/pages/articles"
-      class="nav-item"
-      data-nav-id="articles"
-      aria-label="Articles"
-    >
-      <img
-        src="https://static.izzi.asia/images/2026/2/25/2602258995_newspaper.png"
-        alt="News"
-      />
-      <span class="nav-tooltip">Articles</span>
-    </a>
-    <a
-      href="/pages/speakers"
-      class="nav-item"
-      data-nav-id="speakers"
-      aria-label="Speaker"
-    >
-      <img
-        src="https://static.izzi.asia/images/2026/2/25/2602258995_usersspeaking.png"
-        alt="Speaker"
-      />
-      <span class="nav-tooltip">Speaker</span>
-    </a>
-    <a
-      href="/pages/about-us"
-      class="nav-item"
-      data-nav-id="about-us"
-      aria-label="About-us"
-    >
-      <img
-        src="https://static.izzi.asia/images/2026/2/25/2602258995_info.png"
-        alt="About-us"
-      />
-      <span class="nav-tooltip">About-us</span>
-    </a>
-  </nav>
-</aside>
-<nav class="bottom-nav">
-  <div class="bottom-nav-items">
-    <a href="/" class="bottom-nav-item active" data-nav-id="home">
-      <img
-        src="https://static.izzi.asia/images/2026/2/25/2602258995_housechimney.png"
-        alt="Home"
-      />
-    </a>
-    <a href="/pages/events" class="bottom-nav-item" data-nav-id="events">
-      <img
-        src="https://static.izzi.asia/images/2026/2/25/2602254271_calendar.png"
-        alt="Events"
-      />
-    </a>
-    <a href="/pages/articles" class="bottom-nav-item" data-nav-id="articles">
-      <img
-        src="https://static.izzi.asia/images/2026/2/25/2602258995_newspaper.png"
-        alt="Articles"
-      />
-    </a>
-    <a href="/pages/speakers" class="bottom-nav-item" data-nav-id="speakers">
-      <img
-        src="https://static.izzi.asia/images/2026/2/25/2602258995_usersspeaking.png"
-        alt="Docs"
-      />
-    </a>
-    <a href="/pages/about-us" class="bottom-nav-item" data-nav-id="about-us">
-      <img
-        src="https://static.izzi.asia/images/2026/2/25/2602258995_info.png"
-        alt="About-us"
-      />
-    </a>
-  </div>
-</nav>
+</div>
+</section>
+</div>

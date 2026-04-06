@@ -176,6 +176,12 @@
       background-color: var(--color-white);
     }
 
+    .headerForm label.error {
+      color: red;
+      font-size: var(--t-mini-size);
+      line-height: var(--t-mini-lh);
+    }
+
     #AfterLogin:hover #logoutFb {
       display: block;
       position: absolute;
@@ -192,7 +198,7 @@
       @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined");
       @import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
     </style>
-    <nav>
+    <nav class="maxWidth1300">
       <div id="logo">
         <a href="/" binding-btnhref="/">
           <img
@@ -229,23 +235,23 @@
         <a
           binding-name="Event"
           class="button"
-          href="/pages/su-kien"
+          href="/pages/danh-sach-su-kien"
           binding-btnhref="#Programme"
           >Event</a
         >
         <a
-          binding-name="Mentor  "
+          binding-name="Mentor"
           class="button"
           href="/pages/mang-luoi"
           binding-btnhref="#Event"
-          >Mentor
-        </a>
+          >Mentor</a
+        >
         <a
-          binding-name="Program"
+          binding-name="Programs"
           class="button"
           href="/pages/danh-sach-khoa-hoc"
           binding-btnhref="#Network"
-          >Program</a
+          >Programs</a
         >
         <a
           binding-name="Blog"
@@ -288,6 +294,7 @@
               id="UserSlot"
             >
               <span class="user-logged-text displayName"></span>
+
               <span class="material-symbols-outlined"> stat_minus_1 </span>
             </div>
 
@@ -335,7 +342,7 @@
               type="text"
               name="name"
               placeholder="example@email.com"
-              required=""
+              required
               id="loginEmail"
             />
 
@@ -345,12 +352,12 @@
               type="password"
               id="loginPassword"
               placeholder="••••••••"
-              required=""
+              required
             />
           </div>
 
           <button
-            binding-btntext="Login"
+            binding-btntext="            Login          "
             type="submit"
             class="button-primary button-large"
             id="submitLogin"
@@ -365,7 +372,7 @@
                 authModal.close();
                 signinModal.showModal();
               "
-              binding-btntext="Đăng ký"
+              binding-btntext="              Đăng ký            "
             >
               Đăng ký
             </a>
@@ -379,7 +386,7 @@
   <dialog id="signinModal" class="modal-dialog">
     <div class="modal-content d-column gap-m">
       <div class="d-row-h-between d-row-v-center">
-        <h3 binding-name="Sign in">Sign in</h3>
+        <h3 binding-name="Sign up">Sign up</h3>
         <button
           class="modal-close button-secondary button-rounded"
           onclick="signinModal.close()"
@@ -394,7 +401,7 @@
         <div style="width: inherit; white-space: wrap">
           <h4
             style="width: inherit; white-space: wrap"
-            class="duplicateMessage"
+            class="errorMessage"
           ></h4>
           <h4
             style="width: inherit; white-space: wrap"
@@ -409,52 +416,117 @@
           method="post"
           data-check-email="true"
           data-check-mobile="true"
+          data-enable-attribute="true"
         >
           <div>
-            <label for="fullName" binding-name="Họ và tên">Họ và tên</label>
-            <input
-              type="text"
-              id="fullName"
-              name="name"
-              placeholder="Nhập họ và tên của bạn"
-              required
-            />
+            <label for="fullName" binding-name="Họ và tên"
+              >Họ và tên <sup style="color: red">*</sup></label
+            >
+            <div class="d-column gap-xs">
+              <input
+                type="text"
+                id="fullName"
+                name="name"
+                placeholder="Nhập họ và tên của bạn"
+                required
+                oninvalid="this.setCustomValidity('Đây là trường bắt buộc')"
+                oninput="this.setCustomValidity('')"
+              />
+            </div>
 
             <label for="phone" binding-name="Số điện thoại"
-              >Số điện thoại</label
+              >Số điện thoại <sup style="color: red">*</sup></label
             >
-            <input
-              type="tel"
-              id="phone"
-              name="mobile"
-              placeholder="0909090909"
-              required
-            />
+            <div class="d-column gap-xs">
+              <input
+                type="tel"
+                id="phone"
+                name="mobile"
+                placeholder="Nhập số điện thoại của bạn"
+                required
+                oninvalid="this.setCustomValidity('Đây là trường bắt buộc')"
+                oninput="this.setCustomValidity('')"
+              />
+            </div>
 
-            <label for="email" binding-name="Email">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="example@email.com"
-              required
-            />
+            <label for="email" binding-name="Email"
+              >Email <sup style="color: red">*</sup></label
+            >
+            <div class="d-column gap-xs">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="example@email.com"
+                required
+                oninvalid="this.setCustomValidity('Đây là trường bắt buộc')"
+                oninput="this.setCustomValidity('')"
+              />
+            </div>
+
+            <label for="officePosition" binding-name="Chức danh"
+              >Chức danh <sup style="color: red">*</sup></label
+            >
+            <div class="d-column gap-xs">
+              <input
+                data-attribute="true"
+                type="text"
+                id="officePosition"
+                name="officePosition"
+                data-attr-id="c918f3e3-ff7b-3129-bab8-b48f84088f2d"
+                placeholder="CEO, Founder, Staff,..."
+                required
+                oninvalid="this.setCustomValidity('Đây là trường bắt buộc')"
+                oninput="this.setCustomValidity('')"
+              />
+            </div>
+
+            <label for="officeName" binding-name="Tên văn phòng"
+              >Tên công ty <sup style="color: red">*</sup></label
+            >
+            <div class="d-column gap-xs">
+              <input
+                data-attribute="true"
+                type="text"
+                id="officeName"
+                name="officeName"
+                data-attr-id="b8eb122b-103e-3458-59ce-eac1ac3f13fa"
+                placeholder="Nhập tên công ty của bạn"
+                required
+                oninvalid="this.setCustomValidity('Đây là trường bắt buộc')"
+                oninput="this.setCustomValidity('')"
+              />
+            </div>
+
+            <label for="linkedinLink" binding-name="Địa chỉ LinkedIn"
+              >Địa chỉ LinkedIn</label
+            >
+            <div class="d-column gap-xs">
+              <input
+                data-attribute="true"
+                type="url"
+                id="linkedinLink"
+                name="linkedinLink"
+                data-attr-id="e05cbc41-b5fc-8e52-620e-d86fd8495cee"
+                placeholder="https://www.linkedin.com/in/your-profile"
+              />
+            </div>
           </div>
 
           <button
-            binding-btntext="Sign in"
+            binding-btntext="            Sign up          "
             type="submit"
             class="button-primary button-large btn-register-submit"
             id="button-service-submit"
             access="false"
           >
-            Sign in
+            Sign up
           </button>
 
           <span>
             <span
               class="p-subbody"
-              binding-name="Nếu đã có tài khoản, vui lòng"
+              binding-name="              Nếu đã có tài khoản, vui lòng"
             >
               Nếu đã có tài khoản, vui lòng</span
             >
@@ -463,7 +535,7 @@
                 signinModal.close();
                 authModal.showModal();
               "
-              binding-btntext="Login"
+              binding-btntext="              Login            "
             >
               Login
             </a>

@@ -385,6 +385,54 @@ function PagingContent({
 
 }
 
+function formFillFromHtmlContent({
+    formQuery,
+    formTargetQueryIds = [],
+    contentQueryIds = [],
+}) {
+    // 1. Validate input
+    if (formTargetQueryIds.length !== contentQueryIds.length) {
+        throw new Error(
+            `Target (${formTargetQueryIds.length}) and content (${contentQueryIds.length}) must have the same length`
+        )
+    }
+
+    // 2. Get form
+    const form = document.querySelector(formQuery)
+
+    if (!form) {
+        throw new Error(`Cannot find form with query: ${formQuery}`)
+    }
+
+    // 3. Map elements
+    const targets = formTargetQueryIds.map(q => form.querySelector(q))
+    const contents = contentQueryIds.map(q => document.querySelector(q))
+
+    // 4. Fill
+    targets.forEach((target, index) => {
+        const content = contents[index]
+        const targetQuery = formTargetQueryIds[index]
+        const contentQuery = contentQueryIds[index]
+
+        // Debug rõ ràng từng cái
+        if (!target) {
+            console.error('❌ Missing target:', targetQuery)
+            throw new Error(`Cannot find target with query: ${targetQuery}`)
+        }
+
+        if (!content) {
+            console.error('❌ Missing content:', contentQuery)
+            throw new Error(`Cannot find content with query: ${contentQuery}`)
+        }
+
+        // Lấy text an toàn
+        const value = content.textContent?.trim() || ''
+
+        // Set value
+        target.value = value
+    })
+}
+
 // CALLING FUNCTIONs
 headerScroll();
 
@@ -450,10 +498,31 @@ function eventListPageCall() {
         containerQuery: '#Course_content_cards',
         itemsQuery: '.card',
         paginationContainerQuery: '#Course_pagination',
-        itemsPerPage: 9,
+        itemsPerPage: 12,
         filtersQuery: 'input[name="Course_content_cate"]'
     })
     eventQuarterText('#Course_content_cards .card');
+    formFillFromHtmlContent({
+        formQuery: '[id="65218bb1-57eb-dc54-4d0d-00cf5ac21e86"].after-login-show',
+
+        formTargetQueryIds: [
+            'input#fullName',
+            'input#mobile',
+            'input#email',
+        ],
+
+        contentQueryIds: [
+            '#CourseDetailDescription #AfterLogin span.displayName',
+            '#CourseDetailDescription #AfterLogin span.displayMobile',
+            '#CourseDetailDescription #AfterLogin span.displayEmail',
+        ]
+    })
+    sliderControl({
+        listElementQuery: '#Course_content_cards',
+        childElement: '.card',
+        nextBtnQuery: '#Related .cards-slider-controller-next',
+        prevBtnQuery: '#Related .cards-slider-controller-prev'
+    });
 }
 
 switch (true) {
