@@ -84,6 +84,43 @@
       + button.form-submit-btn {
       display: none;
     }
+
+    /* #EventSignUp {
+      width: 50vw;
+      height: fit-content;
+      padding: var(--spacing-l);
+      border-radius: var(--radius-m);
+      background-color: var(--color-white);
+    } */
+
+    #EventSignUp .noti-popup-icon {
+      width: var(--spacing-xl);
+      height: var(--spacing-xl);
+      aspect-ratio: 1;
+      border-radius: 100%;
+      background-color: rgb(var(--color-secondary-raw) / 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: auto;
+      color: var(--color-primary);
+    }
+
+    #EventSignUp .share-box {
+      border: 1px solid var(--color-gray-400);
+      background-color: var(--color-white);
+      padding: var(--spacing-s);
+      border-radius: var(--radius-s);
+      filter: drop-shadow(var(--shadow-s));
+      width: fit-content;
+      margin: auto;
+    }
+
+    .share-icon {
+      width: 1.25rem;
+      height: 1.25rem;
+      filter: saturate(0);
+    }
   </style>
 
   <section
@@ -124,12 +161,12 @@
               <p>Kết thúc: {{endDateTime|formatdatetime:HH:mm}}</p>
             </div>
 
-            <div class="d-row-v-center gap-xs">
+            <!-- <div class="d-row-v-center gap-xs">
               <span class="material-symbols-outlined"> link_2 </span>
               <a href="{{externalLink}}" target="_blank"
                 >Link: {{externalLink}}</a
               >
-            </div>
+            </div> -->
 
             <div class="d-row-v-center gap-xs">
               <span class="material-symbols-outlined"> location_on </span>
@@ -237,9 +274,67 @@
           </div> -->
 
           <div>
+            <dialog class="noti-popup modal-dialog" id="EventSignUp">
+              <div class="modal-content d-column-v-center gap-s">
+                <div class="noti-popup-icon">
+                  <span class="material-symbols-outlined"> check </span>
+                </div>
+
+                <h4
+                  style="width: inherit; white-space: wrap"
+                  class="errorMessage check"
+                ></h4>
+                <h4
+                  style="width: inherit; white-space: wrap"
+                  class="returnMessage mt-3 d-none check"
+                ></h4>
+                <h4 style="width: inherit; white-space: wrap" class="">
+                  <span
+                    binding-name="Chúc mừng bạn đã đăng ký thành công sự kiện"
+                    >Chúc mừng bạn đã đăng ký thành công sự kiện
+                  </span>
+                  <b style="color: var(--color-primary)">{{name}}</b>
+                </h4>
+
+                <hr />
+                <div class="d-row-h-center gap-s share-box">
+                  <p binding-name="Chia sẻ sự kiện này">Chia sẻ sự kiện này</p>
+                  <a
+                    target="_blank"
+                    href="https://www.facebook.com/sharer/sharer.php?u=https://fivietnam.labo.io/vi-VN/bai-viet/{{friendlyUrl}}"
+                  >
+                    <img
+                      src="https://static.izzi.asia/images/2026/3/11/2603113493_2021Facebookicon.svg.png"
+                      alt="Facebook"
+                      class="share-icon"
+                    />
+                  </a>
+                  <a
+                    target="_blank"
+                    href="https://www.linkedin.com/sharing/share-offsite/?url=https://fivietnam.labo.io/vi-VN/bai-viet/{{friendlyUrl}}"
+                  >
+                    <img
+                      src="https://static.izzi.asia/images/2026/3/11/2603118488_LinkedInicon.svg.png"
+                      alt="Facebook"
+                      class="share-icon"
+                    />
+                  </a>
+                  <a
+                    target="_blank"
+                    href="https://twitter.com/intent/tweet?text=https://fivietnam.labo.io/vi-VN/bai-viet/{{friendlyUrl}}"
+                  >
+                    <img
+                      src="https://static.izzi.asia/images/2026/3/11/2603113787_Xicon.svg.png"
+                      alt="Twitter"
+                      class="share-icon"
+                    />
+                  </a>
+                </div>
+              </div>
+            </dialog>
             <form
               action="javascript:void(0)"
-              id={{externalLink}}
+              id="65218bb1-57eb-dc54-4d0d-00cf5ac21e86"
               class="customForm after-login-show"
               method="post"
               data-check-email="false"

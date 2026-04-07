@@ -433,6 +433,76 @@ function formFillFromHtmlContent({
     })
 }
 
+function observeAndTrigger({
+    observeTargetQuery,
+    triggerCondition,
+    triggerSelector,
+    triggerEventOn,
+    triggerEventOff,
+    bounceDelay = 200,
+    onDelay = 0,
+    offDelay = 0
+}) {
+    const observeTarget = document.querySelector(observeTargetQuery);
+    const triggerElement = document.querySelector(triggerSelector);
+
+    if (!observeTarget || !triggerElement) {
+        console.error('❌ Missing target or trigger element');
+        return;
+    }
+
+    const onEvent = triggerEventOn || 'open-dialog';
+    const offEvent = triggerEventOff || onEvent;
+
+    function debounce(fn, delay) {
+        let timeoutId;
+        return (...args) => {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => fn(...args), delay);
+        };
+    }
+
+    let lastState = null; // 🔥 chống spam event
+
+    const handleMutation = () => {
+        // 🔥 FIX: dùng querySelector thay vì matches
+        const conditionMet = observeTarget.matches(triggerCondition)
+            || !!observeTarget.querySelector('h4.check:not(:empty)');
+
+        // tránh spam event
+        if (conditionMet === lastState) return;
+        lastState = conditionMet;
+
+        if (conditionMet) {
+            setTimeout(() => {
+                if (triggerElement.tagName === 'DIALOG' && !triggerElement.open) {
+                    triggerElement.showModal();
+                }
+                triggerElement.dispatchEvent(new Event(onEvent, { bubbles: true }));
+            }, onDelay);
+        } else {
+            setTimeout(() => {
+                if (triggerElement.tagName === 'DIALOG' && triggerElement.open) {
+                    triggerElement.close();
+                }
+                triggerElement.dispatchEvent(new Event(offEvent, { bubbles: true }));
+            }, offDelay);
+        }
+    };
+
+    const debouncedHandler = debounce(handleMutation, bounceDelay);
+
+    const observer = new MutationObserver(debouncedHandler);
+
+    observer.observe(observeTarget, {
+        childList: true,
+        subtree: true,
+        characterData: true,
+    });
+
+    return observer;
+}
+
 // CALLING FUNCTIONs
 headerScroll();
 
@@ -522,6 +592,14 @@ function eventListPageCall() {
         childElement: '.card',
         nextBtnQuery: '#Related .cards-slider-controller-next',
         prevBtnQuery: '#Related .cards-slider-controller-prev'
+    });
+    observeAndTrigger({
+        observeTargetQuery: '#EventSignUp',
+        triggerCondition: 'h4.check:not(:empty)',
+        triggerSelector: '#EventSignUp',
+        triggerEventOn: 'notification-show',
+        triggerEventOff: 'notification-hide',
+        offDelay: 3000
     });
 }
 
