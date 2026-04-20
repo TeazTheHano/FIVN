@@ -5,6 +5,7 @@ export interface QuizInput {
         text: string
         isCorrect: boolean
     }[]
+    point?: number
 }
 
 export interface QuizInputSets {

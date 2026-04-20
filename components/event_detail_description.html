@@ -339,7 +339,7 @@
               method="post"
               data-check-email="false"
               data-check-mobile="false"
-              novalidate="novalidate"
+              eventId="{{id}}"
             >
               <!-- displayName -->
               <div id="AfterLogin" class="AfterLogin">
@@ -423,6 +423,8 @@
                   id="button-service-submit"
                   access="false"
                   class="button-primary button-large form-submit-btn"
+                  data-id="{{id}}"
+                  href="javascript:void(0);"
                 >
                   Đăng ký ngay
                 </button>

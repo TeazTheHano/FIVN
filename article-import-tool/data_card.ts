@@ -1,5 +1,8 @@
-let x = [
-    {
+import { CardProgramServiceInput } from "./domain/buildCardProgramService";
+
+// Danh sách các đối tượng cần chỉnh sửa
+const dataCard: CardProgramServiceInput[] = [
+  {
         Id: "70e0ffa6-9dfa-4052-b04b-6f8dfc2d64b8",
         Name: "50.  4 vé VIP các chương trình ca nhạc Nghệ sĩ Hạng A, Nghệ sĩ quốc tế/ chương trình nghệ thuật nổi tiếng trong nước dành cho gia đình + Event Concierge",
         Description: "<p>&nbsp;4 v&eacute; VIP c&aacute;c chương tr&igrave;nh ca nhạc Nghệ sĩ Hạng A, Nghệ sĩ quốc tế/ chương tr&igrave;nh nghệ thuật nổi tiếng trong nước d&agrave;nh cho gia đ&igrave;nh + Event Concierge</p>\n",
@@ -1499,6 +1502,6 @@ let x = [
         
         
     }
-]
+];
 
-console.log(data.length);
+export default dataCard;

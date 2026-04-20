@@ -601,6 +601,35 @@ function eventListPageCall() {
         triggerEventOff: 'notification-hide',
         offDelay: 3000
     });
+
+    if (window.location.pathname.includes('vc-101-hieu-ve-venture-capital-tong-quan-cho-founder')) {
+        disableEventFormWhenReady();
+        console.log('disableEventForm');
+
+    }
+}
+
+function disableEventFormWhenReady() {
+    const observer = new MutationObserver(() => {
+        let form = document.querySelector('[id="65218bb1-57eb-dc54-4d0d-00cf5ac21e86"].after-login-show');
+
+        if (form) {
+            let button = form.querySelector('button[type="submit"]');
+
+            if (button) {
+                button.disabled = true;
+                button.style.cursor = 'not-allowed';
+                button.title = 'Form đã đóng đăng ký';
+                console.log('✅ Form disabled via observer');
+                observer.disconnect(); // stop luôn
+            }
+        }
+    });
+
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true,
+    });
 }
 
 switch (true) {

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DOMAIN_NCC_CONSTANT = exports.DOMAIN_IMAGE_CONSTANT = exports.DOMAIN_ARTICLE_CONSTANT = exports.DOMAIN_USER_CONSTANT = exports.ADMIN_CREATE_ID = exports.LANGUAGE_ID = exports.COMMAND_LINK = exports.MERCHANT_ID = void 0;
+exports.DOMAIN_QUIZ_CONSTANT = exports.DOMAIN_NCC_CONSTANT = exports.DOMAIN_IMAGE_CONSTANT = exports.DOMAIN_ARTICLE_CONSTANT = exports.DOMAIN_USER_CONSTANT = exports.ADMIN_CREATE_ID = exports.LANGUAGE_ID = exports.COMMAND_LINK = exports.MERCHANT_ID = void 0;
 // export const MERCHANT_ID = "5845210a-c1f3-4699-b6ad-eefc96d23e8f"
 exports.MERCHANT_ID = '494ffd32-c6a4-4a9f-a68a-e9d8bbf8a80e';
 exports.COMMAND_LINK = "https://apicommand.izzi.asia/Command/SendSync";
@@ -35,4 +35,15 @@ exports.DOMAIN_NCC_CONSTANT = {
     DOMAIN_ADDRESS: "Address",
     COMMAND_NAME_UPDATE: "UpdateSupplierUser",
     COMMAND_NAME_ADRESS_CREATE: "CreateResortAddress"
+};
+exports.DOMAIN_QUIZ_CONSTANT = {
+    DOMAIN: "Quiz",
+    // Danh sách map type từ Data (string) sang API C# (number)
+    // Centralize quản lý type để dễ dàng mở rộng sau này
+    TYPE_MAP: {
+        'true_false': 1,
+        'single': 2,
+        // 'multiple': 3, // VD có thể mở rộng sau này
+        // 'fill_blank': 4,
+    }
 };

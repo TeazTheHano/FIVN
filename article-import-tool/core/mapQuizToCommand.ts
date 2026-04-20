@@ -1,8 +1,10 @@
 // core/mapQuizToCommand.ts
 
-import { v4 as uuidv4 } from 'uuid'
+import { generateGuid as uuidv4 } from '../utils/uuid'
 import formatDate from '../utils/formatDate'
 import { QuizInput } from '../domain/validateQuiz'
+
+import { DOMAIN_QUIZ_CONSTANT } from '../variable'
 
 export const mapQuizToCommand = (
     quiz: QuizInput,
@@ -13,32 +15,29 @@ export const mapQuizToCommand = (
     const now = formatDate(new Date())
 
     const answers = quiz.answers.map((a, index) => ({
-        Id: uuidv4(),
-        Name: a.text || "", // tránh null
-        IsCorrect: a.isCorrect,
-        DisplayOrder: index,
-        Images: []
+        id: uuidv4(),
+        name: a.text || "", // tránh null
+        isCorrect: a.isCorrect,
+        displayOrder: index,
+        images: []
     }))
 
+    // Sử dụng map từ central config, fallback về số 2 (Select 1) nếu chưa define
+    const mappedType = DOMAIN_QUIZ_CONSTANT.TYPE_MAP[quiz.type] || 2
+
     return {
-        Id: uuidv4(),
-        QuestionId: questionId,
+        Id: questionId,
+        QuestionId: uuidv4(),
         Name: quiz.question || "",
         SubDescription: "",
         Description: "",
         DisplayOrder: displayOrder,
-        Type: quiz.type === 'true_false' ? 1 : 2,
-        Point: 0,
+        Type: mappedType,
+        Point: quiz.point || 1,
         Images: [],
         Answers: answers,
 
-        // 🔥 critical fields (tránh null ref backend)
-        Status: 1,
-        IsActive: true,
-
         ModifiedDate: now,
-        ModifiedBy: userId,
-        CreatedDate: now,
-        CreatedBy: userId
+        ModifiedBy: userId
     }
 }

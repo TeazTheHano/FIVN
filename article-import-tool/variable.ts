@@ -50,3 +50,16 @@ export const DOMAIN_NCC_CONSTANT = {
     COMMAND_NAME_ADRESS_CREATE: "CreateResortAddress"
 
 }
+
+export const DOMAIN_QUIZ_CONSTANT = {
+    DOMAIN: "Quiz",
+
+    // Danh sách map type từ Data (string) sang API C# (number)
+    // Centralize quản lý type để dễ dàng mở rộng sau này
+    TYPE_MAP: {
+        'true_false': 1,
+        'single': 2,
+        // 'multiple': 3, // VD có thể mở rộng sau này
+        // 'fill_blank': 4,
+    } as Record<string, number>
+}

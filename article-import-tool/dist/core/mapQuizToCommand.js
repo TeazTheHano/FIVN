@@ -5,35 +5,33 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.mapQuizToCommand = void 0;
-const uuid_1 = require("uuid");
+const uuid_1 = require("../utils/uuid");
 const formatDate_1 = __importDefault(require("../utils/formatDate"));
+const variable_1 = require("../variable");
 const mapQuizToCommand = (quiz, questionId, displayOrder, userId) => {
     const now = (0, formatDate_1.default)(new Date());
     const answers = quiz.answers.map((a, index) => ({
-        Id: (0, uuid_1.v4)(),
-        Name: a.text || "", // tránh null
-        IsCorrect: a.isCorrect,
-        DisplayOrder: index,
-        Images: []
+        id: (0, uuid_1.generateGuid)(),
+        name: a.text || "", // tránh null
+        isCorrect: a.isCorrect,
+        displayOrder: index,
+        images: []
     }));
+    // Sử dụng map từ central config, fallback về số 2 (Select 1) nếu chưa define
+    const mappedType = variable_1.DOMAIN_QUIZ_CONSTANT.TYPE_MAP[quiz.type] || 2;
     return {
-        Id: (0, uuid_1.v4)(),
-        QuestionId: questionId,
+        Id: questionId,
+        QuestionId: (0, uuid_1.generateGuid)(),
         Name: quiz.question || "",
         SubDescription: "",
         Description: "",
         DisplayOrder: displayOrder,
-        Type: quiz.type === 'true_false' ? 1 : 2,
-        Point: 0,
+        Type: mappedType,
+        Point: quiz.point || 1,
         Images: [],
         Answers: answers,
-        // 🔥 critical fields (tránh null ref backend)
-        Status: 1,
-        IsActive: true,
         ModifiedDate: now,
-        ModifiedBy: userId,
-        CreatedDate: now,
-        CreatedBy: userId
+        ModifiedBy: userId
     };
 };
 exports.mapQuizToCommand = mapQuizToCommand;
