@@ -416,16 +416,16 @@
           method="post"
           data-check-email="true"
           data-check-mobile="true"
-          data-enable-attribute="true"
+          novalidate="novalidate"
         >
           <div>
-            <label for="fullName" binding-name="Họ và tên"
+            <label for="name" binding-name="Họ và tên"
               >Họ và tên <sup style="color: red">*</sup></label
             >
             <div class="d-column gap-xs">
               <input
                 type="text"
-                id="fullName"
+                id="name"
                 name="name"
                 placeholder="Nhập họ và tên của bạn"
                 required
@@ -469,13 +469,16 @@
             >
             <div class="d-column gap-xs">
               <input
-                data-attribute="true"
                 type="text"
-                id="officePosition"
+                class="form-control valid"
                 name="officePosition"
-                data-attr-id="c918f3e3-ff7b-3129-bab8-b48f84088f2d"
+                attribute_checkbox="attribute_checkbox"
+                attribute_type="3"
+                attribute_id="c918f3e3-ff7b-3129-bab8-b48f84088f2d"
+                id="officePosition"
+                required="required"
+                aria-required="true"
                 placeholder="CEO, Founder, Staff,..."
-                required
                 oninvalid="this.setCustomValidity('Đây là trường bắt buộc')"
                 oninput="this.setCustomValidity('')"
               />
@@ -486,13 +489,16 @@
             >
             <div class="d-column gap-xs">
               <input
-                data-attribute="true"
                 type="text"
-                id="officeName"
+                class="form-control valid"
                 name="officeName"
-                data-attr-id="b8eb122b-103e-3458-59ce-eac1ac3f13fa"
+                attribute_checkbox="attribute_checkbox"
+                attribute_type="3"
+                attribute_id="b8eb122b-103e-3458-59ce-eac1ac3f13fa"
+                id="officeName"
+                required="required"
+                aria-required="true"
                 placeholder="Nhập tên công ty của bạn"
-                required
                 oninvalid="this.setCustomValidity('Đây là trường bắt buộc')"
                 oninput="this.setCustomValidity('')"
               />
@@ -503,11 +509,13 @@
             >
             <div class="d-column gap-xs">
               <input
-                data-attribute="true"
-                type="url"
-                id="linkedinLink"
+                type="text"
+                class="form-control"
                 name="linkedinLink"
-                data-attr-id="e05cbc41-b5fc-8e52-620e-d86fd8495cee"
+                attribute_checkbox="attribute_checkbox"
+                attribute_type="3"
+                attribute_id="e05cbc41-b5fc-8e52-620e-d86fd8495cee"
+                id="linkedinLink"
                 placeholder="https://www.linkedin.com/in/your-profile"
               />
             </div>
